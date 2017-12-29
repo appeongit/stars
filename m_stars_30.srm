@@ -1,0 +1,5949 @@
+HA$PBExportHeader$m_stars_30.srm
+forward
+global type m_stars_30 from menu
+end type
+type m_file from menu within m_stars_30
+end type
+type m_print from menu within m_file
+end type
+type m_report from menu within m_print
+end type
+type m_printcase from menu within m_print
+end type
+type m_print from menu within m_file
+m_report m_report
+m_printcase m_printcase
+end type
+type m_printersetup from menu within m_file
+end type
+type m_printscreen from menu within m_file
+end type
+type m_printpreview from menu within m_file
+end type
+type m_fax from menu within m_file
+end type
+type m_- from menu within m_file
+end type
+type m_windowsapps from menu within m_file
+end type
+type m_-21 from menu within m_file
+end type
+type m_save from menu within m_file
+end type
+type m_export from menu within m_file
+end type
+type m_-1 from menu within m_file
+end type
+type m_star from menu within m_file
+end type
+type m_-14 from menu within m_file
+end type
+type m_showsql from menu within m_file
+end type
+type m_-3 from menu within m_file
+end type
+type m_stopquery from menu within m_file
+end type
+type m_-2 from menu within m_file
+end type
+type m_changepassword from menu within m_file
+end type
+type m_-0 from menu within m_file
+end type
+type m_closeall from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_stars_30
+m_print m_print
+m_printersetup m_printersetup
+m_printscreen m_printscreen
+m_printpreview m_printpreview
+m_fax m_fax
+m_- m_-
+m_windowsapps m_windowsapps
+m_-21 m_-21
+m_save m_save
+m_export m_export
+m_-1 m_-1
+m_star m_star
+m_-14 m_-14
+m_showsql m_showsql
+m_-3 m_-3
+m_stopquery m_stopquery
+m_-2 m_-2
+m_changepassword m_changepassword
+m_-0 m_-0
+m_closeall m_closeall
+m_exit m_exit
+end type
+type m_edit from menu within m_stars_30
+end type
+type m_cut from menu within m_edit
+end type
+type m_copytoclipboard1 from menu within m_edit
+end type
+type m_paste from menu within m_edit
+end type
+type m_edit from menu within m_stars_30
+m_cut m_cut
+m_copytoclipboard1 m_copytoclipboard1
+m_paste m_paste
+end type
+type m_analysis from menu within m_stars_30
+end type
+type m_queryengine from menu within m_analysis
+end type
+type m_-12 from menu within m_analysis
+end type
+type m_summaryanalysis from menu within m_analysis
+end type
+type m_-4 from menu within m_analysis
+end type
+type m_subsetlist from menu within m_analysis
+end type
+type m_filters from menu within m_analysis
+end type
+type m_listfilters from menu within m_filters
+end type
+type m_maintainfilters from menu within m_filters
+end type
+type m_filters from menu within m_analysis
+m_listfilters m_listfilters
+m_maintainfilters m_maintainfilters
+end type
+type m_analysis from menu within m_stars_30
+m_queryengine m_queryengine
+m_-12 m_-12
+m_summaryanalysis m_summaryanalysis
+m_-4 m_-4
+m_subsetlist m_subsetlist
+m_filters m_filters
+end type
+type m_reporting from menu within m_stars_30
+end type
+type m_normanalysis from menu within m_reporting
+end type
+type m_ratioreports from menu within m_reporting
+end type
+type m_baselinereports from menu within m_reporting
+end type
+type m_-8 from menu within m_reporting
+end type
+type m_caseinventoryreports from menu within m_reporting
+end type
+type m_-13 from menu within m_reporting
+end type
+type m_userreportlist from menu within m_reporting
+end type
+type m_importstarsreport from menu within m_reporting
+end type
+type m_crystalreports from menu within m_reporting
+end type
+type m_graph from menu within m_reporting
+end type
+type m_reporting from menu within m_stars_30
+m_normanalysis m_normanalysis
+m_ratioreports m_ratioreports
+m_baselinereports m_baselinereports
+m_-8 m_-8
+m_caseinventoryreports m_caseinventoryreports
+m_-13 m_-13
+m_userreportlist m_userreportlist
+m_importstarsreport m_importstarsreport
+m_crystalreports m_crystalreports
+m_graph m_graph
+end type
+type m_case from menu within m_stars_30
+end type
+type m_casefolder from menu within m_case
+end type
+type m_-7 from menu within m_case
+end type
+type m_listcases from menu within m_case
+end type
+type m_caseadd from menu within m_case
+end type
+type m_casedetails from menu within m_case
+end type
+type m_-15 from menu within m_case
+end type
+type m_activecase from menu within m_case
+end type
+type m_activesubset from menu within m_case
+end type
+type m_-9 from menu within m_case
+end type
+type m_target from menu within m_case
+end type
+type m_listtargetlists from menu within m_target
+end type
+type m_maintaintarget from menu within m_target
+end type
+type m_target from menu within m_case
+m_listtargetlists m_listtargetlists
+m_maintaintarget m_maintaintarget
+end type
+type m_listtrackingentries from menu within m_case
+end type
+type m_-20 from menu within m_case
+end type
+type m_leads from menu within m_case
+end type
+type m_list1 from menu within m_leads
+end type
+type m_add3 from menu within m_leads
+end type
+type m_leads from menu within m_case
+m_list1 m_list1
+m_add3 m_add3
+end type
+type m_-22 from menu within m_case
+end type
+type m_notes from menu within m_case
+end type
+type m_listnotes from menu within m_notes
+end type
+type m_newnote from menu within m_notes
+end type
+type m_notes from menu within m_case
+m_listnotes m_listnotes
+m_newnote m_newnote
+end type
+type m_-11 from menu within m_case
+end type
+type m_casereports from menu within m_case
+end type
+type m_case from menu within m_stars_30
+m_casefolder m_casefolder
+m_-7 m_-7
+m_listcases m_listcases
+m_caseadd m_caseadd
+m_casedetails m_casedetails
+m_-15 m_-15
+m_activecase m_activecase
+m_activesubset m_activesubset
+m_-9 m_-9
+m_target m_target
+m_listtrackingentries m_listtrackingentries
+m_-20 m_-20
+m_leads m_leads
+m_-22 m_-22
+m_notes m_notes
+m_-11 m_-11
+m_casereports m_casereports
+end type
+type m_interfaces from menu within m_stars_30
+end type
+type m_jobstatus from menu within m_interfaces
+end type
+type m_displayusermessages from menu within m_interfaces
+end type
+type m_m_dash1 from menu within m_interfaces
+end type
+type m_restorerequest from menu within m_interfaces
+end type
+type m_restorerequestlist from menu within m_restorerequest
+end type
+type m_addrestorerequest from menu within m_restorerequest
+end type
+type m_restorerequest from menu within m_interfaces
+m_restorerequestlist m_restorerequestlist
+m_addrestorerequest m_addrestorerequest
+end type
+type m_interfaces from menu within m_stars_30
+m_jobstatus m_jobstatus
+m_displayusermessages m_displayusermessages
+m_m_dash1 m_m_dash1
+m_restorerequest m_restorerequest
+end type
+type m_admin from menu within m_stars_30
+end type
+type m_codetype from menu within m_admin
+end type
+type m_list from menu within m_codetype
+end type
+type m_add1 from menu within m_codetype
+end type
+type m_codetype from menu within m_admin
+m_list m_list
+m_add1 m_add1
+end type
+type m_code from menu within m_admin
+end type
+type m_list2 from menu within m_code
+end type
+type m_add from menu within m_code
+end type
+type m_code from menu within m_admin
+m_list2 m_list2
+m_add m_add
+end type
+type m_dictionarylist from menu within m_admin
+end type
+type m_periodcontrol from menu within m_admin
+end type
+type m_categoryprocedure from menu within m_admin
+end type
+type m_-16 from menu within m_admin
+end type
+type m_listusers from menu within m_admin
+end type
+type m_accesslog from menu within m_admin
+end type
+type m_-6 from menu within m_admin
+end type
+type m_createpimrfile from menu within m_admin
+end type
+type m_admin from menu within m_stars_30
+m_codetype m_codetype
+m_code m_code
+m_dictionarylist m_dictionarylist
+m_periodcontrol m_periodcontrol
+m_categoryprocedure m_categoryprocedure
+m_-16 m_-16
+m_listusers m_listusers
+m_accesslog m_accesslog
+m_-6 m_-6
+m_createpimrfile m_createpimrfile
+end type
+type m_lookup from menu within m_stars_30
+end type
+type m_lookupcode from menu within m_lookup
+end type
+type m_lookupproviders from menu within m_lookup
+end type
+type m_lookupenrollee from menu within m_lookup
+end type
+type m_-17 from menu within m_lookup
+end type
+type m_lookupcategoryprocedure from menu within m_lookup
+end type
+type m_lookupproceduretimes from menu within m_lookup
+end type
+type m_lookupplaneligibility from menu within m_lookup
+end type
+type m_lookupdictionarylist from menu within m_lookup
+end type
+type m_lookupclaimspaymentrange from menu within m_lookup
+end type
+type m_lookup from menu within m_stars_30
+m_lookupcode m_lookupcode
+m_lookupproviders m_lookupproviders
+m_lookupenrollee m_lookupenrollee
+m_-17 m_-17
+m_lookupcategoryprocedure m_lookupcategoryprocedure
+m_lookupproceduretimes m_lookupproceduretimes
+m_lookupplaneligibility m_lookupplaneligibility
+m_lookupdictionarylist m_lookupdictionarylist
+m_lookupclaimspaymentrange m_lookupclaimspaymentrange
+end type
+type m_window from menu within m_stars_30
+end type
+type m_cascade from menu within m_window
+end type
+type m_tile from menu within m_window
+end type
+type m_layer from menu within m_window
+end type
+type m_-10 from menu within m_window
+end type
+type m_arrangeicons from menu within m_window
+end type
+type m_resize from menu within m_window
+end type
+type m_yellowlookups from menu within m_window
+end type
+type m_-19 from menu within m_window
+end type
+type m_toolbar from menu within m_window
+end type
+type m_popupmenu from menu within m_window
+end type
+type m_window from menu within m_stars_30
+m_cascade m_cascade
+m_tile m_tile
+m_layer m_layer
+m_-10 m_-10
+m_arrangeicons m_arrangeicons
+m_resize m_resize
+m_yellowlookups m_yellowlookups
+m_-19 m_-19
+m_toolbar m_toolbar
+m_popupmenu m_popupmenu
+end type
+type m_help from menu within m_stars_30
+end type
+type m_starshelp from menu within m_help
+end type
+type m_-18 from menu within m_help
+end type
+type m_referencemanual from menu within m_help
+end type
+type m_usersguide from menu within m_help
+end type
+type m_-23 from menu within m_help
+end type
+type m_releasenotes from menu within m_help
+end type
+type m_-5 from menu within m_help
+end type
+type m_aboutstars from menu within m_help
+end type
+type m_help from menu within m_stars_30
+m_starshelp m_starshelp
+m_-18 m_-18
+m_referencemanual m_referencemanual
+m_usersguide m_usersguide
+m_-23 m_-23
+m_releasenotes m_releasenotes
+m_-5 m_-5
+m_aboutstars m_aboutstars
+end type
+global type m_stars_30 from menu
+m_file m_file
+m_edit m_edit
+m_analysis m_analysis
+m_reporting m_reporting
+m_case m_case
+m_interfaces m_interfaces
+m_admin m_admin
+m_lookup m_lookup
+m_window m_window
+m_help m_help
+end type
+end forward
+
+global type m_stars_30 from menu
+m_file m_file
+m_edit m_edit
+m_analysis m_analysis
+m_reporting m_reporting
+m_case m_case
+m_interfaces m_interfaces
+m_admin m_admin
+m_lookup m_lookup
+m_window m_window
+m_help m_help
+end type
+global m_stars_30 m_stars_30
+
+type variables
+string	is_query_engine_mode		//Lahu S - Added to store query engine mode
+end variables
+
+forward prototypes
+public subroutine mf_invoke_query_engine ()
+end prototypes
+
+public subroutine mf_invoke_query_engine ();//******************************************************************
+//	Script:	m_stars_30.mf_invoke_query_engine
+//
+//	Arguments:	None
+//
+//	Returns:		None
+//
+//	Description:
+//			This function is called from m_query_engine and will invoke
+//			the script to open w_query_engine
+//
+//******************************************************************
+//	History:
+//
+//	FDG	01/08/97	Created
+// Lahu S Track 2552d - Added Function call to set Query engine mode
+//******************************************************************
+
+uo_cst_queryengine	lnvo_queryengine
+
+lnvo_queryengine	=	CREATE	uo_cst_queryengine
+//Lahu S	begin
+//set query engine mode
+lnvo_queryengine.uf_set_query_engine_mode(is_query_engine_mode)
+//Lahu S	end
+lnvo_queryengine.uf_open_query_engine()
+
+DESTROY	lnvo_queryengine
+
+end subroutine
+
+on m_stars_30.create
+m_stars_30=this
+call super::create
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_file=create m_file
+this.m_edit=create m_edit
+this.m_analysis=create m_analysis
+this.m_reporting=create m_reporting
+this.m_case=create m_case
+this.m_interfaces=create m_interfaces
+this.m_admin=create m_admin
+this.m_lookup=create m_lookup
+this.m_window=create m_window
+this.m_help=create m_help
+this.Item[UpperBound(this.Item)+1]=this.m_file
+this.Item[UpperBound(this.Item)+1]=this.m_edit
+this.Item[UpperBound(this.Item)+1]=this.m_analysis
+this.Item[UpperBound(this.Item)+1]=this.m_reporting
+this.Item[UpperBound(this.Item)+1]=this.m_case
+this.Item[UpperBound(this.Item)+1]=this.m_interfaces
+this.Item[UpperBound(this.Item)+1]=this.m_admin
+this.Item[UpperBound(this.Item)+1]=this.m_lookup
+this.Item[UpperBound(this.Item)+1]=this.m_window
+this.Item[UpperBound(this.Item)+1]=this.m_help
+end on
+
+on m_stars_30.destroy
+call super::destroy
+destroy(this.m_file)
+destroy(this.m_edit)
+destroy(this.m_analysis)
+destroy(this.m_reporting)
+destroy(this.m_case)
+destroy(this.m_interfaces)
+destroy(this.m_admin)
+destroy(this.m_lookup)
+destroy(this.m_window)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_stars_30
+m_print m_print
+m_printersetup m_printersetup
+m_printscreen m_printscreen
+m_printpreview m_printpreview
+m_fax m_fax
+m_- m_-
+m_windowsapps m_windowsapps
+m_-21 m_-21
+m_save m_save
+m_export m_export
+m_-1 m_-1
+m_star m_star
+m_-14 m_-14
+m_showsql m_showsql
+m_-3 m_-3
+m_stopquery m_stopquery
+m_-2 m_-2
+m_changepassword m_changepassword
+m_-0 m_-0
+m_closeall m_closeall
+m_exit m_exit
+end type
+
+on m_file.create
+call super::create
+this.text = "&File"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.menutitletext = "File"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_print=create m_print
+this.m_printersetup=create m_printersetup
+this.m_printscreen=create m_printscreen
+this.m_printpreview=create m_printpreview
+this.m_fax=create m_fax
+this.m_-=create m_-
+this.m_windowsapps=create m_windowsapps
+this.m_-21=create m_-21
+this.m_save=create m_save
+this.m_export=create m_export
+this.m_-1=create m_-1
+this.m_star=create m_star
+this.m_-14=create m_-14
+this.m_showsql=create m_showsql
+this.m_-3=create m_-3
+this.m_stopquery=create m_stopquery
+this.m_-2=create m_-2
+this.m_changepassword=create m_changepassword
+this.m_-0=create m_-0
+this.m_closeall=create m_closeall
+this.m_exit=create m_exit
+this.Item[UpperBound(this.Item)+1]=this.m_print
+this.Item[UpperBound(this.Item)+1]=this.m_printersetup
+this.Item[UpperBound(this.Item)+1]=this.m_printscreen
+this.Item[UpperBound(this.Item)+1]=this.m_printpreview
+this.Item[UpperBound(this.Item)+1]=this.m_fax
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_windowsapps
+this.Item[UpperBound(this.Item)+1]=this.m_-21
+this.Item[UpperBound(this.Item)+1]=this.m_save
+this.Item[UpperBound(this.Item)+1]=this.m_export
+this.Item[UpperBound(this.Item)+1]=this.m_-1
+this.Item[UpperBound(this.Item)+1]=this.m_star
+this.Item[UpperBound(this.Item)+1]=this.m_-14
+this.Item[UpperBound(this.Item)+1]=this.m_showsql
+this.Item[UpperBound(this.Item)+1]=this.m_-3
+this.Item[UpperBound(this.Item)+1]=this.m_stopquery
+this.Item[UpperBound(this.Item)+1]=this.m_-2
+this.Item[UpperBound(this.Item)+1]=this.m_changepassword
+this.Item[UpperBound(this.Item)+1]=this.m_-0
+this.Item[UpperBound(this.Item)+1]=this.m_closeall
+this.Item[UpperBound(this.Item)+1]=this.m_exit
+end on
+
+on m_file.destroy
+call super::destroy
+destroy(this.m_print)
+destroy(this.m_printersetup)
+destroy(this.m_printscreen)
+destroy(this.m_printpreview)
+destroy(this.m_fax)
+destroy(this.m_-)
+destroy(this.m_windowsapps)
+destroy(this.m_-21)
+destroy(this.m_save)
+destroy(this.m_export)
+destroy(this.m_-1)
+destroy(this.m_star)
+destroy(this.m_-14)
+destroy(this.m_showsql)
+destroy(this.m_-3)
+destroy(this.m_stopquery)
+destroy(this.m_-2)
+destroy(this.m_changepassword)
+destroy(this.m_-0)
+destroy(this.m_closeall)
+destroy(this.m_exit)
+end on
+
+type m_print from menu within m_file
+m_report m_report
+m_printcase m_printcase
+end type
+
+on m_print.create
+call super::create
+this.text = "&Print"
+this.microhelp = "Print"
+this.toolbaritemvisible = false
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_report=create m_report
+this.m_printcase=create m_printcase
+this.Item[UpperBound(this.Item)+1]=this.m_report
+this.Item[UpperBound(this.Item)+1]=this.m_printcase
+end on
+
+on m_print.destroy
+call super::destroy
+destroy(this.m_report)
+destroy(this.m_printcase)
+end on
+
+type m_report from menu within m_print
+end type
+
+event clicked;//**********************************************************************
+//09/15/99 FNC	Call ue_print in w_master so that a descendent window can
+//					call do logic other than fx_m_print
+//**********************************************************************
+
+w_master active_sheet
+
+active_sheet = gnv_App.of_Get_Frame().GetActiveSheet()
+
+if isvalid(active_sheet) then
+	active_sheet.event dynamic ue_print()
+end if
+end event
+
+on m_report.create
+call super::create
+this.text = "&Report"
+this.microhelp = "Print Report"
+this.toolbaritemname = "print!"
+this.toolbaritemtext = "Print Report"
+this.toolbaritemorder = 28
+this.menuimage = "Print!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_report.destroy
+call super::destroy
+end on
+
+type m_printcase from menu within m_print
+end type
+
+on clicked;Setpointer(hourglass!)
+setmicrohelp(w_main,'Opening Case Print')
+opensheet(w_case_print,mdi_main_frame,help_menu_position,layered!)
+
+end on
+
+on m_printcase.create
+call super::create
+this.text = "&Case"
+this.microhelp = "Print Case Data"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_printcase.destroy
+call super::destroy
+end on
+
+type m_printersetup from menu within m_file
+end type
+
+event clicked;//******************************************************************
+//
+//	FDG	10/05/00	Track 3010.  Stars 4.5 SP1.  Reset the pointer
+//						to get around an NT 4.0 issue with print setup.
+//
+//******************************************************************
+
+PrintSetup()
+
+ParentWindow.Pointer	=	'Arrow!'		// FDG 10/05/00
+
+end event
+
+on m_printersetup.create
+call super::create
+this.text = "P&rinter Setup"
+this.microhelp = "Printer Setup"
+this.toolbaritemtext = "Print Setup"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_printersetup.destroy
+call super::destroy
+end on
+
+type m_printscreen from menu within m_file
+end type
+
+event clicked;////////////////////////////////////////////////////////////////////
+//
+//	Added 04/11/96 FDG Prob 42 (Stars 31)
+//
+////////////////////////////////////////////////////////////////////
+// History
+//
+//	FDG	05/04/99	Track 2317 (Stars 4.0 SP 2).  Add width and
+//						height to PrintScreen() so the entire window
+//						prints.
+// GaryR	 10/27/2000	2315d	Conforming STARS to the HIPAA Act
+//
+////////////////////////////////////////////////////////////////////
+
+Long		ll_job
+
+SetPointer (HourGlass!)
+
+MDI_Main_Frame.SetMicroHelp('Printing the window.  Please wait')
+
+// GaryR	 10/27/2000	2315d
+IF fx_disclaimer() = 1 THEN 
+	ll_job		=	PrintOpen()
+	PrintScreen (ll_job, 500, 1000, 7500, 6000)		// FDG 05/04/99
+	PrintClose (ll_job)
+END IF
+
+MDI_Main_Frame.SetMicroHelp('Ready')
+
+SetPointer (Arrow!)
+end event
+
+on m_printscreen.create
+call super::create
+this.text = "Print Scree&n"
+this.microhelp = "Print the Contents of the Window"
+this.toolbaritemvisible = false
+this.toolbaritemtext = "Print Screen"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_printscreen.destroy
+call super::destroy
+end on
+
+type m_printpreview from menu within m_file
+end type
+
+event clicked;// 04/11/96 FDG 	Prob 42 (Stars31) - Added
+//	06/03/98	FDG	Track 1295.  Get the specified print d/w in case there
+//						is a tab folder or user object
+//	05/01/01	GaryR	Stars 4.7 DataBase Port - Eliminate view CODE_DESC
+
+GraphicObject	ldo_HasFocus
+Integer			li_dws = 0
+Integer			li_max,	li_i
+w_master			lw_sheet
+DataWindow		ldw,	ldw_temp
+
+SetPointer (HourGlass!)
+
+	// Get the active sheet
+lw_sheet		=	ParentWindow.GetActiveSheet()
+
+IF	NOT	IsValid(lw_sheet)		Then
+	SetPointer (Arrow!)
+	Return
+END IF
+
+ldw_temp	=	lw_sheet.of_GetPrintDW()
+
+IF	IsValid (ldw_temp)		THEN
+	ldw			=	ldw_temp
+	li_dws ++
+ELSE
+	li_max		=	UpperBound (lw_sheet.Control[])
+
+	// Determine how many visible datawindows exist on this window
+	//	(excluding the print criteria datawindow).
+
+	FOR	li_i	=	1	TO	li_max
+		IF	TypeOf (lw_sheet.Control[li_i])	=	DataWindow!		&
+		AND lw_sheet.Control[li_i].visible	=	TRUE				THEN
+				// Ignore the print criteria datawindow
+			ldw_temp	=	lw_sheet.Control[li_i]
+			//	05/01/01	GaryR	Stars 4.7 DataBase Port - Begin
+			//IF	ldw_temp.DataObject	<>	'd_criteria_print_text_dw'	THEN
+				ldw	=	ldw_temp
+				li_dws++
+			//END IF
+			//	05/01/01	GaryR	Stars 4.7 DataBase Port - End
+		END IF
+	NEXT
+END IF
+
+	// If there are no visible datawindows, then don't do anything
+IF	li_dws	=	0		THEN
+	SetPointer (Arrow!)
+	Return
+END IF
+
+	// If 1 datawindow was found, then open w_printzoom.  Otherwise,
+	// determine which datawindow has focus.
+
+IF	li_dws	=	1		THEN
+	SetPointer (Arrow!)
+	OpenWithParm (w_printzoom, ldw)
+	Return
+ELSE		//	There is more than 1 datawindow.  See which one has focus
+	ldo_HasFocus	=	GetFocus()
+	IF	ldo_HasFocus.TypeOf()	=	DataWindow!				THEN
+		ldw			=	ldo_HasFocus
+		//	05/01/01	GaryR	Stars 4.7 DataBase Port - Begin
+		//IF	ldw.dataobject	<>	'd_criteria_print_text_dw'	THEN
+			SetPointer (Arrow!)
+			OpenWithParm (w_printzoom, ldw)
+			Return
+		//END IF
+		//	05/01/01	GaryR	Stars 4.7 DataBase Port - End
+	END IF
+END IF
+		
+SetPointer (Arrow!)
+
+end event
+
+on m_printpreview.create
+call super::create
+this.text = "Report &Zoom"
+this.microhelp = "Zoom the report and view as a page layout"
+this.toolbaritemname = "addwatch5!"
+this.toolbaritemtext = "Report Zoom"
+this.toolbaritemorder = 27
+this.menuimage = "AddWatch5!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_printpreview.destroy
+call super::destroy
+end on
+
+type m_fax from menu within m_file
+end type
+
+on clicked;fx_m_fax()
+end on
+
+on m_fax.create
+call super::create
+this.text = "&Fax"
+this.microhelp = "Fax Report"
+this.toolbaritemvisible = false
+this.toolbaritemname = "custom084!"
+this.toolbaritemtext = "Fax"
+this.toolbaritemorder = 17
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_fax.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_file
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_windowsapps from menu within m_file
+end type
+
+on clicked;//	Added 04/11/96 FDG	Prob 42 (Stars31)
+
+OpenSheet (w_launch, ParentWindow, 0, Original!)
+
+end on
+
+on m_windowsapps.create
+call super::create
+this.text = "&Windows APPs"
+this.microhelp = "Launch a Window~'s Application (i.e. Calculator, NotePad, etc.)"
+this.toolbaritemvisible = false
+this.toolbaritemtext = "Windows APPs"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_windowsapps.destroy
+call super::destroy
+end on
+
+type m_-21 from menu within m_file
+end type
+
+on m_-21.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-21.destroy
+call super::destroy
+end on
+
+type m_save from menu within m_file
+end type
+
+on clicked;fx_m_save()
+end on
+
+on m_save.create
+call super::create
+this.text = "&Save"
+this.microhelp = "Save Report to Database"
+this.toolbaritemname = "save!"
+this.toolbaritemtext = "Save Report"
+this.toolbaritemorder = 25
+this.menuimage = "Save!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_save.destroy
+call super::destroy
+end on
+
+type m_export from menu within m_file
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_Export						Clicked
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+//	Call the global f() to export visible datawindows on the current sheet.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	None.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+//	None.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	J.Mattis	01/29/98		Created.
+//
+//	FDG		04/27/98		Track 1112.  See if current window is w_query_engine
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+uo_Query luo_Query				//null argument due to 4.0 redesign.
+
+w_master		lw_parent
+String		ls_classname
+
+lw_parent	=	ParentWindow.GetActiveSheet()
+
+ls_classname	=	lw_parent.ClassName()
+
+IF	Upper ( ls_classname )	=	'W_QUERY_ENGINE'		THEN
+	luo_query	=	lw_parent.dynamic	wf_GetActiveQuery()
+END IF
+
+fx_m_export(luo_Query,'VIEW')
+end event
+
+on m_export.create
+call super::create
+this.text = "&Export"
+this.microhelp = "Export"
+this.toolbaritemname = "retrieve!"
+this.toolbaritemtext = "Export"
+this.toolbaritemorder = 26
+this.menuimage = "Retrieve!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_export.destroy
+call super::destroy
+end on
+
+type m_-1 from menu within m_file
+end type
+
+on m_-1.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-1.destroy
+call super::destroy
+end on
+
+type m_star from menu within m_file
+end type
+
+event clicked;SetPointer(HourGlass!)
+if isvalid(w_main_star) then
+	close(w_main_star)
+else
+	OpenSheet(w_main_star,MDI_main_frame,help_menu_position,Layered!)
+end if
+end event
+
+on m_star.create
+call super::create
+this.text = "S&tar"
+this.microhelp = "Show or Hide Star Window"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_star.destroy
+call super::destroy
+end on
+
+type m_-14 from menu within m_file
+end type
+
+on m_-14.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-14.destroy
+call super::destroy
+end on
+
+type m_showsql from menu within m_file
+event ue_reset ( )
+event ue_restore_win_settings ( )
+end type
+
+event ue_reset();// 01/07/05 Katie Track 5431c Event to reset menu when a window is 
+//						closed or deactivated.
+
+m_file.m_showSQL.ToolBarItemName     = 'PasteSQL!'
+this.checked=false
+end event
+
+event ue_restore_win_settings();// 01/07/05 Katie Track 5431c Event to restore menu to setting for active 
+//						instance ofw_master.
+
+w_master active_sheet
+
+active_sheet = MDI_Main_Frame.GetActiveSheet ()
+
+if active_sheet.of_get_allowswitch( ) = FALSE THEN
+   RETURN
+end if
+   
+if active_sheet.of_get_showsql() = FALSE THEN
+   m_file.m_showSQL.ToolBarItemName     = 'PasteSQL!'
+	this.checked=false
+else
+   m_file.m_showSQL.ToolBarItemName     = 'DataWindow!'
+	this.checked=true
+end if
+end event
+
+event clicked;// Katie 01/11/05 Track 5431c Changed code to use w_master instance variables.
+
+w_master active_sheet
+
+active_sheet = MDI_Main_Frame.GetActiveSheet ()
+
+if active_sheet.of_get_allowswitch( ) = FALSE THEN
+   Beep (1)
+   RETURN
+end if
+   
+if active_sheet.of_get_showsql() = FALSE THEN
+   active_sheet.of_set_showsql(TRUE)
+   m_file.m_showSQL.ToolBarItemName     = 'DataWindow!'
+	this.checked=true
+else
+   active_sheet.of_set_showsql(FALSE)
+   m_file.m_showSQL.ToolBarItemName     = 'PasteSQL!'
+	this.checked=false
+end if
+
+PostEvent (active_sheet, Activate!)
+end event
+
+on m_showsql.create
+call super::create
+this.text = "Show S&QL"
+this.microhelp = "Show SQL Where clause or full Data Window"
+this.toolbaritemvisible = false
+this.toolbaritemtext = "List Mode"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_showsql.destroy
+call super::destroy
+end on
+
+type m_-3 from menu within m_file
+end type
+
+on m_-3.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-3.destroy
+call super::destroy
+end on
+
+type m_stopquery from menu within m_file
+end type
+
+on clicked;fx_m_stopquery()
+end on
+
+on m_stopquery.create
+call super::create
+this.text = "Cancel &Query"
+this.microhelp = "Cancel the current query"
+this.toolbaritemname = "retrievecancel!"
+this.toolbaritemtext = "Cancel Query"
+this.toolbaritemorder = 2
+this.menuimage = "RetrieveCancel!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_stopquery.destroy
+call super::destroy
+end on
+
+type m_-2 from menu within m_file
+end type
+
+on m_-2.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-2.destroy
+call super::destroy
+end on
+
+type m_changepassword from menu within m_file
+end type
+
+event clicked;// FDG	03/28/01	Stars 4.7.	Created.
+Open (w_change_password)
+end event
+
+on m_changepassword.create
+call super::create
+this.text = "&Change Password"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_changepassword.destroy
+call super::destroy
+end on
+
+type m_-0 from menu within m_file
+end type
+
+on m_-0.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-0.destroy
+call super::destroy
+end on
+
+type m_closeall from menu within m_file
+end type
+
+on clicked;window active_sheet
+
+active_sheet=w_main.getactivesheet()
+if not isvalid(active_sheet) then return
+if messagebox('Close All','Are you sure you want to close all windows?',exclamation!,yesno!,2)=2 then return
+w_main.setredraw(false)
+do
+	if isvalid(active_sheet) then
+		setpointer(hourglass!)
+		close(active_sheet)
+		active_sheet=w_main.getactivesheet()
+	end if
+loop until not isvalid(active_sheet)
+w_main.setredraw(true)
+
+end on
+
+on m_closeall.create
+call super::create
+this.text = "Close &All"
+this.microhelp = "Close All Windows"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_closeall.destroy
+call super::destroy
+end on
+
+type m_exit from menu within m_file
+end type
+
+on clicked;close(w_main)
+end on
+
+on m_exit.create
+call super::create
+this.text = "E&xit~tAlt+F4"
+this.shortcut = 627
+this.microhelp = "Exit STARS Application"
+this.toolbaritemname = "exit!"
+this.toolbaritemtext = "Exit STARS"
+this.toolbaritemorder = 29
+this.toolbaritemspace = 1
+this.menuimage = "Exit!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_exit.destroy
+call super::destroy
+end on
+
+type m_edit from menu within m_stars_30
+m_cut m_cut
+m_copytoclipboard1 m_copytoclipboard1
+m_paste m_paste
+end type
+
+on m_edit.create
+call super::create
+this.text = "&Edit"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.menutitletext = "Edit"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_cut=create m_cut
+this.m_copytoclipboard1=create m_copytoclipboard1
+this.m_paste=create m_paste
+this.Item[UpperBound(this.Item)+1]=this.m_cut
+this.Item[UpperBound(this.Item)+1]=this.m_copytoclipboard1
+this.Item[UpperBound(this.Item)+1]=this.m_paste
+end on
+
+on m_edit.destroy
+call super::destroy
+destroy(this.m_cut)
+destroy(this.m_copytoclipboard1)
+destroy(this.m_paste)
+end on
+
+type m_cut from menu within m_edit
+end type
+
+event clicked;//*********************************************************************************
+// Script Name:	m_cut
+//
+//	Arguments:		none
+//						
+//
+// Returns:			none
+//
+//	Description:	this function will cut selected text
+//		
+//
+//*********************************************************************************
+//	
+// 10/06/99 AJS	TS2443 - Rls 4.5 Enhanced notes
+//
+//*********************************************************************************
+
+DropDownListBox ddlb_control
+SingleLineEdit sle_control
+MultiLineEdit mle_control
+DataWindow dw_control
+EditMask em_control
+RichTextEdit rte_control
+graphicobject lv_object
+int rc
+
+setpointer(hourglass!)
+lv_object=getfocus()
+CHOOSE CASE (lv_object.TypeOf())
+	CASE DataWindow!
+		dw_control = lv_object
+		rc=dw_control.cut()
+	CASE DropDownListBox!
+		ddlb_control = lv_object
+		if (ddlb_control.AllowEdit = TRUE) then rc=ddlb_control.cut()
+	CASE SingleLineEdit!
+		sle_control = lv_object
+		rc=sle_control.cut()
+	CASE MultiLineEdit!
+		mle_control = lv_object
+		rc=mle_control.cut()
+	CASE EditMask!
+		em_control = lv_object
+		rc=em_control.cut()
+	//ajs 09-06-99 notes
+	CASE RichTextEdit!
+		rte_control = lv_object
+		rc=rte_control.cut()
+END CHOOSE
+
+end event
+
+on m_cut.create
+call super::create
+this.text = "Cu&t~tCtrl+X"
+this.shortcut = 344
+this.microhelp = "Cut selected text to clipboard"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_cut.destroy
+call super::destroy
+end on
+
+type m_copytoclipboard1 from menu within m_edit
+end type
+
+event clicked;//*********************************************************************************
+// Script Name:	m_cut
+//
+//	Arguments:		none
+//						
+//
+// Returns:			none
+//
+//	Description:	this function will copy selected text
+//		
+//
+//*********************************************************************************
+//	
+// 10/06/99 AJS	TS2443 - Rls 4.5 Enhanced notes
+//
+//*********************************************************************************
+DropDownListBox ddlb_control
+SingleLineEdit sle_control
+MultiLineEdit mle_control
+DataWindow dw_control
+EditMask em_control
+RichTextEdit rte_control
+graphicobject lv_object
+int rc
+
+setpointer(hourglass!)
+lv_object=getfocus()
+
+
+//*******************************//
+// ABO 11/21/96 stars35 prob#228 //
+//*******************************//
+
+If NOT IsValid(lv_object) then
+	MessageBox('Copy', 'Click on the object to be copied before performing this function.', StopSign!)
+	Return
+End If
+
+CHOOSE CASE (lv_object.TypeOf())
+	CASE DataWindow!
+		dw_control = lv_object
+		if dw_control.Describe("datawindow.selected.data")<>'' then
+			if len(dw_control.Describe("datawindow.selected.data"))<32765 then
+				clipboard(dw_control.Describe("datawindow.selected.data"))
+			else
+				messagebox('Error','The selected text is too large to copy to the clipboard.')
+			end if
+		else
+			rc=dw_control.copy()
+		end if
+	CASE DropDownListBox!
+		ddlb_control = lv_object
+		if (ddlb_control.AllowEdit = TRUE) then rc=ddlb_control.copy()
+	CASE SingleLineEdit!
+		sle_control = lv_object
+		rc=sle_control.copy()
+	CASE MultiLineEdit!
+		mle_control = lv_object
+		rc=mle_control.copy()
+	CASE EditMask!
+		em_control = lv_object
+		rc=em_control.copy()
+	//ajs 09-06-99 notes
+	CASE RichTextEdit!
+		rte_control = lv_object
+		rc=rte_control.copy()
+END CHOOSE
+
+end event
+
+on m_copytoclipboard1.create
+call super::create
+this.text = "&Copy ~tCtrl+C"
+this.shortcut = 323
+this.microhelp = "Copy selected text to clipboard"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copytoclipboard1.destroy
+call super::destroy
+end on
+
+type m_paste from menu within m_edit
+end type
+
+event clicked;//*********************************************************************************
+// Script Name:	m_cut
+//
+//	Arguments:		none
+//						
+//
+// Returns:			none
+//
+//	Description:	this function will paste selected text
+//		
+//
+//*********************************************************************************
+//	
+// 10/06/99 AJS	TS2443 - Rls 4.5 Enhanced notes
+//
+//*********************************************************************************
+DropDownListBox ddlb_control
+SingleLineEdit sle_control
+MultiLineEdit mle_control
+DataWindow dw_control
+EditMask em_control
+RichTextEdit rte_control
+graphicobject lv_object
+int rc
+
+setpointer(hourglass!)
+lv_object=getfocus()
+CHOOSE CASE (lv_object.TypeOf())
+	CASE DataWindow!
+		dw_control = lv_object
+		rc=dw_control.paste()
+	CASE DropDownListBox!
+		ddlb_control = lv_object
+		if (ddlb_control.AllowEdit = TRUE) then rc=ddlb_control.paste()
+	CASE SingleLineEdit!
+		sle_control = lv_object
+		rc=sle_control.paste()
+	CASE MultiLineEdit!
+		mle_control = lv_object
+		rc=mle_control.paste()
+	CASE EditMask!
+		em_control = lv_object
+		rc=em_control.paste()
+	//ajs 09-06-99 notes
+	CASE RichTextEdit!
+		rte_control = lv_object
+		rc=rte_control.paste()
+END CHOOSE
+
+end event
+
+on m_paste.create
+call super::create
+this.text = "&Paste~tCtrl+V"
+this.shortcut = 342
+this.microhelp = "Paste text at cursor"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_paste.destroy
+call super::destroy
+end on
+
+type m_analysis from menu within m_stars_30
+m_queryengine m_queryengine
+m_-12 m_-12
+m_summaryanalysis m_summaryanalysis
+m_-4 m_-4
+m_subsetlist m_subsetlist
+m_filters m_filters
+end type
+
+on m_analysis.create
+call super::create
+this.text = "&Analysis"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.menutitletext = "Analysis"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_queryengine=create m_queryengine
+this.m_-12=create m_-12
+this.m_summaryanalysis=create m_summaryanalysis
+this.m_-4=create m_-4
+this.m_subsetlist=create m_subsetlist
+this.m_filters=create m_filters
+this.Item[UpperBound(this.Item)+1]=this.m_queryengine
+this.Item[UpperBound(this.Item)+1]=this.m_-12
+this.Item[UpperBound(this.Item)+1]=this.m_summaryanalysis
+this.Item[UpperBound(this.Item)+1]=this.m_-4
+this.Item[UpperBound(this.Item)+1]=this.m_subsetlist
+this.Item[UpperBound(this.Item)+1]=this.m_filters
+end on
+
+on m_analysis.destroy
+call super::destroy
+destroy(this.m_queryengine)
+destroy(this.m_-12)
+destroy(this.m_summaryanalysis)
+destroy(this.m_-4)
+destroy(this.m_subsetlist)
+destroy(this.m_filters)
+end on
+
+type m_queryengine from menu within m_analysis
+end type
+
+event clicked;//Lahu S begin		Track 2552d
+// set query engine mode
+is_query_engine_mode = "PDQ"
+//Lahu S end
+mf_invoke_query_engine()
+end event
+
+on m_queryengine.create
+call super::create
+this.text = "&Query Engine"
+this.microhelp = "Open the Query engine window"
+this.toolbaritemname = "search!"
+this.toolbaritemtext = "Query Engine"
+this.toolbaritemorder = 1
+this.menuimage = "Search!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_queryengine.destroy
+call super::destroy
+end on
+
+type m_-12 from menu within m_analysis
+end type
+
+on m_-12.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-12.destroy
+call super::destroy
+end on
+
+type m_summaryanalysis from menu within m_analysis
+end type
+
+on clicked;String lv_menu_select
+
+SetPointer(HourGlass!)
+lv_menu_select = this.classname()
+
+OpenWithParm(w_invoice_selections,lv_menu_select)
+SetPointer(Arrow!)
+//SetPointer(HourGlass!)
+//OpenSheet(w_summary_c,mdi_main_frame,help_menu_position,Layered!)
+//SetPointer(Arrow!)
+end on
+
+on m_summaryanalysis.create
+call super::create
+this.text = "S&ummary Analysis"
+this.microhelp = "Summary Analysis"
+this.toolbaritemname = "computesum!"
+this.toolbaritemtext = "Summary Analysis"
+this.toolbaritemorder = 4
+this.menuimage = "ComputeSum!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_summaryanalysis.destroy
+call super::destroy
+end on
+
+type m_-4 from menu within m_analysis
+end type
+
+on m_-4.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-4.destroy
+call super::destroy
+end on
+
+type m_subsetlist from menu within m_analysis
+end type
+
+on m_subsetlist.create
+call super::create
+this.text = "Subset &List"
+this.microhelp = "List of Subsets"
+this.toolbaritemname = "tables!"
+this.toolbaritemtext = "Subset List"
+this.toolbaritemorder = 3
+this.menuimage = "Tables!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_subsetlist.destroy
+call super::destroy
+end on
+
+event clicked;setpointer(hourglass!)
+gv_from = "L"
+OpenSheet(w_subset_list,mdi_main_frame,help_menu_position,Layered!)
+
+end event
+
+type m_filters from menu within m_analysis
+m_listfilters m_listfilters
+m_maintainfilters m_maintainfilters
+end type
+
+on m_filters.create
+call super::create
+this.text = "&Filters"
+this.microhelp = "Filters"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_listfilters=create m_listfilters
+this.m_maintainfilters=create m_maintainfilters
+this.Item[UpperBound(this.Item)+1]=this.m_listfilters
+this.Item[UpperBound(this.Item)+1]=this.m_maintainfilters
+end on
+
+on m_filters.destroy
+call super::destroy
+destroy(this.m_listfilters)
+destroy(this.m_maintainfilters)
+end on
+
+type m_listfilters from menu within m_filters
+end type
+
+on clicked;setpointer(hourglass!)
+gv_from = "L"
+OpenSheet(w_filter_list,mdi_main_frame,help_menu_position,Layered!)
+end on
+
+on m_listfilters.create
+call super::create
+this.text = "&List "
+this.microhelp = "List Filters"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_listfilters.destroy
+call super::destroy
+end on
+
+type m_maintainfilters from menu within m_filters
+end type
+
+event clicked;setpointer(hourglass!)
+gv_from = "L"
+SetNull(Message.Powerobjectparm)
+OpenSheet(w_filter_maintain,mdi_main_frame,help_menu_position,Layered!)
+end event
+
+on m_maintainfilters.create
+call super::create
+this.text = "&Add"
+this.microhelp = "Add Filters"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_maintainfilters.destroy
+call super::destroy
+end on
+
+type m_reporting from menu within m_stars_30
+m_normanalysis m_normanalysis
+m_ratioreports m_ratioreports
+m_baselinereports m_baselinereports
+m_-8 m_-8
+m_caseinventoryreports m_caseinventoryreports
+m_-13 m_-13
+m_userreportlist m_userreportlist
+m_importstarsreport m_importstarsreport
+m_crystalreports m_crystalreports
+m_graph m_graph
+end type
+
+on m_reporting.create
+call super::create
+this.text = "&Reporting"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_normanalysis=create m_normanalysis
+this.m_ratioreports=create m_ratioreports
+this.m_baselinereports=create m_baselinereports
+this.m_-8=create m_-8
+this.m_caseinventoryreports=create m_caseinventoryreports
+this.m_-13=create m_-13
+this.m_userreportlist=create m_userreportlist
+this.m_importstarsreport=create m_importstarsreport
+this.m_crystalreports=create m_crystalreports
+this.m_graph=create m_graph
+this.Item[UpperBound(this.Item)+1]=this.m_normanalysis
+this.Item[UpperBound(this.Item)+1]=this.m_ratioreports
+this.Item[UpperBound(this.Item)+1]=this.m_baselinereports
+this.Item[UpperBound(this.Item)+1]=this.m_-8
+this.Item[UpperBound(this.Item)+1]=this.m_caseinventoryreports
+this.Item[UpperBound(this.Item)+1]=this.m_-13
+this.Item[UpperBound(this.Item)+1]=this.m_userreportlist
+this.Item[UpperBound(this.Item)+1]=this.m_importstarsreport
+this.Item[UpperBound(this.Item)+1]=this.m_crystalreports
+this.Item[UpperBound(this.Item)+1]=this.m_graph
+end on
+
+on m_reporting.destroy
+call super::destroy
+destroy(this.m_normanalysis)
+destroy(this.m_ratioreports)
+destroy(this.m_baselinereports)
+destroy(this.m_-8)
+destroy(this.m_caseinventoryreports)
+destroy(this.m_-13)
+destroy(this.m_userreportlist)
+destroy(this.m_importstarsreport)
+destroy(this.m_crystalreports)
+destroy(this.m_graph)
+end on
+
+type m_normanalysis from menu within m_reporting
+end type
+
+on clicked;string lv_menu_select
+
+SetPointer(HourGlass!)
+lv_menu_select = this.classname()
+OpenWithParm(w_invoice_selections,lv_menu_select)
+SetPointer(Arrow!)
+end on
+
+on m_normanalysis.create
+call super::create
+this.text = "&Norm Analysis Report"
+this.microhelp = "Norm Analysis Report"
+this.toolbaritemname = "average!"
+this.toolbaritemtext = "Norm Analysis Report"
+this.toolbaritemorder = 5
+this.menuimage = "Average!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_normanalysis.destroy
+call super::destroy
+end on
+
+type m_ratioreports from menu within m_reporting
+end type
+
+on clicked;string lv_menu_select
+
+SetPointer(HourGlass!)
+lv_menu_select = this.classname()
+OpenWithParm(w_invoice_selections,lv_menu_select)
+Setpointer(Arrow!)
+
+
+
+end on
+
+on m_ratioreports.create
+call super::create
+this.text = "&Ratio Reports"
+this.microhelp = "Ratio Report"
+this.toolbaritemname = "compute5!"
+this.toolbaritemtext = "Ratio Reports"
+this.toolbaritemorder = 6
+this.menuimage = "Compute5!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_ratioreports.destroy
+call super::destroy
+end on
+
+type m_baselinereports from menu within m_reporting
+end type
+
+on clicked;string lv_menu_select
+
+SetPointer(HourGlass!)
+lv_menu_select = this.classname()
+OpenWithParm(w_invoice_selections,lv_menu_select)
+end on
+
+on m_baselinereports.create
+call super::create
+this.text = "&Standard Analysis Reports"
+this.microhelp = "Standard Analysis Reports"
+this.toolbaritemname = "formatpercent!"
+this.toolbaritemtext = "Standard Analysis Reports"
+this.toolbaritemorder = 7
+this.menuimage = "FormatPercent!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_baselinereports.destroy
+call super::destroy
+end on
+
+type m_-8 from menu within m_reporting
+end type
+
+on m_-8.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-8.destroy
+call super::destroy
+end on
+
+type m_caseinventoryreports from menu within m_reporting
+end type
+
+on m_caseinventoryreports.create
+call super::create
+this.text = "Report &Center"
+this.microhelp = "Predefined Reports"
+this.toolbaritemname = "nestedreport!"
+this.toolbaritemtext = "Report Center"
+this.toolbaritemorder = 8
+this.menuimage = "NestedReport!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_caseinventoryreports.destroy
+call super::destroy
+end on
+
+event clicked;//	06/12/02	GaryR	Track 3138d	Disable PDR component.
+//										Set m_caseinventoryreports and m_-8 invisible
+//	08/02/02	GaryR	Track 3234d	Enable PDR/PSR functionality
+
+
+//Lahu S begin		Track 2552d
+// set query engine mode
+is_query_engine_mode = "PDR"
+//Lahu S end
+mf_invoke_query_engine()
+end event
+
+type m_-13 from menu within m_reporting
+end type
+
+on m_-13.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-13.destroy
+call super::destroy
+end on
+
+type m_userreportlist from menu within m_reporting
+end type
+
+event clicked;setpointer(hourglass!)
+gv_from = "L"
+OpenSheet(w_report_list,mdi_main_frame,help_menu_position,Layered!)
+end event
+
+on m_userreportlist.create
+call super::create
+this.text = "&Document Manager"
+this.microhelp = "Open the Document Manager..."
+this.toolbaritemname = "scriptyes!"
+this.toolbaritemtext = "Document Manager"
+this.toolbaritemorder = 9
+this.toolbaritemspace = 1
+this.menuimage = "ScriptYes!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_userreportlist.destroy
+call super::destroy
+end on
+
+type m_importstarsreport from menu within m_reporting
+end type
+
+event clicked;//---------------------------------------------------------------------------------//
+// Object				m_importstarsreport			
+// Event/Function		Clicked
+//---------------------------------------------------------------------------------//
+// Description			
+//
+//---------------------------------------------------------------------------------//
+// PARAMETERS			None.
+// RETURNS				None.
+//---------------------------------------------------------------------------------//
+// HISTORY
+//
+//	Author	  Date		Description
+// ------	--------		-----------------------------------------------------------
+//	Mike-Fl  01/29/98		Created.
+//	GaryR		06/28/02		Track 3159d	Disable Stars Report Viewer.
+//	GaryR		08/02/02		Track 3234d	Enable PDR/PSR functionality.
+//
+//---------------------------------------------------------------------------------//
+OpenSheet(w_psr_viewer,mdi_main_frame,help_menu_position,Layered!)
+end event
+
+on m_importstarsreport.create
+call super::create
+this.text = "STARS Report &Viewer"
+this.microhelp = "View STARS Report"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_importstarsreport.destroy
+call super::destroy
+end on
+
+type m_crystalreports from menu within m_reporting
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_CrystalReports			Clicked
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+//	Call the global f() to export visible datawindows on the current sheet to crystal reports.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	None.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+//	None.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	J.Mattis	01/29/98		Created.
+//
+//	FDG		04/27/98		Track 1112.  see if current window is w_query_engine
+// AJS      07/13/98    Track     . Correct error when no window open.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+uo_Query luo_Query				//null argument due to 4.0 redesign.
+
+w_master		lw_parent
+String		ls_classname
+
+lw_parent	=	ParentWindow.GetActiveSheet()
+
+//AJS 07-13-98 4.0
+If IsValid(lw_parent) then
+	ls_classname	=	lw_parent.ClassName()
+
+	IF	Upper ( ls_classname )	=	'W_QUERY_ENGINE'		THEN
+		luo_query	=	lw_parent.dynamic	wf_GetActiveQuery()
+	END IF
+End If
+//AJS 07-13-98 4.0 end
+
+fx_crystal_reports(luo_Query,'VIEW')
+end event
+
+on m_crystalreports.create
+call super::create
+this.text = "Cr&ystal Reports"
+this.microhelp = "Crystal Reports"
+this.toolbaritemvisible = false
+this.toolbaritemtext = "Crystal Reports"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_crystalreports.destroy
+call super::destroy
+end on
+
+type m_graph from menu within m_reporting
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_CrystalReports			Clicked
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+//	Open w_graph_stars_select passing null parameter.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	None.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+//	None.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	J.Mattis	01/29/98		Created.
+//
+//	FDG		04/27/98		Track 1112.  If the current window is w_query_engine
+//								then use uo_query from that window.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+uo_Query luo_Query				//null argument due to 4.0 redesign.
+
+w_master		lw_parent
+String		ls_classname
+
+lw_parent	=	ParentWindow.GetActiveSheet()
+
+//AJS 07-13-98 4.0
+If IsValid(lw_parent) then
+	ls_classname	=	lw_parent.ClassName()
+
+	IF	Upper ( ls_classname )	=	'W_QUERY_ENGINE'		THEN
+		luo_query	=	lw_parent.dynamic	wf_GetActiveQuery()
+	END IF
+End If
+
+OpenWithParm(w_graph_stars_select,luo_Query)
+end event
+
+on m_graph.create
+call super::create
+this.text = "&Graph"
+this.microhelp = "Graph"
+this.toolbaritemvisible = false
+this.toolbaritemtext = "Graph"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_graph.destroy
+call super::destroy
+end on
+
+type m_case from menu within m_stars_30
+m_casefolder m_casefolder
+m_-7 m_-7
+m_listcases m_listcases
+m_caseadd m_caseadd
+m_casedetails m_casedetails
+m_-15 m_-15
+m_activecase m_activecase
+m_activesubset m_activesubset
+m_-9 m_-9
+m_target m_target
+m_listtrackingentries m_listtrackingentries
+m_-20 m_-20
+m_leads m_leads
+m_-22 m_-22
+m_notes m_notes
+m_-11 m_-11
+m_casereports m_casereports
+end type
+
+on m_case.create
+call super::create
+this.text = "&Case"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_casefolder=create m_casefolder
+this.m_-7=create m_-7
+this.m_listcases=create m_listcases
+this.m_caseadd=create m_caseadd
+this.m_casedetails=create m_casedetails
+this.m_-15=create m_-15
+this.m_activecase=create m_activecase
+this.m_activesubset=create m_activesubset
+this.m_-9=create m_-9
+this.m_target=create m_target
+this.m_listtrackingentries=create m_listtrackingentries
+this.m_-20=create m_-20
+this.m_leads=create m_leads
+this.m_-22=create m_-22
+this.m_notes=create m_notes
+this.m_-11=create m_-11
+this.m_casereports=create m_casereports
+this.Item[UpperBound(this.Item)+1]=this.m_casefolder
+this.Item[UpperBound(this.Item)+1]=this.m_-7
+this.Item[UpperBound(this.Item)+1]=this.m_listcases
+this.Item[UpperBound(this.Item)+1]=this.m_caseadd
+this.Item[UpperBound(this.Item)+1]=this.m_casedetails
+this.Item[UpperBound(this.Item)+1]=this.m_-15
+this.Item[UpperBound(this.Item)+1]=this.m_activecase
+this.Item[UpperBound(this.Item)+1]=this.m_activesubset
+this.Item[UpperBound(this.Item)+1]=this.m_-9
+this.Item[UpperBound(this.Item)+1]=this.m_target
+this.Item[UpperBound(this.Item)+1]=this.m_listtrackingentries
+this.Item[UpperBound(this.Item)+1]=this.m_-20
+this.Item[UpperBound(this.Item)+1]=this.m_leads
+this.Item[UpperBound(this.Item)+1]=this.m_-22
+this.Item[UpperBound(this.Item)+1]=this.m_notes
+this.Item[UpperBound(this.Item)+1]=this.m_-11
+this.Item[UpperBound(this.Item)+1]=this.m_casereports
+end on
+
+on m_case.destroy
+call super::destroy
+destroy(this.m_casefolder)
+destroy(this.m_-7)
+destroy(this.m_listcases)
+destroy(this.m_caseadd)
+destroy(this.m_casedetails)
+destroy(this.m_-15)
+destroy(this.m_activecase)
+destroy(this.m_activesubset)
+destroy(this.m_-9)
+destroy(this.m_target)
+destroy(this.m_listtrackingentries)
+destroy(this.m_-20)
+destroy(this.m_leads)
+destroy(this.m_-22)
+destroy(this.m_notes)
+destroy(this.m_-11)
+destroy(this.m_casereports)
+end on
+
+type m_casefolder from menu within m_case
+end type
+
+on clicked;SetPointer(HourGlass!)
+fx_m_casefolder()
+end on
+
+on m_casefolder.create
+call super::create
+this.text = "&Folder"
+this.microhelp = "Case Folder"
+this.toolbaritemname = "open!"
+this.toolbaritemtext = "Case Folder"
+this.toolbaritemorder = 19
+this.menuimage = "Open!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_casefolder.destroy
+call super::destroy
+end on
+
+type m_-7 from menu within m_case
+end type
+
+on m_-7.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-7.destroy
+call super::destroy
+end on
+
+type m_listcases from menu within m_case
+end type
+
+on clicked;setpointer(hourglass!)
+gv_from = "L"
+
+
+
+OpenSheet(w_case_list,mdi_main_frame,help_menu_position,Layered!)
+end on
+
+on m_listcases.create
+call super::create
+this.text = "&List Cases"
+this.microhelp = "List Cases"
+this.toolbaritemname = "cascade!"
+this.toolbaritemtext = "List Cases"
+this.toolbaritemorder = 17
+this.toolbaritemspace = 2
+this.menuimage = "Cascade!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_listcases.destroy
+call super::destroy
+end on
+
+type m_caseadd from menu within m_case
+end type
+
+event clicked;///////////////////////////////////////////////////////////////////
+// NLG 8-31-99		ts2363c. Use parm to open w_case_maint
+// FDG 11/20/01	Stars 4.8.1.  If window is open, close it.
+///////////////////////////////////////////////////////////////////
+
+setpointer(hourglass!)
+//gv_from = "A"
+//OpenSheet(w_case_maint,mdi_main_frame,help_menu_position,Layered!)
+
+IF	IsValid (w_case_maint)	THEN
+	Close (w_case_maint)
+END IF
+
+OpenSheetWithParm(w_case_maint,"A",mdi_main_frame,help_menu_position,Layered!)
+
+end event
+
+on m_caseadd.create
+call super::create
+this.text = "&Add New Case"
+this.microhelp = "Add New Case"
+this.toolbaritemvisible = false
+this.toolbaritemorder = 2
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_caseadd.destroy
+call super::destroy
+end on
+
+type m_casedetails from menu within m_case
+end type
+
+on clicked;SetPointer(HourGlass!)
+fx_m_updatecase()
+end on
+
+on m_casedetails.create
+call super::create
+this.text = "&Details"
+this.microhelp = "Case Details"
+this.toolbaritemname = "custom087!"
+this.toolbaritemtext = "Case Details"
+this.toolbaritemorder = 18
+this.menuimage = "Custom087!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_casedetails.destroy
+call super::destroy
+end on
+
+type m_-15 from menu within m_case
+end type
+
+on m_-15.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-15.destroy
+call super::destroy
+end on
+
+type m_activecase from menu within m_case
+end type
+
+on clicked;setpointer(hourglass!)
+OpenSheet(w_case_active,mdi_main_frame,help_menu_position,Original!)
+end on
+
+on m_activecase.create
+call super::create
+this.text = "A&ctive"
+this.microhelp = "Set Active Case"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_activecase.destroy
+call super::destroy
+end on
+
+type m_activesubset from menu within m_case
+end type
+
+on clicked;setpointer(hourglass!)
+OpenSheet(w_case_active,mdi_main_frame,help_menu_position,Original!)
+
+OpenSheet(w_subset_active,mdi_main_frame,help_menu_position,Original!)
+end on
+
+on m_activesubset.create
+call super::create
+this.text = "&Subset Active"
+this.microhelp = "Set Active Case and Active Subset"
+this.toolbaritemvisible = false
+this.toolbaritemtext = "Active Case/Subset"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_activesubset.destroy
+call super::destroy
+end on
+
+type m_-9 from menu within m_case
+end type
+
+on m_-9.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-9.destroy
+call super::destroy
+end on
+
+type m_target from menu within m_case
+m_listtargetlists m_listtargetlists
+m_maintaintarget m_maintaintarget
+end type
+
+on m_target.create
+call super::create
+this.text = "&Target"
+this.microhelp = "Target"
+this.toolbaritemorder = 7
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_listtargetlists=create m_listtargetlists
+this.m_maintaintarget=create m_maintaintarget
+this.Item[UpperBound(this.Item)+1]=this.m_listtargetlists
+this.Item[UpperBound(this.Item)+1]=this.m_maintaintarget
+end on
+
+on m_target.destroy
+call super::destroy
+destroy(this.m_listtargetlists)
+destroy(this.m_maintaintarget)
+end on
+
+type m_listtargetlists from menu within m_target
+end type
+
+on clicked;SetPointer(HourGlass!)
+fx_m_listtargetlists()
+end on
+
+on m_listtargetlists.create
+call super::create
+this.text = "&List"
+this.microhelp = "List Targets"
+this.toolbaritemname = "inherit!"
+this.toolbaritemtext = "Target List"
+this.toolbaritemorder = 20
+this.menuimage = "Inherit!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_listtargetlists.destroy
+call super::destroy
+end on
+
+type m_maintaintarget from menu within m_target
+end type
+
+on clicked;SetPointer(HourGlass!)
+fx_m_maintaintarget()
+end on
+
+on m_maintaintarget.create
+call super::create
+this.text = "&Add"
+this.microhelp = "Add Target"
+this.toolbaritemtext = "Targets"
+this.toolbaritemorder = 7
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_maintaintarget.destroy
+call super::destroy
+end on
+
+type m_listtrackingentries from menu within m_case
+end type
+
+on clicked;SetPointer(HourGlass!)
+fx_m_listtrackingentries()
+end on
+
+on m_listtrackingentries.create
+call super::create
+this.text = "T&rack List"
+this.microhelp = "List tracking entries"
+this.toolbaritemname = "formatdollar!"
+this.toolbaritemtext = "Track List"
+this.toolbaritemorder = 21
+this.menuimage = "FormatDollar!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_listtrackingentries.destroy
+call super::destroy
+end on
+
+type m_-20 from menu within m_case
+end type
+
+on m_-20.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-20.destroy
+call super::destroy
+end on
+
+type m_leads from menu within m_case
+m_list1 m_list1
+m_add3 m_add3
+end type
+
+on m_leads.create
+call super::create
+this.text = "L&eads"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_list1=create m_list1
+this.m_add3=create m_add3
+this.Item[UpperBound(this.Item)+1]=this.m_list1
+this.Item[UpperBound(this.Item)+1]=this.m_add3
+end on
+
+on m_leads.destroy
+call super::destroy
+destroy(this.m_list1)
+destroy(this.m_add3)
+end on
+
+type m_list1 from menu within m_leads
+end type
+
+event clicked;//ajs 4.0 03-11-98 TS145-fix global variables
+setpointer(hourglass!)
+setmicrohelp(w_main,'Opening Case Leads List')
+
+gv_from = "MENU"
+//gv_case_active = gv_active_case		//ajs 4.0 03-11-98 TS145-fix global variables
+opensheet (w_lead_list,MDI_Main_Frame,Help_Menu_Position,Layered!)
+
+	
+end event
+
+on m_list1.create
+call super::create
+this.text = "&List"
+this.toolbaritemname = "comment!"
+this.toolbaritemtext = "Lead List"
+this.toolbaritemorder = 22
+this.menuimage = "Comment!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_list1.destroy
+call super::destroy
+end on
+
+type m_add3 from menu within m_leads
+end type
+
+event clicked;//ajs 4.0 03-11-98 TS145-fix global variables
+setpointer(hourglass!)
+gv_from = "MENU"
+//gv_case_active = gv_active_case	//ajs 4.0 03-11-98 TS145-fix global variables
+OpenSheet(w_lead_maintain,mdi_main_frame,help_menu_position,Layered!)
+end event
+
+on m_add3.create
+call super::create
+this.text = "&Add"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_add3.destroy
+call super::destroy
+end on
+
+type m_-22 from menu within m_case
+end type
+
+on m_-22.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-22.destroy
+call super::destroy
+end on
+
+type m_notes from menu within m_case
+m_listnotes m_listnotes
+m_newnote m_newnote
+end type
+
+on m_notes.create
+call super::create
+this.text = "&Notes"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_listnotes=create m_listnotes
+this.m_newnote=create m_newnote
+this.Item[UpperBound(this.Item)+1]=this.m_listnotes
+this.Item[UpperBound(this.Item)+1]=this.m_newnote
+end on
+
+on m_notes.destroy
+call super::destroy
+destroy(this.m_listnotes)
+destroy(this.m_newnote)
+end on
+
+type m_listnotes from menu within m_notes
+end type
+
+on clicked;SetPointer(HourGlass!)
+fx_m_listnotes()
+end on
+
+on m_listnotes.create
+call super::create
+this.text = "&List"
+this.toolbaritemname = "custom070!"
+this.toolbaritemtext = "Note List"
+this.toolbaritemorder = 23
+this.menuimage = "Custom070!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_listnotes.destroy
+call super::destroy
+end on
+
+type m_newnote from menu within m_notes
+end type
+
+on clicked;SetPointer(HourGlass!)
+fx_m_newnotes()
+end on
+
+on m_newnote.create
+call super::create
+this.text = "&Add"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_newnote.destroy
+call super::destroy
+end on
+
+type m_-11 from menu within m_case
+end type
+
+on m_-11.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-11.destroy
+call super::destroy
+end on
+
+type m_casereports from menu within m_case
+event clicked ( )
+end type
+
+event clicked;//	06/12/02	GaryR	Track 3138d	Disable PDR component.
+//										Set m_casereports and m_-11 invisible
+//	08/02/02	GaryR	Track 3234d	Enable PDR/PSR functionality
+
+//Lahu S begin Track 2552d
+//Set query engine mode
+is_query_engine_mode = "PDCR"
+mf_invoke_query_engine()
+//Lahu S end
+end event
+
+on m_casereports.create
+call super::create
+this.text = "Case Re&ports"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_casereports.destroy
+call super::destroy
+end on
+
+type m_interfaces from menu within m_stars_30
+m_jobstatus m_jobstatus
+m_displayusermessages m_displayusermessages
+m_m_dash1 m_m_dash1
+m_restorerequest m_restorerequest
+end type
+
+on m_interfaces.create
+call super::create
+this.text = "&Interfaces"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_jobstatus=create m_jobstatus
+this.m_displayusermessages=create m_displayusermessages
+this.m_m_dash1=create m_m_dash1
+this.m_restorerequest=create m_restorerequest
+this.Item[UpperBound(this.Item)+1]=this.m_jobstatus
+this.Item[UpperBound(this.Item)+1]=this.m_displayusermessages
+this.Item[UpperBound(this.Item)+1]=this.m_m_dash1
+this.Item[UpperBound(this.Item)+1]=this.m_restorerequest
+end on
+
+on m_interfaces.destroy
+call super::destroy
+destroy(this.m_jobstatus)
+destroy(this.m_displayusermessages)
+destroy(this.m_m_dash1)
+destroy(this.m_restorerequest)
+end on
+
+type m_jobstatus from menu within m_interfaces
+end type
+
+event clicked;
+setpointer(hourglass!)
+w_job_status in_job_status
+
+//  Will not modify the Where clause in W_Job_Status
+//gv_auto_notify = false
+OpenSheet(in_job_status,mdi_main_frame,help_menu_position,Layered!)
+
+end event
+
+on m_jobstatus.create
+call super::create
+this.text = "&Job Status"
+this.microhelp = "Job Status"
+this.toolbaritemname = "checkstatus!"
+this.toolbaritemtext = "Job Status"
+this.toolbaritemorder = 10
+this.menuimage = "CheckStatus!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_jobstatus.destroy
+call super::destroy
+end on
+
+type m_displayusermessages from menu within m_interfaces
+event clicked ( )
+end type
+
+event clicked;//	09/05/01	GaryR	Stars 4.8	WIC #6 FS50-001	Alert users when they have been assigned a case
+OpenSheetWithParm( w_user_message_list, 0, mdi_main_frame, help_menu_position, Layered! )
+end event
+
+on m_displayusermessages.create
+call super::create
+this.text = "&User Messages"
+this.microhelp = "Display User Messages"
+this.toolbaritemname = "Warning!"
+this.toolbaritemtext = "User Messages"
+this.toolbaritemorder = 11
+this.menuimage = "Warning!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_displayusermessages.destroy
+call super::destroy
+end on
+
+type m_m_dash1 from menu within m_interfaces
+end type
+
+on m_m_dash1.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_m_dash1.destroy
+call super::destroy
+end on
+
+type m_restorerequest from menu within m_interfaces
+m_restorerequestlist m_restorerequestlist
+m_addrestorerequest m_addrestorerequest
+end type
+
+on m_restorerequest.create
+call super::create
+this.text = "&Restore Request"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_restorerequestlist=create m_restorerequestlist
+this.m_addrestorerequest=create m_addrestorerequest
+this.Item[UpperBound(this.Item)+1]=this.m_restorerequestlist
+this.Item[UpperBound(this.Item)+1]=this.m_addrestorerequest
+end on
+
+on m_restorerequest.destroy
+call super::destroy
+destroy(this.m_restorerequestlist)
+destroy(this.m_addrestorerequest)
+end on
+
+type m_restorerequestlist from menu within m_restorerequest
+end type
+
+on clicked;SetPointer(hourglass!)
+gv_from = "L"
+OpenSheet(w_rstr_list,mdi_main_frame,help_menu_position,Layered!)
+end on
+
+on m_restorerequestlist.create
+call super::create
+this.text = "&List"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_restorerequestlist.destroy
+call super::destroy
+end on
+
+type m_addrestorerequest from menu within m_restorerequest
+end type
+
+on clicked;SetPointer(hourglass!)
+gv_from = "A"
+OpenSheet(w_rstr_maint_ptc,mdi_main_frame,help_menu_position,Layered!)
+end on
+
+on m_addrestorerequest.create
+call super::create
+this.text = "&Add"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_addrestorerequest.destroy
+call super::destroy
+end on
+
+type m_admin from menu within m_stars_30
+m_codetype m_codetype
+m_code m_code
+m_dictionarylist m_dictionarylist
+m_periodcontrol m_periodcontrol
+m_categoryprocedure m_categoryprocedure
+m_-16 m_-16
+m_listusers m_listusers
+m_accesslog m_accesslog
+m_-6 m_-6
+m_createpimrfile m_createpimrfile
+end type
+
+on m_admin.create
+call super::create
+this.text = "A&dmin"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_codetype=create m_codetype
+this.m_code=create m_code
+this.m_dictionarylist=create m_dictionarylist
+this.m_periodcontrol=create m_periodcontrol
+this.m_categoryprocedure=create m_categoryprocedure
+this.m_-16=create m_-16
+this.m_listusers=create m_listusers
+this.m_accesslog=create m_accesslog
+this.m_-6=create m_-6
+this.m_createpimrfile=create m_createpimrfile
+this.Item[UpperBound(this.Item)+1]=this.m_codetype
+this.Item[UpperBound(this.Item)+1]=this.m_code
+this.Item[UpperBound(this.Item)+1]=this.m_dictionarylist
+this.Item[UpperBound(this.Item)+1]=this.m_periodcontrol
+this.Item[UpperBound(this.Item)+1]=this.m_categoryprocedure
+this.Item[UpperBound(this.Item)+1]=this.m_-16
+this.Item[UpperBound(this.Item)+1]=this.m_listusers
+this.Item[UpperBound(this.Item)+1]=this.m_accesslog
+this.Item[UpperBound(this.Item)+1]=this.m_-6
+this.Item[UpperBound(this.Item)+1]=this.m_createpimrfile
+end on
+
+on m_admin.destroy
+call super::destroy
+destroy(this.m_codetype)
+destroy(this.m_code)
+destroy(this.m_dictionarylist)
+destroy(this.m_periodcontrol)
+destroy(this.m_categoryprocedure)
+destroy(this.m_-16)
+destroy(this.m_listusers)
+destroy(this.m_accesslog)
+destroy(this.m_-6)
+destroy(this.m_createpimrfile)
+end on
+
+type m_codetype from menu within m_admin
+m_list m_list
+m_add1 m_add1
+end type
+
+on m_codetype.create
+call super::create
+this.text = "C&ode Type"
+this.microhelp = "Code Types"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_list=create m_list
+this.m_add1=create m_add1
+this.Item[UpperBound(this.Item)+1]=this.m_list
+this.Item[UpperBound(this.Item)+1]=this.m_add1
+end on
+
+on m_codetype.destroy
+call super::destroy
+destroy(this.m_list)
+destroy(this.m_add1)
+end on
+
+type m_list from menu within m_codetype
+end type
+
+on clicked;SetPointer(HourGlass!)
+OpenSheet(w_Code_type_list,mdi_main_frame,help_menu_position,Layered!)
+end on
+
+on m_list.create
+call super::create
+this.text = "&List"
+this.microhelp = "List Codes"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_list.destroy
+call super::destroy
+end on
+
+type m_add1 from menu within m_codetype
+end type
+
+on clicked;SetPointer(HourGlass!)
+gv_from = "A"
+OpenSheet(w_Code_type_maint,mdi_main_frame,help_menu_position,Layered!)
+end on
+
+on m_add1.create
+call super::create
+this.text = "&Add"
+this.microhelp = "Add a Code"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_add1.destroy
+call super::destroy
+end on
+
+type m_code from menu within m_admin
+m_list2 m_list2
+m_add m_add
+end type
+
+on m_code.create
+call super::create
+this.text = "&Code"
+this.microhelp = "Maintain System Codes and Code Types"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_list2=create m_list2
+this.m_add=create m_add
+this.Item[UpperBound(this.Item)+1]=this.m_list2
+this.Item[UpperBound(this.Item)+1]=this.m_add
+end on
+
+on m_code.destroy
+call super::destroy
+destroy(this.m_list2)
+destroy(this.m_add)
+end on
+
+type m_list2 from menu within m_code
+end type
+
+on clicked;SetPointer(HourGlass!)
+gv_from = "L"
+OpenSheet(w_code_list,mdi_main_frame,help_menu_position,Layered!)
+end on
+
+on m_list2.create
+call super::create
+this.text = "&List"
+this.microhelp = "List Codes"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_list2.destroy
+call super::destroy
+end on
+
+type m_add from menu within m_code
+end type
+
+on clicked;SetPointer(HourGlass!)
+gv_from = "A"
+OpenSheet(w_Code_maint,mdi_main_frame,help_menu_position,Layered!)
+end on
+
+on m_add.create
+call super::create
+this.text = "&Add"
+this.microhelp = "Add a Code"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_add.destroy
+call super::destroy
+end on
+
+type m_dictionarylist from menu within m_admin
+end type
+
+event clicked;//////////////////////////////////////////////////////////
+//
+//	10/07/02	GaryR	SPR 3196d	Redesign Dictionary interface
+//
+//////////////////////////////////////////////////////////
+
+SetPointer( HourGlass! )
+OpenSheet(w_dictionary_list,mdi_main_frame,help_menu_position,Layered!)
+end event
+
+on m_dictionarylist.create
+call super::create
+this.text = "&Dictionary List"
+this.microhelp = "Dictionary Administration"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_dictionarylist.destroy
+call super::destroy
+end on
+
+type m_periodcontrol from menu within m_admin
+end type
+
+on clicked;openSheet(w_period_cntl_list,mdi_main_frame,help_menu_position,Layered!)
+end on
+
+on m_periodcontrol.create
+call super::create
+this.text = "P&eriod Control"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_periodcontrol.destroy
+call super::destroy
+end on
+
+type m_categoryprocedure from menu within m_admin
+end type
+
+event clicked;string lv_menu_select
+gv_from = ""
+
+SetPointer(HourGlass!)
+
+//	09/10/02	GaryR	Track 3468d
+//lv_menu_select = this.classname()
+lv_menu_select = "W_CATEG_LIST_MAINTAIN"
+
+OpenWithParm(w_invoice_selections,lv_menu_select)
+SetPointer(Arrow!)
+end event
+
+on m_categoryprocedure.create
+call super::create
+this.text = "Cate&gory Procedure "
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_categoryprocedure.destroy
+call super::destroy
+end on
+
+type m_-16 from menu within m_admin
+end type
+
+on m_-16.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-16.destroy
+call super::destroy
+end on
+
+type m_listusers from menu within m_admin
+end type
+
+on clicked;setpointer(hourglass!)
+gv_from = "L"
+OpenSheet(w_user_list,mdi_main_frame,help_menu_position,Layered!)
+end on
+
+on m_listusers.create
+call super::create
+this.text = "&User List "
+this.microhelp = "User Administration"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_listusers.destroy
+call super::destroy
+end on
+
+type m_accesslog from menu within m_admin
+end type
+
+event clicked;OpenSheet( w_access_log, mdi_main_frame, help_menu_position, Layered! )
+end event
+
+on m_accesslog.create
+call super::create
+this.text = "&Access Log"
+this.microhelp = "Display Stars Access Activity Log"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_accesslog.destroy
+call super::destroy
+end on
+
+type m_-6 from menu within m_admin
+end type
+
+on m_-6.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-6.destroy
+call super::destroy
+end on
+
+type m_createpimrfile from menu within m_admin
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////////////////
+// 01/16/01 Jim-S	Call the function to create the PIMR file
+// 05/15/02 SAH	Track 3064 Update CASE_LOG after PIMR file is created 
+//						(pmr_created_cd, _date, _user not posting in the Case Log.
+//	08/30/02	GaryR	Track 3292d Validate w_case_maint
+// 11/21/02 JasonS Track 3374d  call ue_re_retrieve_log for performance
+/////////////////////////////////////////////////////////////////////////////////////////
+Long		ll_job
+
+
+SetPointer (HourGlass!)
+
+MDI_Main_Frame.SetMicroHelp('Creating PIMR File.  Please wait')
+
+// SAH 05/15/02 Track 3064 -Begin
+IF fx_create_pimr_file() = 0 THEN 
+	MessageBox ('Error', 'PIMR file was not created')
+ELSE
+	// Post changes to the Log
+	//	08/30/02	GaryR	Track 3292d
+	// JasonS 11/21/02 Track 3374d - call ue_re_retrieve_log for performance
+   IF IsValid( w_case_maint ) THEN w_case_maint.Event ue_re_retrieve_log() 
+END IF
+// SAH 05/15/02 Track 3064 -End
+
+MDI_Main_Frame.SetMicroHelp('Ready')
+
+SetPointer (Arrow!)
+end event
+
+on m_createpimrfile.create
+call super::create
+this.text = "Create &PIMR File"
+this.microhelp = "Create the PIMR File"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_createpimrfile.destroy
+call super::destroy
+end on
+
+type m_lookup from menu within m_stars_30
+m_lookupcode m_lookupcode
+m_lookupproviders m_lookupproviders
+m_lookupenrollee m_lookupenrollee
+m_-17 m_-17
+m_lookupcategoryprocedure m_lookupcategoryprocedure
+m_lookupproceduretimes m_lookupproceduretimes
+m_lookupplaneligibility m_lookupplaneligibility
+m_lookupdictionarylist m_lookupdictionarylist
+m_lookupclaimspaymentrange m_lookupclaimspaymentrange
+end type
+
+on m_lookup.create
+call super::create
+this.text = "&LookUp"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_lookupcode=create m_lookupcode
+this.m_lookupproviders=create m_lookupproviders
+this.m_lookupenrollee=create m_lookupenrollee
+this.m_-17=create m_-17
+this.m_lookupcategoryprocedure=create m_lookupcategoryprocedure
+this.m_lookupproceduretimes=create m_lookupproceduretimes
+this.m_lookupplaneligibility=create m_lookupplaneligibility
+this.m_lookupdictionarylist=create m_lookupdictionarylist
+this.m_lookupclaimspaymentrange=create m_lookupclaimspaymentrange
+this.Item[UpperBound(this.Item)+1]=this.m_lookupcode
+this.Item[UpperBound(this.Item)+1]=this.m_lookupproviders
+this.Item[UpperBound(this.Item)+1]=this.m_lookupenrollee
+this.Item[UpperBound(this.Item)+1]=this.m_-17
+this.Item[UpperBound(this.Item)+1]=this.m_lookupcategoryprocedure
+this.Item[UpperBound(this.Item)+1]=this.m_lookupproceduretimes
+this.Item[UpperBound(this.Item)+1]=this.m_lookupplaneligibility
+this.Item[UpperBound(this.Item)+1]=this.m_lookupdictionarylist
+this.Item[UpperBound(this.Item)+1]=this.m_lookupclaimspaymentrange
+end on
+
+on m_lookup.destroy
+call super::destroy
+destroy(this.m_lookupcode)
+destroy(this.m_lookupproviders)
+destroy(this.m_lookupenrollee)
+destroy(this.m_-17)
+destroy(this.m_lookupcategoryprocedure)
+destroy(this.m_lookupproceduretimes)
+destroy(this.m_lookupplaneligibility)
+destroy(this.m_lookupdictionarylist)
+destroy(this.m_lookupclaimspaymentrange)
+end on
+
+type m_lookupcode from menu within m_lookup
+end type
+
+event clicked;//********************************************************************
+//	09-26-96 FNC	Prob #144 STARSENH Allow user to create a column 
+//						filter in the code lookup window.
+//********************************************************************
+
+SetPOinter(HourGlass!)
+gv_from = "lookup"
+//open(w_code_lookup)		//09-26-96 FNC
+
+OpenSheet(w_code_lookup,mdi_main_frame,help_menu_position,Layered!)	//09-26-96 FNC
+end event
+
+on m_lookupcode.create
+call super::create
+this.text = "Lookup &Codes"
+this.microhelp = "Lookup Codes"
+this.toolbaritemname = "custom101!"
+this.toolbaritemtext = "Lookup Codes"
+this.toolbaritemorder = 12
+this.toolbaritemspace = 1
+this.menuimage = "Custom101!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_lookupcode.destroy
+call super::destroy
+end on
+
+type m_lookupproviders from menu within m_lookup
+end type
+
+event clicked;SetPointer(HourGlass!)
+gv_from = "lookup"
+OpenSheet(w_provider_list,ParentWindow,help_menu_position,Layered!)
+end event
+
+on m_lookupproviders.create
+call super::create
+this.text = "Lookup &Providers"
+this.microhelp = "Lookup Providers"
+this.toolbaritemname = "library!"
+this.toolbaritemtext = "Lookup Providers"
+this.toolbaritemorder = 13
+this.menuimage = "Library!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_lookupproviders.destroy
+call super::destroy
+end on
+
+type m_lookupenrollee from menu within m_lookup
+end type
+
+on clicked;SetPointer(HourGlass!)
+gv_from = 'lookup'
+OpenSheet(w_enrollee_list,mdi_main_frame,help_menu_position,Layered!)
+end on
+
+on m_lookupenrollee.create
+call super::create
+this.text = "Lookup P&atients"
+this.microhelp = "Lookup Patients"
+this.toolbaritemname = "custom076!"
+this.toolbaritemtext = "Lookup Patients"
+this.toolbaritemorder = 14
+this.menuimage = "Custom076!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_lookupenrollee.destroy
+call super::destroy
+end on
+
+type m_-17 from menu within m_lookup
+end type
+
+on m_-17.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-17.destroy
+call super::destroy
+end on
+
+type m_lookupcategoryprocedure from menu within m_lookup
+end type
+
+event clicked;//******************************************************************
+//08-08-95 FNC Prob #888 Stars30 Open through invoice selection so
+//             the invoice type is set
+//******************************************************************
+SetPointer(HourGlass!)
+string lv_menu_select
+
+gv_from = "lookup"
+
+//	09/10/02	GaryR	Track 3468d
+//lv_menu_select = this.classname()
+lv_menu_select = "W_CATEG_LIST_MAINTAIN"
+
+OpenWithParm(w_invoice_selections,lv_menu_select)
+SetPointer(Arrow!)
+
+
+
+
+
+
+end event
+
+on m_lookupcategoryprocedure.create
+call super::create
+this.text = "Lookup Ca&tegory / Procedure"
+this.microhelp = "Lookup Category / Procedure"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_lookupcategoryprocedure.destroy
+call super::destroy
+end on
+
+type m_lookupproceduretimes from menu within m_lookup
+end type
+
+event clicked;openSheet(w_proc_times,mdi_main_frame,help_menu_position,Layered!)
+end event
+
+on m_lookupproceduretimes.create
+call super::create
+this.text = "Lookup P&rocedure Times"
+this.microhelp = "Lookup Procedure Times"
+this.toolbaritemname = "showwatch!"
+this.toolbaritemtext = "Lookup Procedure Times"
+this.toolbaritemorder = 15
+this.menuimage = "ShowWatch!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_lookupproceduretimes.destroy
+call super::destroy
+end on
+
+type m_lookupplaneligibility from menu within m_lookup
+end type
+
+on clicked;SetPointer(HourGlass!)
+OpenSheet(w_plan_elig_list,mdi_main_frame,help_menu_position,Layered!)
+end on
+
+on m_lookupplaneligibility.create
+call super::create
+this.text = "Lookup P&lan Eligibility"
+this.microhelp = "Lookup Plan Eligibility"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_lookupplaneligibility.destroy
+call super::destroy
+end on
+
+type m_lookupdictionarylist from menu within m_lookup
+end type
+
+event clicked;//////////////////////////////////////////////////////////
+//
+//	04/29/97	MSS	Add dictionary list to Lookup menu
+//	10/07/02	GaryR	SPR 3196d	Redesign Dictionary interface
+//
+//////////////////////////////////////////////////////////
+SetPointer(hourglass!)
+//gv_from = "LU"  	//	10/07/02	GaryR	SPR 3196d
+OpenSheet(w_dictionary_list,mdi_main_frame,help_menu_position,Layered!)
+end event
+
+on m_lookupdictionarylist.create
+call super::create
+this.text = "Lookup &Dictionary"
+this.microhelp = "Lookup Dictionary"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_lookupdictionarylist.destroy
+call super::destroy
+end on
+
+type m_lookupclaimspaymentrange from menu within m_lookup
+end type
+
+on m_lookupclaimspaymentrange.create
+call super::create
+this.text = "Lookup Claims Payment &Range"
+this.microhelp = "Lookup Claims Payment Range"
+this.toolbaritemname = "monthcalendar!"
+this.toolbaritemtext = "Lookup Claims Payment Range"
+this.toolbaritemorder = 16
+this.menuimage = "MonthCalendar!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_lookupclaimspaymentrange.destroy
+call super::destroy
+end on
+
+event clicked;//	10/07/02	GaryR	Track 3275d	Display the available claims range.
+
+SetPointer( HourGlass! )
+OpenSheet( w_payment_range, MDI_MAIN_FRAME, HELP_MENU_POSITION, Layered! )
+end event
+
+type m_window from menu within m_stars_30
+m_cascade m_cascade
+m_tile m_tile
+m_layer m_layer
+m_-10 m_-10
+m_arrangeicons m_arrangeicons
+m_resize m_resize
+m_yellowlookups m_yellowlookups
+m_-19 m_-19
+m_toolbar m_toolbar
+m_popupmenu m_popupmenu
+end type
+
+on clicked;if w_main.toolbarvisible then
+	m_window.m_toolbar.checked = true
+else
+	m_window.m_toolbar.checked = false
+end if
+end on
+
+on m_window.create
+call super::create
+this.text = "&Window"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_cascade=create m_cascade
+this.m_tile=create m_tile
+this.m_layer=create m_layer
+this.m_-10=create m_-10
+this.m_arrangeicons=create m_arrangeicons
+this.m_resize=create m_resize
+this.m_yellowlookups=create m_yellowlookups
+this.m_-19=create m_-19
+this.m_toolbar=create m_toolbar
+this.m_popupmenu=create m_popupmenu
+this.Item[UpperBound(this.Item)+1]=this.m_cascade
+this.Item[UpperBound(this.Item)+1]=this.m_tile
+this.Item[UpperBound(this.Item)+1]=this.m_layer
+this.Item[UpperBound(this.Item)+1]=this.m_-10
+this.Item[UpperBound(this.Item)+1]=this.m_arrangeicons
+this.Item[UpperBound(this.Item)+1]=this.m_resize
+this.Item[UpperBound(this.Item)+1]=this.m_yellowlookups
+this.Item[UpperBound(this.Item)+1]=this.m_-19
+this.Item[UpperBound(this.Item)+1]=this.m_toolbar
+this.Item[UpperBound(this.Item)+1]=this.m_popupmenu
+end on
+
+on m_window.destroy
+call super::destroy
+destroy(this.m_cascade)
+destroy(this.m_tile)
+destroy(this.m_layer)
+destroy(this.m_-10)
+destroy(this.m_arrangeicons)
+destroy(this.m_resize)
+destroy(this.m_yellowlookups)
+destroy(this.m_-19)
+destroy(this.m_toolbar)
+destroy(this.m_popupmenu)
+end on
+
+type m_cascade from menu within m_window
+end type
+
+on clicked;MDI_main_frame.ArrangeSheets(Cascade!)
+end on
+
+on m_cascade.create
+call super::create
+this.text = "&Cascade"
+this.microhelp = "Cascade Open Sheets"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_cascade.destroy
+call super::destroy
+end on
+
+type m_tile from menu within m_window
+end type
+
+on clicked;MDI_main_frame.ArrangeSheets(Tile!)
+end on
+
+on m_tile.create
+call super::create
+this.text = "&Tile"
+this.microhelp = "Tile Open Sheets"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_tile.destroy
+call super::destroy
+end on
+
+type m_layer from menu within m_window
+end type
+
+on clicked;MDI_main_frame.ArrangeSheets(Layer!)
+end on
+
+on m_layer.create
+call super::create
+this.text = "&Layer"
+this.microhelp = "Layer Open Sheets"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_layer.destroy
+call super::destroy
+end on
+
+type m_-10 from menu within m_window
+end type
+
+on m_-10.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-10.destroy
+call super::destroy
+end on
+
+type m_arrangeicons from menu within m_window
+end type
+
+on clicked;MDI_main_frame.ArrangeSheets(Icons!)
+end on
+
+on m_arrangeicons.create
+call super::create
+this.text = "&Arrange Icons"
+this.microhelp = "Arrange Minimized Sheets"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_arrangeicons.destroy
+call super::destroy
+end on
+
+type m_resize from menu within m_window
+end type
+
+event clicked;IF	This.Checked THEN
+	gnv_app.of_set_resize (FALSE)
+ELSE
+	gnv_app.of_set_resize (TRUE)
+END IF
+
+
+end event
+
+on m_resize.create
+call super::create
+this.text = "&Resize Enabled"
+this.microhelp = "Toggle between resizing and not resizing the windows."
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_resize.destroy
+call super::destroy
+end on
+
+type m_yellowlookups from menu within m_window
+end type
+
+event clicked;//	10/20/09	GaryR	ACC.650.5786.001	Provide alternative color scheme
+//													for lookup and indexed fields
+
+gnv_app.of_set_yellow_lookup( NOT This.Checked )
+end event
+
+on m_yellowlookups.create
+call super::create
+this.text = "Enable &Yellow Lookups"
+this.microhelp = "Enable the traditional lookup/index fields color scheme with yellow background."
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_yellowlookups.destroy
+call super::destroy
+end on
+
+type m_-19 from menu within m_window
+end type
+
+on m_-19.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-19.destroy
+call super::destroy
+end on
+
+type m_toolbar from menu within m_window
+end type
+
+on clicked;if w_main.toolbarvisible then
+	w_main.toolbarvisible=false
+//	this.checked = false
+else
+	w_main.toolbarvisible=true
+//	this.checked = true
+end if
+end on
+
+on m_toolbar.create
+call super::create
+this.text = "Tool&bar"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_toolbar.destroy
+call super::destroy
+end on
+
+type m_popupmenu from menu within m_window
+end type
+
+on m_popupmenu.create
+call super::create
+this.text = "&Popup Menu~tAlt+M"
+this.enabled = false
+this.shortcut = 589
+this.microhelp = "View the Current Sheet~'s Popup Menu"
+this.toolbaritemname = "retrieve5!"
+this.toolbaritemtext = "Popup Menu"
+this.toolbaritemorder = 24
+this.toolbaritemspace = 1
+this.menuimage = "Retrieve5!"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.menuanimation = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbaranimation = true
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_popupmenu.destroy
+call super::destroy
+end on
+
+event clicked;// 09/04/08	GaryR	SPR 5533	Section 508 1194.21(a) - Keyboard Access
+
+w_master		lw_active
+
+lw_active = ParentWindow.GetActiveSheet()
+lw_active.Event ue_open_rmm()
+end event
+
+type m_help from menu within m_stars_30
+m_starshelp m_starshelp
+m_-18 m_-18
+m_referencemanual m_referencemanual
+m_usersguide m_usersguide
+m_-23 m_-23
+m_releasenotes m_releasenotes
+m_-5 m_-5
+m_aboutstars m_aboutstars
+end type
+
+on m_help.create
+call super::create
+this.text = "&Help"
+this.microhelp = "STARS Help"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_starshelp=create m_starshelp
+this.m_-18=create m_-18
+this.m_referencemanual=create m_referencemanual
+this.m_usersguide=create m_usersguide
+this.m_-23=create m_-23
+this.m_releasenotes=create m_releasenotes
+this.m_-5=create m_-5
+this.m_aboutstars=create m_aboutstars
+this.Item[UpperBound(this.Item)+1]=this.m_starshelp
+this.Item[UpperBound(this.Item)+1]=this.m_-18
+this.Item[UpperBound(this.Item)+1]=this.m_referencemanual
+this.Item[UpperBound(this.Item)+1]=this.m_usersguide
+this.Item[UpperBound(this.Item)+1]=this.m_-23
+this.Item[UpperBound(this.Item)+1]=this.m_releasenotes
+this.Item[UpperBound(this.Item)+1]=this.m_-5
+this.Item[UpperBound(this.Item)+1]=this.m_aboutstars
+end on
+
+on m_help.destroy
+call super::destroy
+destroy(this.m_starshelp)
+destroy(this.m_-18)
+destroy(this.m_referencemanual)
+destroy(this.m_usersguide)
+destroy(this.m_-23)
+destroy(this.m_releasenotes)
+destroy(this.m_-5)
+destroy(this.m_aboutstars)
+end on
+
+type m_starshelp from menu within m_help
+end type
+
+on clicked;string lv_help
+//ShowHelp("starshlp.hlp", Index!)
+
+lv_help=profilestring(gv_ini_path+'STARS.INI','Carrier','HelpPath','')
+showhelp(lv_help+'starshlp.hlp',index!)
+end on
+
+on m_starshelp.create
+call super::create
+this.visible = false
+this.text = "STARS &Help"
+this.microhelp = "STARS Help"
+this.toolbaritemvisible = false
+this.toolbaritemname = "help!"
+this.toolbaritemtext = "STARS Help"
+this.toolbaritemorder = 18
+this.toolbaritemspace = 1
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_starshelp.destroy
+call super::destroy
+end on
+
+type m_-18 from menu within m_help
+end type
+
+on m_-18.create
+call super::create
+this.visible = false
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-18.destroy
+call super::destroy
+end on
+
+type m_referencemanual from menu within m_help
+end type
+
+on m_referencemanual.create
+call super::create
+this.text = "&Reference Manual~tAlt+F1"
+this.shortcut = 624
+this.microhelp = "Open the STARS Reference Manual"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//******************************************************************
+//	Script:	m_stars_30.m_referencemanual
+//
+//	Description:
+//			This function will run the Adobe Acrobat Reader to display
+//			the Stars reference manual.
+//
+//******************************************************************
+//	History:
+//
+//	FDG	11/18/98	Created
+//	GaryR	03/07/07	Track 4882	Open help files in their native application
+//
+//******************************************************************
+
+String		ls_file
+Integer		li_rtn
+n_cst_filesrv	lnv_file
+
+lnv_file = Create n_cst_filesrv
+ls_file	=	ProfileString (gv_ini_path + 'STARS.INI', 'carrier', 'ReferenceManual', 'REF_TOC.pdf')
+li_rtn = lnv_file.of_openfile( ls_file, lnv_file.sw_showdefault )
+
+IF li_rtn <= 32 THEN
+	MessageBox( "Reference Manual Error", "Unable to open the STARS " + &
+								"Reference Manual in its native application." + &
+								"~n~rError Code: " + String( li_rtn ), StopSign! )
+END IF
+
+Destroy lnv_file
+end event
+
+on m_referencemanual.destroy
+call super::destroy
+end on
+
+type m_usersguide from menu within m_help
+end type
+
+event clicked;//******************************************************************
+//	Script:	m_stars_30.m_usersguide
+//
+//	Description:
+//			This function will run the Adobe Acrobat Reader to display
+//			the Stars User's Manual.
+//
+//******************************************************************
+//	History:
+//
+//	FDG	11/18/98	Created
+// AJS   01/12/99 FS2050c 4.1 change default name to 8.3 style
+//	GaryR	03/07/07	Track 4882	Open help files in their native application
+//
+//******************************************************************
+
+String		ls_file
+Integer		li_rtn
+n_cst_filesrv	lnv_file
+
+lnv_file = Create n_cst_filesrv
+ls_file	=	ProfileString (gv_ini_path + 'STARS.INI', 'carrier', 'UserGuide', 'USER_MAN.pdf')
+li_rtn = lnv_file.of_openfile( ls_file, lnv_file.sw_showdefault )
+
+IF li_rtn <= 32 THEN
+	MessageBox( "User Manual Error", "Unable to open the STARS " + &
+								"User Manual in its native application." + &
+								"~n~rError Code: " + String( li_rtn ), StopSign! )
+END IF
+
+Destroy lnv_file
+end event
+
+on m_usersguide.create
+call super::create
+this.text = "&User~'s Manual~tCtrl+F1"
+this.shortcut = 368
+this.microhelp = "Open the STARS User~'s Manual"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_usersguide.destroy
+call super::destroy
+end on
+
+type m_-23 from menu within m_help
+end type
+
+on m_-23.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-23.destroy
+call super::destroy
+end on
+
+type m_releasenotes from menu within m_help
+end type
+
+event clicked;//	04/25/07	GaryR	Track 5001	Launch Release Notes on the server
+
+String	ls_url
+inet 		iinet_base
+
+ls_url = gnv_app.of_get_server_url() + '/resources/doc/ReleaseNotes.pdf'
+
+GetContextService("Internet", iinet_base)
+iinet_base.HyperlinkToURL( ls_url )
+end event
+
+on m_releasenotes.create
+call super::create
+this.text = "Release &Notes"
+this.microhelp = "Open the Release Notes for the current STARS release"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_releasenotes.destroy
+call super::destroy
+end on
+
+type m_-5 from menu within m_help
+end type
+
+on m_-5.create
+call super::create
+this.text = "-"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-5.destroy
+call super::destroy
+end on
+
+type m_aboutstars from menu within m_help
+end type
+
+on clicked;open(w_about_stars)
+end on
+
+on m_aboutstars.create
+call super::create
+this.text = "&About STARS"
+this.microhelp = "About STARS"
+this.menustyle = contemporarymenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 134217731
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbarstyle = contemporarytoolbar!
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 134217731
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_aboutstars.destroy
+call super::destroy
+end on
+

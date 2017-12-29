@@ -1,0 +1,54 @@
+HA$PBExportHeader$d_build_dict_sql_select.srd
+$PBExportComments$<logic>
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(255) updatewhereclause=yes name=elem_desc dbname="DICTIONARY.ELEM_DESC" )
+ column=(type=char(15) updatewhereclause=yes name=elem_elem_label dbname="DICTIONARY.ELEM_ELEM_LABEL" )
+ column=(type=char(2) updatewhereclause=yes key=yes name=elem_type dbname="DICTIONARY.ELEM_TYPE" )
+ column=(type=char(2) updatewhereclause=yes key=yes name=elem_tbl_type dbname="DICTIONARY.ELEM_TBL_TYPE" )
+ column=(type=long updatewhereclause=yes name=crit_seq dbname="DICTIONARY.CRIT_SEQ" )
+ column=(type=long updatewhereclause=yes name=disp_seq dbname="DICTIONARY.DISP_SEQ" )
+ column=(type=char(32) updatewhereclause=yes key=yes name=elem_name dbname="DICTIONARY.ELEM_NAME" )
+ column=(type=char(15) updatewhereclause=yes name=elem_data_type dbname="DICTIONARY.ELEM_DATA_TYPE" )
+ retrieve="SELECT dictionary.ELEM_DESC,   
+         dictionary.ELEM_ELEM_LABEL,   
+         dictionary.ELEM_TYPE,   
+         dictionary.ELEM_TBL_TYPE,   
+         dictionary.CRIT_SEQ,   
+         dictionary.DISP_SEQ,   
+         dictionary.ELEM_NAME,   
+         dictionary.ELEM_DATA_TYPE  
+    FROM dictionary  
+   WHERE dictionary.ELEM_TYPE IN ('CL','CC') AND  
+         dictionary.ELEM_TBL_TYPE in (Select Upper(dictionary.ELEM_TBL_TYPE) FROM dictionary WHERE dictionary.ELEM_TYPE = 'TB' AND dictionary.ELEM_NAME = :table_name) AND  
+         dictionary.CRIT_SEQ <> 0 AND
+  			dictionary.DISP_SEQ <> 0
+	ORDER BY dictionary.DISP_SEQ
+
+" update="dictionary" updatewhere=0 updatekeyinplace=no arguments=(("table_name", string)) )
+text(band=header alignment="2" text="Elem Desc" border="0" color="0" x="5" y="4" height="64" width="3511" html.valueishtml="0"  name=elem_desc_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Elem Elem Label" border="0" color="0" x="3520" y="4" height="64" width="453" html.valueishtml="0"  name=elem_elem_label_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Elem Type" border="0" color="0" x="3977" y="4" height="64" width="283" html.valueishtml="0"  name=elem_type_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Elem Tbl Type" border="0" color="0" x="4265" y="4" height="64" width="379" html.valueishtml="0"  name=elem_tbl_type_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Crit Seq" border="0" color="0" x="4649" y="4" height="64" width="329" html.valueishtml="0"  name=crit_seq_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Disp Seq" border="0" color="0" x="4983" y="4" height="64" width="329" html.valueishtml="0"  name=disp_seq_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Elem Name" border="0" color="0" x="5317" y="4" height="64" width="905" html.valueishtml="0"  name=elem_name_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Elem Data Type" border="0" color="0" x="6226" y="4" height="64" width="439" html.valueishtml="0"  name=elem_data_type_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="76" width="3511" format="[general]" html.valueishtml="0"  name=elem_desc visible="1" edit.limit=255 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="3520" y="4" height="76" width="439" format="[general]" html.valueishtml="0"  name=elem_elem_label visible="1" edit.limit=15 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="3977" y="4" height="76" width="82" format="[general]" html.valueishtml="0"  name=elem_type visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="4265" y="4" height="76" width="82" format="[general]" html.valueishtml="0"  name=elem_tbl_type visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="0" x="4649" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=crit_seq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="0" color="0" x="4983" y="4" height="76" width="329" format="[general]" html.valueishtml="0"  name=disp_seq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="5317" y="4" height="76" width="905" format="[general]" html.valueishtml="0"  name=elem_name visible="1" edit.limit=32 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="6226" y="4" height="76" width="439" format="[general]" html.valueishtml="0"  name=elem_data_type visible="1" edit.limit=15 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

@@ -1,0 +1,5 @@
+HA$PBExportHeader$sx_from_tables_holder.srs
+global type sx_from_tables_holder from structure
+    sx_from_tables from_tables[]
+end type
+

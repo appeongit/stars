@@ -1,0 +1,54 @@
+HA$PBExportHeader$d_pdr_sources.srd
+$PBExportComments$<logic>
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=pdr_link dbname="PDR_SOURCE.PDR_LINK" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=seq_num dbname="PDR_SOURCE.SEQ_NUM" )
+ column=(type=char(4) update=yes updatewhereclause=yes name=src_type dbname="PDR_SOURCE.SRC_TYPE" initial=" " )
+ column=(type=char(64) update=yes updatewhereclause=yes name=src_desc dbname="PDR_SOURCE.SRC_DESC" initial=" " )
+ column=(type=char(1) update=yes updatewhereclause=yes name=src_dflt dbname="PDR_SOURCE.SRC_DFLT" initial=" " )
+ column=(type=char(1) update=yes updatewhereclause=yes name=src_crit_use_dict dbname="PDR_SOURCE.SRC_CRIT_USE_DICT" initial=" " )
+ column=(type=char(2) update=yes updatewhereclause=yes name=src_inv_type dbname="PDR_SOURCE.SRC_INV_TYPE" initial=" " )
+ column=(type=char(10) update=yes updatewhereclause=yes name=src_subset_id dbname="PDR_SOURCE.SRC_SUBSET_ID" initial=" " )
+ column=(type=char(14) update=yes updatewhereclause=yes name=src_case_id dbname="PDR_SOURCE.SRC_CASE_ID" initial=" " )
+ retrieve="  SELECT PDR_LINK,   
+         SEQ_NUM,   
+         SRC_TYPE,   
+         SRC_DESC,   
+         SRC_DFLT,
+			SRC_CRIT_USE_DICT,
+			SRC_INV_TYPE,
+			SRC_SUBSET_ID,
+			SRC_CASE_ID
+    FROM PDR_SOURCE  
+   WHERE PDR_LINK = :an_pdr_link   
+ORDER BY SEQ_NUM ASC   
+" update="PDR_SOURCE" updatewhere=0 updatekeyinplace=no arguments=(("an_pdr_link", number)) )
+text(band=header alignment="2" text="Pdr Link" border="0" color="33554432" x="9" y="8" height="60" width="549" html.valueishtml="0"  name=pdr_link_t visible="1"  font.face="System" font.height="-9" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Seq Num" border="0" color="33554432" x="567" y="8" height="60" width="398" html.valueishtml="0"  name=seq_num_t visible="1"  font.face="System" font.height="-9" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Src Type" border="0" color="33554432" x="974" y="8" height="60" width="293" html.valueishtml="0"  name=src_type_t visible="1"  font.face="System" font.height="-9" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Src Desc" border="0" color="33554432" x="1275" y="8" height="60" width="2446" html.valueishtml="0"  name=src_desc_t visible="1"  font.face="System" font.height="-9" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Src Dflt" border="0" color="33554432" x="3730" y="8" height="60" width="293" html.valueishtml="0"  name=src_dflt_t visible="1"  font.face="System" font.height="-9" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Src Crit Use Dict" border="0" color="0" x="4032" y="4" height="76" width="133" html.valueishtml="0"  name=src_crit_use_dict_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Src Inv Type" border="0" color="0" x="4174" y="4" height="76" width="174" html.valueishtml="0"  name=src_inv_type_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Src Subset Id" border="0" color="0" x="4357" y="4" height="76" width="462" html.valueishtml="0"  name=src_subset_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Src Case Id" border="0" color="0" x="4827" y="4" height="76" width="613" html.valueishtml="0"  name=src_case_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="60" width="549" format="[General]" html.valueishtml="0"  name=pdr_link visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-9" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="33554432" x="567" y="8" height="60" width="398" format="[General]" html.valueishtml="0"  name=seq_num visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-9" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="974" y="8" height="60" width="293" format="[general]" html.valueishtml="0"  name=src_type visible="1" edit.limit=4 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-9" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="1275" y="8" height="60" width="2446" format="[general]" html.valueishtml="0"  name=src_desc visible="1" edit.limit=64 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-9" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="3730" y="8" height="60" width="293" format="[general]" html.valueishtml="0"  name=src_dflt visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-9" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="4032" y="0" height="60" width="133" format="[general]" html.valueishtml="0"  name=src_crit_use_dict visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="System" font.height="-9" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="4174" y="0" height="60" width="174" format="[general]" html.valueishtml="0"  name=src_inv_type visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="System" font.height="-9" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="33554432" x="4357" y="0" height="60" width="462" format="[general]" html.valueishtml="0"  name=src_subset_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="System" font.height="-9" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="4827" y="0" height="60" width="613" format="[general]" html.valueishtml="0"  name=src_case_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="System" font.height="-9" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

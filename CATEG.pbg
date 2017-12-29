@@ -1,0 +1,24 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "CATEG.PBL" "";
+@end;
+@begin Objects
+ "d_categ_list_maintain.srd" "CATEG.PBL";
+ "w_categ_list_maintain.srw" "CATEG.PBL";
+ "d_proc_time_detail.srd" "CATEG.PBL";
+ "d_proc_list_search.srd" "CATEG.PBL";
+ "d_next_ratio_period.srd" "CATEG.PBL";
+ "d_proc_time_list.srd" "CATEG.PBL";
+ "d_calendar_month.srd" "CATEG.PBL";
+ "d_dup_check.srd" "CATEG.PBL";
+ "d_calendar_metrics.srd" "CATEG.PBL";
+ "sx_calendar_options.srs" "CATEG.PBL";
+ "d_count_box.srd" "CATEG.PBL";
+ "d_categ_proc.srd" "CATEG.PBL";
+ "w_calendar_options.srw" "CATEG.PBL";
+ "d_categ_list_maintain_ora.srd" "CATEG.PBL";
+ "sx_calendar_print_save_options.srs" "CATEG.PBL";
+ "w_calendar_print_save_options.srw" "CATEG.PBL";
+ "w_proc_times.srw" "CATEG.PBL";
+ "w_calendar.srw" "CATEG.PBL";
+@end;

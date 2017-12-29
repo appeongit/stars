@@ -1,0 +1,15 @@
+HA$PBExportHeader$d_next_ratio_period.srd
+$PBExportComments$<logic>
+release 4;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no )
+header(height=77 color="536870912" )
+summary(height=1 color="536870912" )
+footer(height=1 color="536870912" )
+detail(height=89 color="536870912" )
+table(column=(type=number name=period dbname="PERIOD_CNTL.PERIOD" )
+ column=(type=datetime name=function_run_date dbname="PERIOD_CNTL.FUNCTION_RUN_DATE" )
+ retrieve="SELECT period_cntl.PERIOD , period_cntl.FUNCTION_RUN_DATE FROM period_cntl WHERE ( period_cntl.FUNCTION_NAME = 'RATIO' ) and ( period_cntl.FUNCTION_STATUS = 'FU' ) " )
+text(band=header alignment="2" text="Period"border="0" color="0" x="5" y="4" height="65" width="289"  name=period_t  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Function Run Date"border="0" color="0" x="298" y="4" height="65" width="705"  name=function_run_date_t  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="77" width="289" format="[general]"  name=period edit.limit=8 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="298" y="4" height="77" width="705" format="[shortdate] [time]"  name=function_run_date edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )

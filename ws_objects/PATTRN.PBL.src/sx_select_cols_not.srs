@@ -1,0 +1,9 @@
+﻿$PBExportHeader$sx_select_cols_not.srs
+$PBExportComments$select columns for NOT logic
+global type sx_select_cols_not from structure
+    string tbl_type[]
+    string column
+    string label
+    string data_type
+end type
+

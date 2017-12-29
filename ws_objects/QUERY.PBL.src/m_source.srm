@@ -1,0 +1,315 @@
+﻿$PBExportHeader$m_source.srm
+$PBExportComments$Right-mouse menu for tabpage_source
+forward
+global type m_source from menu
+end type
+type m_menu from menu within m_source
+end type
+type m_clear from menu within m_menu
+end type
+type m_reset from menu within m_menu
+end type
+type m_- from menu within m_menu
+end type
+type m_undodrilldown from menu within m_menu
+end type
+type m_removelevel from menu within m_menu
+end type
+type m_-1 from menu within m_menu
+end type
+type m_help from menu within m_menu
+end type
+type m_menu from menu within m_source
+m_clear m_clear
+m_reset m_reset
+m_- m_-
+m_undodrilldown m_undodrilldown
+m_removelevel m_removelevel
+m_-1 m_-1
+m_help m_help
+end type
+end forward
+
+global type m_source from menu
+m_menu m_menu
+end type
+global m_source m_source
+
+type variables
+datawindow idw_main
+w_query_engine iw_Parent
+uo_query            iuo_Query
+end variables
+
+on m_source.create
+m_source=this
+this.m_menu=create m_menu
+this.Item[]={this.m_menu}
+end on
+
+on m_source.destroy
+destroy(this.m_menu)
+end on
+
+type m_menu from menu within m_source
+m_clear m_clear
+m_reset m_reset
+m_- m_-
+m_undodrilldown m_undodrilldown
+m_removelevel m_removelevel
+m_-1 m_-1
+m_help m_help
+end type
+
+on m_menu.create
+this.Text="m_source"
+this.m_clear=create m_clear
+this.m_reset=create m_reset
+this.m_-=create m_-
+this.m_undodrilldown=create m_undodrilldown
+this.m_removelevel=create m_removelevel
+this.m_-1=create m_-1
+this.m_help=create m_help
+this.Item[]={this.m_clear, &
+this.m_reset, &
+this.m_-, &
+this.m_undodrilldown, &
+this.m_removelevel, &
+this.m_-1, &
+this.m_help}
+end on
+
+on m_menu.destroy
+destroy(this.m_clear)
+destroy(this.m_reset)
+destroy(this.m_-)
+destroy(this.m_undodrilldown)
+destroy(this.m_removelevel)
+destroy(this.m_-1)
+destroy(this.m_help)
+end on
+
+type m_clear from menu within m_menu
+end type
+
+on m_clear.create
+this.Text="C&lear"
+this.Microhelp="Remove all data associated with this query."
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_Source						m_clear
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	J.Mattis			01/05/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iuo_query = iw_Parent.wf_GetActiveQuery()
+End If
+
+If IsValid(iuo_Query) Then
+	iuo_query.event ue_tabpage_source_clear('CLEAR')
+End If
+end event
+
+type m_reset from menu within m_menu
+end type
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_source.m_reset
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger ue_reset_current_pdq event to undo any
+//		changes made to the previously selected query.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		05/15/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_parent	=	This.ParentWindow
+
+If IsValid(iw_parent) Then
+	iw_parent.Event	ue_reset_current_pdq()
+End If
+
+end event
+
+on m_reset.create
+this.Text="&Reset"
+this.Microhelp="Reset the selected query back to its original state."
+this.Enabled=false
+end on
+
+type m_- from menu within m_menu
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_undodrilldown from menu within m_menu
+end type
+
+on m_undodrilldown.create
+this.Text="&Undo Drilldown"
+this.Microhelp="Undo the in-process drilldown."
+this.Enabled=false
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_source.m_undodrilldown
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger ue_parent_undo_drilldown event to 
+//		return to the previous query.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		02/25/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_parent	=	This.ParentWindow
+
+If IsValid(iw_parent) Then
+	iw_parent.Event	ue_parent_undo_drilldown()
+End If
+
+end event
+
+type m_removelevel from menu within m_menu
+end type
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_source.m_removelevel
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger w_query_engine.ue_remove_level event to 
+//		remove the current level.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		03/26/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_parent	=	This.ParentWindow
+
+If IsValid(iw_parent) Then
+	iw_parent.Event	ue_remove_level()
+End If
+
+end event
+
+on m_removelevel.create
+this.Text="Remove Le&vel"
+this.Microhelp="Remove this level of a multi-level query."
+end on
+
+type m_-1 from menu within m_menu
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_help from menu within m_menu
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_source						m_help
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// This will display help for this tabpage.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		05/06/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iw_parent.of_help ('','TABPAGE_SOURCE')
+End If
+
+
+end event
+
+on m_help.create
+this.Text="&Help"
+this.Microhelp="Display help for this tab."
+end on
+

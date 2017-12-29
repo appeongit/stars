@@ -1,0 +1,456 @@
+﻿$PBExportHeader$m_patt_list.srm
+$PBExportComments$Library tab RMM for w_sampling_analysis_new
+forward
+global type m_patt_list from m_patt_ancestor
+end type
+type m_windowoperations from menu within m_dummyitem
+end type
+type m_displayfilter from menu within m_windowoperations
+end type
+type m_find from menu within m_windowoperations
+end type
+type m_sort from menu within m_windowoperations
+end type
+type m_- from menu within m_windowoperations
+end type
+type m_countuniquevalues from menu within m_windowoperations
+end type
+type m_windowoperations from menu within m_dummyitem
+m_displayfilter m_displayfilter
+m_find m_find
+m_sort m_sort
+m_- m_-
+m_countuniquevalues m_countuniquevalues
+end type
+type m_-1 from menu within m_dummyitem
+end type
+type m_listpatterns from menu within m_dummyitem
+end type
+type m_selectpattern from menu within m_dummyitem
+end type
+type m_-2 from menu within m_dummyitem
+end type
+type m_importpattern from menu within m_dummyitem
+end type
+type m_-3 from menu within m_dummyitem
+end type
+type m_deletepattern from menu within m_dummyitem
+end type
+type m_-4 from menu within m_dummyitem
+end type
+type m_help from menu within m_dummyitem
+end type
+type m_dummyitem from m_patt_ancestor`m_dummyitem within m_patt_list
+m_windowoperations m_windowoperations
+m_-1 m_-1
+m_listpatterns m_listpatterns
+m_selectpattern m_selectpattern
+m_-2 m_-2
+m_importpattern m_importpattern
+m_-3 m_-3
+m_deletepattern m_deletepattern
+m_-4 m_-4
+m_help m_help
+end type
+end forward
+
+global type m_patt_list from m_patt_ancestor
+end type
+global m_patt_list m_patt_list
+
+on m_patt_list.create
+m_patt_list=this
+call super::create
+end on
+
+on m_patt_list.destroy
+call super::destroy
+end on
+
+type m_dummyitem from m_patt_ancestor`m_dummyitem within m_patt_list
+m_windowoperations m_windowoperations
+m_-1 m_-1
+m_listpatterns m_listpatterns
+m_selectpattern m_selectpattern
+m_-2 m_-2
+m_importpattern m_importpattern
+m_-3 m_-3
+m_deletepattern m_deletepattern
+m_-4 m_-4
+m_help m_help
+end type
+
+on m_dummyitem.create
+call super::create
+this.text = "m_patt_list"
+this.m_windowoperations=create m_windowoperations
+this.m_-1=create m_-1
+this.m_listpatterns=create m_listpatterns
+this.m_selectpattern=create m_selectpattern
+this.m_-2=create m_-2
+this.m_importpattern=create m_importpattern
+this.m_-3=create m_-3
+this.m_deletepattern=create m_deletepattern
+this.m_-4=create m_-4
+this.m_help=create m_help
+this.Item[UpperBound(this.Item)+1]=this.m_windowoperations
+this.Item[UpperBound(this.Item)+1]=this.m_-1
+this.Item[UpperBound(this.Item)+1]=this.m_listpatterns
+this.Item[UpperBound(this.Item)+1]=this.m_selectpattern
+this.Item[UpperBound(this.Item)+1]=this.m_-2
+this.Item[UpperBound(this.Item)+1]=this.m_importpattern
+this.Item[UpperBound(this.Item)+1]=this.m_-3
+this.Item[UpperBound(this.Item)+1]=this.m_deletepattern
+this.Item[UpperBound(this.Item)+1]=this.m_-4
+this.Item[UpperBound(this.Item)+1]=this.m_help
+end on
+
+on m_dummyitem.destroy
+call super::destroy
+destroy(this.m_windowoperations)
+destroy(this.m_-1)
+destroy(this.m_listpatterns)
+destroy(this.m_selectpattern)
+destroy(this.m_-2)
+destroy(this.m_importpattern)
+destroy(this.m_-3)
+destroy(this.m_deletepattern)
+destroy(this.m_-4)
+destroy(this.m_help)
+end on
+
+type m_windowoperations from menu within m_dummyitem
+m_displayfilter m_displayfilter
+m_find m_find
+m_sort m_sort
+m_- m_-
+m_countuniquevalues m_countuniquevalues
+end type
+
+on m_windowoperations.create
+call super::create
+this.text = "&Window Operations"
+this.m_displayfilter=create m_displayfilter
+this.m_find=create m_find
+this.m_sort=create m_sort
+this.m_-=create m_-
+this.m_countuniquevalues=create m_countuniquevalues
+this.Item[UpperBound(this.Item)+1]=this.m_displayfilter
+this.Item[UpperBound(this.Item)+1]=this.m_find
+this.Item[UpperBound(this.Item)+1]=this.m_sort
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_countuniquevalues
+end on
+
+on m_windowoperations.destroy
+call super::destroy
+destroy(this.m_displayfilter)
+destroy(this.m_find)
+destroy(this.m_sort)
+destroy(this.m_-)
+destroy(this.m_countuniquevalues)
+end on
+
+type m_displayfilter from menu within m_windowoperations
+end type
+
+event clicked;//**********************************************************************
+//	M_Patt_List.M_Window_Operations.M_DisplayFilter
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_window_operations('Display Filter')
+
+
+
+end event
+
+on m_displayfilter.create
+call super::create
+this.text = "&Display Filter..."
+this.microhelp = "Filter the existing data on this tab."
+end on
+
+on m_displayfilter.destroy
+call super::destroy
+end on
+
+type m_find from menu within m_windowoperations
+end type
+
+on m_find.create
+call super::create
+this.text = "&Find..."
+this.microhelp = "Find a value in a column in this tab."
+end on
+
+event clicked;//**********************************************************************
+//	M_Patt_List.M_Window_Operations.M_Find
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_window_operations('Find')
+
+
+
+end event
+
+on m_find.destroy
+call super::destroy
+end on
+
+type m_sort from menu within m_windowoperations
+end type
+
+on m_sort.create
+call super::create
+this.text = "&Sort..."
+this.microhelp = "Sort the data on this tab."
+end on
+
+event clicked;//**********************************************************************
+//	M_Patt_List.M_Window_Operations.M_Sort
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_window_operations('Sort')
+
+
+
+end event
+
+on m_sort.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_windowoperations
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_countuniquevalues from menu within m_windowoperations
+end type
+
+event clicked;////////////////////////////////////////////////////////////////////////
+//
+//	12/15/04	GaryR	Track	4161d	Rename Unique Count to Count Unique Values
+//
+////////////////////////////////////////////////////////////////////////
+
+of_window_operations('Count Unique Values')
+
+end event
+
+on m_countuniquevalues.create
+call super::create
+this.text = "Count &Unique Values..."
+this.microhelp = "Count unique values"
+end on
+
+on m_countuniquevalues.destroy
+call super::destroy
+end on
+
+type m_-1 from menu within m_dummyitem
+end type
+
+on m_-1.create
+call super::create
+this.text = "-"
+end on
+
+on m_-1.destroy
+call super::destroy
+end on
+
+type m_listpatterns from menu within m_dummyitem
+end type
+
+on m_listpatterns.create
+call super::create
+this.text = "&List Patterns"
+this.microhelp = "Display the list of patterns based on the entered criteria."
+end on
+
+event clicked;//**********************************************************************
+//	M_Patt_List.M_ListPatterns
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+integer li_rc
+
+iw_parent = This.ParentWindow
+
+if isvalid(iw_parent) then
+	iw_parent.event ue_retrieve()
+end if
+
+
+end event
+
+on m_listpatterns.destroy
+call super::destroy
+end on
+
+type m_selectpattern from menu within m_dummyitem
+end type
+
+on m_selectpattern.create
+call super::create
+this.text = "&Select Pattern"
+this.microhelp = "Display the selected pattern on the other tabs."
+end on
+
+event clicked;//**********************************************************************
+//	M_Patt_List.M_SelectPattern
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+integer li_rc
+
+iw_parent = This.ParentWindow
+
+if isvalid(iw_parent) then
+	iw_parent.event ue_select()
+end if
+
+
+end event
+
+on m_selectpattern.destroy
+call super::destroy
+end on
+
+type m_-2 from menu within m_dummyitem
+end type
+
+on m_-2.create
+call super::create
+this.text = "-"
+end on
+
+on m_-2.destroy
+call super::destroy
+end on
+
+type m_importpattern from menu within m_dummyitem
+end type
+
+on m_importpattern.create
+call super::create
+this.text = "&Import Pattern"
+this.microhelp = "Import a pattern file and display its contents on the other tabs."
+end on
+
+event clicked;//**********************************************************************
+//	M_Patt_List.M_ImportPattern
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+integer li_rc
+
+iw_parent = This.ParentWindow
+
+if isvalid(iw_parent) then
+	iw_parent.event Ue_Import()
+end if
+
+
+end event
+
+on m_importpattern.destroy
+call super::destroy
+end on
+
+type m_-3 from menu within m_dummyitem
+end type
+
+on m_-3.create
+call super::create
+this.text = "-"
+end on
+
+on m_-3.destroy
+call super::destroy
+end on
+
+type m_deletepattern from menu within m_dummyitem
+end type
+
+on m_deletepattern.create
+call super::create
+this.text = "&Delete Pattern"
+this.microhelp = "Delete the highlighted pattern."
+end on
+
+event clicked;//**********************************************************************
+//	M_Patt_List.M_DeletePattern
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+integer li_rc
+
+iw_parent = This.ParentWindow
+
+if isvalid(iw_parent) then
+	iw_parent.event ue_delete()
+end if
+
+
+end event
+
+on m_deletepattern.destroy
+call super::destroy
+end on
+
+type m_-4 from menu within m_dummyitem
+end type
+
+on m_-4.create
+call super::create
+this.text = "-"
+end on
+
+on m_-4.destroy
+call super::destroy
+end on
+
+type m_help from menu within m_dummyitem
+end type
+
+on m_help.create
+call super::create
+this.text = "&Help"
+this.microhelp = "Display help for this tab."
+end on
+
+event clicked;//**********************************************************************
+//	M_Patt_List.M_Help
+//
+// 01/19/00	FNC	Created. 
+//*********************************************************************
+
+of_help('TABPAGE_LIST')
+
+
+
+end event
+
+on m_help.destroy
+call super::destroy
+end on
+

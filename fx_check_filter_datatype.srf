@@ -1,0 +1,47 @@
+HA$PBExportHeader$fx_check_filter_datatype.srf
+$PBExportComments$Checks the filter id for the datatype
+global type fx_check_filter_datatype from function_object
+end type
+
+forward prototypes
+global function integer fx_check_filter_datatype (ref string arg_data_type, string arg_filter_id, n_tr arg_transaction)
+end prototypes
+
+global function integer fx_check_filter_datatype (ref string arg_data_type, string arg_filter_id, n_tr arg_transaction);//This function returns the datatype for the filter.  It checks filter
+//control by filter id for table type and column name.  It then checks
+//dictionary for the datatype.
+
+//*** CONNECT AND DISCONNECT IS DONE OUTSIDE THE FUNCTION
+//*** should be connected to STARS2 ***
+//arg_data_type - is the value of the data type returned by reference
+//arg_data_field - IS THE VALUE OF THE FIELD BEING USED IN THE FILTER TABLE BY REFERENCE
+//arg_filter_id - is the filter id being passed and used
+//arg_transaction - is the transaction to be used
+
+// 02/20/01	FDG	Stars 4.7.  Use of_connect() in case an alter session command is needed
+//						Set arg_transaction as data type n_tr (instead of transaction)
+
+
+string lv_filter_tbl, lv_filter_col, lv_data_type
+
+setpointer(hourglass!)
+
+select filter_tbl_type, filter_col, FILTER_DATA_TYPE
+	  into :lv_filter_tbl, :lv_filter_col, :LV_DATA_TYPE
+	  from filter_cntl
+	  where filter_id = Upper( :arg_filter_id	)
+Using arg_transaction;
+
+If arg_transaction.sqlcode = 100 then
+	MessageBox ('EDIT','Filter does not exist')
+	RETURN arg_transaction.sqlcode
+Elseif arg_transaction.of_check_status() <> 0 then
+		 RETURN arg_transaction.sqlcode
+End If
+
+ARG_DATA_TYPE = LV_DATA_TYPE
+Return 0
+
+
+end function
+

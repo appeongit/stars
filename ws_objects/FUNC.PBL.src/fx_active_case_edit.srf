@@ -1,0 +1,43 @@
+﻿$PBExportHeader$fx_active_case_edit.srf
+$PBExportComments$Edit to force establishing active case before save/link
+global type fx_active_case_edit from function_object
+end type
+
+forward prototypes
+global function integer fx_active_case_edit ()
+end prototypes
+
+global function integer fx_active_case_edit ();// Modifications:
+// 08-31-98 NLG FS362 convert case to case_cntl
+
+string lv_case_id,lv_case_spl,lv_case_ver
+
+Setpointer(hourglass!)
+
+If gv_active_case = '' Then
+	Messagebox('EDIT','Active Case Must Be Set To Continue')
+	OpenSheet(w_case_active,MDI_main_frame,help_menu_position,Original!)
+	RETURN -1
+Else
+	lv_case_id = left(gv_active_case,10)
+	lv_case_spl = mid(gv_active_case,11,2)
+	lv_case_ver = mid(gv_active_case,13,2)
+	Setmicrohelp(w_main,'Active Case = ' + gv_active_case)
+	
+	// 08-31-98 NLG FS362 convert case to case_cntl
+	Select case_cat into :gv_active_category
+		from Case_cntl
+		where case_id  = Upper( :lv_case_id ) and
+				case_spl = Upper( :lv_case_spl ) and
+				case_ver = Upper( :lv_case_ver )
+	Using Stars2ca;
+	If stars2ca.of_check_status() <> 0 then
+		Messagebox('EDIT','Case does not exist must reset Active Case')
+		OpenSheet(w_case_active,MDI_main_frame,help_menu_position,Original!)
+		RETURN -1
+	End If
+End If
+
+RETURN 0
+end function
+

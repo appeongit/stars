@@ -1,0 +1,61 @@
+HA$PBExportHeader$fx_m_fax.srf
+$PBExportComments$File|Fax
+global type fx_m_fax from function_object
+end type
+
+forward prototypes
+global subroutine fx_m_fax ()
+end prototypes
+
+global subroutine fx_m_fax ();// Fax Function
+// calls two VisualBasic programs that start and stop the Fax process;
+// also uses printsetup to determine the destination of the report (when
+// complete returns the printsetup to its original path); uses the print		
+// function to find the datawindow to send to the FAX
+// 
+// Modification:
+// checks the USER .ini file for the statement FaxInstalled=Y
+// error checking for:
+//             1.   the existence of the USER .ini file
+//             2.   the existence of the above statement
+//             3.   whether FaxInstalled = Y or N
+// if FaxInstalled = Y then runs Fax programs
+// HRB 8/26/94
+
+
+String lv_fax_path, lv_fax_installed
+int rc
+
+IF FileExists ( gv_user_ini_path + gc_user_id + ".INI" ) THEN
+  lv_fax_installed = Profilestring(gv_user_ini_path + gc_user_id + '.INI','FAX','FaxInstalled','')
+  if lv_fax_installed = '' or lv_fax_installed = 'N' then
+    messagebox('Error','This PC is not set up with FAX capabilities.')
+    RETURN
+  end if
+
+  // bring up the fax startup daemon
+  lv_fax_path = gv_ini_path + 'STARTFAX'
+rc =  Run (LV_FAX_PATH)
+ 
+  // put the setup screen up for it to play with
+  PrintSetup()
+
+  // it's done; do the printing stuff
+  fx_m_print()
+  
+  // that's done; get rid of the fax
+  // launch the fax shutdown daemon
+  lv_fax_path = gv_ini_path + 'STOPFAX'
+rc =  Run (LV_FAX_PATH)
+
+  // and give it the setup screen
+  PrintSetup()
+  // and that's all!
+
+Else
+  messagebox('Error','This PC is not set up with FAX capabilities.')
+End If
+
+
+end subroutine
+

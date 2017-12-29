@@ -1,0 +1,14 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "USER.PBL" "";
+@end;
+@begin Objects
+ "d_user_msg_desc.srd" "USER.PBL";
+ "d_user_message_list.srd" "USER.PBL";
+ "w_user_message_list.srw" "USER.PBL";
+ "d_access_log.srd" "USER.PBL";
+ "w_change_password.srw" "USER.PBL";
+ "w_access_log.srw" "USER.PBL";
+ "d_user_list.srd" "USER.PBL";
+ "w_user_list.srw" "USER.PBL";
+@end;

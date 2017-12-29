@@ -1,0 +1,30 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "SUMMRY.PBL" "";
+@end;
+@begin Objects
+ "d_def_query_col_label.srd" "SUMMRY.PBL";
+ "w_summ_rpt.srw" "SUMMRY.PBL";
+ "w_summary_financial.srw" "SUMMRY.PBL";
+ "d_phar_sum_%_drugcat.srd" "SUMMRY.PBL";
+ "d_period_desc.srd" "SUMMRY.PBL";
+ "d_period_cntl_dates.srd" "SUMMRY.PBL";
+ "d_sum_rel_pat_profile.srd" "SUMMRY.PBL";
+ "d_period_cntl_dict.srd" "SUMMRY.PBL";
+ "d_dict_sort_cols.srd" "SUMMRY.PBL";
+ "d_summary_financial_fields.srd" "SUMMRY.PBL";
+ "sx_summary_parm.srs" "SUMMRY.PBL";
+ "d_select_functions.srd" "SUMMRY.PBL";
+ "d_sum_select.srd" "SUMMRY.PBL";
+ "d_display_functions.srd" "SUMMRY.PBL";
+ "u_display_functions.sru" "SUMMRY.PBL";
+ "d_dict_cols.srd" "SUMMRY.PBL";
+ "d_drugcat.srd" "SUMMRY.PBL";
+ "u_def_query_grps.sru" "SUMMRY.PBL";
+ "d_dddw_pat_profile_sort_col.srd" "SUMMRY.PBL";
+ "d_sum_rel.srd" "SUMMRY.PBL";
+ "u_nvo_summary.sru" "SUMMRY.PBL";
+ "d_label.srd" "SUMMRY.PBL";
+ "w_trend_rpt.srw" "SUMMRY.PBL";
+ "sx_field.srs" "SUMMRY.PBL";
+@end;

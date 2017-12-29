@@ -1,0 +1,31 @@
+﻿$PBExportHeader$d_case_count.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=60000 color=1073741824 processing=1 print.documentname="CASE COUNTS"  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=97 print.margin.bottom=97 print.paper.size=0 print.paper.source=0 grid.lines=0 selected.mouse=yes hidegrayline=no showbackcoloronxp=no)
+header(height=252 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=datetime updatewhereclause=yes name=case_date_recv dbname="CASE_CNTL.CASE_DATE_RECV"  )
+column=(type=long updatewhereclause=yes name=compute_0002 dbname="compute_0002"  )
+ retrieve="SELECT CASE_CNTL.CASE_DATE_RECV, count(CASE_CNTL.CASE_DATE_RECV) FROM CASE_CNTL GROUP BY CASE_CNTL.CASE_DATE_RECV"
+  sort="case_date_recv A"
+)
+text(name=st_report_date visible="1" band=background font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" background.mode="2" background.color="1073741824" color="33554432" alignment="1" border="0" x="741" y="4" height="64" width="599" text="" html.valueishtml="0" accessibledescription="~"Report Date~"	~"Report Date~"" accessiblename="~"Report Date~"	~"Report Date~"" accessiblerole=42 )
+text(name=t_1 visible="1" band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="9" y="120" height="128" width="535" text="Date 
+Received" html.valueishtml="0" accessibledescription="~"Date  Received~"	~"Date  Received~"" accessiblename="~"Date  Received~"	~"Date  Received~"" accessiblerole=42 )
+text(name=t_2 visible="1" band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="553" y="120" height="128" width="320" text="
+Count" html.valueishtml="0" accessibledescription="~"Count~"	~"Count~"" accessiblename="~"Count~"	~"Count~"" accessiblerole=42 )
+column(name=case_date_recv visible="1" band=detail id=1 x="9" y="4" height="64" width="535" color="33554432" border="0" alignment="0" format="mmm dd yyyy" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"Date Received~"	~"Date Received~"" accessiblename="~"Date Received~"	~"Date Received~"" )
+column(name=compute_0002 visible="1" band=detail id=2 x="553" y="4" height="64" width="320" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"Case Count~"	~"Case Count~"" accessiblename="~"Case Count~"	~"Case Count~"" )
+text(name=t_3 visible="1" band=foreground font.charset="0" font.face="System" font.family="2" font.height="-11" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="14" y="4" height="64" width="567" text="        CASE COUNTS" html.valueishtml="0" accessibledescription="~"Case Counts~"	~"Case Counts~"" accessiblename="~"Case Counts~"	~"Case Counts~"" accessiblerole=42 )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

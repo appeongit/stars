@@ -1,0 +1,16 @@
+﻿$PBExportHeader$d_dependent_index.srd
+$PBExportComments$<logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=280 color="536870912" )
+table(column=(type=char(32) updatewhereclause=yes name=elem_name dbname="dictionary.ELEM_NAME" )
+ column=(type=char(15) updatewhereclause=yes name=elem_data_type dbname="dictionary.ELEM_DATA_TYPE" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"dictionary~" ) COLUMN(NAME=~"dictionary.ELEM_NAME~") COLUMN(NAME=~"dictionary.ELEM_DATA_TYPE~")WHERE(    EXP1 =~"dictionary.ELEM_TYPE~"   OP =~"=~"    EXP2 =~"'CL'~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"dictionary.ELEM_TBL_TYPE~"   OP =~"=~"    EXP2 =~"Upper(:dep_tbl_type)~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"dictionary.UNIQUE_KEY_SEQ~"   OP =~">~"    EXP2 =~"127~" ) ) ARG(NAME = ~"dep_tbl_type~" TYPE = string) " arguments=(("dep_tbl_type", string)) )
+text(band=detail alignment="1" text="Elem Name:" border="0" color="0" x="37" y="4" height="64" width="553"  name=elem_name_t  font.face="MS Serif" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="1" color="0" x="608" y="4" height="76" width="1207" format="[general]"  name=elem_name edit.limit=32 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Elem Data Type:" border="0" color="0" x="37" y="140" height="64" width="553"  name=elem_data_type_t  font.face="MS Serif" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="1" color="0" x="608" y="140" height="76" width="585" format="[general]"  name=elem_data_type edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

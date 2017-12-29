@@ -1,0 +1,28 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "RNDSMP.PBL" "";
+@end;
+@begin Objects
+ "d_rand_samp_subset_rows.srd" "RNDSMP.PBL";
+ "sx_rand_samp_prov_count.srs" "RNDSMP.PBL";
+ "d_rand_samp_join_table.srd" "RNDSMP.PBL";
+ "d_sample_size_external.srd" "RNDSMP.PBL";
+ "sx_rand_samp_selection.srs" "RNDSMP.PBL";
+ "d_ignore_dup_key.srd" "RNDSMP.PBL";
+ "d_rand_samp_prov_count.srd" "RNDSMP.PBL";
+ "w_random_sampling_claims.srw" "RNDSMP.PBL";
+ "d_random_sampling_random_selection.srd" "RNDSMP.PBL";
+ "w_random_sampling_selection.srw" "RNDSMP.PBL";
+ "d_random_sampling_claims_phar_pin_xref.srd" "RNDSMP.PBL";
+ "w_random_sampling_unique_hics.srw" "RNDSMP.PBL";
+ "d_random_sampling_sel_subsets.srd" "RNDSMP.PBL";
+ "d_sample_method_external.srd" "RNDSMP.PBL";
+ "d_random_sampling_provider_list.srd" "RNDSMP.PBL";
+ "s_rand_samp.srs" "RNDSMP.PBL";
+ "d_rs_columns.srd" "RNDSMP.PBL";
+ "d_random_sampling_claims_1500_pin_xref.srd" "RNDSMP.PBL";
+ "d_random_sampling_claims_ub92_pin_xref.srd" "RNDSMP.PBL";
+ "d_random_sampling_prov_count.srd" "RNDSMP.PBL";
+ "w_random_sampling_prov_count.srw" "RNDSMP.PBL";
+ "d_dddw_dictionary_columns.srd" "RNDSMP.PBL";
+@end;

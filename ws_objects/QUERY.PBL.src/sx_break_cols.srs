@@ -1,0 +1,11 @@
+﻿$PBExportHeader$sx_break_cols.srs
+global type sx_break_cols from structure
+	string		col_desc
+	string		col_name
+	string		col_number
+	string		col_width
+	string		col_data_type
+	string		options
+	string		sort
+end type
+

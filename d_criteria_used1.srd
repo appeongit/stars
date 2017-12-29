@@ -1,0 +1,51 @@
+HA$PBExportHeader$d_criteria_used1.srd
+$PBExportComments$<logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=1090519039 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=char(3) update=yes updatewhereclause=yes key=yes name=by_type dbname="CRITERIA_USED.BY_TYPE" initial=" " )
+ column=(type=char(10) update=yes updatewhereclause=yes key=yes name=by_id dbname="CRITERIA_USED.BY_ID" initial=" " )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=by_level dbname="CRITERIA_USED.BY_LEVEL" initial="0" )
+ column=(type=char(10) update=yes updatewhereclause=yes key=yes name=crit_id dbname="CRITERIA_USED.CRIT_ID" initial=" " )
+ column=(type=char(2) update=yes updatewhereclause=yes name=crit_sub_tbl_type dbname="CRITERIA_USED.CRIT_SUB_TBL_TYPE" initial=" " )
+ column=(type=char(1) update=yes updatewhereclause=yes name=crit_fltr_ind dbname="CRITERIA_USED.CRIT_FLTR_IND" initial=" " )
+ column=(type=datetime update=yes updatewhereclause=yes name=crit_datetime dbname="CRITERIA_USED.CRIT_DATETIME" )
+ column=(type=char(60) update=yes updatewhereclause=yes name=crit_desc dbname="CRITERIA_USED.CRIT_DESC" initial=" " )
+ column=(type=char(10) update=yes updatewhereclause=yes key=yes name=step_id dbname="CRITERIA_USED.STEP_ID" initial=" " )
+ retrieve="  SELECT CRITERIA_USED.BY_TYPE,   
+         CRITERIA_USED.BY_ID,   
+         CRITERIA_USED.BY_LEVEL,   
+         CRITERIA_USED.CRIT_ID,   
+         CRITERIA_USED.CRIT_SUB_TBL_TYPE,   
+         CRITERIA_USED.CRIT_FLTR_IND,   
+         CRITERIA_USED.CRIT_DATETIME,   
+         CRITERIA_USED.CRIT_DESC,   
+         CRITERIA_USED.STEP_ID  
+    FROM CRITERIA_USED  
+   WHERE ( CRITERIA_USED.BY_ID = Upper(:arg_subset_src_name) ) AND  
+         ( CRITERIA_USED.BY_TYPE = Upper(:arg_prev_sub_src_type) )
+ORDER BY	CRITERIA_USED.BY_LEVEL    
+" update="CRITERIA_USED" updatewhere=2 updatekeyinplace=no arguments=(("arg_subset_src_name", string),("arg_prev_sub_src_type", string)) )
+text(band=header alignment="2" text="By Type" border="0" color="0" x="9" y="8" height="64" width="297"  name=by_type_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="By Id" border="0" color="0" x="315" y="8" height="64" width="402"  name=by_id_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="By Level" border="0" color="0" x="727" y="8" height="64" width="439"  name=by_level_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Crit Id" border="0" color="0" x="1175" y="8" height="64" width="402"  name=crit_id_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Crit Sub Tbl Type" border="0" color="0" x="1586" y="8" height="64" width="631"  name=crit_sub_tbl_type_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Crit Fltr Ind" border="0" color="0" x="2226" y="8" height="64" width="398"  name=crit_fltr_ind_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Crit Datetime" border="0" color="0" x="2633" y="8" height="64" width="805"  name=crit_datetime_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Crit Desc" border="0" color="0" x="3447" y="8" height="64" width="2231"  name=crit_desc_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Step Id" border="0" color="0" x="5687" y="8" height="64" width="402"  name=step_id_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="9" y="8" height="76" width="297" format="[general]"  name=by_type edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="315" y="8" height="76" width="402" format="[general]"  name=by_id edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=30 border="0" color="0" x="727" y="8" height="76" width="439" format="[general]"  name=by_level edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="0" color="0" x="1175" y="8" height="76" width="402" format="[general]"  name=crit_id edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="0" color="0" x="1586" y="8" height="76" width="631" format="[general]"  name=crit_sub_tbl_type edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="0" color="0" x="2226" y="8" height="76" width="398" format="[general]"  name=crit_fltr_ind edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=70 border="0" color="0" x="2633" y="8" height="76" width="805" format="[shortdate] [time]"  name=crit_datetime edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=80 border="0" color="0" x="3447" y="8" height="76" width="2231" format="[general]"  name=crit_desc edit.limit=60 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=90 border="0" color="0" x="5687" y="8" height="76" width="402" format="[general]"  name=step_id edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

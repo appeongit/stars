@@ -1,0 +1,33 @@
+HA$PBExportHeader$d_dddw_user_id.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(8) updatewhereclause=yes name=user_id dbname="users.user_id"  )
+column=(type=char(15) updatewhereclause=yes name=user_f_name dbname="users.user_f_name"  )
+column=(type=char(25) updatewhereclause=yes name=user_l_name dbname="users.user_l_name"  )
+column=(type=char(3) updatewhereclause=yes name=user_dept dbname="users.user_dept"  )
+column=(type=char(15) updatewhereclause=yes name=status dbname="users.status"  )
+ retrieve="  SELECT DISTINCT USERS.USER_ID,   
+         USERS.USER_F_NAME,   
+         USERS.USER_L_NAME,
+			USERS.USER_DEPT,
+			USERS.STATUS
+    FROM USERS
+ORDER BY USERS.USER_ID ASC
+
+"
+ )
+compute(name=cf_name visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" x="0" y="4" height="64" width="1234" format="[general]" expression="Trim(  user_id ) + ' - ' + Trim(  user_f_name ) + ' ' + Trim(  user_l_name )" alignment="0" border="0" html.valueishtml="0" crosstab.repeat=no accessibledescription="~"User ID~"	~"User ID~"" accessiblename="~"User ID~"	~"User ID~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )

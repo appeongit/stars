@@ -1,0 +1,20 @@
+HA$PBExportHeader$d_categ_proc.srd
+$PBExportComments$<logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=number update=yes updatewhereclause=yes key=yes name=period dbname="CATG_PROC.PERIOD" initial="0" )
+ column=(type=char(5) update=yes updatewhereclause=yes key=yes name=catg_id dbname="CATG_PROC.CATG_ID" initial=" " )
+ column=(type=char(5) update=yes updatewhereclause=yes key=yes name=catg_proc dbname="CATG_PROC.CATG_PROC" initial=" " )
+ retrieve="SELECT CP.PERIOD , CP.CATG_ID , CP.CATG_PROC FROM CATG_PROC CP WHERE ( CP.PERIOD = :ai_period ) " update="CATG_PROC" updatewhere=1 updatekeyinplace=no arguments=(("ai_period", number)) )
+text(band=header alignment="2" text="Period" border="0" color="0" x="5" y="4" height="64" width="384"  name=period_t  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Catg Id" border="0" color="0" x="393" y="4" height="64" width="206"  name=catg_id_t  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Catg Proc" border="0" color="0" x="603" y="4" height="64" width="283"  name=catg_proc_t  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="0" color="0" x="5" y="4" height="76" width="384" format="[general]"  name=period edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="393" y="4" height="76" width="96" format="[general]"  name=catg_id edit.limit=5 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="603" y="4" height="76" width="192" format="[general]"  name=catg_proc edit.limit=5 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

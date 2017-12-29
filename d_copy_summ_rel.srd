@@ -1,0 +1,87 @@
+HA$PBExportHeader$d_copy_summ_rel.srd
+$PBExportComments$<logic>
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(3) update=yes updatewhereclause=yes key=yes name=inv_type dbname="sum_rel.inv_type" initial=" " )
+ column=(type=char(32) update=yes updatewhereclause=yes key=yes name=table_name dbname="sum_rel.table_name" initial=" " )
+ column=(type=char(32) update=yes updatewhereclause=yes key=yes name=sum_fld1 dbname="sum_rel.sum_fld1" initial=" " )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=sum_fld1_seq dbname="sum_rel.sum_fld1_seq" initial="0" )
+ column=(type=char(32) update=yes updatewhereclause=yes key=yes name=sum_fld2 dbname="sum_rel.sum_fld2" initial=" " )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=sum_fld2_seq dbname="sum_rel.sum_fld2_seq" initial="0" )
+ column=(type=char(32) update=yes updatewhereclause=yes key=yes name=sum_fld3 dbname="sum_rel.sum_fld3" initial=" " )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=sum_fld3_seq dbname="sum_rel.sum_fld3_seq" initial="0" )
+ column=(type=char(32) update=yes updatewhereclause=yes key=yes name=sum_fld4 dbname="sum_rel.sum_fld4" initial=" " )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=sum_fld4_seq dbname="sum_rel.sum_fld4_seq" initial="0" )
+ column=(type=char(32) update=yes updatewhereclause=yes key=yes name=sum_fld5 dbname="sum_rel.sum_fld5" initial=" " )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=sum_fld5_seq dbname="sum_rel.sum_fld5_seq" initial="0" )
+ column=(type=char(32) update=yes updatewhereclause=yes key=yes name=sum_fld6 dbname="sum_rel.sum_fld6" initial=" " )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=sum_fld6_seq dbname="sum_rel.sum_fld6_seq" initial="0" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=sum_flag dbname="sum_rel.sum_flag" initial=" " )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=period dbname="sum_rel.period" initial="0" )
+ column=(type=char(6) update=yes updatewhereclause=yes key=yes name=function_name dbname="sum_rel.function_name" initial=" " )
+ column=(type=char(4) update=yes updatewhereclause=yes key=yes name=grouping dbname="sum_rel.grouping" )
+ retrieve="SELECT  SUM_REL.INV_TYPE ,
+           SUM_REL.TABLE_NAME ,
+           SUM_REL.SUM_FLD1 ,
+           SUM_REL.SUM_FLD1_SEQ ,
+           SUM_REL.SUM_FLD2 ,
+           SUM_REL.SUM_FLD2_SEQ ,
+           SUM_REL.SUM_FLD3 ,
+           SUM_REL.SUM_FLD3_SEQ ,
+           SUM_REL.SUM_FLD4 ,
+           SUM_REL.SUM_FLD4_SEQ ,
+           SUM_REL.SUM_FLD5 ,
+           SUM_REL.SUM_FLD5_SEQ ,
+           SUM_REL.SUM_FLD6 ,
+           SUM_REL.SUM_FLD6_SEQ ,
+           SUM_REL.SUM_FLAG ,
+           SUM_REL.PERIOD ,
+           SUM_REL.FUNCTION_NAME ,
+			  SUM_REL.GROUPING    
+        FROM SUM_REL      
+        WHERE ( SUM_REL.PERIOD = 999999 ) and          ( SUM_REL.FUNCTION_NAME = Upper(:arg_function) ) and          ( SUM_REL.INV_TYPE = Upper(:arg_invoice) )  
+        ORDER BY SUM_REL.FUNCTION_NAME          ASC,
+           SUM_REL.INV_TYPE          ASC,
+           SUM_REL.PERIOD          ASC  " update="SUM_REL" updatewhere=2 updatekeyinplace=no arguments=(("arg_function", string),("arg_invoice", string)) )
+text(band=header alignment="2" text="Inv Type" border="0" color="0" x="5" y="4" height="64" width="256" html.valueishtml="0"  name=inv_type_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Table Name" border="0" color="0" x="265" y="4" height="64" width="1056" html.valueishtml="0"  name=table_name_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sum Fld1" border="0" color="0" x="1326" y="4" height="64" width="1056" html.valueishtml="0"  name=sum_fld1_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sum Fld1 Seq" border="0" color="0" x="2391" y="4" height="64" width="411" html.valueishtml="0"  name=sum_fld1_seq_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sum Fld2" border="0" color="0" x="2807" y="4" height="64" width="1056" html.valueishtml="0"  name=sum_fld2_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sum Fld2 Seq" border="0" color="0" x="3867" y="4" height="64" width="411" html.valueishtml="0"  name=sum_fld2_seq_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sum Fld3" border="0" color="0" x="4283" y="4" height="64" width="1061" html.valueishtml="0"  name=sum_fld3_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sum Fld3 Seq" border="0" color="0" x="5349" y="4" height="64" width="411" html.valueishtml="0"  name=sum_fld3_seq_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sum Fld4" border="0" color="0" x="5765" y="4" height="64" width="1056" html.valueishtml="0"  name=sum_fld4_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sum Fld4 Seq" border="0" color="0" x="6825" y="4" height="64" width="411" html.valueishtml="0"  name=sum_fld4_seq_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sum Fld5" border="0" color="0" x="7241" y="4" height="64" width="1061" html.valueishtml="0"  name=sum_fld5_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sum Fld5 Seq" border="0" color="0" x="8306" y="4" height="64" width="411" html.valueishtml="0"  name=sum_fld5_seq_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sum Fld6" border="0" color="0" x="8722" y="4" height="64" width="1056" html.valueishtml="0"  name=sum_fld6_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sum Fld6 Seq" border="0" color="0" x="9783" y="4" height="64" width="411" html.valueishtml="0"  name=sum_fld6_seq_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sum Flag" border="0" color="0" x="10199" y="4" height="64" width="279" html.valueishtml="0"  name=sum_flag_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Period" border="0" color="0" x="10487" y="4" height="64" width="384" html.valueishtml="0"  name=period_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Function" border="0" color="0" x="10875" y="4" height="64" width="251" html.valueishtml="0"  name=function_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="5" y="4" height="76" width="128" format="[general]" html.valueishtml="0"  name=inv_type visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="265" y="4" height="76" width="1056" format="[general]" html.valueishtml="0"  name=table_name visible="1" edit.limit=32 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="1326" y="4" height="76" width="1056" format="[general]" html.valueishtml="0"  name=sum_fld1 visible="1" edit.limit=32 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=40 border="0" color="0" x="2391" y="4" height="76" width="384" format="[general]" html.valueishtml="0"  name=sum_fld1_seq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="0" color="0" x="2807" y="4" height="76" width="1056" format="[general]" html.valueishtml="0"  name=sum_fld2 visible="1" edit.limit=32 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="1" tabsequence=60 border="0" color="0" x="3867" y="4" height="76" width="384" format="[general]" html.valueishtml="0"  name=sum_fld2_seq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=70 border="0" color="0" x="4283" y="4" height="76" width="1061" format="[general]" html.valueishtml="0"  name=sum_fld3 visible="1" edit.limit=32 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="1" tabsequence=80 border="0" color="0" x="5349" y="4" height="76" width="384" format="[general]" html.valueishtml="0"  name=sum_fld3_seq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=90 border="0" color="0" x="5765" y="4" height="76" width="1056" format="[general]" html.valueishtml="0"  name=sum_fld4 visible="1" edit.limit=32 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="1" tabsequence=100 border="0" color="0" x="6825" y="4" height="76" width="384" format="[general]" html.valueishtml="0"  name=sum_fld4_seq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=110 border="0" color="0" x="7241" y="4" height="76" width="1061" format="[general]" html.valueishtml="0"  name=sum_fld5 visible="1" edit.limit=32 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="1" tabsequence=120 border="0" color="0" x="8306" y="4" height="76" width="384" format="[general]" html.valueishtml="0"  name=sum_fld5_seq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=130 border="0" color="0" x="8722" y="4" height="76" width="1056" format="[general]" html.valueishtml="0"  name=sum_fld6 visible="1" edit.limit=32 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="1" tabsequence=140 border="0" color="0" x="9783" y="4" height="76" width="384" format="[general]" html.valueishtml="0"  name=sum_fld6_seq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=150 border="0" color="0" x="10199" y="4" height="76" width="69" format="[general]" html.valueishtml="0"  name=sum_flag visible="1" edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="1" tabsequence=160 border="0" color="0" x="10487" y="4" height="76" width="384" format="[general]" html.valueishtml="0"  name=period visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=170 border="0" color="0" x="10875" y="4" height="76" width="224" format="[general]" html.valueishtml="0"  name=function_name visible="1" edit.limit=6 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=0 border="0" color="0" x="11127" y="0" height="64" width="128" html.valueishtml="0"  name=grouping visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )
+ 

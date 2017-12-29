@@ -1,0 +1,16 @@
+﻿$PBExportHeader$sx_subset_summary.srs
+global type sx_subset_summary from structure
+	string		subset_id
+	string		subset_desc
+	string		invoice_type
+	string		report_id
+	string		table_types[]
+	string		subset_summary_select
+	string		selected_columns[]
+	integer		selected_rows[]
+	string		is_boolean[]
+	boolean		enable_calendar
+	string		subset_name
+	string		is_main_inv_type
+end type
+

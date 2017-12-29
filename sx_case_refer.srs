@@ -1,0 +1,11 @@
+HA$PBExportHeader$sx_case_refer.srs
+$PBExportComments$Structure returned from w_case_referral
+global type sx_case_refer from structure
+	boolean		b_case_referred
+	string		s_dept_id
+	string		s_user_id
+	string		s_case_id
+	string		s_case_spl
+	string		s_case_ver
+end type
+

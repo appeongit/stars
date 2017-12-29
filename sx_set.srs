@@ -1,0 +1,7 @@
+HA$PBExportHeader$sx_set.srs
+$PBExportComments$set info
+global type sx_set from structure
+	long		num_of_fields
+	sx_fields		set_fields
+end type
+

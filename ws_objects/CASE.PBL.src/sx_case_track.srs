@@ -1,0 +1,8 @@
+﻿$PBExportHeader$sx_case_track.srs
+global type sx_case_track from structure
+	string		case_id
+	string		trk_type
+	string		trk_key
+	string		target_id
+end type
+

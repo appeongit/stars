@@ -1,0 +1,361 @@
+﻿$PBExportHeader$m_subset_rmm.srm
+forward
+global type m_subset_rmm from menu
+end type
+type m_subset from menu within m_subset_rmm
+end type
+type m_view from menu within m_subset
+end type
+type m_query from menu within m_subset
+end type
+type m_criteria from menu within m_subset
+end type
+type m_saveas from menu within m_subset
+end type
+type m_2 from menu within m_subset
+end type
+type m_delete from menu within m_subset
+end type
+type m_0 from menu within m_subset
+end type
+type m_subsetsummary from menu within m_subset
+end type
+type m_randomsample from menu within m_subset
+end type
+type m_patterns from menu within m_subset
+end type
+type m_1 from menu within m_subset
+end type
+type m_- from menu within m_subset
+end type
+type m_activesubset from menu within m_subset
+end type
+type m_subset from menu within m_subset_rmm
+m_view m_view
+m_query m_query
+m_criteria m_criteria
+m_saveas m_saveas
+m_2 m_2
+m_delete m_delete
+m_0 m_0
+m_subsetsummary m_subsetsummary
+m_randomsample m_randomsample
+m_patterns m_patterns
+m_1 m_1
+m_- m_-
+m_activesubset m_activesubset
+end type
+global type m_subset_rmm from menu
+m_subset m_subset
+end type
+end forward
+
+global type m_subset_rmm from menu
+m_subset m_subset
+end type
+global m_subset_rmm m_subset_rmm
+
+on m_subset_rmm.create
+m_subset_rmm=this
+call super::create
+this.m_subset=create m_subset
+this.Item[UpperBound(this.Item)+1]=this.m_subset
+end on
+
+on m_subset_rmm.destroy
+call super::destroy
+destroy(this.m_subset)
+end on
+
+type m_subset from menu within m_subset_rmm
+m_view m_view
+m_query m_query
+m_criteria m_criteria
+m_saveas m_saveas
+m_2 m_2
+m_delete m_delete
+m_0 m_0
+m_subsetsummary m_subsetsummary
+m_randomsample m_randomsample
+m_patterns m_patterns
+m_1 m_1
+m_- m_-
+m_activesubset m_activesubset
+end type
+
+on m_subset.create
+call super::create
+this.m_view=create m_view
+this.m_query=create m_query
+this.m_criteria=create m_criteria
+this.m_saveas=create m_saveas
+this.m_2=create m_2
+this.m_delete=create m_delete
+this.m_0=create m_0
+this.m_subsetsummary=create m_subsetsummary
+this.m_randomsample=create m_randomsample
+this.m_patterns=create m_patterns
+this.m_1=create m_1
+this.m_-=create m_-
+this.m_activesubset=create m_activesubset
+this.Item[UpperBound(this.Item)+1]=this.m_view
+this.Item[UpperBound(this.Item)+1]=this.m_query
+this.Item[UpperBound(this.Item)+1]=this.m_criteria
+this.Item[UpperBound(this.Item)+1]=this.m_saveas
+this.Item[UpperBound(this.Item)+1]=this.m_2
+this.Item[UpperBound(this.Item)+1]=this.m_delete
+this.Item[UpperBound(this.Item)+1]=this.m_0
+this.Item[UpperBound(this.Item)+1]=this.m_subsetsummary
+this.Item[UpperBound(this.Item)+1]=this.m_randomsample
+this.Item[UpperBound(this.Item)+1]=this.m_patterns
+this.Item[UpperBound(this.Item)+1]=this.m_1
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_activesubset
+end on
+
+on m_subset.destroy
+call super::destroy
+destroy(this.m_view)
+destroy(this.m_query)
+destroy(this.m_criteria)
+destroy(this.m_saveas)
+destroy(this.m_2)
+destroy(this.m_delete)
+destroy(this.m_0)
+destroy(this.m_subsetsummary)
+destroy(this.m_randomsample)
+destroy(this.m_patterns)
+destroy(this.m_1)
+destroy(this.m_-)
+destroy(this.m_activesubset)
+end on
+
+type m_view from menu within m_subset
+end type
+
+on m_view.create
+call super::create
+this.text = "&View"
+this.toolbaritemname = "EditDataGrid!"
+end on
+
+on m_view.destroy
+call super::destroy
+end on
+
+event clicked;w_subset_list	lw_subset_list
+
+lw_subset_list = This.ParentWindow
+
+IF IsValid(lw_subset_list) THEN lw_subset_list.event ue_view()
+end event
+
+type m_query from menu within m_subset
+end type
+
+on m_query.create
+call super::create
+this.text = "&Query"
+this.toolbaritemname = "EditDataGrid!"
+end on
+
+on m_query.destroy
+call super::destroy
+end on
+
+event clicked;w_subset_list	lw_subset_list
+
+lw_subset_list = This.ParentWindow
+
+IF IsValid(lw_subset_list) THEN lw_subset_list.event ue_query()
+end event
+
+type m_criteria from menu within m_subset
+end type
+
+on m_criteria.create
+call super::create
+this.text = "&Criteria"
+end on
+
+on m_criteria.destroy
+call super::destroy
+end on
+
+event clicked;w_subset_list	lw_subset_list
+
+lw_subset_list = This.ParentWindow
+
+IF IsValid(lw_subset_list) THEN lw_subset_list.event ue_criteria()
+end event
+
+type m_saveas from menu within m_subset
+end type
+
+event clicked;w_subset_list	lw_subset_list
+
+lw_subset_list = This.ParentWindow
+
+IF IsValid(lw_subset_list) THEN lw_subset_list.wf_saveas( )
+end event
+
+on m_saveas.create
+call super::create
+this.text = "&Save As..."
+end on
+
+on m_saveas.destroy
+call super::destroy
+end on
+
+type m_2 from menu within m_subset
+end type
+
+on m_2.create
+call super::create
+this.text = "-"
+end on
+
+on m_2.destroy
+call super::destroy
+end on
+
+type m_delete from menu within m_subset
+end type
+
+on m_delete.create
+call super::create
+this.text = "&Delete"
+this.toolbaritemname = "Custom009!"
+end on
+
+on m_delete.destroy
+call super::destroy
+end on
+
+event clicked;w_subset_list	lw_subset_list
+
+lw_subset_list = This.ParentWindow
+
+IF IsValid(lw_subset_list) THEN lw_subset_list.event ue_delete()
+end event
+
+type m_0 from menu within m_subset
+end type
+
+on m_0.create
+call super::create
+this.text = "-"
+end on
+
+on m_0.destroy
+call super::destroy
+end on
+
+type m_subsetsummary from menu within m_subset
+end type
+
+on m_subsetsummary.create
+call super::create
+this.text = "Subset Summary"
+end on
+
+on m_subsetsummary.destroy
+call super::destroy
+end on
+
+event clicked;w_subset_list	lw_subset_list
+
+lw_subset_list = This.ParentWindow
+
+IF IsValid(lw_subset_list) THEN lw_subset_list.event ue_subset_summary( )
+end event
+
+type m_randomsample from menu within m_subset
+end type
+
+on m_randomsample.create
+call super::create
+this.text = "&Random Sample"
+end on
+
+on m_randomsample.destroy
+call super::destroy
+end on
+
+event clicked;w_subset_list	lw_subset_list
+
+lw_subset_list = This.ParentWindow
+
+IF IsValid(lw_subset_list) THEN lw_subset_list.event ue_random_sample( )
+end event
+
+type m_patterns from menu within m_subset
+end type
+
+on m_patterns.create
+call super::create
+this.text = "&Patterns"
+end on
+
+on m_patterns.destroy
+call super::destroy
+end on
+
+event clicked;w_subset_list	lw_subset_list
+
+lw_subset_list = This.ParentWindow
+
+IF IsValid(lw_subset_list) THEN lw_subset_list.event ue_pattern()
+end event
+
+type m_1 from menu within m_subset
+end type
+
+event clicked;w_subset_list	lw_subset_list
+
+lw_subset_list = This.ParentWindow
+
+IF IsValid(lw_subset_list) THEN lw_subset_list.event ue_notes()
+end event
+
+on m_1.create
+call super::create
+this.text = "&Notes"
+end on
+
+on m_1.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_subset
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_activesubset from menu within m_subset
+end type
+
+on m_activesubset.create
+call super::create
+this.text = "Set as &Active Subset"
+end on
+
+on m_activesubset.destroy
+call super::destroy
+end on
+
+event clicked;w_subset_list	lw_subset_list
+
+lw_subset_list = This.ParentWindow
+
+IF IsValid(lw_subset_list) THEN lw_subset_list.wf_select_subset()
+end event
+

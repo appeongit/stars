@@ -1,0 +1,24 @@
+﻿$PBExportHeader$d_rpt_temp_update_default.srd
+$PBExportComments$Update report template - default template <logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=1090519039 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(1) update=yes updatewhereclause=yes name=default_template dbname="PDQ_CNTL.DEFAULT_TEMPLATE" initial="spaces" )
+ column=(type=char(10) updatewhereclause=yes key=yes name=query_id dbname="PDQ_CNTL.QUERY_ID" initial=" " )
+ retrieve="  SELECT PDQ_CNTL.DEFAULT_TEMPLATE,   
+         PDQ_CNTL.QUERY_ID  
+    FROM PDQ_CNTL  
+   WHERE ( PDQ_CNTL.USER_ID = Upper(:arg_user_id) ) AND  
+         ( PDQ_CNTL.QUERY_TYPE = Upper(:arg_query_type) ) AND  
+         ( PDQ_CNTL.ADDL_QUERY_TYPE = Upper(:arg_addl_query_type) ) AND  
+         ( PDQ_CNTL.DEFAULT_TEMPLATE = 'Y' )    
+" update="PDQ_CNTL" updatewhere=2 updatekeyinplace=no arguments=(("arg_user_id", string),("arg_query_type", string),("arg_addl_query_type", string)) )
+text(band=header alignment="2" text="Default Template" border="0" color="0" x="5" y="4" height="64" width="617"  name=default_template_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Query Id" border="0" color="0" x="626" y="4" height="64" width="402"  name=query_id_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="76" width="73" format="[general]"  name=default_template edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="626" y="4" height="76" width="402" format="[general]"  name=query_id edit.limit=10 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

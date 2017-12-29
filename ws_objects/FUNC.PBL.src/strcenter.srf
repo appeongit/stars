@@ -1,0 +1,49 @@
+﻿$PBExportHeader$strcenter.srf
+global type strcenter from function_object
+end type
+
+forward prototypes
+global function string strcenter (string str, long str_size, char pad_char)
+end prototypes
+
+global function string strcenter (string str, long str_size, char pad_char);//***********************************************************************
+// This function centers the specified string padding to the desired
+// size using the desired pad character.
+// 
+// Usage: 
+//   Answer = StrCenter(str,str_size,pad_char)
+//
+// Where:
+//   str       = (String) The string you want to center
+//   str_size  = (Long)   The size you want the centered string to be
+//   pad_char  = (Char)   Character used to pad string
+//
+// Usage Notes:
+//   If str_size less than OR equal to the length of str then str is returned. 
+//   If str_size > 59999 then str_size is set to 599999.  Note that 59999
+//      is used instead of 60000 (max string length) because PowerBuilder
+//      has a bug that causes SPACE(59999) + ' ' to cause an error that
+//      says the result exceeds the maximum length of a string.
+//   If length pad_char > 1 then pad_char is truncated to 1 position
+//
+//***********************************************************************
+//   Date   Init               Description of Changes Made                
+// -------- ---- -------------------------------------------------------- 
+// 11/15/93 JMS  Created
+//***********************************************************************
+
+String  centered_str          // string centered to specified length
+Long    pad_size              // amount to pad EACH side of string
+Long    max_str_size = 59999  // Max string size (see above)
+
+if (str_size <= Len(str)) then 
+   centered_str = str
+else
+   if (str_size > max_str_size)      then str_size = max_str_size
+   pad_size = (str_size - Len(str)) / 2
+   centered_str = Fill(pad_char,pad_size) + str + Fill(pad_char,pad_size)
+   if (str_size > Len(centered_str)) then centered_str = centered_str + pad_char
+end if
+return centered_str
+end function
+

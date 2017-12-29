@@ -1,0 +1,15 @@
+HA$PBExportHeader$d_user_temp_key.srd
+$PBExportComments$Used to count # of unique temp_key <logic>
+release 6;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=76 color="536870912" )
+summary(height=12 color="536870912" )
+footer(height=96 color="536870912" )
+detail(height=108 color="536870912" )
+table(column=(type=char(50) update=yes updatewhereclause=yes name=temp_key dbname="USER_TEMP_KEY.TEMP_KEY" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"USER_TEMP_KEY~" ) COLUMN(NAME=~"USER_TEMP_KEY.TEMP_KEY~")) " )
+text(band=header alignment="0" text="Temp Key"border="0" color="0" x="718" y="4" height="64" width="585"  name=temp_key_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="713" y="28" height="64" width="1019" format="[general]"  name=temp_key edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="1" expression="count(  temp_key  for all )"border="0" color="0" x="997" y="20" height="64" width="750" format="[general]"  name=key_count  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=footer alignment="2" text="Count:"border="0" color="0" x="736" y="28" height="64" width="224"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

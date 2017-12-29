@@ -1,0 +1,27 @@
+﻿$PBExportHeader$d_select_codes.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=1 timer_interval=0 color=1073741824 processing=0 print.documentname=""  print.orientation=0 print.margin.left=0 print.margin.right=0 print.margin.top=0 print.margin.bottom=0 print.paper.size=0 print.paper.source=0 selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=18 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=22 color="536870912" )
+table(column=(type=char(15) updatewhereclause=yes name=code_code dbname="CODE.CODE_CODE"  )
+column=(type=char(255) updatewhereclause=yes name=code_desc dbname="CODE.CODE_DESC"  )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"CODE~" ) COLUMN(NAME=~"CODE.CODE_CODE~") COLUMN(NAME=~"CODE.CODE_DESC~")WHERE(    EXP1 =~"( CODE.CODE_TYPE~"   OP =~"=~"    EXP2 =~"Upper(:code_type) )~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( CODE.CODE_CODE~"   OP =~"not like~"    EXP2 =~"'SYS%' )~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( CODE.CODE_CODE~"   OP =~"<>~"    EXP2 =~"'REFERRED' )~" ) ) ORDER(NAME=~"CODE.CODE_CODE~" ASC=yes ) ARG(NAME = ~"code_type~" TYPE = string) "
+  arguments=(("code_type", string))
+)
+text(name=code_code_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="4" x="2" y="0" height="16" width="56" text="CODE ID" accessibledescription="~"CODE ID~"	~"CODE ID~"" accessiblename="~"Code ID~"	~"Code ID~"" accessiblerole=42 )
+text(name=code_desc_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="4" x="95" y="0" height="16" width="92" text="DESCRIPTION" accessibledescription="~"DESCRIPTION~"	~"DESCRIPTION~"" accessiblename="~"Definition~"	~"Definition~"" accessiblerole=42 )
+column(name=code_code band=detail id=1 x="1" y="1" height="19" width="63" color="33554432" border="0" alignment="0" format="[general]" edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=8 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="0" font.weight="700" tabsequence=0 accessibledescription="~"CODE ID~"	~"CODE ID~"" accessiblename="~"Code ID~"	~"Code ID~"" )
+column(name=code_desc band=detail id=2 x="96" y="1" height="19" width="640" color="33554432" border="0" alignment="0" format="[general]" edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=255 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="0" font.weight="700" tabsequence=0 accessibledescription="~"DESCRIPTION~"	~"DESCRIPTION~"" accessiblename="~"Definition~"	~"Definition~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" generateJavaScript="1" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

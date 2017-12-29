@@ -1,0 +1,26 @@
+HA$PBExportHeader$d_dddw_patt_id.srd
+$PBExportComments$Gets rows from patt_rel <gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=0 print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(10) update=yes updatewhereclause=yes initial="empty" name=patt_id dbname="PATT_REL.PATT_ID"  )
+column=(type=char(2) update=yes updatewhereclause=yes initial="empty" name=rel_type dbname="PATT_REL.REL_TYPE"  )
+column=(type=char(4) update=yes updatewhereclause=yes initial="empty" name=base_type dbname="PATT_REL.BASE_TYPE"  )
+column=(type=char(2) update=yes updatewhereclause=yes initial="empty" name=rel_id dbname="PATT_REL.REL_ID"  )
+column=(type=char(1) updatewhereclause=yes name=patt_cntl_patt_type dbname="PATT_CNTL.PATT_TYPE"  )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"PATT_REL~" )  TABLE(NAME=~"PATT_CNTL~" ) COLUMN(NAME=~"PATT_REL.PATT_ID~") COLUMN(NAME=~"PATT_REL.REL_TYPE~") COLUMN(NAME=~"PATT_REL.BASE_TYPE~") COLUMN(NAME=~"PATT_REL.REL_ID~") COLUMN(NAME=~"PATT_CNTL.PATT_TYPE~")    JOIN (LEFT=~"PATT_REL.PATT_ID~"    OP =~"=~"RIGHT=~"PATT_CNTL.PATT_ID~" )WHERE(    EXP1 =~"PATT_CNTL.PATT_TYPE~"   OP =~"=~"    EXP2 =~"'T'~" ) ) ORDER(NAME=~"PATT_REL.PATT_ID~" ASC=yes ) "
+ )
+column(name=patt_id band=detail id=1 x="5" y="4" height="76" width="581" color="33554432" border="0" alignment="0" format="[general]" edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=10 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=10 accessibledescription="~"Pattern ID~"	~"Pattern ID~"" accessiblename="~"Pattern ID~"	~"Pattern ID~"" )
+htmltable(border="1" cellPadding="0" cellSpacing="0" generateCSS="no" noWrap="yes" )
+htmlgen(pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

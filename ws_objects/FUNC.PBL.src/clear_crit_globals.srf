@@ -1,0 +1,19 @@
+﻿$PBExportHeader$clear_crit_globals.srf
+global type clear_crit_globals from function_object
+end type
+
+forward prototypes
+global subroutine clear_crit_globals ()
+end prototypes
+
+global subroutine clear_crit_globals ();string clear_array[]
+setpointer(hourglass!)
+gv_left_paren[] = clear_array[]
+gv_exp1[] = clear_array[]
+gv_exp2[]= clear_array[]
+gv_right_paren[] = clear_array[]
+gv_op[] = clear_array[]
+gv_logic[] = clear_array[]
+
+end subroutine
+

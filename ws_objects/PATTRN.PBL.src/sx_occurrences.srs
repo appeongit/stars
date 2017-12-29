@@ -1,0 +1,9 @@
+﻿$PBExportHeader$sx_occurrences.srs
+$PBExportComments$occurrence info
+global type sx_occurrences from structure
+    string label
+    string tbl_type
+    string col_name
+    long num_of_occurrences
+end type
+

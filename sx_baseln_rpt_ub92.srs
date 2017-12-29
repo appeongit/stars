@@ -1,0 +1,12 @@
+HA$PBExportHeader$sx_baseln_rpt_ub92.srs
+global type sx_baseln_rpt_ub92 from structure
+    integer rank1
+    integer rank2
+    string tob
+    string dw
+    integer report
+    long period
+    string revexcl[]
+    string tbl_type
+end type
+

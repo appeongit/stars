@@ -1,0 +1,15 @@
+﻿$PBExportHeader$sx_data_retrieval_parm.srs
+global type sx_data_retrieval_parm from structure
+	sx_dictionary_data		columns[]
+	string		main_tables[]
+	string		dep_tables[]
+	string		join_tables[]
+	string		where_clause
+	string		source_type
+	string		subset_id
+	string		case_id
+	boolean		preview_ck
+	string		filter_tables[]
+	string		crit_id
+end type
+

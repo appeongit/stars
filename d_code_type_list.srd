@@ -1,0 +1,39 @@
+HA$PBExportHeader$d_code_type_list.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=1 timer_interval=0 color=1073741824 processing=1 print.documentname="Code Type List"  print.orientation=2 print.margin.left=24 print.margin.right=24 print.margin.top=24 print.margin.bottom=24 print.paper.size=0 print.paper.source=0 grid.lines=2 selected.mouse=yes hidegrayline=no showbackcoloronxp=no)
+header(height=64 color="536870912" )
+summary(height=1 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=18 color="536870912" )
+table(column=(type=char(15) updatewhereclause=yes name=code_code dbname="CODE_CODE"  )
+column=(type=char(255) updatewhereclause=yes name=code_desc dbname="CODE_DESC"  )
+column=(type=long updatewhereclause=yes name=code_value_n dbname="CODE_VALUE_N"  )
+ retrieve="SELECT  CODE.CODE_CODE ,
+           CODE.CODE_DESC, CODE.CODE_VALUE_N     
+        FROM CODE      
+        WHERE ( CODE.CODE_TYPE = Upper(:Type) ) and          ( CODE.CODE_CODE like Upper(:Code_code) ) and          ( Upper(CODE.CODE_DESC) like Upper(:Text) ) 
+        ORDER BY CODE.CODE_CODE          ASC  "
+  arguments=(("Type", string), ("Code_code", string), ("Text", string))
+ sort="code_code A"
+)
+text(name=st_report_date visible="1" band=background font.charset="0" font.face="System" font.family="2" font.height="-12" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="475" y="25" height="16" width="232" text="" html.valueishtml="0" accessibledescription="~"Report Date~"	~"Report Date~"" accessiblename="~"Report Date~"	~"Report Date~"" accessiblerole=42 )
+text(name=code_code_t visible="1" band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="4" x="2" y="46" height="16" width="82" text="Code" html.valueishtml="0" accessibledescription="~"Code~"	~"Code~"" accessiblename="~"Code~"	~"Code~"" accessiblerole=42 )
+text(name=code_desc_t visible="1" band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="4" x="86" y="46" height="16" width="951" text="Description" html.valueishtml="0" accessibledescription="~"Description~"	~"Description~"" accessiblename="~"Description~"	~"Description~"" accessiblerole=42 )
+text(name=code_value_n_t visible="0" band=header font.charset="0" font.face="Arial" font.family="2" font.height="-12" font.pitch="2" font.weight="400" background.mode="2" background.color="1073741824" color="33554432" alignment="0" border="0" x="1039" y="1" height="19" width="299" text="Code Value N" html.valueishtml="0" accessibledescription="~"Code Value N~"	~"Code Value N~"" accessiblename="~"Code Value N~"	~"Code Value N~"" accessiblerole=42 )
+column(name=code_code visible="1" band=detail id=1 x="2" y="1" height="15" width="82" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=8 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Code~"	~"Code~"" accessiblename="~"Code~"	~"Code~"" )
+column(name=code_desc visible="1" band=detail id=2 x="86" y="1" height="15" width="951" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=255 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Description~"	~"Description~"" accessiblename="~"Description~"	~"Description~"" )
+column(name=code_value_n visible="0" band=detail id=3 x="1039" y="1" height="16" width="299" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Code Value N~"	~"Code Value N~"" accessiblename="~"Code Value N~"	~"Code Value N~"" )
+text(name=t_1 visible="1" band=foreground font.charset="0" font.face="System" font.family="2" font.height="-12" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="66" y="6" height="16" width="129" text="CODE LIST" html.valueishtml="0" accessibledescription="~"CODE LIST~"	~"CODE LIST~"" accessiblename="~"Code List~"	~"Code List~"" accessiblerole=42 )
+text(name=st_code_type visible="1" band=foreground font.charset="0" font.face="System" font.family="2" font.height="-12" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="202" y="6" height="16" width="573" text="" html.valueishtml="0" accessibledescription="~"Code Type~"	~"Code Type~"" accessiblename="~"Code Type~"	~"Code Type~"" accessiblerole=42 )
+compute(name=compute_1 visible="1" band=foreground font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" x="475" y="6" height="16" width="560" format="[GENERAL]" expression="'  Page ' + Page()" alignment="0" border="0" html.valueishtml="0" crosstab.repeat=no accessibledescription="~"Page Number~"	~"Page Number~"" accessiblename="~"Page Number~"	~"Page Number~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

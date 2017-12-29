@@ -1,0 +1,309 @@
+HA$PBExportHeader$m_case_current.srm
+forward
+global type m_case_current from menu
+end type
+type m_menu from menu within m_case_current
+end type
+type m_create from menu within m_menu
+end type
+type m_update from menu within m_menu
+end type
+type m_3 from menu within m_menu
+end type
+type m_more from menu within m_menu
+end type
+type m_target from menu within m_more
+end type
+type m_lead from menu within m_more
+end type
+type m_notes from menu within m_more
+end type
+type m_folder from menu within m_more
+end type
+type m_more from menu within m_menu
+m_target m_target
+m_lead m_lead
+m_notes m_notes
+m_folder m_folder
+end type
+type m_1 from menu within m_menu
+end type
+type m_createtrack from menu within m_menu
+end type
+type m_refercase from menu within m_menu
+end type
+type m_2 from menu within m_menu
+end type
+type m_help from menu within m_menu
+end type
+type m_menu from menu within m_case_current
+m_create m_create
+m_update m_update
+m_3 m_3
+m_more m_more
+m_1 m_1
+m_createtrack m_createtrack
+m_refercase m_refercase
+m_2 m_2
+m_help m_help
+end type
+end forward
+
+global type m_case_current from menu
+m_menu m_menu
+end type
+global m_case_current m_case_current
+
+type variables
+w_case_maint iw_parent
+end variables
+
+on m_case_current.create
+m_case_current=this
+this.m_menu=create m_menu
+this.Item[]={this.m_menu}
+end on
+
+on m_case_current.destroy
+destroy(this.m_menu)
+end on
+
+type m_menu from menu within m_case_current
+m_create m_create
+m_update m_update
+m_3 m_3
+m_more m_more
+m_1 m_1
+m_createtrack m_createtrack
+m_refercase m_refercase
+m_2 m_2
+m_help m_help
+end type
+
+on m_menu.create
+this.Text="m_case_current"
+this.m_create=create m_create
+this.m_update=create m_update
+this.m_3=create m_3
+this.m_more=create m_more
+this.m_1=create m_1
+this.m_createtrack=create m_createtrack
+this.m_refercase=create m_refercase
+this.m_2=create m_2
+this.m_help=create m_help
+this.Item[]={this.m_create, &
+this.m_update, &
+this.m_3, &
+this.m_more, &
+this.m_1, &
+this.m_createtrack, &
+this.m_refercase, &
+this.m_2, &
+this.m_help}
+end on
+
+on m_menu.destroy
+destroy(this.m_create)
+destroy(this.m_update)
+destroy(this.m_3)
+destroy(this.m_more)
+destroy(this.m_1)
+destroy(this.m_createtrack)
+destroy(this.m_refercase)
+destroy(this.m_2)
+destroy(this.m_help)
+end on
+
+type m_create from menu within m_menu
+end type
+
+on m_create.create
+this.Text="&Create"
+this.Microhelp="Create a new case."
+end on
+
+event clicked;iw_parent = this.ParentWindow
+
+If IsValid(iw_parent) Then
+	iw_parent.event ue_save()
+End If
+end event
+
+type m_update from menu within m_menu
+end type
+
+on m_update.create
+this.Text="&Update"
+this.Microhelp="Update this case."
+end on
+
+event clicked;iw_parent = this.ParentWindow
+
+If IsValid(iw_parent) Then
+	iw_parent.event ue_save()
+End If
+end event
+
+type m_3 from menu within m_menu
+end type
+
+on m_3.create
+this.Text="-"
+end on
+
+type m_more from menu within m_menu
+m_target m_target
+m_lead m_lead
+m_notes m_notes
+m_folder m_folder
+end type
+
+on m_more.create
+this.Text="&More ..."
+this.m_target=create m_target
+this.m_lead=create m_lead
+this.m_notes=create m_notes
+this.m_folder=create m_folder
+this.Item[]={this.m_target, &
+this.m_lead, &
+this.m_notes, &
+this.m_folder}
+end on
+
+on m_more.destroy
+destroy(this.m_target)
+destroy(this.m_lead)
+destroy(this.m_notes)
+destroy(this.m_folder)
+end on
+
+type m_target from menu within m_more
+end type
+
+event clicked;iw_parent = this.ParentWindow
+
+If IsValid(iw_parent) Then
+	iw_parent.wf_target()
+End If
+end event
+
+on m_target.create
+this.Text="Target"
+this.Microhelp="View targets for this case."
+end on
+
+type m_lead from menu within m_more
+end type
+
+event clicked;iw_parent = this.ParentWindow
+
+If IsValid(iw_parent) Then
+	iw_parent.wf_contact()
+End If
+end event
+
+on m_lead.create
+this.Text="Lead"
+this.Microhelp="View or add lead to case."
+end on
+
+type m_notes from menu within m_more
+end type
+
+event clicked;iw_parent = this.ParentWindow
+
+If IsValid(iw_parent) Then
+	//iw_parent.wf_notes()
+	iw_parent.event ue_notes()
+End If
+end event
+
+on m_notes.create
+this.Text="Notes"
+this.Microhelp="View or add notes to case."
+end on
+
+type m_folder from menu within m_more
+end type
+
+event clicked;iw_parent = this.ParentWindow
+
+If IsValid(iw_parent) Then
+	iw_parent.wf_folder()
+End If
+end event
+
+on m_folder.create
+this.Text="Folder"
+this.Microhelp="Open case folder."
+end on
+
+type m_1 from menu within m_menu
+end type
+
+on m_1.create
+this.Text="-"
+end on
+
+type m_createtrack from menu within m_menu
+end type
+
+event clicked;//iw_parent = this.ParentWindow
+//
+//If IsValid(iw_parent) Then
+//	iw_parent.event ue_tracking()
+//End If
+
+SetPointer(HourGlass!)
+iw_parent = this.ParentWindow
+
+If IsValid(iw_parent) Then
+	fx_m_maintaintarget()
+End If
+end event
+
+on m_createtrack.create
+this.Text="Create &Track"
+this.Microhelp="Create new track(s) for this case."
+end on
+
+type m_refercase from menu within m_menu
+end type
+
+event clicked;iw_parent = this.ParentWindow
+
+If IsValid(iw_parent) Then
+	iw_parent.event ue_refer_case()
+End If
+end event
+
+on m_refercase.create
+this.Text="&Refer Case"
+this.Microhelp="Refer this case to another department."
+end on
+
+type m_2 from menu within m_menu
+end type
+
+on m_2.create
+this.Text="-"
+end on
+
+type m_help from menu within m_menu
+end type
+
+event clicked;SetPointer(HourGlass!)
+
+iw_parent = this.parentwindow
+
+If IsValid(iw_parent) Then
+	iw_parent.of_help ('W_CASE_MAINT','TABPAGE_CURRENT')
+End If
+
+end event
+
+on m_help.create
+this.Text="&Help"
+this.Microhelp="Display help for this tab."
+end on
+

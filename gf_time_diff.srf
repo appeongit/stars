@@ -1,0 +1,70 @@
+HA$PBExportHeader$gf_time_diff.srf
+global type gf_time_diff from function_object
+end type
+
+forward prototypes
+global function string gf_time_diff (datetime begin_time, datetime end_time)
+end prototypes
+
+global function string gf_time_diff (datetime begin_time, datetime end_time);long total_seconds, mins, hrss, secs, dayss, tt
+string time_string
+
+setpointer(hourglass!)
+
+time_string = ""
+total_seconds = SecondsAfter(Time(begin_time),Time(end_time))
+total_seconds = total_seconds + DaysAfter(Date(begin_time),Date(end_time)) * 3600 * 24
+if total_seconds < 0 Then	
+	total_seconds = - total_seconds
+end if
+//86400 in day
+dayss = total_seconds / 86400 
+If total_seconds > 86400 Then
+	total_seconds = total_seconds - mod(total_seconds, 86400)
+End If
+
+If total_seconds > 3600 Then
+	hrss = int( total_seconds / 3600 )
+	total_seconds = total_seconds - mod(total_seconds , 3600)
+end if
+
+If total_seconds > 60 then
+	mins = int (total_seconds / 60 )
+	total_seconds = total_seconds - mod(total_seconds , 60)
+End if
+
+secs = total_seconds
+
+
+//time_string = string (dayss ) + " "
+hrss = hrss + ( 24 * dayss )
+time_string = time_string + string(hrss, "###00:") 
+time_string = time_string + string(mins, "00:") 
+time_string = time_string + string(secs, "00")
+
+//If dayss > 0 then 
+//	time_string = string (dayss ) + " "
+//	time_string = time_string + string(hrss, "00") + ":"
+//	time_string = time_string + string(mins, "00") + ":"
+//	time_string = time_string + string(secs, "00")
+//else
+//	If hrss > 0 Then
+//		time_string = time_string + string(hrss, ":00") + ":"
+//		time_string = time_string + string(mins, ":00") + ":"
+//		time_string = time_string + string(secs, ":00")
+//	else
+//		If mins > 0 then	
+//			time_string = time_string + string(mins, ":00") + ":"
+//			time_string = time_string + string(secs, ":00")
+//		else
+//			time_string = time_string + string(secs, ":00")
+//		end if			
+//	end if
+//end if
+//
+return time_string
+
+
+
+end function
+

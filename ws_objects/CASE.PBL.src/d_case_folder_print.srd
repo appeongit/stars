@@ -1,0 +1,49 @@
+﻿$PBExportHeader$d_case_folder_print.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=1 timer_interval=0 color=1073741824 processing=0 print.documentname="CASE LINK"  print.orientation=0 print.margin.left=24 print.margin.right=24 print.margin.top=24 print.margin.bottom=24 print.paper.size=0 print.paper.source=0 selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=77 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=24 color="536870912" )
+table(column=(type=char(10) key=yes updatewhereclause=yes name=case_id dbname="CASE_LINK.CASE_ID"  )
+column=(type=char(2) key=yes updatewhereclause=yes name=case_spl dbname="CASE_LINK.CASE_SPL"  )
+column=(type=char(2) key=yes updatewhereclause=yes name=case_ver dbname="CASE_LINK.CASE_VER"  )
+column=(type=char(3) key=yes updatewhereclause=yes name=link_type dbname="CASE_LINK.LINK_TYPE"  )
+column=(type=char(10) updatewhereclause=yes name=link_key dbname="CASE_LINK.LINK_KEY"  )
+column=(type=char(20) key=yes updatewhereclause=yes name=link_name dbname="CASE_LINK.LINK_NAME"  )
+ retrieve="  SELECT CASE_LINK.CASE_ID,   
+         CASE_LINK.CASE_SPL,   
+         CASE_LINK.CASE_VER,   
+         CASE_LINK.LINK_TYPE,   
+         CASE_LINK.LINK_KEY,   
+         CASE_LINK.LINK_NAME  
+    FROM CASE_LINK  
+   WHERE ( CASE_LINK.CASE_ID = Upper(:case_id) ) AND  
+         ( CASE_LINK.CASE_SPL = Upper(:case_spl) ) AND  
+         ( CASE_LINK.CASE_VER = Upper(:case_ver) ) AND 
+			( CASE_LINK.LINK_STATUS <> 'P')  
+"
+  update="CASE_LINK" updatewhere=0 updatekeyinplace=no
+  arguments=(("case_id", string), ("case_spl", string), ("case_ver", string))
+)
+text(name=t_1 band=header font.charset="0" font.face="System" font.family="2" font.height="-12" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="72" y="0" height="16" width="70" text="CASE LINK" accessibledescription="~"CASE LINK~"	~"CASE LINK~"" accessiblename="~"CASE LINK~"	~"CASE LINK~"" accessiblerole=42 )
+text(name=t_2 band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="1" border="0" x="211" y="0" height="16" width="108" text="Date Requested:" accessibledescription="~"Date Requested~"	~"Date Requested~"" accessiblename="~"Date Requested~"	~"Date Requested~"" accessiblerole=42 )
+text(name=case_id_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="7" y="21" height="16" width="57" text="CASE ID:" accessibledescription="~"CASE ID~"	~"CASE ID~"" accessiblename="~"CASE ID~"	~"CASE ID~"" accessiblerole=42 )
+compute(name=compute_1 band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" x="80" y="21" height="16" width="203" format="[GENERAL]" expression="string( case_id  +  case_spl  +  case_ver )" alignment="0" border="0" crosstab.repeat=no accessibledescription="~"Case ID~"	~"Case ID~"" accessiblename="~"Case ID~"	~"Case ID~"" )
+compute(name=compute_2 band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" x="289" y="20" height="16" width="80" format="[general]" expression="'Page ' + page()" alignment="1" border="0" crosstab.repeat=no accessibledescription="~"Page~"	~"Page~"" accessiblename="~"Page~"	~"Page~"" )
+text(name=link_key_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="4" x="80" y="48" height="27" width="203" text="Link Key" accessibledescription="~"Link Key~"	~"Link Key~"" accessiblename="~"Link Key~"	~"Link Key~"" accessiblerole=42 )
+text(name=link_type_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="4" x="4" y="48" height="27" width="44" text="Type" accessibledescription="~"Type~"	~"Type~"" accessiblename="~"Type~"	~"Type~"" accessiblerole=42 )
+text(name=st_report_date band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="1" border="0" x="321" y="0" height="16" width="96" text="" accessibledescription="~"Report Date~"	~"Report Date~"" accessiblename="~"Report Date~"	~"Report Date~"" accessiblerole=42 )
+column(name=link_type band=detail id=4 x="8" y="1" height="19" width="39" color="33554432" border="0" alignment="0" format="[general]" edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=3 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Type~"	~"Type~"" accessiblename="~"Type~"	~"Type~"" )
+column(name=link_name band=detail id=6 x="80" y="1" height="19" width="203" color="33554432" border="0" alignment="0" format="[general]" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Link Key~"	~"Link Key~"" accessiblename="~"Link Key~"	~"Link Key~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" generateJavaScript="1" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

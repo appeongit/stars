@@ -1,0 +1,6 @@
+HA$PBExportHeader$sx_sql_statement_container.srs
+$PBExportComments$A container for the array of sx_sql_statement.
+global type sx_sql_statement_container from structure
+	sx_sql_statement		lsx_sql_statement[]
+end type
+

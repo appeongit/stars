@@ -1,0 +1,50 @@
+HA$PBExportHeader$f_debug_box.srf
+$PBExportComments$Opens window w_debug_box passing the current window title and an error message. Window w_debug_box acts differently than w_error_box in that it will concatenate many error messages one after the other.  Used mainly by developers.
+global type f_debug_box from function_object
+end type
+
+forward prototypes
+global subroutine f_debug_box (string as_title, string as_msg)
+end prototypes
+
+global subroutine f_debug_box (string as_title, string as_msg);///////////////////////////////////////////////////////////////////////////
+//
+// Function:	f_debug_box
+//
+//	Purpose:
+//
+//		Opens the non-modal window W_DEBUG_BOX to display
+//		developer supplied error messages while debugging an application.
+//		The Messages passed to this function will display on w_debug_box
+//		appended to each other with a new line between each message. Window
+//		W_DEBUG_BOX was inherited from W_ERROR_BOX.
+//
+// Scope:		public
+//
+// Parameters:
+//					as_title			: string
+//					as_msg 	 		: string
+//
+// Returns : None
+//
+//	DATE			NAME		REVISION
+// ----		------------------------------------------------------------
+// POWERSOFT CORPORATION	INITIAL VERSION
+//
+//////////////////////////////////////////////////////////////////////
+
+if handle(w_debug_box) = 0 then
+	open(w_debug_box)
+	w_debug_box.title 		 = as_title
+	w_debug_box.mle_msg.text = as_msg
+else
+// it's already been opened by some other debug so append the debug 
+// message
+	w_debug_box.mle_msg.setredraw(false)
+	w_debug_box.mle_msg.text = w_debug_box.mle_msg.text + "~r~n" + as_msg
+	w_debug_box.mle_msg.scroll(w_debug_box.mle_msg.linecount() - 11) // 11 visible lines in the mle
+	w_debug_box.mle_msg.setredraw(true)
+end if
+
+end subroutine
+

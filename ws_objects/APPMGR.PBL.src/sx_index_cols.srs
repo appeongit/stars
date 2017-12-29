@@ -1,0 +1,8 @@
+﻿$PBExportHeader$sx_index_cols.srs
+$PBExportComments$List of indexes used in n_cst_temp_table_attrib
+global type sx_index_cols from structure
+	string		is_index_col[]
+	string		is_index_type
+	integer		ii_col_number[]
+end type
+

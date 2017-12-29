@@ -1,0 +1,13 @@
+HA$PBExportHeader$sx_criteria_data.srs
+global type sx_criteria_data from structure
+	string		left_paren[]
+	string		expression_one[]
+	string		relational_op[]
+	string		expression_two[]
+	string		right_paren[]
+	string		logical_op[]
+	string		data_type[]
+	boolean		summary_flag
+	string		ranking[2]
+end type
+

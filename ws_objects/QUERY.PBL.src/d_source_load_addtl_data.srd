@@ -1,0 +1,14 @@
+﻿$PBExportHeader$d_source_load_addtl_data.srd
+$PBExportComments$Dataobject for datastore in w_query_parm's ue_source_load_additional_data event. <logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=char(100) updatewhereclause=yes name=dep_tbls dbname="SUB_STEP_CNTL.DEP_TBLS" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"SUB_STEP_CNTL~" ) COLUMN(NAME=~"SUB_STEP_CNTL.DEP_TBLS~")WHERE(    EXP1 =~"SUB_STEP_CNTL.SUBC_ID~"   OP =~"=~"    EXP2 =~"Upper(:as_SubSetId)~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"SUB_STEP_CNTL.INV_TYPE~"   OP =~"=~"    EXP2 =~"Upper(:as_InvoiceType)~" ) ) ARG(NAME = ~"as_SubSetId~" TYPE = string)  ARG(NAME = ~"as_InvoiceType~" TYPE = string) " arguments=(("as_SubSetId", string),("as_InvoiceType", string)) )
+text(band=header alignment="2" text="Dep Tbls" border="0" color="0" x="9" y="8" height="64" width="2743"  name=dep_tbls_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="2743" format="[general]"  name=dep_tbls edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

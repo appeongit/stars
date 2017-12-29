@@ -1,0 +1,31 @@
+HA$PBExportHeader$fx_m_listtrackingentries.srf
+$PBExportComments$Case|ListTrackingEntries
+global type fx_m_listtrackingentries from function_object
+end type
+
+forward prototypes
+global subroutine fx_m_listtrackingentries ()
+end prototypes
+
+global subroutine fx_m_listtrackingentries ();//03-04-98 ajs 4.0 TS145-Globals
+Int rc 
+setpointer(hourglass!)
+setmicrohelp(w_main,'')
+rc = fx_active_case_edit()
+If rc <>0 Then
+	COMMIT using Stars2ca;
+	if Stars2ca.of_check_status() <> 0 then
+		errorbox(stars2ca,'Error performing commit in fx_m_listtrackingentries.')
+	end if
+	RETURN
+End If
+
+COMMIT using Stars2ca;
+if Stars2ca.of_check_status() <> 0 then
+	errorbox(stars2ca,'Error performing commit in fx_m_listtrackingentries.')
+end if
+
+//gv_case_active = gv_active_case	//ajs 4.0 03-04-98
+OpenSheet(w_tracking_list,mdi_main_frame,help_menu_position,Layered!)
+end subroutine
+

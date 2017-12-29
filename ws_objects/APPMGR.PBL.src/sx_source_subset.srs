@@ -1,0 +1,6 @@
+﻿$PBExportHeader$sx_source_subset.srs
+global type sx_source_subset from structure
+	string		source_subset_id
+	integer		level_num
+end type
+

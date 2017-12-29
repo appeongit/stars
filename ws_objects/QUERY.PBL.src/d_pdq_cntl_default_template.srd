@@ -1,0 +1,14 @@
+﻿$PBExportHeader$d_pdq_cntl_default_template.srd
+$PBExportComments$<logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=1090519039 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(10) updatewhereclause=yes name=query_id dbname="PDQ_CNTL.QUERY_ID" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"PDQ_CNTL~" ) COLUMN(NAME=~"PDQ_CNTL.QUERY_ID~")WHERE(    EXP1 =~"PDQ_CNTL.USER_ID~"   OP =~"=~"    EXP2 =~"Upper(:arg_user_id)~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"PDQ_CNTL.QUERY_TYPE~"   OP =~"=~"    EXP2 =~"Upper(:arg_query_type)~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"PDQ_CNTL.ADDL_QUERY_TYPE~"   OP =~"=~"    EXP2 =~"Upper(:arg_addl_query_type)~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"PDQ_CNTL.DEFAULT_TEMPLATE~"   OP =~"=~"    EXP2 =~"'Y'~" ) ) ARG(NAME = ~"arg_user_id~" TYPE = string)  ARG(NAME = ~"arg_query_type~" TYPE = string)  ARG(NAME = ~"arg_addl_query_type~" TYPE = string) " arguments=(("arg_user_id", string),("arg_query_type", string),("arg_addl_query_type", string)) )
+text(band=header alignment="2" text="Query Id" border="0" color="0" x="5" y="4" height="64" width="402"  name=query_id_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="76" width="402" format="[general]"  name=query_id edit.limit=10 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

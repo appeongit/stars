@@ -1,0 +1,293 @@
+﻿$PBExportHeader$m_patt_options.srm
+$PBExportComments$Options tab RMM for w_sampling_analysis_new
+forward
+global type m_patt_options from m_patt_ancestor
+end type
+type m_clear from menu within m_dummyitem
+end type
+type m_-1 from menu within m_dummyitem
+end type
+type m_save from menu within m_dummyitem
+end type
+type m_userpattern from menu within m_save
+end type
+type m_patternreportandcreatesubset from menu within m_save
+end type
+type m_save from menu within m_dummyitem
+m_userpattern m_userpattern
+m_patternreportandcreatesubset m_patternreportandcreatesubset
+end type
+type m_saveas from menu within m_dummyitem
+end type
+type m_link from menu within m_dummyitem
+end type
+type m_exportpattern from menu within m_dummyitem
+end type
+type m_-2 from menu within m_dummyitem
+end type
+type m_notes from menu within m_dummyitem
+end type
+type m_- from menu within m_dummyitem
+end type
+type m_help from menu within m_dummyitem
+end type
+end forward
+
+global type m_patt_options from m_patt_ancestor
+end type
+global m_patt_options m_patt_options
+
+on m_patt_options.create
+m_patt_options=this
+call super::create
+end on
+
+on m_patt_options.destroy
+call super::destroy
+end on
+
+type m_dummyitem from m_patt_ancestor`m_dummyitem within m_patt_options
+m_clear m_clear
+m_-1 m_-1
+m_save m_save
+m_saveas m_saveas
+m_link m_link
+m_exportpattern m_exportpattern
+m_-2 m_-2
+m_notes m_notes
+m_- m_-
+m_help m_help
+end type
+
+on m_dummyitem.create
+call super::create
+this.Text="m_patt_options"
+this.m_clear=create m_clear
+this.m_-1=create m_-1
+this.m_save=create m_save
+this.m_saveas=create m_saveas
+this.m_link=create m_link
+this.m_exportpattern=create m_exportpattern
+this.m_-2=create m_-2
+this.m_notes=create m_notes
+this.m_-=create m_-
+this.m_help=create m_help
+this.Item[UpperBound(this.item)+1]=this.m_clear
+this.Item[UpperBound(this.item)+1]=this.m_-1
+this.Item[UpperBound(this.item)+1]=this.m_save
+this.Item[UpperBound(this.item)+1]=this.m_saveas
+this.Item[UpperBound(this.item)+1]=this.m_link
+this.Item[UpperBound(this.item)+1]=this.m_exportpattern
+this.Item[UpperBound(this.item)+1]=this.m_-2
+this.Item[UpperBound(this.item)+1]=this.m_notes
+this.Item[UpperBound(this.item)+1]=this.m_-
+this.Item[UpperBound(this.item)+1]=this.m_help
+end on
+
+on m_dummyitem.destroy
+call super::destroy
+destroy(this.m_clear)
+destroy(this.m_-1)
+destroy(this.m_save)
+destroy(this.m_saveas)
+destroy(this.m_link)
+destroy(this.m_exportpattern)
+destroy(this.m_-2)
+destroy(this.m_notes)
+destroy(this.m_-)
+destroy(this.m_help)
+end on
+
+type m_clear from menu within m_dummyitem
+end type
+
+event clicked;//**********************************************************************
+//	M_Patt_Options.M_Clear
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+integer li_rc
+
+iw_parent = This.ParentWindow
+
+if isvalid(iw_parent) then
+	iw_parent.event Ue_Clear_Options_Tab()
+end if
+
+
+end event
+
+on m_clear.create
+this.Text="&Clear"
+this.Microhelp="Clear the contents of this tab and display its original values."
+end on
+
+type m_-1 from menu within m_dummyitem
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_save from menu within m_dummyitem
+m_userpattern m_userpattern
+m_patternreportandcreatesubset m_patternreportandcreatesubset
+end type
+
+on m_save.create
+this.Text="&Save"
+this.m_userpattern=create m_userpattern
+this.m_patternreportandcreatesubset=create m_patternreportandcreatesubset
+this.Item[]={this.m_userpattern, &
+this.m_patternreportandcreatesubset}
+end on
+
+on m_save.destroy
+destroy(this.m_userpattern)
+destroy(this.m_patternreportandcreatesubset)
+end on
+
+type m_userpattern from menu within m_save
+end type
+
+event clicked;//**********************************************************************
+//	M_Patt_Options.M_UserPattern
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_save('S')
+
+end event
+
+on m_userpattern.create
+this.Text="&User Pattern"
+this.Microhelp="Save this pattern."
+end on
+
+type m_patternreportandcreatesubset from menu within m_save
+end type
+
+event clicked;//**********************************************************************
+//	M_Patt_Options.M_PatternReportandSubset
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_save_report_and_subset()
+
+end event
+
+on m_patternreportandcreatesubset.create
+this.Text="&Pattern Report and Create Subset"
+this.Microhelp="Create a subset based on this report."
+end on
+
+type m_saveas from menu within m_dummyitem
+end type
+
+on m_saveas.create
+this.Text="Save &As"
+this.Microhelp="Create a new pattern based on the data on the tabs."
+end on
+
+event clicked;//**********************************************************************
+//	M_Patt_Options.M_SaveAs
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_save('A')
+
+end event
+
+type m_link from menu within m_dummyitem
+end type
+
+on m_link.create
+this.Text="&Link..."
+this.Microhelp="Link this pattern to a case."
+end on
+
+event clicked;//**********************************************************************
+//	M_Patt_Options.M_Link
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_link()
+
+end event
+
+on m_link.destroy
+end on
+
+type m_exportpattern from menu within m_dummyitem
+end type
+
+on m_exportpattern.create
+this.Text="&Export Pattern"
+this.Microhelp="Export this pattern to a file."
+end on
+
+event clicked;//**********************************************************************
+//	M_Patt_Options.M_ExportPattern
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_export()
+
+end event
+
+type m_-2 from menu within m_dummyitem
+end type
+
+on m_-2.create
+this.Text="-"
+end on
+
+type m_notes from menu within m_dummyitem
+end type
+
+event clicked;//**********************************************************************
+//	m_notes
+//
+// 10/03/00	FDG	Track 3006c.  Stars 4.6.  Created. 
+//**********************************************************************
+
+of_notes()
+
+end event
+
+on m_notes.create
+this.Text="Notes..."
+this.Microhelp="Add or modify a note for this pattern"
+end on
+
+type m_- from menu within m_dummyitem
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_help from menu within m_dummyitem
+end type
+
+on m_help.create
+this.Text="&Help"
+this.Microhelp="Display help for this tab."
+end on
+
+event clicked;//**********************************************************************
+//	M_Patt_Options.M_Help
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_help('TABPAGE_OPTIONS')
+
+end event
+

@@ -1,0 +1,9 @@
+HA$PBExportHeader$sx_fields.srs
+$PBExportComments$fields & table type
+global type sx_fields from structure
+    string field
+    string tbl_type
+    string tbl_rel
+    string main_tbl
+end type
+

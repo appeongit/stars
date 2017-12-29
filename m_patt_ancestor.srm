@@ -1,0 +1,187 @@
+HA$PBExportHeader$m_patt_ancestor.srm
+$PBExportComments$Ancestor RMM for w_sampling_analysis_new
+forward
+global type m_patt_ancestor from menu
+end type
+type m_dummyitem from menu within m_patt_ancestor
+end type
+type m_dummyitem from menu within m_patt_ancestor
+end type
+end forward
+
+global type m_patt_ancestor from menu
+m_dummyitem m_dummyitem
+end type
+global m_patt_ancestor m_patt_ancestor
+
+type variables
+w_sampling_analysis_new  iw_parent
+end variables
+
+forward prototypes
+public function integer of_save (string as_mode)
+public subroutine of_export ()
+public subroutine of_help (string as_tab)
+public subroutine of_save_report_and_subset ()
+public function integer of_link ()
+public subroutine of_window_operations (string as_operation)
+public subroutine of_notes ()
+end prototypes
+
+public function integer of_save (string as_mode);//**********************************************************************
+//	M_Patt_Ancestor.Of_Save
+//
+// 01/19/00	FNC	Created. 
+//						Pattern Library/ Import and Export. Trigger save event
+//						in w_sampling_analysis_new
+//**********************************************************************
+
+integer li_rc
+
+iw_parent = This.ParentWindow
+
+if isvalid(iw_parent) then
+	li_rc = iw_parent.event ue_save_pattern(as_mode)
+end if
+
+return li_rc
+end function
+
+public subroutine of_export ();//**********************************************************************
+//	M_Patt_Ancestor.Of_Export
+//
+// 01/19/00	FNC	Created. 
+//						Pattern Library/ Import and Export. Trigger save event
+//						in w_sampling_analysis_new
+//**********************************************************************
+
+integer li_rc
+
+iw_parent = This.ParentWindow
+
+if isvalid(iw_parent) then
+iw_parent.event ue_export()
+end if
+
+
+end subroutine
+
+public subroutine of_help (string as_tab);//**********************************************************************
+// M_Patt_Ancestor.Of_Help
+//
+// 01/19/00	FNC	Created. 
+//						Pattern Library/ Import and Export. Trigger save event
+//						in w_sampling_analysis_new
+//**********************************************************************
+
+iw_parent = This.ParentWindow
+
+if isvalid(iw_parent) then
+	iw_parent.of_help("w_sampling_analysis_new",as_tab)
+end if
+
+
+end subroutine
+
+public subroutine of_save_report_and_subset ();//**********************************************************************
+//	M_Patt_Ancestor.Of_Save_Report_and_Subset
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+integer li_rc
+
+iw_parent = This.ParentWindow
+
+if isvalid(iw_parent) then
+	iw_parent.event ue_report_and_subset()
+end if
+
+
+end subroutine
+
+public function integer of_link ();//**********************************************************************
+//	M_Patt_Ancestor.Of_Link
+//
+// 01/19/00	FNC	Created. 
+//						Pattern Library/ Import and Export. Trigger save event
+//						in w_sampling_analysis_new
+//**********************************************************************
+
+integer li_rc
+
+iw_parent = This.ParentWindow
+
+if isvalid(iw_parent) then
+	li_rc = iw_parent.event ue_save_pattern('L')
+end if
+
+return li_rc
+end function
+
+public subroutine of_window_operations (string as_operation);//********************************************************************
+// M_Patt_Ancestor.Of_Window_Operations
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+integer li_rc
+
+iw_parent = This.ParentWindow
+
+iw_parent.of_set_is_operation(as_operation)
+
+if isvalid(iw_parent) then
+	iw_parent.event ue_set_window_operations()
+end if 
+
+
+end subroutine
+
+public subroutine of_notes ();//*********************************************************************************
+// Script Name:	of_notes
+//
+//	Arguments:		None
+//
+// Returns:			None
+//
+//	Description:	This event is called to add/modify a pattern note.  If a note 
+//						is being created for a user-defined pattern and this pattern
+//						is linked to a case, then a case note must be added/modified.
+//
+//*********************************************************************************
+//	
+// 02/01/00 FDG	Stars 4.5	Created
+//
+//*********************************************************************************
+
+Integer	li_rc
+
+iw_parent	=	This.ParentWindow
+
+IF	IsValid (iw_parent)		THEN
+	iw_parent.Event	ue_notes()
+END IF
+
+end subroutine
+
+on m_patt_ancestor.create
+m_patt_ancestor=this
+this.m_dummyitem=create m_dummyitem
+this.Item[]={this.m_dummyitem}
+end on
+
+on m_patt_ancestor.destroy
+destroy(this.m_dummyitem)
+end on
+
+type m_dummyitem from menu within m_patt_ancestor
+end type
+
+on m_dummyitem.create
+this.Text="dummy item"
+end on
+
+on m_dummyitem.destroy
+end on
+

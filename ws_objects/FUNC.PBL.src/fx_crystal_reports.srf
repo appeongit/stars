@@ -1,0 +1,285 @@
+﻿$PBExportHeader$fx_crystal_reports.srf
+$PBExportComments$Ask to save dbf & open Crystal Reports stfunaf.pbl
+global type fx_crystal_reports from function_object
+end type
+
+forward prototypes
+global function integer fx_crystal_reports (uo_query auo_query, string as_path)
+end prototypes
+
+global function integer fx_crystal_reports (uo_query auo_query, string as_path);// fx_crystal_reports
+// HRB 8/8/94
+// opens Crystal Reports
+//
+// doesn't require arguments, returns 0 and performs all necessary error
+// messaging
+//
+// uses gv_crystal_path (path of Crystal Reports) and gv_runcrw_path (path
+// of runcrw which open CR with saved file)
+//
+// functionality: checks active window for all flagged datawindows (flag = 
+// CRYSTAL, title = dw name) and askes user to save dw to dbf, allows user
+// to open CR w/o saving dbf; also checks to see if CR is running by calling
+// fx_is_it_running(), if running makes it active and brings to the front
+//
+//************************************************************************
+// modification 11/4/94 HRB
+// added flag from winparm for demo machine - if running on demo machine, 
+// bypass code using the KRNL386 library since OS2 does not recognize it
+//
+//	FDG	07/18/96	Replace global external functions with NVO GAPI.
+//	JTM	01/29/98	Made major modifications due to auo_Query argument.
+//	FDG	04/27/98	Track 1112.  Default as_path to 'VIEW'.
+// FDG	05/18/98	Track 1243.  When going into crystal reports from
+//						outside of query engine, place the d/w into the 1st
+//						occurence of dw_control (not the last)
+//
+// Gary-R 07/10/2000 Remove and replace two global variables with locals.
+// Gary-R 10/16/2000 3022c Unable to export Pattern Reports
+// GaryR  10/27/2000 3029c Eliminate multiple messages in a row on datawindow export.
+// GaryR	 10/27/2000	2315d	Conforming STARS to the HIPAA Act
+// GaryR  11/06/2000 3032c Eliminate the use of runcrw.exe in STARS
+//************************************************************************
+
+
+Window     active_sheet
+DataWindow dw_control[]
+Long       rc, mc, current_control
+UInt       lv_handle
+Long 		  lv_start_pos,lv_end_pos,lv_length, lv_rc
+Boolean    has_dw = False, lv_user_decision = False, lv_running = False
+String     lv_path_file, lv_filename, lv_path
+String     lv_title, lv_demo, ls_OldTag
+String	  ls_crystal_path //Gary-R 07/10/2000	//, ls_runcrw_path	 //GaryR  11/06/2000 3032c
+Int        li_Index,li_Count,lv_dw_counter,lv_upperbound, li_dw
+
+as_Path = Upper(Trim(as_Path))
+
+setpointer(hourglass!)
+
+ls_crystal_path = Profilestring(gv_ini_path + 'STARS.INI','Carrier','Crystal','') //Gary-R 07/10/2000
+// ls_runcrw_path  = Profilestring(gv_ini_path + 'STARS.INI','Carrier','RunCrystal','') // GaryR  11/06/2000 3032c
+
+// if ls_crystal_path = '' or ls_runcrw_path = '' then		// GaryR  11/06/2000 3032c
+if ls_crystal_path = '' OR NOT FileExists( ls_crystal_path ) then	
+  messagebox('Crystal Reports','The path to Crystal Reports is not' &
+	  							 		+ '~n~rsetup or is invalid in the Stars.ini' &
+										+ '~n~r~n~rContact Your System Administrator', StopSign!)
+  return 0
+end if
+
+lv_demo = ''
+
+SELECT CNTL_ID  
+INTO   :lv_demo  
+FROM   STARS_WIN_PARM  
+WHERE  WIN_ID = 'FX_CRYSTAL_REPORTS'
+USING  stars2ca;
+
+If stars2ca.of_check_status() <> 0 and stars2ca.sqlcode <> 100 Then
+	errorbox(stars2ca,'Error selecting from the win parm table.')
+	return 0
+end if		
+
+COMMIT using Stars2ca;
+if Stars2ca.of_check_status() <> 0 then
+	errorbox(stars2ca,'Error performing commit in fx_crystal_reports.')
+end if
+
+
+setpointer(hourglass!)
+active_sheet = gnv_App.of_Get_Frame().GetActiveSheet()
+
+if (Not IsValid(active_sheet)) then
+   MessageBox('Save Report','No sheet is currently active.',StopSign!)
+	return 0
+end if
+
+// 4.0 JTM 1/29/98
+If IsValid(auo_Query) Then
+	IF as_Path = 'REPORT' THEN
+		// store report datawindow in an array
+		dw_Control[1] = auo_query.of_Get_Report_Dw()
+	//ELSEIF as_Path = 'VIEW' THEN							// FDG 04/27/98
+	ELSE																// FDG 04/27/98
+		// store view datawindow in an array
+		dw_Control[1] = auo_query.of_Get_View_Dw()
+	END IF	
+	ls_OldTag = dw_Control[1].Tag
+	//set tag to satisfy control flow in loop
+	dw_Control[1].Tag = "CRYSTAL"
+	has_dw = True
+Else
+	lv_upperbound = UpperBound(active_sheet.control[])	//KMM 10/3/95
+	for current_control = 1 to lv_upperbound				//KMM 10/3/95
+	  if (active_sheet.control[current_control].TypeOf() = DataWindow!) and &
+		  (active_sheet.control[current_control].visible  = True)        then 
+		  has_dw = True
+		  //dw_Control[current_control] = active_sheet.control[current_control]		// FDG 05/18/98
+		  li_dw ++																						// FDG 05/18/98								
+		  dw_Control[li_dw] = active_sheet.control[current_control]		// FDG 05/18/98
+	  end if
+	next
+End If
+// 4.0 JTM end
+
+// 10/16/2000	GaryR 3022c Begin 
+IF active_sheet.ClassName() = "w_sampling_analysis_new" THEN
+	IF	IsValid( w_sampling_analysis_new.tab_patt.tabpage_report.dw_report ) THEN
+		IF	w_sampling_analysis_new.tab_patt.SelectedTab = 6 THEN
+			has_dw = TRUE
+			dw_control[1] = w_sampling_analysis_new.tab_patt.tabpage_report.dw_report			
+		END IF
+	END IF	
+END IF
+// 10/16/2000	GaryR 3022c End
+
+setpointer(hourglass!)
+if (has_dw = False) then 
+  mc = MessageBox('Crystal Reports','Current Window does NOT contain data to save.' &
+                   + '~n~rDo you wish to open Crystal Reports?',Question!,YesNo!)
+  if mc = 1 then      
+    if lv_demo = 'NODEMO' then
+      lv_running = fx_is_it_running(ls_crystal_path)
+    else
+      lv_running = FALSE
+    end if
+    if not lv_running then
+      MDI_main_frame.SetMicroHelp('Opening Crystal Reports . . .')
+      lv_rc = run(ls_crystal_path,Maximized!)    
+      if lv_rc = -1 then
+      	messagebox('Crystal Reports','Error Opening Crystal Reports~n~rContact Your System Administrator', StopSign!)
+      End If
+	   MDI_main_frame.SetMicroHelp('Ready')
+      RETURN 0
+    else      
+      messagebox('Crystal Reports','The application is already open.')
+      if lv_demo = 'NODEMO' then
+        if upper(right(ls_crystal_path,7)) = 'CRW.EXE' then
+          lv_handle = gapi.of_FindWindow('OWLMDIFrame31','Crystal Reports Pro')        
+          gapi.of_SetActiveWindow(lv_handle)         
+        end if
+      end if
+      RETURN 0
+    end if
+  else
+    RETURN 0
+  end if
+end if
+
+lv_dw_counter = 0
+li_count = UpperBound(dw_Control[])
+
+for li_Index = 1 to li_Count
+  if match(upper(dw_Control[li_Index].tag),"CRYSTAL") then
+	 //restore the previous tag					
+	 if IsValid(auo_query) Then dw_Control[li_Index].Tag = ls_OldTag	// 4.0 JTM 1/30/98
+    lv_start_pos = pos(upper(dw_Control[li_Index].tag),"TITLE")
+    if lv_start_pos = 0 then
+      lv_title = "Data Window"
+    else
+      lv_end_pos = pos(dw_Control[li_Index].tag, "," ,lv_start_pos)  
+      lv_start_pos = pos(dw_Control[li_Index].tag,"=")
+      if lv_end_pos = 0 then  //no comma, end of string
+        lv_length = 100       //so will read to end of string
+      else
+  		  lv_length = lv_end_pos - lv_start_pos - 1
+      end if
+		lv_title = mid(dw_Control[li_Index].tag,lv_start_pos+1,lv_length)      
+	 end if
+	 // GaryR  10/27/2000 3029c
+      mc = messagebox('Save Report',Trim( lv_title ) + &
+						"~r~nSaved report may contain columns not selected in the report!" + &
+						'~n~r~n~rDo you wish to save this data for Crystal Reports?', Question!, YesNo! )  
+      if mc = 1 then
+			// GaryR	10/27/2000	2315d
+			IF fx_disclaimer() = 1 THEN			
+			  lv_dw_counter = lv_dw_counter + 1
+			  MDI_main_frame.SetMicroHelp('Save Report . . .')
+			  rc = GetFileSaveName('MS SaveAs Window',lv_path_file, lv_filename,'dbf','dbf Files (*.dbf),*.dbf')
+			  if rc < 1 then
+				 messagebox('Warning','File not saved.')
+				 MDI_main_frame.SetMicroHelp('Ready')
+				 RETURN 0
+			  end if
+			  rc = dw_Control[li_Index].AcceptText()
+			  rc = dw_Control[li_Index].SaveAs(lv_path_file,dBASE3!,TRUE)          
+			  if rc < 1 then
+				 messagebox('Error','Unable to save file.')
+				 MDI_main_frame.SetMicroHelp('Ready')
+				 RETURN 0
+			  end if
+			ELSE
+				lv_user_decision = True
+			END IF
+		else
+		  lv_user_decision = True
+      end if
+  end if
+next
+
+if lv_dw_counter = 0 then
+  if lv_user_decision = True then
+    mc = MessageBox('Crystal Reports','No data from this window has been saved.'&
+                     + '~n~rDo you wish to open Crystal Reports?',Question!,YesNo!)
+  else
+    mc = MessageBox('Crystal Reports','Current Window does NOT contain data to save.'&
+                   + '~n~rDo you wish to open Crystal Reports?',Question!,YesNo!)    
+  end if
+  if mc = 1 then
+    if lv_demo = 'NODEMO' then
+      lv_running = fx_is_it_running(ls_crystal_path)
+    else
+      lv_running = FALSE
+    end if
+    if not lv_running then
+      MDI_main_frame.SetMicroHelp('Opening Crystal Reports . . .')
+      lv_rc = run(ls_crystal_path,Maximized!)          
+      if lv_rc = -1 then
+      	messagebox('Crystal Reports','Error Opening Crystal Reports~n~rContact Your System Administrator', StopSign!)
+      End If
+      MDI_main_frame.SetMicroHelp('Ready')
+      RETURN 0
+    else      
+      messagebox('Crystal Reports','The application is already open.')
+      if lv_demo = 'NODEMO' then
+        if upper(right(ls_crystal_path,7)) = 'CRW.EXE' then
+          lv_handle = gapi.of_FindWindow('OWLMDIFrame31','Crystal Reports Pro')        
+          gapi.of_SetActiveWindow(lv_handle)         
+        end if
+      end if
+      RETURN 0
+    end if
+  else
+    MDI_main_frame.SetMicroHelp('Ready')
+    RETURN 0
+  end if
+end if
+
+if lv_demo = 'NODEMO' then
+  lv_running = fx_is_it_running(ls_crystal_path)
+else
+  lv_running = FALSE
+end if
+if not lv_running then
+  MDI_main_frame.SetMicroHelp('Opening Crystal Reports . . .')
+  // lv_path = ls_runcrw_path + ' ' + ls_crystal_path + ' ' + lv_path_file	// GaryR  11/06/2000 3032c
+  lv_path = ls_crystal_path
+  lv_rc = run(lv_path,Minimized!)      
+  if lv_rc = -1 then
+    	messagebox('Crystal Reports','Error Opening Crystal Reports~n~rContact Your System Administrator', StopSign!)
+  End If
+  MDI_main_frame.SetMicroHelp('Ready')
+  RETURN 0
+else      
+  messagebox('Crystal Reports','The application is already open.')
+  if lv_demo = 'NODEMO' then
+    if upper(right(ls_crystal_path,7)) = 'CRW.EXE' then
+      lv_handle = gapi.of_FindWindow('OWLMDIFrame31','Crystal Reports Pro')        
+      gapi.of_SetActiveWindow(lv_handle)         
+    end if
+  end if
+  RETURN 0
+end if
+end function
+

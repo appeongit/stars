@@ -1,0 +1,85 @@
+HA$PBExportHeader$fx_load_table_types.srf
+$PBExportComments$Loads the table types based on rel_id and rel_type
+global type fx_load_table_types from function_object
+end type
+
+forward prototypes
+global function integer fx_load_table_types (ref dropdownlistbox ddlb_to_load, string arg_tble_type, string rel_type)
+end prototypes
+
+global function integer fx_load_table_types (ref dropdownlistbox ddlb_to_load, string arg_tble_type, string rel_type);//************************************************************************
+//		Object Type:	Global function
+//		Object Name:	fx_load_table_types
+//		Event Name:		N/A
+//
+//This function loads a drop down list box with the table types
+//depending on the user default of Business type i.e MA/MB/MC
+//This function is used in subset list, subset maint, 
+//Criteria list and Criteria Maint
+//
+// 08/12/97 NLG #171 replace argument gv_sys_dflt by arg_tble_type
+//************************************************************************
+
+String lv_tbl_type, lv_tbl_desc
+
+setpointer(hourglass!)
+
+Declare Tbl_type Cursor for
+	Select id_2,elem_desc
+			from Stars_rel,dictionary
+			where rel_type = Upper( :rel_type ) and
+					rel_id = Upper( :arg_tble_type ) and   //rel_id = :gv_sys_dflt and
+					elem_type = 'TB' and
+					elem_tbl_type = id_2
+			order by id_2
+Using Stars2ca;
+						
+Open tbl_type;
+If stars2ca.of_check_status() <> 0 then
+	COMMIT using Stars2ca;
+	if Stars2ca.of_check_status() <> 0 then
+		errorbox(stars2ca,'Error performing commit in fx_load_tabl_type.')
+	end if
+	Messagebox('EDIT','Unable to open Cursor for table types')
+	Return -1
+End IF
+
+Do while Stars2ca.sqlcode = 0
+		Fetch tbl_type into :lv_tbl_type,:lv_tbl_desc;
+		If stars2ca.of_check_status() = 100 then
+			Exit
+		End If
+
+		If stars2ca.sqlcode <> 0 then
+			COMMIT using Stars2ca;
+			if Stars2ca.of_check_status() <> 0 then
+				errorbox(stars2ca,'Error performing commit in fx_load_tabl_type.')
+			end if
+			Messagebox('EDIT','Unable to open Cursor for table types')
+			Return -1
+		End IF
+		lv_tbl_desc = lv_tbl_type + ' - ' + lv_tbl_desc
+		ddlb_to_load.AddItem(lv_tbl_desc)
+Loop
+
+close tbl_type;
+If stars2ca.of_check_status() <> 0 then
+	COMMIT using Stars2ca;
+	if Stars2ca.of_check_status() <> 0 then
+		errorbox(stars2ca,'Error performing commit in fx_load_tabl_type.')
+	end if
+	Messagebox('EDIT','Unable to Close Cursor for table types')
+	Return	-1
+End IF
+
+COMMIT using Stars2ca;
+if Stars2ca.of_check_status() <> 0 then
+	errorbox(stars2ca,'Error performing commit in fx_load_tabl_type.')
+end if
+
+
+Return 0
+
+
+end function
+

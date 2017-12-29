@@ -1,0 +1,44 @@
+﻿$PBExportHeader$d_items_tied_to_filter.srd
+$PBExportComments$lists PDQ, PDR, or Pattern list tied to a filter <logic>
+release 10;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=144 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(20) updatewhereclause=yes name=tied_to dbname="case_link.tied_to" )
+ column=(type=char(17) updatewhereclause=yes name=typ dbname="typ" )
+ retrieve="select link_name tied_to, 'Predefined Query' typ
+from case_link,  pdq_criteria
+where case_link.link_type = 'PDQ'
+and pdq_criteria.col_value = :arg_filter
+and pdq_criteria.query_id = case_link.link_key
+union
+select link_name tied_to, 'Predefined Report' typ
+from case_link,  pdq_criteria
+where case_link.link_type = 'PDR'
+and pdq_criteria.col_value = :arg_filter
+and pdq_criteria.query_id = case_link.link_key
+union
+select link_name tied_to, 'Pattern' typ
+from case_link,  patt_criteria
+where case_link.link_type = 'PAT'
+and patt_criteria.field_value = :arg_filter
+and patt_criteria.patt_id = case_link.link_key
+" arguments=(("arg_filter", string)) )
+text(band=header alignment="2" text="Case Link
+Tied To" border="0" color="33554432" x="9" y="8" height="128" width="576" html.valueishtml="0"  name=case_link_tied_to_t visible="1"  font.face="Tahoma" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Typ" border="0" color="33554432" x="594" y="8" height="64" width="933" html.valueishtml="0"  name=typ_t visible="1"  font.face="Tahoma" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="76" width="576" format="[general]" html.valueishtml="0"  name=tied_to visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Tahoma" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="594" y="8" height="76" width="933" format="[general]" html.valueishtml="0"  name=typ visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Tahoma" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

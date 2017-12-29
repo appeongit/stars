@@ -1,0 +1,10 @@
+﻿$PBExportHeader$sx_popup_parm.srs
+$PBExportComments$Message structure for w_subset_popup.
+global type sx_popup_parm from structure
+	string		col_desc
+	string		data_type
+	string		totals
+	string		col_name
+	string		col_number
+end type
+

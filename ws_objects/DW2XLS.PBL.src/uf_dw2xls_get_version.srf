@@ -1,0 +1,124 @@
+﻿$PBExportHeader$uf_dw2xls_get_version.srf
+global type uf_dw2xls_get_version from function_object
+end type
+
+forward prototypes
+global function string uf_dw2xls_get_version ()
+end prototypes
+
+global function string uf_dw2xls_get_version ();return '4.0.0'
+
+/* * history * *
+
+4.0
+- Added support for the new Excel file format, OOXML (XML based Excel 2007 format)
+  Set parm.is_version = "OOXML"
+  Default is still 97.
+
+- Added support for rectangles and solid lines (only vertical and horizontal). 
+  Set parm.ib_lines and parm.ib_rectangles.
+  These objects are emulated using slim cells. 
+  Note, that if a line or a rectangle is too close to another cell, then it may be 
+  displayed not properly in Excel.
+
+- Added support for band background color and color expressions
+
+- Added support for exporting more than one datawindow on a single sheet
+  See doc/multidwexample.htm
+
+- Overlapping objects are trimmed so that they do not overlap
+
+- Grid column's header is not exported anymore if the column is hidden
+
+3.2.3
+- Fixed regression in 3.0.5 which caused creating of damaged XLS when some objects have negative coordinates 
+
+3.2.2
+- Fixed regression in 3.2.1 with height.autosize in detail band
+
+3.2.1
+- Fixed exporting of objects outside band bounds
+
+3.2
+- Added support for legacy user code which used some PB2XLS functions removed in DW2XLS 3.1.
+
+- Added support for DataWindow.Print.Orientation
+
+- Added support for <column>.Font.Escapement
+
+3.1.9
+- Fixed regression in 3.1.8
+
+3.1.8
+- Fixed multipart [currency] format processing
+
+3.1.7
+- The XLS header feature is now renamed to the XLS title. 
+  All related parameters is_header_xxxxx were renamed as well to is_title_xxxxx.
+  
+- Fixed converting from Windows time format to Excel time format (added 'tt' to 'AM/PM')
+
+- Fixed setting format for large string cells (>255 chars). Now it's forced to "General"
+
+3.1.6
+- Fixed check for Excel sheet limits: max. rows 65536, max. cols 256
+
+3.1.5
+- Added support for XLS header text. See the is_header_xxxxx parameters in n_dwr_servce_parm 
+
+3.1.4
+- Fixed processing of detail autosizeheight + detail height = 0 
+
+3.1.3
+- Basic Treeview DW support: only leafs (without level bands)
+- Fixed regression in 3.1.X with conversion of ~r in strings
+
+3.1.2
+- fixed incorrect FreeLibrary declaration causing the PB2XLS.DLL stay in memory 
+  until application exits
+- fixed storing wrong strings in XLS
+
+3.1.1
+- fixed hide_grid option processing
+
+3.1
+- removed support for Excel5, only Excel97 is supported
+- added support for font family and font charset properties
+- considerably increased the performance, up to 400% for DWs without dynamic formatting properties
+
+3.0.4
+- Bands with height=0 are not exported any more
+
+3.0.3
+- Fixed null object reference after cancelling the export
+
+3.0.2
+- Increased the default values for slim cell merging: id_min_width = 0.5, id_min_height = 4.0
+
+3.0.1
+- Fixed OLE stream copy for large nested DW data
+- Fixed empty computes in nested crosstabs
+
+3.0
+- Moved to C++ some code
+- Excel columns that are tighter than the minimum column width are merged with the next column 
+  and rows that are shorter than the minumum row height are merged with the next row.
+  This is controlled by n_dwr_service_parm parameters, id_min_width and id_min_height.
+- Removed the exponential dependence of export time 
+  depending on number of rows. Now it's a linear dependence. 
+- More support for nested DWs and/or expressions for X,Y,W,H.
+  In the previous versions, some combinations of coordinates and expressions
+  could cause improper cell merging in XLS.
+
+2.1.1 
+- Fixed 'page break on group change' handling 
+
+2.1.0.2 
+- Fields with width="0" are not exported
+
+2.1.0.1 
+- Fixed of_save_dw2sheet/of_save_ds2sheet metadata cache
+
+ * * * * * * * */
+end function
+

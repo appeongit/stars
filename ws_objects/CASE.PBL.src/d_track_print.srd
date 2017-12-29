@@ -1,0 +1,112 @@
+﻿$PBExportHeader$d_track_print.srd
+$PBExportComments$<logic>
+release 8;
+datawindow(units=1 timer_interval=0 color=1090519039 processing=0 HTMLDW=no print.documentname="CASE TRACK" print.orientation = 2 print.margin.left = 24 print.margin.right = 24 print.margin.top = 24 print.margin.bottom = 24 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=54 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=325 color="536870912" )
+table(column=(type=char(10) update=yes updatewhereclause=yes key=yes name=case_id dbname="TRACK.CASE_ID" initial=" " )
+ column=(type=char(2) update=yes updatewhereclause=yes key=yes name=case_spl dbname="TRACK.CASE_SPL" initial=" " )
+ column=(type=char(2) update=yes updatewhereclause=yes key=yes name=case_ver dbname="TRACK.CASE_VER" initial=" " )
+ column=(type=char(2) update=yes updatewhereclause=yes key=yes name=trk_type dbname="TRACK.TRK_TYPE" initial=" " )
+ column=(type=char(50) update=yes updatewhereclause=yes key=yes name=trk_key dbname="TRACK.TRK_KEY" initial=" " )
+ column=(type=char(50) update=yes updatewhereclause=yes name=trk_key_alt dbname="TRACK.TRK_KEY_ALT" initial=" " )
+ column=(type=char(2) update=yes updatewhereclause=yes name=trk_rel_type dbname="TRACK.TRK_REL_TYPE" initial=" " )
+ column=(type=char(15) update=yes updatewhereclause=yes name=trk_rel_key dbname="TRACK.TRK_REL_KEY" initial=" " )
+ column=(type=char(255) update=yes updatewhereclause=yes name=trk_name dbname="TRACK.TRK_NAME" initial=" " )
+ column=(type=char(1) update=yes updatewhereclause=yes name=alert_ind dbname="TRACK.ALERT_IND" initial=" " )
+ column=(type=datetime update=yes updatewhereclause=yes name=create_datetime dbname="TRACK.CREATE_DATETIME" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=status dbname="TRACK.STATUS" initial=" " )
+ column=(type=char(8) update=yes updatewhereclause=yes name=disp dbname="TRACK.DISP" initial=" " )
+ column=(type=datetime update=yes updatewhereclause=yes name=status_datetime dbname="TRACK.STATUS_DATETIME" )
+ column=(type=long update=yes updatewhereclause=yes name=from_period dbname="TRACK.FROM_PERIOD" initial="0" )
+ column=(type=long update=yes updatewhereclause=yes name=to_period dbname="TRACK.TO_PERIOD" initial="0" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=op_type dbname="TRACK.OP_TYPE" initial=" " )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=op_amt dbname="TRACK.OP_AMT" initial="0" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=amt_recv dbname="TRACK.AMT_RECV" initial="0" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=amt_writeoff dbname="TRACK.AMT_WRITEOFF" initial="0" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_req dbname="TRACK.DATE_REQ" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_rev dbname="TRACK.DATE_REV" )
+ column=(type=char(60) update=yes updatewhereclause=yes name=trk_desc dbname="TRACK.TRK_DESC" initial=" " )
+ column=(type=char(60) update=yes updatewhereclause=yes name=status_desc dbname="TRACK.STATUS_DESC" initial=" " )
+ retrieve="  SELECT TRACK.CASE_ID,   
+         TRACK.CASE_SPL,   
+         TRACK.CASE_VER,   
+         TRACK.TRK_TYPE,   
+         TRACK.TRK_KEY,   
+         TRACK.TRK_KEY_ALT,   
+         TRACK.TRK_REL_TYPE,   
+         TRACK.TRK_REL_KEY,   
+         TRACK.TRK_NAME,   
+         TRACK.ALERT_IND,   
+         TRACK.CREATE_DATETIME,   
+         TRACK.STATUS,   
+         TRACK.DISP,   
+         TRACK.STATUS_DATETIME,   
+         TRACK.FROM_PERIOD,   
+         TRACK.TO_PERIOD,   
+         TRACK.OP_TYPE,   
+         TRACK.OP_AMT,   
+         TRACK.AMT_RECV,   
+         TRACK.AMT_WRITEOFF,   
+         TRACK.DATE_REQ,   
+         TRACK.DATE_REV,   
+         TRACK.TRK_DESC,   
+         TRACK.STATUS_DESC  
+    FROM TRACK  
+   WHERE ( TRACK.CASE_ID =  Upper(:CASE_ID) ) AND  
+         ( TRACK.CASE_SPL = Upper(:CASE_SPL) ) AND  
+         ( TRACK.CASE_VER = Upper(:CASE_VER) )    
+" update="TRACK" updatewhere=2 updatekeyinplace=no arguments=(("CASE_ID", string),("CASE_SPL", string),("CASE_VER", string)) )
+text(band=header alignment="0" text="CASE TRACK" border="0" color="0" x="328" y="0" height="16" width="83" html.valueishtml="0"  name=t_1 visible="1"  font.face="System" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="0" expression="'Page ' + page() "border="0" color="0" x="658" y="29" height="18" width="105" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="0" expression="string( case_id  +  case_spl  +  case_ver )"border="0" color="0" x="69" y="31" height="16" width="136" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="CASE ID:" border="0" color="0" x="7" y="31" height="16" width="57" html.valueishtml="0"  name=case_id_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="DATE REQUESTED:" border="0" color="0" x="501" y="2" height="16" width="127" html.valueishtml="0"  name=t_2 visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="" border="0" color="0" x="658" y="2" height="16" width="105" html.valueishtml="0"  name=st_report_date visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Trk Type:" border="0" color="0" x="63" y="9" height="16" width="60" html.valueishtml="0"  name=trk_type_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="0" color="0" x="136" y="9" height="19" width="29" format="[general]" html.valueishtml="0"  name=trk_type visible="1" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Trk Key:" border="0" color="0" x="251" y="8" height="16" width="53" html.valueishtml="0"  name=trk_key_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="0" color="0" x="320" y="8" height="19" width="105" format="[general]" html.valueishtml="0"  name=trk_key visible="1" edit.limit=14 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Trk Name:" border="0" color="0" x="456" y="8" height="16" width="66" html.valueishtml="0"  name=trk_name_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=90 border="0" color="0" x="536" y="8" height="19" width="248" format="[general]" html.valueishtml="0"  name=trk_name visible="1" edit.limit=32 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Trk Rel Type:" border="0" color="0" x="37" y="41" height="16" width="86" html.valueishtml="0"  name=trk_rel_type_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=70 border="0" color="0" x="136" y="41" height="19" width="29" format="[general]" html.valueishtml="0"  name=trk_rel_type visible="1" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Trk Rel Key:" border="0" color="0" x="226" y="40" height="16" width="79" html.valueishtml="0"  name=trk_rel_key_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=80 border="0" color="0" x="320" y="40" height="19" width="105" format="[general]" html.valueishtml="0"  name=trk_rel_key visible="1" edit.limit=14 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Trk Key Alt:" border="0" color="0" x="448" y="40" height="16" width="73" html.valueishtml="0"  name=trk_key_alt_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="0" color="0" x="536" y="40" height="19" width="105" format="[general]" html.valueishtml="0"  name=trk_key_alt visible="1" edit.limit=14 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Alert Ind:" border="0" color="0" x="66" y="73" height="16" width="57" html.valueishtml="0"  name=alert_ind_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=100 border="0" color="0" x="136" y="73" height="19" width="22" format="[general]" html.valueishtml="0"  name=alert_ind visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="From Period:" border="0" color="0" x="224" y="72" height="16" width="83" html.valueishtml="0"  name=from_period_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=150 border="0" color="0" x="320" y="72" height="19" width="84" format="[general]" html.valueishtml="0"  name=from_period visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="To Period:" border="0" color="0" x="456" y="72" height="16" width="66" html.valueishtml="0"  name=to_period_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=160 border="0" color="0" x="536" y="72" height="19" width="84" format="[general]" html.valueishtml="0"  name=to_period visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Op Type:" border="0" color="0" x="65" y="105" height="16" width="58" html.valueishtml="0"  name=op_type_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=170 border="0" color="0" x="136" y="104" height="19" width="36" format="[general]" html.valueishtml="0"  name=op_type visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Op Amt:" border="0" color="0" x="256" y="104" height="16" width="50" html.valueishtml="0"  name=op_amt_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=180 border="0" color="0" x="320" y="104" height="19" width="84" format="[general]" html.valueishtml="0"  name=op_amt visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Date Req:" border="0" color="0" x="456" y="104" height="16" width="64" html.valueishtml="0"  name=date_req_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=210 border="0" color="0" x="536" y="104" height="19" width="106" format="m/d/yy" html.valueishtml="0"  name=date_req visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Amt Recv:" border="0" color="0" x="58" y="137" height="16" width="65" html.valueishtml="0"  name=amt_recv_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=190 border="0" color="0" x="136" y="136" height="19" width="84" format="$#,##0.00;($#,##0.00)" html.valueishtml="0"  name=amt_recv visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Amt Writeoff:" border="0" color="0" x="224" y="136" height="16" width="83" html.valueishtml="0"  name=amt_writeoff_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=200 border="0" color="0" x="320" y="136" height="19" width="84" format="$#,##0.00;($#,##0.00)" html.valueishtml="0"  name=amt_writeoff visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Date Rev:" border="0" color="0" x="456" y="136" height="16" width="64" html.valueishtml="0"  name=date_rev_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=220 border="0" color="0" x="536" y="136" height="19" width="106" format="m/d/yy" html.valueishtml="0"  name=date_rev visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Status:" border="0" color="0" x="78" y="169" height="16" width="45" html.valueishtml="0"  name=status_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=120 border="0" color="0" x="136" y="168" height="19" width="29" format="[general]" html.valueishtml="0"  name=status visible="1" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Disp:" border="0" color="0" x="272" y="168" height="16" width="34" html.valueishtml="0"  name=disp_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=130 border="0" color="0" x="320" y="168" height="19" width="87" format="[general]" html.valueishtml="0"  name=disp visible="1" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Status Datetime:" border="0" color="0" x="416" y="168" height="16" width="107" html.valueishtml="0"  name=status_datetime_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=140 border="0" color="0" x="536" y="168" height="19" width="106" format="m/d/yy" html.valueishtml="0"  name=status_datetime visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Status Desc:" border="0" color="0" x="41" y="201" height="16" width="82" html.valueishtml="0"  name=status_desc_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="0" tabsequence=240 border="0" color="0" x="136" y="200" height="19" width="428" format="[general]" html.valueishtml="0"  name=status_desc visible="1" edit.limit=60 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Trk Desc:" border="0" color="0" x="62" y="233" height="16" width="61" html.valueishtml="0"  name=trk_desc_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="0" tabsequence=230 border="0" color="0" x="136" y="232" height="19" width="428" format="[general]" html.valueishtml="0"  name=trk_desc visible="1" edit.limit=60 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Created Datetime:" border="0" color="0" x="8" y="264" height="16" width="116" html.valueishtml="0"  name=create_datetime_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=110 border="0" color="0" x="136" y="264" height="19" width="155" format="[shortdate] [time]" html.valueishtml="0"  name=create_datetime visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )
+ 

@@ -1,0 +1,172 @@
+﻿$PBExportHeader$fx_uo_control.srf
+global type fx_uo_control from function_object
+end type
+
+forward prototypes
+global function string fx_uo_control (ref w_uo_win arg_uo_win, datawindow arg_dw, string arg_dw_cntl_text, string arg_dw_control, ref graphicobject arg_row_cnt, sx_decode_structure asx_decode_struct)
+end prototypes
+
+global function string fx_uo_control (ref w_uo_win arg_uo_win, datawindow arg_dw, string arg_dw_cntl_text, string arg_dw_control, ref graphicobject arg_row_cnt, sx_decode_structure asx_decode_struct);// Script Name:fx_uo_control
+//
+// Arguments:  w_uo_win				arg_uo_win
+//					datawindow				arg_dw
+//					string						arg_dw_cntl_text
+//					string						arg_dw_control
+//					graphicobject			arg_row_cnt
+//					sx_decode_structure	asx_decode_struct
+//
+// Returns:		string
+//
+// Description:	Populate the col_name drop down in dw_append_filter.
+//
+//*********************************************************************************
+//
+//	10/08/02		GaryR		Track 2980d		Prevent overlaping objects
+//	05/11/04		GaryR		Track 4016d		Add a Unique Count option to Window Operations
+//	12/15/04		GaryR		Track	4161d	Rename Unique Count to Count Unique Values
+//	07/29/05		GaryR		Track 4432d		Allow multi-column decode in background
+//	04/14/09		Katie			GNL.600.5633	Added logic to handle Append and Create Col Filter.  Added call to the populate columns
+//													windows function.
+//	05/04/09		Katie			GNL.600.5633	Set focus on windows operations data window.
+//	05/07/09		Katie			GNL.600.5633	Only set focus to the windows operations window if the populate columns function
+//													populates columns.
+//	05/19/09		Katie GNL.600.5633						Changes to support the rewrite of the sort logic.
+//
+//*********************************************************************************
+
+setpointer(hourglass!)
+
+If IsValid(arg_uo_win) Then
+	arg_uo_win.visible = False
+Else
+	Open(arg_uo_win)
+	arg_uo_win.visible = False
+End If
+CHOOSE CASE arg_dw_cntl_text
+	CASE 'Code/Decode'
+		arg_dw_control = 'CODE'
+		arg_uo_win.uo_decode.Show()
+		arg_uo_win.uo_sort.hide()
+		arg_uo_win.uo_find.hide()
+		arg_uo_win.uo_rank.hide()
+		arg_uo_win.uo_filter.hide()	
+		arg_uo_win.uo_align_columns.Hide()
+		arg_uo_win.uo_unique_counts.Hide()
+		arg_uo_win.uo_append_filter.Hide()
+		arg_uo_win.visible = True
+		arg_uo_win.wf_size_win()
+	CASE	'Sort'
+		arg_dw_control = 'SORT'
+		arg_uo_win.uo_sort.fuo_set_total_count(arg_row_cnt)  
+		arg_uo_win.uo_sort.fuo_set_dw(arg_dw)     
+		arg_uo_win.uo_sort.show()
+		arg_uo_win.uo_find.hide()				//	10/08/02	GaryR	SPR 2980d
+		arg_uo_win.uo_rank.hide()
+		arg_uo_win.uo_filter.hide()	
+		arg_uo_win.uo_align_columns.Hide()	/* GR 04/17/2000 1707d column alignment */
+		arg_uo_win.uo_unique_counts.Hide()
+		arg_uo_win.uo_decode.Hide()
+		arg_uo_win.uo_append_filter.Hide()		
+		arg_uo_win.visible = True
+		arg_uo_win.wf_size_win()
+	CASE 'Display Filter'
+		arg_dw_control = 'FILTER'
+		arg_uo_win.uo_filter.fuo_set_total_count(arg_row_cnt)  
+		arg_uo_win.uo_filter.fuo_set_dw(arg_dw)     
+		arg_uo_win.uo_filter.show()
+		arg_uo_win.uo_find.hide()
+		arg_uo_win.uo_rank.hide()
+		arg_uo_win.uo_sort.hide()
+		arg_uo_win.uo_align_columns.Hide()	/* GR 04/17/2000 1707d column alignment */
+		arg_uo_win.uo_unique_counts.Hide()
+		arg_uo_win.uo_decode.Hide()
+		arg_uo_win.uo_append_filter.Hide()		
+		arg_uo_win.visible = True
+		arg_uo_win.wf_size_win()		
+	CASE 'Find'
+		arg_dw_control = 'FIND'
+		arg_uo_win.uo_find.fuo_set_dw(arg_uo_win,arg_dw)     
+		arg_uo_win.uo_find.show()
+		arg_uo_win.uo_rank.hide()
+		arg_uo_win.uo_sort.hide()
+		arg_uo_win.uo_filter.hide()
+		arg_uo_win.uo_align_columns.Hide()
+		arg_uo_win.uo_unique_counts.Hide()
+		arg_uo_win.uo_decode.Hide()
+		arg_uo_win.uo_append_filter.Hide()		
+		arg_uo_win.wf_size_win()
+		arg_uo_win.visible = True
+	CASE 'Create Col Filter'
+		arg_dw_control = 'CREATE' 
+		arg_uo_win.uo_append_filter.Show()
+		arg_uo_win.uo_append_filter.of_setcreate( true)
+		arg_uo_win.uo_find.hide()
+		arg_uo_win.uo_rank.hide()
+		arg_uo_win.uo_sort.hide()
+		arg_uo_win.uo_filter.hide()
+		arg_uo_win.uo_align_columns.Hide()
+		arg_uo_win.uo_unique_counts.Hide()
+		arg_uo_win.uo_decode.Hide()
+		arg_uo_win.wf_size_win()
+		arg_uo_win.visible = True
+	CASE 'Append Col Filter'
+		arg_dw_control = 'APPEND'
+		arg_uo_win.uo_append_filter.Show()
+		arg_uo_win.uo_append_filter.of_setcreate(false)		
+		arg_uo_win.uo_find.hide()
+		arg_uo_win.uo_rank.hide()
+		arg_uo_win.uo_sort.hide()
+		arg_uo_win.uo_filter.hide()
+		arg_uo_win.uo_align_columns.Hide()
+		arg_uo_win.uo_unique_counts.Hide()
+		arg_uo_win.uo_decode.Hide()
+		arg_uo_win.wf_size_win()
+		arg_uo_win.visible = True
+	CASE 	'Sort/Rank'
+		arg_dw_control = 'RANK'
+		arg_uo_win.visible = True
+		arg_uo_win.uo_rank.fuo_set_total_count(arg_row_cnt)  
+		arg_uo_win.uo_rank.fuo_set_dw(arg_dw)     
+		arg_uo_win.uo_rank.show()
+		arg_uo_win.uo_find.hide()				//	10/08/02	GaryR	SPR 2980d
+		arg_uo_win.uo_sort.hide()
+		arg_uo_win.uo_filter.hide()	
+		arg_uo_win.uo_align_columns.Hide()	/* GR 04/17/2000 1707d column alignment */
+		arg_uo_win.uo_unique_counts.Hide()
+		arg_uo_win.uo_decode.Hide()
+		arg_uo_win.uo_append_filter.Hide()		
+		arg_uo_win.wf_size_win()
+		arg_uo_win.visible = True
+	CASE	'Align' /* GR 04/17/2000 1707d column alignment */
+		arg_dw_control = 'ALIGN'		
+		arg_uo_win.uo_align_columns.Show()
+		arg_uo_win.uo_sort.hide()
+		arg_uo_win.uo_find.hide()				//	10/08/02	GaryR	SPR 2980d
+		arg_uo_win.uo_rank.hide()
+		arg_uo_win.uo_filter.hide()	
+		arg_uo_win.uo_unique_counts.Hide()
+		arg_uo_win.uo_decode.Hide()
+		arg_uo_win.uo_append_filter.Hide()		
+		arg_uo_win.visible = True
+		arg_uo_win.wf_size_win()
+	CASE	'Count Unique Values'
+		arg_dw_control = 'COUNT'
+		arg_uo_win.uo_unique_counts.Show()
+		arg_uo_win.uo_sort.hide()
+		arg_uo_win.uo_find.hide()
+		arg_uo_win.uo_rank.hide()
+		arg_uo_win.uo_filter.hide()	
+		arg_uo_win.uo_align_columns.Hide()
+		arg_uo_win.uo_decode.Hide()
+		arg_uo_win.uo_append_filter.Hide()		
+		arg_uo_win.visible = True
+		arg_uo_win.wf_size_win()
+END CHOOSE
+
+if (arg_uo_win.wf_populatecolumns(asx_decode_struct, arg_dw) >= 0) then 
+	arg_uo_win.setfocus()
+end if
+
+Return arg_dw_control
+end function
+

@@ -1,0 +1,17 @@
+HA$PBExportHeader$sx_criteria.srs
+$PBExportComments$part of sx_subsetting_info structure
+global type sx_criteria from structure
+	string		left_paren
+	string		expression_one
+	string		rel_operator
+	string		expression_two
+	string		right_paren
+	string		logical_operator
+	string		data_type
+	string		orig_expression
+	boolean		exp2_column
+	string		pdr_protect
+	string		expr1_orig
+	string		expr2_orig
+end type
+

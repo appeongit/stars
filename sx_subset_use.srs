@@ -1,0 +1,6 @@
+HA$PBExportHeader$sx_subset_use.srs
+global type sx_subset_use from structure
+	string		inv_type
+	string		subc_tables
+end type
+

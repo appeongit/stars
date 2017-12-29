@@ -1,0 +1,11 @@
+﻿$PBExportHeader$sx_norm_analysis_parms.srs
+global type sx_norm_analysis_parms from structure
+	string		s_sort
+	string		s_invoice_type
+	long		l_rank_num
+	long		l_period
+	long		l_period_key
+	integer		i_num_of_values
+	string		s_type
+end type
+

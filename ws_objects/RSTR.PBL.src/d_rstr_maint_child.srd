@@ -1,0 +1,24 @@
+﻿$PBExportHeader$d_rstr_maint_child.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=0 print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=97 print.margin.bottom=97 print.paper.size=0 print.paper.source=0 selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=1 color="536870912" )
+summary(height=1 color="536870912" )
+footer(height=1 color="536870912" )
+detail(height=73 color="536870912" )
+table(column=(type=char(2) updatewhereclause=yes name=id_2 dbname="STARS_REL.ID_2"  )
+column=(type=char(255) updatewhereclause=yes name=rel_desc dbname="STARS_REL.REL_DESC"  )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"STARS_REL~" ) COLUMN(NAME=~"STARS_REL.ID_2~") COLUMN(NAME=~"STARS_REL.REL_DESC~")WHERE(    EXP1 =~"STARS_REL.REL_TYPE~"   OP =~"=~"    EXP2 =~"'QT'~" ) ) "
+  sort="description A"
+)
+compute(name=description band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" x="1" y="4" height="65" width="919" format="[general]" expression=" id_2" alignment="0" border="0" crosstab.repeat=no accessibledescription="~"Invoice Type ID~"	~"Invoice Type ID~"" accessiblename="~"Invoice Type ID~"	~"Invoice Type ID~"" )
+htmltable()
+htmlgen(pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

@@ -1,0 +1,7 @@
+﻿$PBExportHeader$sx_break_col_info.srs
+global type sx_break_col_info from structure
+	string		x
+	string		width
+	string		format
+end type
+

@@ -1,0 +1,27 @@
+HA$PBExportHeader$gs_table_info.srs
+global type gs_table_info from structure
+    string gsv_replacement_labels[10, 2]
+    string gsv_link_sql[20, 5]
+    string gsv_field_types_exist[20, 4]
+    boolean gsv_break_counts
+    string gsv_user_id
+    string gsv_excluded_cols
+    string gsv_subset_id
+    string gsv_subset_tbl_type
+    string gsv_table_type_name[20, 5]
+    long gsv_table_ct
+    string gsv_orig_table_type
+    string gsv_dw1_table_type
+    string gsv_dw2_table_type
+    string gsv_dw1_key
+    string gsv_dw2_key
+    long gsv_sel_row_ct
+    string gsv_current_dw
+    boolean gsv_multi_tables
+    boolean gsv_join_tables
+    boolean gsv_close_all
+    string gsv_subset_lob
+    string gsv_dependent_table_type[20, 5]
+    boolean gsv_cts_on_breaks
+end type
+

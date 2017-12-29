@@ -1,0 +1,69 @@
+HA$PBExportHeader$fx_dup_check.srf
+global type fx_dup_check from function_object
+end type
+
+forward prototypes
+global function integer fx_dup_check (string target, string target_type)
+end prototypes
+
+global function integer fx_dup_check (string target, string target_type);//**********************************************************************
+//This function checks if this target is being tracked by another case
+// Modifications
+//
+// 03-11-98	AJS	4.0 TS145- fix global variable
+// 05/01/00	FNC	Don't need to check if tracks are in the same case because code
+//						that calls this functions doesn't care.
+//**********************************************************************
+
+integer lv_target_count
+String lv_case_id,lv_case_spl,lv_case_ver
+
+//Is connected at this point to Stars2ca
+//lv_case_id = left(gv_case_active,10)	//ajs 4.0 03-11-98 TS145-fix globals
+//lv_case_spl = mid(gv_case_active,11,2)	//ajs 4.0 03-11-98 TS145-fix globals
+//lv_case_ver = mid(gv_case_active,13,2)	//ajs 4.0 03-11-98 TS145-fix globals
+lv_case_id = left(gv_active_case,10)	//ajs 4.0 03-11-98 TS145-fix globals
+lv_case_spl = mid(gv_active_case,11,2)	//ajs 4.0 03-11-98 TS145-fix globals
+lv_case_ver = mid(gv_active_case,13,2)	//ajs 4.0 03-11-98 TS145-fix globals
+Select count(*) into :lv_target_count
+	from track
+	where trk_key = Upper( :target )
+	 and  trk_type = Upper( :target_type )
+	 AND  ALERT_IND = 'Y'
+Using stars2ca;
+
+If stars2ca.of_check_status() <> 0 then
+   Messagebox('ERROR','Error Reading Track Table for dupes - Sqldbcode - ' + string(stars2ca.sqldbcode) + ' Sqlerrormsg - ' + stars2ca.sqlerrtext)
+	Return -1
+End If
+
+If lv_target_count = 0 then
+	return 100
+End If
+
+// FNC 05/01/00 Start
+////Dupes exist at this point
+//Select count(*) into :lv_target_count
+//	from track
+//	where case_id  = :lv_case_id and
+//			case_spl = :lv_case_spl and
+//			case_ver = :lv_case_ver and
+//			trk_key = :target and
+//	 	   trk_type = :target_type and
+//	 	   ALERT_IND = 'Y'
+//Using stars2ca;
+//
+//If stars2ca.of_check_status() <> 0 then
+//   Messagebox('ERROR','Error Reading Track Table for Case dupes')
+//	Return -1
+//End If
+//
+//If lv_target_count > 0 then
+//	return 200
+//End If
+
+// FNC 05/01/00 End
+
+Return 0
+end function
+

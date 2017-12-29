@@ -1,0 +1,60 @@
+HA$PBExportHeader$d_patt_options.srd
+$PBExportComments$patt_options d/w for user-defined patterns <gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=67108864 processing=0 print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=592 color="536870912" )
+table(column=(type=char(10) key=yes update=yes updatewhereclause=yes initial=" " name=patt_id dbname="PATT_OPTIONS.PATT_ID"  )
+column=(type=char(1) update=yes updatewhereclause=yes initial="A" name=claim_ind dbname="PATT_OPTIONS.CLAIM_IND" 
+ values="Any	A/Same	S/Different	D/"  )
+column=(type=char(1) update=yes updatewhereclause=yes initial="A" name=day_ind dbname="PATT_OPTIONS.DAY_IND" 
+ values="Any	A/Same	S/Different	D/"  )
+column=(type=char(1) update=yes updatewhereclause=yes initial="S" name=patient_ind dbname="PATT_OPTIONS.PATIENT_IND" 
+ values="Any	A/Same	S/Different	D/"  )
+column=(type=char(1) update=yes updatewhereclause=yes initial="A" name=combination_ind dbname="PATT_OPTIONS.COMBINATION_IND" 
+ values="Any in set	A/Different in set	D/"  )
+column=(type=char(1) update=yes updatewhereclause=yes initial="G" name=allwd_srvc_ind dbname="PATT_OPTIONS.ALLWD_SRVC_IND" 
+ values="Allwd Srvc > 0	G/All Claims	A/"  )
+column=(type=char(10) update=yes updatewhereclause=yes initial=" " name=patt_template dbname="PATT_OPTIONS.PATT_TEMPLATE"  )
+column=(type=char(100) update=yes updatewhereclause=yes initial=" " name=subc_tables dbname="PATT_OPTIONS.SUBC_TABLES"  )
+column=(type=char(1) update=yes updatewhereclause=yes initial="N" name=timeframe_from_thru dbname="PATT_OPTIONS.TIMEFRAME_FROM_THRU"  )
+column=(type=long update=yes updatewhereclause=yes initial="0" name=timeframe_button dbname="PATT_OPTIONS.TIMEFRAME_BUTTON"  )
+column=(type=char(2) update=yes updatewhereclause=yes initial=" " name=timeframe_tbl_type_1 dbname="PATT_OPTIONS.TIMEFRAME_TBL_TYPE_1"  )
+column=(type=char(60) update=yes updatewhereclause=yes initial=" " name=timeframe_field_1 dbname="PATT_OPTIONS.TIMEFRAME_FIELD_1"  )
+column=(type=char(30) update=yes updatewhereclause=yes initial=" " name=timeframe_column_1 dbname="PATT_OPTIONS.TIMEFRAME_COLUMN_1"  )
+column=(type=char(2) update=yes updatewhereclause=yes initial=" " name=timeframe_tbl_type_2 dbname="PATT_OPTIONS.TIMEFRAME_TBL_TYPE_2"  )
+column=(type=char(60) update=yes updatewhereclause=yes initial=" " name=timeframe_field_2 dbname="PATT_OPTIONS.TIMEFRAME_FIELD_2"  )
+column=(type=char(30) update=yes updatewhereclause=yes initial=" " name=timeframe_column_2 dbname="PATT_OPTIONS.TIMEFRAME_COLUMN_2"  )
+column=(type=long update=yes updatewhereclause=yes initial="0" name=timeframe_num_of_days dbname="PATT_OPTIONS.TIMEFRAME_NUM_OF_DAYS"  )
+column=(type=char(1) update=yes updatewhereclause=yes initial="A" name=tooth_ind dbname="PATT_OPTIONS.TOOTH_IND" 
+ values="Any Tooth	A/Same Tooth	S/Different Tooth	D/"  )
+column=(type=char(255) update=yes updatewhereclause=yes initial=" " name=rpt_title dbname="PATT_OPTIONS.RPT_TITLE"  )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"PATT_OPTIONS~" ) COLUMN(NAME=~"PATT_OPTIONS.PATT_ID~") COLUMN(NAME=~"PATT_OPTIONS.CLAIM_IND~") COLUMN(NAME=~"PATT_OPTIONS.DAY_IND~") COLUMN(NAME=~"PATT_OPTIONS.PATIENT_IND~") COLUMN(NAME=~"PATT_OPTIONS.COMBINATION_IND~") COLUMN(NAME=~"PATT_OPTIONS.ALLWD_SRVC_IND~") COLUMN(NAME=~"PATT_OPTIONS.PATT_TEMPLATE~") COLUMN(NAME=~"PATT_OPTIONS.SUBC_TABLES~") COLUMN(NAME=~"PATT_OPTIONS.TIMEFRAME_FROM_THRU~") COLUMN(NAME=~"PATT_OPTIONS.TIMEFRAME_BUTTON~") COLUMN(NAME=~"PATT_OPTIONS.TIMEFRAME_TBL_TYPE_1~") COLUMN(NAME=~"PATT_OPTIONS.TIMEFRAME_FIELD_1~") COLUMN(NAME=~"PATT_OPTIONS.TIMEFRAME_COLUMN_1~") COLUMN(NAME=~"PATT_OPTIONS.TIMEFRAME_TBL_TYPE_2~") COLUMN(NAME=~"PATT_OPTIONS.TIMEFRAME_FIELD_2~") COLUMN(NAME=~"PATT_OPTIONS.TIMEFRAME_COLUMN_2~") COLUMN(NAME=~"PATT_OPTIONS.TIMEFRAME_NUM_OF_DAYS~") COLUMN(NAME=~"PATT_OPTIONS.TOOTH_IND~") COLUMN(NAME=~"PATT_OPTIONS.RPT_TITLE~")WHERE(    EXP1 =~"( PATT_OPTIONS.PATT_ID~"   OP =~"=~"    EXP2 =~"Upper(:patt_id) )~" ) ) ARG(NAME = ~"patt_id~" TYPE = string) "
+  update="PATT_OPTIONS" updatewhere=0 updatekeyinplace=no
+  arguments=(("patt_id", string))
+)
+groupbox(name=gb_1 band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" border="5" x="73" y="28" height="504" width="2149" text="Generic Patterns" accessibledescription="~"Generic Patterns~"	~"Generic Patterns~"" accessiblename="~"Generic Patterns~"	~"Generic Patterns~"" accessiblerole=20 )
+column(name=claim_ind tag=" " band=detail id=2 x="407" y="136" height="72" width="585" color="33554432" border="5" alignment="0" format="[general]" ddlb.allowedit=no ddlb.autohscroll=no ddlb.imemode=0 ddlb.limit=0 ddlb.showlist=no ddlb.sorted=no ddlb.useasborder=yes ddlb.vscrollbar=yes ddlb.nilisnull=no ddlb.required=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=10 accessibledescription="~"Claim~"	~"Claim~"" accessiblename="~"Claim~"	~"Claim~"" )
+column(name=day_ind tag=" " band=detail id=3 x="407" y="260" height="72" width="585" color="33554432" border="5" alignment="0" format="[general]" ddlb.allowedit=no ddlb.autohscroll=no ddlb.imemode=0 ddlb.limit=0 ddlb.showlist=no ddlb.sorted=no ddlb.useasborder=yes ddlb.vscrollbar=yes ddlb.nilisnull=no ddlb.required=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=20 accessibledescription="~"Day~"	~"Day~"" accessiblename="~"Day~"	~"Day~"" )
+column(name=patient_ind tag=" " band=detail id=4 x="407" y="384" height="72" width="585" color="33554432" border="5" alignment="0" format="[general]" ddlb.allowedit=no ddlb.autohscroll=no ddlb.imemode=0 ddlb.limit=0 ddlb.showlist=no ddlb.sorted=no ddlb.useasborder=yes ddlb.vscrollbar=yes ddlb.nilisnull=no ddlb.required=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=30 accessibledescription="~"Patient~"	~"Patient~"" accessiblename="~"Patient~"	~"Patient~"" )
+column(name=tooth_ind band=detail id=18 x="1545" y="388" height="72" width="585" color="33554432" border="0" alignment="0" format="[general]" ddlb.allowedit=no ddlb.autohscroll=no ddlb.imemode=0 ddlb.limit=0 ddlb.showlist=no ddlb.sorted=no ddlb.useasborder=yes ddlb.vscrollbar=no ddlb.nilisnull=no ddlb.required=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=60 accessibledescription="~"Tooth~"	~"Tooth~"" accessiblename="~"Tooth~"	~"Tooth~"" )
+column(name=allwd_srvc_ind tag=" " band=detail id=6 x="1545" y="260" height="72" width="585" color="33554432" border="5" alignment="0" format="[general]" ddlb.allowedit=no ddlb.autohscroll=no ddlb.imemode=0 ddlb.limit=0 ddlb.showlist=no ddlb.sorted=no ddlb.useasborder=yes ddlb.vscrollbar=yes ddlb.nilisnull=no ddlb.required=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=50 accessibledescription="~"Allwd Srvc~"	~"Allwd Srvc~"" accessiblename="~"Allowed Srvc~"	~"Allowed Srvc~"" )
+column(name=combination_ind tag=" " band=detail id=5 x="1545" y="136" height="72" width="585" color="33554432" border="5" alignment="0" format="[general]" ddlb.allowedit=no ddlb.autohscroll=no ddlb.imemode=0 ddlb.limit=0 ddlb.showlist=no ddlb.sorted=no ddlb.useasborder=yes ddlb.vscrollbar=yes ddlb.nilisnull=no ddlb.required=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=40 accessibledescription="~"Combination~"	~"Combination~"" accessiblename="~"Combination~"	~"Combination~"" )
+text(name=claim_ind_t band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="165" y="140" height="64" width="224" text="Claim:" accessibledescription="~"Claim~"	~"Claim~"" accessiblename="~"Claim~"	~"Claim~"" accessiblerole=42 )
+text(name=day_ind_t band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="178" y="264" height="64" width="210" text="Day:" accessibledescription="~"Day~"	~"Day~"" accessiblename="~"Day~"	~"Day~"" accessiblerole=42 )
+text(name=patient_ind_t band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="146" y="388" height="64" width="242" text="Patient:" accessibledescription="~"Patient~"	~"Patient~"" accessiblename="~"Patient~"	~"Patient~"" accessiblerole=42 )
+text(name=tooth_ind_t band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="1344" y="392" height="64" width="183" text="Tooth:" accessibledescription="~"Tooth~"	~"Tooth~"" accessiblename="~"Tooth~"	~"Tooth~"" accessiblerole=42 )
+text(name=allwd_srvc_ind_t band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="1134" y="264" height="64" width="393" text="Allwd Srvc:" accessibledescription="~"Allwd Srvc~"	~"Allwd Srvc~"" accessiblename="~"Allwd Srvc~"	~"Allwd Srvc~"" accessiblerole=42 )
+text(name=combination_ind_t band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="1115" y="140" height="64" width="411" text="Combination:" accessibledescription="~"Combination~"	~"Combination~"" accessiblename="~"Combination~"	~"Combination~"" accessiblerole=42 )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" generateJavaScript="1" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

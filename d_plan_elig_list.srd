@@ -1,0 +1,33 @@
+HA$PBExportHeader$d_plan_elig_list.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=1 print.documentname="PLAN ELIGIBILITY LIST"  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=97 print.margin.bottom=97 print.paper.size=0 print.paper.source=0 grid.lines=0 selected.mouse=yes hidegrayline=no showbackcoloronxp=no)
+header(height=216 color="536870912" )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(15) key=yes update=yes updatewhereclause=yes initial=" " name=plan_id dbname="HC_PLAN.PLAN_ID"  )
+column=(type=char(10) update=yes updatewhereclause=yes initial=" " name=ein dbname="HC_PLAN.EIN"  )
+column=(type=char(255) update=yes updatewhereclause=yes initial=" " name=plan_desc dbname="HC_PLAN.PLAN_DESC"  )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"HC_PLAN~" ) COLUMN(NAME=~"HC_PLAN.PLAN_ID~") COLUMN(NAME=~"HC_PLAN.EIN~") COLUMN(NAME=~"HC_PLAN.PLAN_DESC~")WHERE(    EXP1 =~"( HC_PLAN.PLAN_ID~"   OP =~"like~"    EXP2 =~"Upper(:as_id) )~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( HC_PLAN.EIN~"   OP =~"like~"    EXP2 =~"Upper(:as_ein) )~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( HC_PLAN.PLAN_DESC~"   OP =~"like~"    EXP2 =~"Upper(:as_desc) )~" ) ) ORDER(NAME=~"HC_PLAN.PLAN_ID~" ASC=yes ) ARG(NAME = ~"as_id~" TYPE = string)  ARG(NAME = ~"as_ein~" TYPE = string)  ARG(NAME = ~"as_desc~" TYPE = string) "
+  update="HC_PLAN" updatewhere=2 updatekeyinplace=no
+  arguments=(("as_id", string), ("as_ein", string), ("as_desc", string))
+)
+text(name=plan_id_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="4" x="9" y="88" height="120" width="453" text="Plan Id" accessibledescription="~"Plan Id~"	~"Plan Id~"" accessiblename="~"Plan Id~"	~"Plan Id~"" accessiblerole=42 )
+text(name=ein_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="4" x="471" y="88" height="120" width="407" text="Ein" accessibledescription="~"Employee Identification Number~"	~"Employee Identification Number~"" accessiblename="~"Employee Identification Number~"	~"Employee Identification Number~"" accessiblerole=42 )
+text(name=plan_desc_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="4" x="887" y="88" height="120" width="9655" text="Plan Description" accessibledescription="~"Plan Description~"	~"Plan Description~"" accessiblename="~"Plan Description~"	~"Plan Description~"" accessiblerole=42 )
+text(name=t_uppercase visible="1	0" band=header font.charset="0" font.face="Arial" font.family="2" font.height="-12" font.pitch="2" font.weight="400" background.mode="2" background.color="1073741824" color="33554432" alignment="0" border="0" x="887" y="108" height="76" width="9655" text="UPPER" accessibledescription="~"Upper~"	~"Upper~"" accessiblename="~"Upper~"	~"Upper~"" accessiblerole=42 )
+column(name=plan_id band=detail id=1 x="9" y="8" height="76" width="453" color="33554432" border="0" alignment="0" format="[general]" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=yes edit.hscrollbar=no edit.imemode=0 edit.limit=15 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Plan Id~"	~"Plan Id~"" accessiblename="~"Plan Id~"	~"Plan Id~"" )
+column(name=ein band=detail id=2 x="471" y="8" height="76" width="407" color="33554432" border="0" alignment="0" format="[general]" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=yes edit.hscrollbar=no edit.imemode=0 edit.limit=10 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Employee Identification Number~"	~"Employee Identification Number~"" accessiblename="~"Employee Identification Number~"	~"Employee Identification Number~"" )
+column(name=plan_desc tag=";UPPER;" band=detail id=3 x="887" y="8" height="76" width="9655" color="33554432" border="0" alignment="0" format="[general]" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=yes edit.hscrollbar=no edit.imemode=0 edit.limit=255 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Plan Description~"	~"Plan Description~"" accessiblename="~"Plan Description~"	~"Plan Description~"" )
+text(name=header_t band=foreground font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="1161" y="8" height="64" width="928" text="PLAN ELIGIBILITY LIST" accessibledescription="~"Plan Eligibility List~"	~"Plan Eligibility List~"" accessiblename="~"Plan Eligibility List~"	~"Plan Eligibility List~"" accessiblerole=42 )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" generateJavaScript="1" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

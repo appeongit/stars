@@ -1,0 +1,18 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "CLAIMS.PBL" "";
+@end;
+@begin Objects
+ "d_claim_rpt_no_data.srd" "CLAIMS.PBL";
+ "w_claim_rpt_no_data.srw" "CLAIMS.PBL";
+ "d_payment_range.srd" "CLAIMS.PBL";
+ "uo_prepare_detail_win.sru" "CLAIMS.PBL";
+ "d_detail_table_list.srd" "CLAIMS.PBL";
+ "w_detail_backdrop.srw" "CLAIMS.PBL";
+ "w_payment_range.srw" "CLAIMS.PBL";
+ "w_detail_main.srw" "CLAIMS.PBL";
+ "w_parent_details.srw" "CLAIMS.PBL";
+ "m_detail_menu.srm" "CLAIMS.PBL";
+ "m_parent_menu.srm" "CLAIMS.PBL";
+ "w_view_claim.srw" "CLAIMS.PBL";
+@end;

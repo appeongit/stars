@@ -1,0 +1,15 @@
+﻿$PBExportHeader$sx_dictionary_data.srs
+$PBExportComments$Structure to use for all dictionary information
+global type sx_dictionary_data from structure
+	string		elem_tbl_type
+	string		elem_name
+	string		elem_label
+	string		data_type
+	integer		min_len
+	integer		max_len
+	integer		leading_alpha
+	string		disp_format
+	boolean		computed_col
+	string		elem_lookup
+end type
+

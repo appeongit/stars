@@ -1,0 +1,60 @@
+HA$PBExportHeader$fx_get_stars_rel_base_type.srf
+$PBExportComments$Get the base type from Stars_rel
+global type fx_get_stars_rel_base_type from function_object
+end type
+
+forward prototypes
+global function string fx_get_stars_rel_base_type (string as_invoice_type)
+end prototypes
+
+global function string fx_get_stars_rel_base_type (string as_invoice_type);//*************************************************************************
+//		Object Type:	Global function
+//		Object Name:	fx_get_stars_rel_base_type
+//		Event Name:		N/A
+//
+//		This function gets the base_type from table stars_rel.  This table
+//		has already been read into hidden datawindow 
+//		w_main.dw_stars_rel_dict.
+//
+//		Arguments passed to this function:
+//
+//		1.	as_invoice_type -	The invoice type
+//
+//		Returns: String - The base type (i.e. '1500', 'UB92')
+//			'ERROR' - an error occured accessing w_main.dw_stars_rel_dict.
+//
+//*************************************************************************
+//	
+
+string	ls_filter
+int		li_rc
+long		ll_max_rows
+
+	//	Make sure that nothing has been previously filtered
+li_rc			=	w_main.dw_stars_rel_dict.SetFilter("")
+li_rc			=	w_main.dw_stars_rel_dict.Filter()
+
+ls_filter	=	"rel_type = 'QT' and id_2 ='"	+	as_invoice_type +	"'"
+
+li_rc			=	w_main.dw_stars_rel_dict.SetFilter(ls_filter)
+li_rc			=	w_main.dw_stars_rel_dict.Filter()
+
+If	li_rc		<>	1	Then
+	MessageBox ("ERROR","Unable to set the filter on stars_rel in "	+	&
+					"fx_get_stars_rel_base_type().")
+	Return 'ERROR'
+End If
+
+	//	Determine the maximum row count and get the 1st occurence
+	//	of the new filtered datawindow.
+
+ll_max_rows		=	w_main.dw_stars_rel_dict.RowCount()
+
+If	ll_max_rows	=	0		Then
+	Return 'ERROR'
+End If
+
+Return	w_main.dw_stars_rel_dict.GetItemString(1,	"key6")
+
+end function
+

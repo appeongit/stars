@@ -1,0 +1,7 @@
+HA$PBExportHeader$sx_display_criteria.srs
+$PBExportComments$structure passed to w_case_display_criteria
+global type sx_display_criteria from structure
+	string		parm
+	sx_subset_ids		subset_ids
+end type
+

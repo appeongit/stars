@@ -1,0 +1,8 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "STARS.PBL" "";
+@end;
+@begin Objects
+ "stars.sra" "STARS.PBL";
+ "p_stars.srj" "STARS.PBL";
+@end;

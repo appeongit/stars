@@ -1,0 +1,13 @@
+﻿$PBExportHeader$sx_filter_data.srs
+global type sx_filter_data from structure
+    integer sx_col_no
+    string sx_col_name
+    string sx_inv_type
+    string sx_entry_mode
+    string sx_filter_id
+    datawindow sx_data_window
+    commandbutton sx_button
+    window sx_window
+    boolean sx_join
+end type
+

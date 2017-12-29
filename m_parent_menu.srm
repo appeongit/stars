@@ -1,0 +1,744 @@
+HA$PBExportHeader$m_parent_menu.srm
+forward
+global type m_parent_menu from menu
+end type
+type m_file from menu within m_parent_menu
+end type
+type m_print from menu within m_file
+end type
+type m_printersetup from menu within m_file
+end type
+type m_fax from menu within m_file
+end type
+type m_- from menu within m_file
+end type
+type m_savereport from menu within m_file
+end type
+type m_export from menu within m_file
+end type
+type m_-1 from menu within m_file
+end type
+type m_star from menu within m_file
+end type
+type m_-2 from menu within m_file
+end type
+type m_showsql from menu within m_file
+end type
+type m_-3 from menu within m_file
+end type
+type m_cancelquery from menu within m_file
+end type
+type m_-4 from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_parent_menu
+m_print m_print
+m_printersetup m_printersetup
+m_fax m_fax
+m_- m_-
+m_savereport m_savereport
+m_export m_export
+m_-1 m_-1
+m_star m_star
+m_-2 m_-2
+m_showsql m_showsql
+m_-3 m_-3
+m_cancelquery m_cancelquery
+m_-4 m_-4
+m_exit m_exit
+end type
+type m_edit from menu within m_parent_menu
+end type
+type m_copytoclipboard from menu within m_edit
+end type
+type m_edit from menu within m_parent_menu
+m_copytoclipboard m_copytoclipboard
+end type
+global type m_parent_menu from menu
+m_file m_file
+m_edit m_edit
+end type
+end forward
+
+global type m_parent_menu from menu
+m_file m_file
+m_edit m_edit
+end type
+global m_parent_menu m_parent_menu
+
+type prototypes
+
+end prototypes
+
+on m_parent_menu.create
+m_parent_menu=this
+call super::create
+this.m_file=create m_file
+this.m_edit=create m_edit
+this.Item[UpperBound(this.Item)+1]=this.m_file
+this.Item[UpperBound(this.Item)+1]=this.m_edit
+end on
+
+on m_parent_menu.destroy
+call super::destroy
+destroy(this.m_file)
+destroy(this.m_edit)
+end on
+
+type m_file from menu within m_parent_menu
+m_print m_print
+m_printersetup m_printersetup
+m_fax m_fax
+m_- m_-
+m_savereport m_savereport
+m_export m_export
+m_-1 m_-1
+m_star m_star
+m_-2 m_-2
+m_showsql m_showsql
+m_-3 m_-3
+m_cancelquery m_cancelquery
+m_-4 m_-4
+m_exit m_exit
+end type
+
+on m_file.create
+call super::create
+this.text = "&File"
+this.m_print=create m_print
+this.m_printersetup=create m_printersetup
+this.m_fax=create m_fax
+this.m_-=create m_-
+this.m_savereport=create m_savereport
+this.m_export=create m_export
+this.m_-1=create m_-1
+this.m_star=create m_star
+this.m_-2=create m_-2
+this.m_showsql=create m_showsql
+this.m_-3=create m_-3
+this.m_cancelquery=create m_cancelquery
+this.m_-4=create m_-4
+this.m_exit=create m_exit
+this.Item[UpperBound(this.Item)+1]=this.m_print
+this.Item[UpperBound(this.Item)+1]=this.m_printersetup
+this.Item[UpperBound(this.Item)+1]=this.m_fax
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_savereport
+this.Item[UpperBound(this.Item)+1]=this.m_export
+this.Item[UpperBound(this.Item)+1]=this.m_-1
+this.Item[UpperBound(this.Item)+1]=this.m_star
+this.Item[UpperBound(this.Item)+1]=this.m_-2
+this.Item[UpperBound(this.Item)+1]=this.m_showsql
+this.Item[UpperBound(this.Item)+1]=this.m_-3
+this.Item[UpperBound(this.Item)+1]=this.m_cancelquery
+this.Item[UpperBound(this.Item)+1]=this.m_-4
+this.Item[UpperBound(this.Item)+1]=this.m_exit
+end on
+
+on m_file.destroy
+call super::destroy
+destroy(this.m_print)
+destroy(this.m_printersetup)
+destroy(this.m_fax)
+destroy(this.m_-)
+destroy(this.m_savereport)
+destroy(this.m_export)
+destroy(this.m_-1)
+destroy(this.m_star)
+destroy(this.m_-2)
+destroy(this.m_showsql)
+destroy(this.m_-3)
+destroy(this.m_cancelquery)
+destroy(this.m_-4)
+destroy(this.m_exit)
+end on
+
+type m_print from menu within m_file
+end type
+
+on clicked;//***********************************************************************
+//   Date   Init               Description of Changes Made                
+// -------- ---- -------------------------------------------------------- 
+// 10-02-95 FNC  Take upperbound out of loop
+// 03/11/94 JMS  Modified to display message if no sheet is currently
+//               active.
+// 03/11/94 JMS  Modified so only visible datawindows are printed.	
+//***********************************************************************
+
+Window     active_sheet
+DataWindow dw_control
+Long       current_control
+Boolean    has_dw          = False
+int        lv_upperbound
+
+active_sheet = MDI_main_frame.GetActiveSheet()
+if (Not IsValid(active_sheet)) then
+   MessageBox('Print Report','No sheet is currently active.',StopSign!)
+	return
+end if
+
+lv_upperbound = UpperBound(active_sheet.control[])  //10-02-95 FNC
+for current_control = 1 to lv_upperBound            //10-02-95 FNC
+  if (active_sheet.control[current_control].TypeOf() = DataWindow!) and &
+     (active_sheet.control[current_control].visible  = True)        then 
+     has_dw     = True
+     dw_control = active_sheet.control[current_control]
+     MDI_main_frame.SetMicroHelp('Printing Report')
+     OpenWithParm(w_dw_print_what_cols,dw_control)
+  end if
+next
+
+if (has_dw = False) then MessageBox('Print Report','Current Sheet does NOT contain a datawindow to print.',StopSign!)
+  
+MDI_main_frame.SetMicroHelp('Ready')
+end on
+
+on m_print.create
+call super::create
+this.text = "&Print~tCtrl+P"
+this.shortcut = 336
+this.microhelp = "Print Report"
+this.toolbaritemname = "Custom074!"
+this.toolbaritemorder = 15
+end on
+
+on m_print.destroy
+call super::destroy
+end on
+
+type m_printersetup from menu within m_file
+end type
+
+on clicked;printSetup()
+end on
+
+on m_printersetup.create
+call super::create
+this.text = "Printer Setup"
+this.microhelp = "Print Setup"
+this.toolbaritemname = "Report!"
+this.toolbaritemorder = 14
+end on
+
+on m_printersetup.destroy
+call super::destroy
+end on
+
+type m_fax from menu within m_file
+end type
+
+on clicked;// do the fax setup stuff
+
+//	FDG 07/18/96	Replace external functions with NVO GAPI.
+
+
+//TO START THE FAX PROCESS:
+//
+string ClassName = "                     "
+int MainWindow, ListBoxWindow, OKWindow, ChildWindow, rc
+//
+// Find the Print Dialog Window (look for "Printer Select" as the caption)
+Do While gapi.of_FindWindow ("", "Printer Select") = 0
+  Yield ()
+Loop
+MainWindow = gapi.of_FindWindow("", "Printer Select")
+// get the first child window
+ChildWindow = gapi.of_GetWindow (MainWindow, 5)
+Do While ChildWindow <> 0  
+  rc = gapi.of_GetClassName (ChildWindow, ClassName, 20)
+  If ClassName = "Listbox" Then
+//  this is the listbox.
+    ListBoxWindow = ChildWindow
+  End If
+  rc = gapi.of_GetWindowText (ChildWindow, ClassName, 20)
+  If ClassName = "OK" Then
+//  this is the OK button.
+    OKWindow = ChildWindow
+  End If
+  ChildWindow = gapi.of_GetWindow (ChildWindow, 2)
+Loop
+
+
+// call the print code by Triggering the m_print.Clicked! event
+m_print.TriggerEvent (Clicked!)
+
+
+end on
+
+on m_fax.create
+call super::create
+this.text = "&Fax..."
+end on
+
+on m_fax.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_file
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_savereport from menu within m_file
+end type
+
+event clicked;//***********************************************************************
+//   Date   Init               Description of Changes Made                
+// -------- ---- -------------------------------------------------------- 
+// 03/11/94 JMS  	Modified to display message if no sheet is currently
+//               	active.
+// 03/11/94 JMS  	Modified so only visible datawindows are saved.
+// 03/08/94 JMS  	Modified to call fx_get_next_key_id to get the report
+//               	name instead of get_report_cntl_number to eliminate
+//               	the problem with 2 or more users selecting the same
+//               	report control number.
+// 04/04/94 MSD  	Modified to change RPT default case link to MED for
+//               	a specific data window. 
+// 10/02/95 FNC  	Take upperbound out of loop
+// 02/28/98 JGG  	STARS 4.0 - Add new case link columns
+//	01/18/99	FDG	Track 2055c.  Convert dates to 'mm/dd/yyyy' format.
+//	03/15/01	GaryR	Stars 4.7 DataBase Port - Case Sensitivity
+//	FDG	04/16/01	Stars 4.7.	Account for empty string or space in case_spl, case_ver.
+//	10/10/01	FDG	Stars 4.8.1.  Do not allow if case is closed.
+//						Create a case_log entry.
+//	12/21/01	FDG	Track 2497.  Prevent memory leaks
+// JasonS	06/13/02		Track 2946d - Call same report save window as rest of application(fx_m_save())
+//***********************************************************************
+
+// Begin - Track 2946d
+
+//Window     active_sheet
+//DataWindow dw_control
+//Long       current_control
+//Boolean    has_dw          = False
+//String     save_name
+//String     rpt_type
+//DateTime   rpt_date
+//String     case_id
+//String     case_spl
+//String     case_ver
+//String	  case_link = "RPT"
+//int        lv_upperbound, li_rc
+//string	  ls_date_time				// JGG 02-28-98
+//string	  ls_link_desc 			// JGG 02-28-98
+//
+//// Check for active sheet
+//
+//active_sheet = MDI_main_frame.GetActiveSheet()
+//if (Not IsValid(active_sheet)) then
+//   MessageBox('Save Report to DataBase','No sheet is currently active.',StopSign!)
+//	return
+//end if
+//
+//// Check for active case
+//
+//if (gv_active_case = '') then
+//   MessageBox('Save Report to DataBase','No case is currently active.',StopSign!)
+//   return
+//end if
+//
+//// FDG 10/10/01 - Case cannot be closed
+//Boolean		lb_valid
+//n_cst_case	lnv_case
+//String		ls_message
+//
+//lnv_case		=	CREATE	n_cst_case
+//
+//lb_valid	=	lnv_case.uf_edit_case_closed (gv_active_case)
+//
+//IF	lb_valid	=	FALSE		THEN
+//	MessageBox ('Error',  'The report cannot be saved to case '	+	&
+//					gv_active_case	+	' because this case is either closed or deleted.')
+//	Destroy	lnv_case
+//	Return
+//END IF
+//// FDG 10/10/01 end
+//
+//// Save dw and link to active case
+//
+//lv_upperbound = UpperBound(active_sheet.control[]) //10-02-95 FNC
+//for current_control = 1 to lv_upperBound           //10-02-95 FNC
+//  if (active_sheet.control[current_control].TypeOf() = DataWindow!) and &
+//     (active_sheet.control[current_control].visible  = True)        then 
+//     has_dw     = True
+//     dw_control = active_sheet.control[current_control]
+//     MDI_main_frame.SetMicroHelp('Saving Report to Database')
+//     SetPointer(HourGlass!)
+//
+//     save_name = fx_get_next_key_id('REPORT')
+//	  COMMIT using Stars2ca;
+//	  if Stars2ca.of_check_status() <> 0 then
+//		errorbox(stars2ca,'Error performing commit in m_savereport.')
+//	  end if     
+//     if (save_name = 'ERROR') then save_name = ''
+//     save_name = SaveDataWindow(dw_control,save_name,'REPORT_LINE',Stars2CA,False)
+//
+//     if (save_name <> '') then
+//
+//        rpt_type  = ''
+//        //rpt_date  = DateTime(Today(),Now())
+//		  rpt_date = gnv_app.of_get_server_date_time()//ts2020c use server date
+//		  // FDG 10/10/01	-	Add to case_log
+//		  ls_message	=	"Report "	+	save_name	+	" added to case."
+//		  li_rc			=	lnv_case.uf_audit_log (gv_active_case, ls_message)
+//		  // FDG 10/10/01 end
+//        INSERT INTO REPORT_CNTL 
+//          (DEPT_ID, USER_ID, REPT_ID, REPT_TYPE, REPT_DATETIME)
+//           VALUES(:gc_user_dept,:gc_user_id,:save_name,:rpt_type,:rpt_date)
+//        USING Stars2CA;
+//        if (Stars2CA.of_check_status() <> 0) then
+//           ErrorBox(Stars2CA,'Could NOT update report control information.')
+//           Delete_Report_Line(save_name)
+//			  IF IsValid (lnv_case)	THEN	Destroy	lnv_case		// FDG 12/21/01
+//           return
+//        end if
+//
+//        case_id   = Trim (Mid(gv_active_case,1,10) )			// FDG 04/16/01
+//        case_spl  = Mid(gv_active_case,11,2)      
+//        case_ver  = Mid(gv_active_case,13,2)
+//
+//		// FDG 04/16/01 - Make sure case_spl & case_ver is properly trimmed.
+//		li_rc	=	gnv_sql.of_TrimData (case_spl)
+//		li_rc	=	gnv_sql.of_TrimData (case_ver)
+//		// FDG 04/16/01 - end
+//
+//       if upper(dw_control.DataObject) = "D_RANDOM_SAMPLING_CLAIM_LIST" then
+//				case_link = "MED"  // special condition for rand sampling
+//				ls_link_desc = "RANDOM SAMPLE REPORT"		// JGG 02-28-98
+//		  else
+//				case_link = "RPT"
+//				ls_link_desc = "REPORT"							// JGG 02-28-98
+//		  end if		
+//		  
+//		  // JGG 02-28-98 - add new case link columns
+//		  //ls_date_time = string(rpt_date)					// FDG 01/18/99
+//		  ls_date_time = string(rpt_date, 'mm/dd/yyyy')	// FDG 01/18/99
+//		  
+////		  INSERT INTO CASE_LINK
+////          (CASE_ID, CASE_SPL, CASE_VER, LINK_TYPE, LINK_KEY)
+////           VALUES(:case_id,:case_spl,:case_ver,:case_link,:save_name)
+////        USING Stars2CA;
+//
+//		  INSERT INTO CASE_LINK
+//          (CASE_ID, CASE_SPL, CASE_VER, LINK_TYPE, LINK_KEY,
+//			  LINK_NAME, LINK_DESC, USER_ID, LINK_DATE, LINK_STATUS)
+//           VALUES(:case_id,:case_spl,:case_ver,:case_link,:save_name,
+//			         Upper(:save_name), :ls_link_desc, :gc_user_id, :ls_date_time, 'A')	//	03/15/01	GaryR	Stars 4.7 DataBase Port
+//        USING Stars2CA;
+//        
+//		  if (Stars2CA.of_check_status() <> 0) then
+//           ErrorBox(Stars2CA,'Could NOT update case link information.')
+//           Delete_Report_Line(save_name)
+//			  IF IsValid (lnv_case)	THEN	Destroy	lnv_case		// FDG 12/21/01
+//           return
+//        end if
+//
+//			COMMIT Using Stars2CA;
+//
+//        MDI_main_frame.SetMicroHelp('Report successfully saved to DataBase as ' + save_name)
+//     else
+//        MDI_main_frame.SetMicroHelp('Report save Cancelled as requested')
+//     end if
+//  end if
+//next
+//
+//Destroy	lnv_case		// FDG 10/10/01
+//
+//if (has_dw = False) then MessageBox('Save Report to DataBase','Current sheet does NOT contain a datawindow to save.',StopSign!)
+//
+//return
+
+fx_m_save()
+// End - Track 2946d
+end event
+
+on m_savereport.create
+call super::create
+this.text = "&Save Report~tCtrl+S"
+this.shortcut = 339
+this.microhelp = "Save Report to Database"
+this.toolbaritemname = "RegistrationDir!"
+this.toolbaritemorder = 13
+end on
+
+on m_savereport.destroy
+call super::destroy
+end on
+
+type m_export from menu within m_file
+end type
+
+event clicked;////////////////////////////////////////////////////////////////////////////////////////////
+//		Object:			m_export
+//		Event:			Clicked()
+//		Parameters:		None
+//		Returns:			None
+// 	Description:	Call the global f() to export visible
+//							datawindows on the current sheet.
+////////////////////////////////////////////////////////////////////////////////////////////
+//
+// 10/02/01	GaryR	Stars 4.8.1	- WIC 18.3	Abiltiy to retain labels and totals during export
+//
+////////////////////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+uo_Query luo_Query
+w_master		lw_parent
+String		ls_classname
+
+lw_parent	=	ParentWindow.GetActiveSheet()
+ls_classname	=	lw_parent.ClassName()
+
+IF	Upper ( ls_classname )	=	'W_QUERY_ENGINE'		THEN
+	luo_query	=	lw_parent.dynamic	wf_GetActiveQuery()
+END IF
+
+fx_m_export(luo_Query,'VIEW')
+end event
+
+on m_export.create
+call super::create
+this.text = "&Export"
+this.microhelp = "Loading Export Window"
+this.toolbaritemname = "Export!"
+this.toolbaritemorder = 11
+end on
+
+on m_export.destroy
+call super::destroy
+end on
+
+type m_-1 from menu within m_file
+end type
+
+on m_-1.create
+call super::create
+this.text = "-"
+end on
+
+on m_-1.destroy
+call super::destroy
+end on
+
+type m_star from menu within m_file
+end type
+
+on clicked;SetPointer(HourGlass!)
+OpenSheet(w_main_star,MDI_main_frame,help_menu_position,Layered!)
+end on
+
+on m_star.create
+call super::create
+this.text = "S&tar"
+this.microhelp = "Loading Star Bitmap"
+end on
+
+on m_star.destroy
+call super::destroy
+end on
+
+type m_-2 from menu within m_file
+end type
+
+on m_-2.create
+call super::create
+this.text = "-"
+end on
+
+on m_-2.destroy
+call super::destroy
+end on
+
+type m_showsql from menu within m_file
+event ue_reset ( )
+event ue_restore_win_settings ( )
+end type
+
+event ue_reset();// 01/07/05 Katie Track 5431c Event to reset menu when a window is 
+//						closed or deactivated.
+
+m_file.m_showSQL.ToolBarItemName     = 'PasteSQL!'
+this.checked=false
+end event
+
+event ue_restore_win_settings();// 01/07/05 Katie Track 5431c Event to restore menu to setting for active 
+//						instance ofw_master.
+
+w_master active_sheet
+
+active_sheet = MDI_Main_Frame.GetActiveSheet ()
+
+if active_sheet.of_get_allowswitch( ) = FALSE THEN
+   RETURN
+end if
+   
+if active_sheet.of_get_showsql() = FALSE THEN
+   m_file.m_showSQL.ToolBarItemName     = 'PasteSQL!'
+	this.checked=false
+else
+   m_file.m_showSQL.ToolBarItemName     = 'DataWindow!'
+	this.checked=true
+end if
+end event
+
+event clicked;// Katie 01/11/05 Track 5431c Changed code to use w_master instance variables.
+
+w_master active_sheet
+
+active_sheet = MDI_Main_Frame.GetActiveSheet ()
+
+if active_sheet.of_get_allowswitch( ) = FALSE THEN
+   Beep (1)
+   RETURN
+end if
+   
+if active_sheet.of_get_showsql() = FALSE THEN
+   active_sheet.of_set_showsql(TRUE)
+   m_file.m_showSQL.ToolBarItemName     = 'DataWindow!'
+	this.checked=true
+else
+   active_sheet.of_set_showsql(FALSE)
+   m_file.m_showSQL.ToolBarItemName     = 'PasteSQL!'
+	this.checked=false
+end if
+
+PostEvent (active_sheet, Activate!)
+end event
+
+on m_showsql.create
+call super::create
+this.text = "Show S&QL"
+this.microhelp = "Show SQL Where Clause or Full Datawindow"
+this.toolbaritemname = "DataWindow!"
+this.toolbaritemorder = 12
+end on
+
+on m_showsql.destroy
+call super::destroy
+end on
+
+type m_-3 from menu within m_file
+end type
+
+on m_-3.create
+call super::create
+this.text = "-"
+end on
+
+on m_-3.destroy
+call super::destroy
+end on
+
+type m_cancelquery from menu within m_file
+end type
+
+on clicked;//***************************************************************
+// 10-02-95 FNC Take upperbound out of loop
+//***************************************************************
+
+gv_cancel_but_clicked = True
+
+Window     active_sheet
+DataWindow dw_control
+Long       current_control
+Boolean    has_dw          = False
+int        lv_upperbound
+
+active_sheet = MDI_main_frame.GetActiveSheet()
+if (Not IsValid(active_sheet)) then return
+
+lv_upperbound = UpperBound(active_sheet.control[])  //10-02-95 FNC 
+for current_control = 1 to lv_upperBound            //10-02-95 FNC
+  if (active_sheet.control[current_control].TypeOf() = DataWindow!) then 
+     dw_control = active_sheet.control[current_control]
+     MDI_main_frame.SetMicroHelp('Stopping Query')
+	  dw_control.dbcancel()
+  end if
+next
+
+
+  
+
+
+end on
+
+on m_cancelquery.create
+call super::create
+this.text = "&Cancel Query"
+this.microhelp = "Cancel the Query"
+this.toolbaritemname = "RetrieveCancel!"
+end on
+
+on m_cancelquery.destroy
+call super::destroy
+end on
+
+type m_-4 from menu within m_file
+end type
+
+on m_-4.create
+call super::create
+this.text = "-"
+end on
+
+on m_-4.destroy
+call super::destroy
+end on
+
+type m_exit from menu within m_file
+end type
+
+on clicked;close(w_main)
+end on
+
+on m_exit.create
+call super::create
+this.text = "E&xit~tAlt+F4"
+this.shortcut = 627
+this.microhelp = "Exit STARS Application"
+this.toolbaritemname = "Exit!"
+this.toolbaritemorder = 16
+end on
+
+on m_exit.destroy
+call super::destroy
+end on
+
+type m_edit from menu within m_parent_menu
+m_copytoclipboard m_copytoclipboard
+end type
+
+on m_edit.create
+call super::create
+this.text = "&Edit"
+this.m_copytoclipboard=create m_copytoclipboard
+this.Item[UpperBound(this.Item)+1]=this.m_copytoclipboard
+end on
+
+on m_edit.destroy
+call super::destroy
+destroy(this.m_copytoclipboard)
+end on
+
+type m_copytoclipboard from menu within m_edit
+end type
+
+on m_copytoclipboard.create
+call super::create
+this.text = "&Copy to Clipboard"
+this.microhelp = "Copy to the Clipboard"
+end on
+
+on m_copytoclipboard.destroy
+call super::destroy
+end on
+

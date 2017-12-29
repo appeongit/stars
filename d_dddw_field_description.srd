@@ -1,0 +1,54 @@
+HA$PBExportHeader$d_dddw_field_description.srd
+$PBExportComments$DDDW for field description in the criteria <gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=97 print.margin.bottom=97 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(2) updatewhereclause=yes name=elem_tbl_type dbname="dictionary.ELEM_TBL_TYPE"  )
+column=(type=char(255) updatewhereclause=yes name=elem_desc dbname="dictionary.ELEM_DESC"  )
+column=(type=char(32) updatewhereclause=yes name=elem_name dbname="dictionary.ELEM_NAME"  )
+column=(type=long updatewhereclause=yes name=crit_seq dbname="dictionary.CRIT_SEQ"  )
+column=(type=long updatewhereclause=yes name=elem_col_number dbname="dictionary.ELEM_COL_NUMBER"  )
+column=(type=char(15) updatewhereclause=yes name=elem_data_type dbname="dictionary.ELEM_DATA_TYPE"  )
+column=(type=long updatewhereclause=yes name=disp_seq dbname="dictionary.DISP_SEQ"  )
+column=(type=char(5) updatewhereclause=yes name=elem_lookup_type dbname="dictionary.ELEM_LOOKUP_TYPE"  )
+column=(type=char(1) updatewhereclause=yes name=elem_indx_ind dbname="dictionary.ELEM_INDX_IND"  )
+ retrieve="SELECT     dictionary.ELEM_TBL_TYPE ,
+           dictionary.ELEM_DESC ,
+           dictionary.ELEM_NAME ,
+           dictionary.CRIT_SEQ ,
+           dictionary.ELEM_COL_NUMBER ,
+           dictionary.ELEM_DATA_TYPE ,
+           dictionary.DISP_SEQ ,
+           dictionary.ELEM_LOOKUP_TYPE ,
+			  dictionary.ELEM_INDX_IND
+        FROM dictionary      
+        WHERE ( ELEM_TYPE = 'CL' ) 
+			and          ( CRIT_SEQ <> 0 ) 
+			and          ( dictionary.ELEM_TBL_TYPE in ( :inv_type ) )  
+        ORDER BY dictionary.ELEM_TBL_TYPE          ASC,
+           dictionary.CRIT_SEQ          ASC,
+           dictionary.ELEM_DESC         ASC"
+  arguments=(("inv_type", stringlist))
+)
+column(name=elem_name visible="1	0" band=detail id=3 x="2825" y="8" height="64" width="640" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Not a visible control~"	~"Not a visible control~"" accessiblename="~"Not a visible control~"	~"Not a visible control~"" )
+column(name=crit_seq visible="1	0" band=detail id=4 x="3511" y="4" height="64" width="101" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Not a visible control~"	~"Not a visible control~"" accessiblename="~"Not a visible control~"	~"Not a visible control~"" )
+column(name=disp_seq visible="1	0" band=detail id=7 x="4233" y="8" height="64" width="119" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Not a visible control~"	~"Not a visible control~"" accessiblename="~"Not a visible control~"	~"Not a visible control~"" )
+column(name=elem_col_number visible="1	0" band=detail id=5 x="3721" y="8" height="64" width="119" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Not a visible control~"	~"Not a visible control~"" accessiblename="~"Not a visible control~"	~"Not a visible control~"" )
+column(name=elem_tbl_type visible="1	0" band=detail id=1 x="3941" y="8" height="64" width="128" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Not a visible control~"	~"Not a visible control~"" accessiblename="~"Not a visible control~"	~"Not a visible control~"" )
+column(name=elem_lookup_type visible="1	0" band=detail id=8 x="4407" y="12" height="64" width="389" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Not a visible control~"	~"Not a visible control~"" accessiblename="~"Not a visible control~"	~"Not a visible control~"" )
+column(name=elem_indx_ind visible="1	0" band=detail id=9 x="4846" y="4" height="64" width="37" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Not a visible control~"	~"Not a visible control~"" accessiblename="~"Not a visible control~"	~"Not a visible control~"" )
+column(name=elem_data_type visible="1	0" band=detail id=6 x="2245" y="8" height="64" width="553" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Not a visible control~"	~"Not a visible control~"" accessiblename="~"Not a visible control~"	~"Not a visible control~"" )
+compute(name=column_description visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" x="5" y="8" height="64" width="2222" format="[GENERAL]" expression=" elem_tbl_type + ~".~" +  elem_desc " alignment="0" border="0" html.valueishtml="0" crosstab.repeat=no accessibledescription="~"Description~"	~"Description~"" accessiblename="~"Description~"	~"Description~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen(sessionSpecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

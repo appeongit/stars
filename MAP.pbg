@@ -1,0 +1,14 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "MAP.PBL" "";
+@end;
+@begin Objects
+ "d_geo_enrollee_dbf.srd" "MAP.PBL";
+ "d_geo_control_dbf.srd" "MAP.PBL";
+ "d_geo_provider_dbf.srd" "MAP.PBL";
+ "w_geo_interface.srw" "MAP.PBL";
+ "d_geo_legend.srd" "MAP.PBL";
+ "w_state_sel.srw" "MAP.PBL";
+ "w_geo_symbol.srw" "MAP.PBL";
+ "sx_map_struct.srs" "MAP.PBL";
+@end;

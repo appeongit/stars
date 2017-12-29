@@ -1,0 +1,33 @@
+﻿$PBExportHeader$d_search.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=67108864 processing=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=97 print.margin.bottom=97 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=216 color="536870912" )
+table(column=(type=char(8) updatewhereclause=no name=user_id dbname="user_id" 
+ values=""  )
+column=(type=char(20) updatewhereclause=no name=query_id dbname="query_id"  )
+column=(type=char(65) updatewhereclause=no name=query_type dbname="query_type" 
+ values=""  )
+column=(type=char(80) updatewhereclause=no name=description dbname="description"  )
+)
+text(name=query_type_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="1" border="0" x="0" y="132" height="52" width="338" text="Query Type:" html.valueishtml="0" accessibledescription="~"Query Type~"	~"Query Type~"" accessiblename="~"Query Type~"	~"Query Type~"" accessiblerole=42 )
+text(name=user_id_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="1" border="0" x="105" y="12" height="52" width="233" text="User Id:" html.valueishtml="0" accessibledescription="~"User Id~"	~"User Id~"" accessiblename="~"User Id~"	~"User Id~"" accessiblerole=42 )
+column(name=user_id visible="1" band=detail id=1 x="357" y="12" height="60" width="786" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" dddw.allowedit=no dddw.autohscroll=no dddw.autoretrieve=no dddw.useasborder=yes dddw.datacolumn=user_id dddw.displaycolumn=cf_name dddw.hscrollbar=yes dddw.hsplitscroll=no dddw.imemode=0 dddw.limit=0 dddw.name=d_dddw_user_id dddw.nilisnull=no dddw.percentwidth=150 dddw.required=no dddw.showlist=no dddw.vscrollbar=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=10 accessibledescription="~"User Id~"	~"User Id~"" accessiblename="~"User Id~"	~"User Id~"" )
+column(name=query_type visible="1" band=detail id=3 x="357" y="132" height="60" width="786" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" dddw.allowedit=no dddw.autohscroll=no dddw.autoretrieve=yes dddw.useasborder=yes dddw.datacolumn=stars_rel_id_2 dddw.displaycolumn=compute_0001 dddw.hscrollbar=yes dddw.hsplitscroll=no dddw.imemode=0 dddw.limit=0 dddw.name=d_query_types dddw.nilisnull=no dddw.percentwidth=175 dddw.required=no dddw.showlist=no dddw.vscrollbar=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=20 accessibledescription="~"Query Type~"	~"Query Type~"" accessiblename="~"Query Type~"	~"Query Type~"" )
+text(name=description_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="1" border="0" x="1166" y="132" height="52" width="347" text="Description:" html.valueishtml="0" accessibledescription="~"Description~"	~"Description~"" accessiblename="~"Description~"	~"Description~"" accessiblerole=42 )
+text(name=query_id_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="1" border="0" x="1243" y="12" height="52" width="270" text="Query Id:" html.valueishtml="0" accessibledescription="~"Query Id~"	~"Query Id~"" accessiblename="~"Query Id~"	~"Query Id~"" accessiblerole=42 )
+column(name=query_id visible="1" band=detail id=2 x="1531" y="12" height="60" width="786" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=upper edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=20 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=30 accessibledescription="~"Query Id~"	~"Query Id~"" accessiblename="~"Query Id~"	~"Query Id~"" )
+column(name=description visible="1" band=detail id=4 x="1531" y="132" height="60" width="786" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=80 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=40 accessibledescription="~" Description~"	~" Description~"" accessiblename="~"Description~"	~"Description~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateDDDWFrames="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen(sessionSpecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

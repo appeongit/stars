@@ -1,0 +1,32 @@
+HA$PBExportHeader$fx_m_casefolder.srf
+$PBExportComments$Case|CaseFolder
+global type fx_m_casefolder from function_object
+end type
+
+forward prototypes
+global subroutine fx_m_casefolder ()
+end prototypes
+
+global subroutine fx_m_casefolder ();// 03-04-98 ajs 4.0 TS145-Fix globals
+setpointer(hourglass!)
+int rc
+
+rc = fx_active_case_edit()
+
+If rc <> 0 Then
+	COMMIT using Stars2ca;
+	if Stars2ca.of_check_status() <> 0 then
+		errorbox(stars2ca,'Error performing commit in fx_m_casefolder.')
+	end if	
+	RETURN
+End If
+
+COMMIT using Stars2ca;
+if Stars2ca.of_check_status() <> 0 then
+	errorbox(stars2ca,'Error performing commit in fx_m_casefolder.')
+end if	
+
+//gv_case_active = gv_active_case	//ajs 4.0 03-04-98
+OpenSheet(w_case_FOLdER_VIEW,mdi_main_frame,help_menu_position,Layered!)
+end subroutine
+

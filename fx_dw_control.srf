@@ -1,0 +1,221 @@
+HA$PBExportHeader$fx_dw_control.srf
+global type fx_dw_control from function_object
+end type
+
+forward prototypes
+global function integer fx_dw_control (datawindow arg_dw, string arg_hold_object, string arg_control, ref w_uo_win arg_uo_win, string arg_where, long arg_row_nbr, ref sx_decode_structure arg_decode_struct)
+end prototypes
+
+global function integer fx_dw_control (datawindow arg_dw, string arg_hold_object, string arg_control, ref w_uo_win arg_uo_win, string arg_where, long arg_row_nbr, ref sx_decode_structure arg_decode_struct);//*********************************************************************************
+// Script Name:	fx_dw_control
+//
+// Arguments: datawindow arg_dw
+//					string arg_hold_object
+//					string arg_control
+//					w_uo_win arg_uo_win
+//					string arg_where
+//					long arg_row_nbr
+//					arg_decode_struct
+//
+// Returns:		Integer
+//
+// Description:	
+//
+//*********************************************************************************
+//
+//	11/26/97 	FNC	Track 213 Rel3.6 TS 243 		CBX_Suppress is bleeding 
+//																	through in Windows NT when display filter is selected and 
+//																	cbx_suppress is referenced. Hide checkbox so it does not 
+//																	show. Pass argument to fuo_Insert_sort_info if filter is 
+//																	selected so that the function hides cbx_suppress
+//	03/04/98		Arch											Placing a check to make sure to return -1 when 'obj_' is read.
+//	12/09/98		FDG	Track 2016 (Stars 4.0).  			For some of the operations, get out
+//																	if no column was double clicked (lv_column = 'datawindow').
+//	11/23/99		FDG	Track 2675 (Stars 4.5).  			Fix Y2K bug that when a datetime
+//																	column is moved, move the 4-digit year (instead of the
+//																	2-digit year.
+// 03/30/00		FNC	Track 2407 Starcare. Disable reset button for sort/rank
+// 04/18/00		GaryR	1707 									Report Column Alignment	
+//	09/25/00 	Gary Rubalsky 	STARS 4.5 TS1707c	Check for duplicate choice
+// 01/08/02		JSB	Track 2407/3591/2610			Re-enable Reset button on Sort/Rank window.
+//	05/02/02		Lahu	Track 2552d 						begin		
+// 09/26/02		Jason	Track 3309d  						Set search value to empty string if header clicked
+//	01/13/03		GaryR	Track 2868d							Fix logic for duplicate column names
+//	05/11/04		GaryR	Track 4016d							Add a Unique Count option to Window Operations
+//	07/29/05		GaryR	Track 4432d							Allow multi-column decode in background
+//	04/14/09		Katie	GNL.600.5633						When FIND called show w_uo_win instead of waiting for header to be
+//																	double-clicked.  Makes changes for both APPEND and CREATE to present
+//																	w_uo_win.
+//	05/07/09		Katie	GNL.600.5633						return focus to the uo_win when a used double clicks on a column header
+//	05/12/09		Katie	GNL.600.5633						Check that the arg_uo_win is valid before setting focus on it.
+//	05/19/09		Katie GNL.600.5633						Changes to support the rewrite of the sort logic.
+//	05/29/09		Katie	GNL.600.5633						Corrected the value being passed for insert the sort info for display filters.
+// 05/29/09		GaryR	GNL.600.5633.003					Address defect with filtering on value
+//
+//**************************************************************************
+
+boolean lv_join
+int tabpos,lv_upperbound
+int lv_pos
+string lv_hold_object,lv_col,lv_col_nbr
+string lv_sort_name,lv_data_type,lv_value,lv_column
+sx_filter_data lv_filter_data
+integer lv_column_number
+string arg_dw_control
+graphicobject arg_row
+integer lv_rc, li_i
+
+String	ls_dup_num
+ 
+setpointer(hourglass!)
+lv_upperbound = UPPERBOUND(arg_decode_struct.table_type)
+If lv_upperbound > 1 then
+	lv_join = TRUE
+Else
+	lv_join = False
+End If
+
+If arg_hold_object = '' then
+	return -1
+end if
+
+//3-4-98 AJS Begin
+If match(arg_hold_object, 'obj_') = TRUE then
+	return -1
+end if
+//3-4-98 AJS END
+
+
+tabpos = pos (arg_hold_object,"~t")
+lv_column = left(arg_hold_object,(tabpos - 1))
+
+IF Match( Right( lv_column, 6 ), "^_t_[0-9]_t$" ) THEN
+	//	Get the column name + the instance counter
+	lv_col = Upper( Left( lv_column, Len( lv_column ) - 5 ) + Left( Right( lv_column, 3 ), 1 ) )	
+ELSE
+	lv_col = Upper( Left( lv_column, Len( lv_column ) - 2 ) )
+END IF
+
+// FDG 12/9/98 begin
+IF	IsNull (lv_column)						&
+OR	Trim (lv_column)	=	''					&
+OR	Lower (lv_column)	=	'datawindow'	THEN
+	Return	-1
+END IF
+
+if upper(lv_col) = 'HEADER' THEN
+	return -1
+end if
+
+If arg_control = 'CODE' Then
+	IF arg_uo_win.uo_decode.of_InsertDecodeData( arg_dw.Describe( lv_column + ".text" ), lv_col, arg_dw, arg_decode_struct ) = -1 THEN RETURN -1
+Elseif arg_control = 'FILTER' Then
+	If arg_where = 'cell' Then
+		lv_sort_name = arg_dw.Describe(lv_column+'_t.text')
+		//	If column is a dupe,
+		//	the header is t_#_t
+		IF lv_sort_name = "!" THEN
+			ls_dup_num = Right( lv_column, 1 )
+			IF IsNumber( ls_dup_num ) THEN
+				lv_sort_name = arg_dw.Describe( Left( lv_column, Len( lv_column ) - 1 ) + "t_" + ls_dup_num + "_t.text" )
+			END IF
+		END IF
+		
+		lv_data_type = arg_dw.Describe(lv_column+'.coltype')
+		//JOHN_WO 9/97 ADDED THE CHECK FOR LONG ON THE FOLLOWING LINE - REL 3.5.4
+		//Lahu S 5/2/02 Track 2552d begin			
+		if arg_row_nbr > 0 then
+			If UPPER(lv_data_type) = 'LONG' OR UPPER(lv_data_type) = 'NUMBER' OR Match(UPPER(lv_data_type),'DECIMAL') Then
+				lv_value = string(arg_dw.getitemnumber(arg_row_nbr,lv_column))
+			Elseif UPPER(lv_data_type) = 'DATETIME' Then
+				lv_value = string(arg_dw.getitemdatetime(arg_row_nbr,lv_column), "mm/dd/yyyy")		// FDG 11/23/99
+			Else
+				lv_value = arg_dw.getitemstring(arg_row_nbr,lv_column)
+			End If
+		else
+			return -1
+		end if
+		
+		arg_uo_win.uo_filter.of_Insert_sort_info(lv_sort_name)	//11-26-97 FNC
+		arg_uo_win.uo_filter.fuo_set_value( lv_value )
+	Else
+		lv_sort_name = arg_dw.Describe(lv_column+'.text')
+	  	arg_uo_win.uo_filter.of_Insert_sort_Info(lv_sort_name)	//11-26-97 FNC 
+	End If
+	
+	arg_uo_win.uo_filter.visible = TRUE
+	arg_uo_win.uo_filter.Show()
+	arg_uo_win.visible = TRUE
+Elseif arg_control = 'SORT' Then
+	lv_sort_name = arg_dw.Describe(lv_column+'.text')
+	arg_uo_win.uo_sort.of_Insert_sort_Info(lv_sort_name,true)
+Elseif arg_control = 'RANK' Then
+	lv_sort_name = arg_dw.Describe(lv_column+'.text')
+	arg_uo_win.uo_rank.of_Insert_sort_Info(lv_sort_name,true)
+   arg_uo_win.uo_rank.cb_reset.enabled = TRUE
+Elseif arg_control = 'FIND' Then
+	arg_uo_win.uo_find.visible = True
+	arg_uo_win.title = 'Find'			
+	If arg_where = 'cell' Then
+		lv_sort_name = arg_dw.Describe(lv_column+'_t.text')
+		//	If column is a dupe,
+		//	the header is t_#_t
+		IF lv_sort_name = "!" THEN
+			ls_dup_num = Right( lv_column, 1 )
+			IF IsNumber( ls_dup_num ) THEN
+				lv_sort_name = arg_dw.Describe( Left( lv_column, Len( lv_column ) - 1 ) + "t_" + ls_dup_num + "_t.text" )
+			END IF
+		END IF
+		
+		lv_data_type = arg_dw.Describe(lv_column+'.coltype')
+		//JOHN_WO 9/97 ADDED THE CHECK FOR LONG ON THE FOLLOWING LINE - REL 3.5.4
+		//Lahu S 5/2/02 Track 2552d begin			
+		if arg_row_nbr > 0 then
+			If UPPER(lv_data_type) = 'LONG' OR UPPER(lv_data_type) = 'NUMBER' OR Match(UPPER(lv_data_type),'DECIMAL') Then
+				lv_value = string(arg_dw.getitemnumber(arg_row_nbr,lv_column))				
+			Elseif UPPER(lv_data_type) = 'DATETIME' Then
+				lv_value = string(arg_dw.getitemdatetime(arg_row_nbr,lv_column), "mm/dd/yyyy")		// FDG 11/23/99				
+			Else
+				lv_value = arg_dw.getitemstring(arg_row_nbr,lv_column)
+			End If
+		else
+			return -1
+		end if
+		//Lahu S 5/2/02 Track 2552d end		
+		arg_uo_win.uo_find.fuo_set_col_name(lv_sort_name,lv_column,lv_join,lv_data_type)
+		arg_uo_win.uo_find.fuo_set_value(lv_value)
+	Else
+		arg_uo_win.uo_find.show()
+		arg_uo_win.visible = True
+		lv_sort_name = arg_dw.Describe(lv_column+'.text')
+		lv_data_type = arg_dw.Describe(lv_col+'.coltype')
+		arg_uo_win.uo_find.fuo_set_col_name(lv_sort_name,lv_col,lv_join,lv_data_type)
+		arg_uo_win.uo_find.fuo_set_value('')
+	End If
+Elseif arg_control = 'CREATE' Then
+	arg_uo_win.uo_append_filter.show()
+	arg_uo_win.title = 'Create Col Filter'		
+	arg_uo_win.visible = True
+	lv_sort_name = arg_dw.Describe(lv_column+'.text')
+	arg_uo_win.uo_append_filter.of_setcreate(true)
+	arg_uo_win.uo_append_filter.of_setcolumn(lv_sort_name,arg_decode_struct, lv_join)
+Elseif arg_control = 'APPEND' Then
+	arg_uo_win.uo_append_filter.show()
+	arg_uo_win.title = 'Append Col Filter'		
+	arg_uo_win.visible = True
+	arg_uo_win.uo_append_filter.of_setcreate(false)
+	lv_sort_name = arg_dw.Describe(lv_column+'.text')
+	arg_uo_win.uo_append_filter.of_setcolumn(lv_sort_name,arg_decode_struct, lv_join )
+Elseif arg_control = 'ALIGN' Then	//GR 04/18/2000 1707 Report Column Alignment	
+	IF arg_uo_win.uo_align_columns.of_InsertAlignData( arg_dw.Describe( lv_column + ".text" ), lv_col, arg_dw ) = -1 THEN RETURN -1
+ELSEIF arg_control = 'COUNT' THEN
+	IF arg_uo_win.uo_unique_counts.of_InsertCountData( arg_dw.Describe( lv_column + ".text" ), lv_col, arg_dw ) = -1 THEN RETURN -1
+End If
+
+if isValid(arg_uo_win) then 
+	arg_uo_win.setfocus()
+end if
+
+Return 0
+end function
+

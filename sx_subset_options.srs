@@ -1,0 +1,23 @@
+HA$PBExportHeader$sx_subset_options.srs
+$PBExportComments$this structure will be passed to w_subset_options
+global type sx_subset_options from structure
+	string		come_from
+	string		status
+	string		job_id
+	string		subset_name
+	string		subset_id
+	string		case_id
+	string		case_spl
+	string		case_ver
+	integer		pattern_case_link
+	string		pattern_case
+	integer		pattern_priority
+	datetime		pattern_sched_date
+	sx_subsetting_info		sub_info[]
+	sx_patterns_structure		patt_struc
+	integer		run_frequency
+	long		server_job_id
+	long		job_sched
+	sx_subsetting_info		sub_info_copy[]
+end type
+

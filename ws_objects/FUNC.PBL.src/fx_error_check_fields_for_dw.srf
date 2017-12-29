@@ -1,0 +1,1027 @@
+﻿$PBExportHeader$fx_error_check_fields_for_dw.srf
+global type fx_error_check_fields_for_dw from function_object
+end type
+
+forward prototypes
+global function string fx_error_check_fields_for_dw (string data_type, string operator, string value, string label, graphicobject arg_object, string arg_col_name, integer arg_row_num, integer starting_length, integer length, integer num_of_char)
+end prototypes
+
+global function string fx_error_check_fields_for_dw (string data_type, string operator, string value, string label, graphicobject arg_object, string arg_col_name, integer arg_row_num, integer starting_length, integer length, integer num_of_char);//*******************************************************************************
+// Function:	fx_error_check_fields_for_dw
+//
+//	Arguments:	1.	data_type (string) - INT, SMALLDATETIME, MONEY, etc
+//					2.	operator (string) - '=', '<>', '><', etc
+//					3.	value (string) - Data value entered in the criteria
+//					4.	label (string) - Column's label for error messages
+//					5.	arg_object (graphicobject) - Object that has the criteria
+//					6.	arg_col_name (string) - Name of d/w column to set focus for errors
+//					7.	starting_length (integer) - Minimum column length
+//					8.	length (integer) - Maximum column length
+//					9.	num_of_char (integer) - # of leading characters
+//
+//	Returns:		String ('ERROR' if an edit error occurs)
+//
+//
+//	Description:	Edit the criteria passed to this function.  
+//
+//*******************************************************************************
+// History
+//
+// 06/02/98	FNC	Track 1129. 1. Add if statement to make sure data type is 
+//					 	numeric before perform length check. Date datatypes where falling
+//						through to the edit. 
+//						2. Upper data type at beginning of script so don't have to
+//						to do it throughout scipt. This will clean it up a little
+//	07/29/98	FDG	Track 1477.  Remove the edit for '%' being required in the
+//						last position.  When changing the relational operator to LIKE
+//						or NOT LIKE, also check for '_'.
+//	04/03/00	FDG	Track 2841.  Date edits must consider the minimum and maximum
+//						values for a SMALLDATETIME column.  Use n_cst_datetime to edit
+//						dates instead of IsDate().
+//	12/14/00	FDG	Stars 4.7.  Make the checking of data types DBMS-independent.
+//	01/04/01	FDG	Track 3088.  The 1st available datetime should be 1/1/1900
+//						instead of 1/2/1900.
+//	04/09/01	FDG	Stars 4.7.	Numeric & date data types don't need to check for length.
+//	07/05/01	GaryR	2357d	Prevent the use of LIKE or NOT LIKE operands with date fields
+// 01/14/02 JeffB Track 2587. Allow max date for DATE and DATETIME fields to be
+//                12/31/9999. SHORTDATE is still controlled in n_cst_datetime.
+//	06/24/2002 JasonS	Track 2775d  Fix min/max datetimes
+// 09/16/2004 Katie Track 4019d Add validation for SOUNDS LIKE operator- checks for
+//						  commas, spaces, and non-letter characters.  Returns '=' as operator.
+// 07/05/2005 Katie Track 3661d Added edits to handle non-character data and non-'=' operands.
+// 07/05/2005 Katie Track 3661d Added ability to use '<>' operand with BLANKS.
+// 09/29/2005 Katie Track 4525d Added ability to use 'IN' and 'NOT IN' operands with BLANKS.
+// 							Track 4526d Added more logic to error message for invalid operands when using BLANKS.
+// 10/13/2005 Katie Track 4533d Removed Case Sensitivity when using BLANKS and testing character field length.
+//	11/13/09	GaryR	LKP.650.5678	Validate the length of values
+// 11/16/09 RickB LKP.650.5678.001 Added + 4 to value length check to allow for parens and spaces
+//												when create subset SQL is built. 
+//*******************************************************************************
+
+singlelineedit sle
+datawindow dw
+string lv_returned_operator,temp,single_entry,left_side_between,right_side_between
+string lv_place_text, ls_vals[]
+string ls_message
+int num_of_nums,temp_len,position,	li_rc
+date left_date,right_date
+boolean lv_do_len_check
+boolean lb_blanks_crit = false
+double left_money, right_money
+
+n_cst_datetime		lnv_datetime			// Autoinstantiated
+n_cst_string		lnv_string			// Autoinstantiated
+
+setpointer(hourglass!)
+
+if length = 1 then 
+	lv_place_text = ' place '
+else
+	lv_place_text = ' places '
+end if
+
+data_type = upper(data_type)		// FNC 06/02/98
+
+// Katie 07/05/2005 If not character then don't accept BLANKS as keyword.
+IF UPPER(value) = 'BLANKS' AND not (gnv_sql.of_is_character_data_type (data_type))THEN
+		messagebox('INVALID DATA',label+' is not a character field')
+		if arg_object.typeof() = SINGLELINEEDIT! Then 
+			SLE = ARG_OBJECT
+			setfocus(sle)
+		elseif arg_object.typeof() = DATAWINDOW! Then
+			dw = arg_object
+			setfocus(dw)
+			dw.setrow(arg_row_num)
+			dw.scrolltorow(arg_row_num)
+			dw.setcolumn(arg_col_name)
+		end if
+		return 'ERROR'
+ELSEIF (UPPER(value) = 'BLANKS' AND operator <> '=' AND operator <> '<>') OR &
+		(operator = '><' and Pos(UPPER(value), 'BLANKS') > 0) THEN
+		messagebox('INVALID OPERAND','When using BLANKS the operand can only be "=", not "=", IN or NOT IN.')
+		if arg_object.typeof() = SINGLELINEEDIT! Then
+			SLE = ARG_OBJECT
+			setfocus(sle)
+		elseif arg_object.typeof() = DATAWINDOW! Then
+			dw = arg_object
+			setfocus(dw)
+			dw.setrow(arg_row_num)
+			dw.scrolltorow(arg_row_num)
+			dw.setcolumn(arg_col_name)
+		end if
+		return 'ERROR'
+ELSEIF UPPER(value)='BLANKS' THEN
+		lb_blanks_crit = true
+END IF
+
+// FDG 04/09/01 - Modify length edit since numeric length could now = 0.
+IF	gnv_sql.of_is_numeric_data_type (data_type)		THEN
+	IF	length	=	0		THEN
+		length	=	14
+	END IF
+END IF
+// FDG 04/09/01 - end
+
+Choose Case data_type
+	case 'DATE'
+		lnv_datetime.of_SetMinimumDateTime ('01/01/0001')
+		lnv_datetime.of_SetMaximumDateTime ('12/31/9999')
+	case 'DATETIME'
+		lnv_datetime.of_SetMinimumDateTime ('01/01/1753')
+		lnv_datetime.of_SetMaximumDateTime ('12/31/9999')
+	case 'TIMESTAMP'
+		lnv_datetime.of_SetMinimumDateTime ('01/01/1753')
+		lnv_datetime.of_SetMaximumDateTime ('12/31/9999')
+	case else
+		lnv_datetime.of_SetMinimumDateTime ('01/01/1900')
+end choose
+// End - Track 2775d
+
+
+
+//This checks to see if it is a number field and if it is, it then checks
+//to make sure there are no characters in the field.  If there is a message
+//is displayed.  It also checkes and makes sure the wild card indicator
+//has not been entered for the numeric field
+// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+IF	gnv_sql.of_is_numeric_data_type (data_type)		THEN
+	//Wild Card Indicator check//
+	if match(value,'%')	&
+	or match(value, '_')	Then
+		messagebox('INVALID DATA',label +' cannot have a "%" or "_" in it ')
+		if arg_object.typeof() = SINGLELINEEDIT! Then
+			SLE = ARG_OBJECT
+			setfocus(sle)
+		elseif arg_object.typeof() = DATAWINDOW! Then
+			dw = arg_object
+			setfocus(dw)
+			dw.setrow(arg_row_num)
+			dw.scrolltorow(arg_row_num)
+			dw.setcolumn(arg_col_name)
+		end if
+		return 'ERROR'
+	end if
+	If match(value,',') Then
+	Else
+		if isnumber(value) = FALSE then
+			messagebox('INVALID DATA',label+' is a numeric field')
+			if arg_object.typeof() = SINGLELINEEDIT! Then
+				sle = arg_object
+				setfocus(sle)
+			elseif arg_object.typeof() = DATAWINDOW! Then
+				dw = arg_object
+				setfocus(dw)
+				dw.setrow(arg_row_num)
+				dw.scrolltorow(arg_row_num)
+				dw.setcolumn(arg_col_name)
+			end if
+			return 'ERROR'
+		end if
+	end if
+End if
+
+if match(value,'~'') Then
+	messagebox('INVALID DATA',label+' should not contain quotes')
+	if arg_object.typeof() = SINGLELINEEDIT! Then
+		sle = arg_object
+		setfocus(sle)
+	elseif arg_object.typeof() = DATAWINDOW! Then
+		dw = arg_object
+		setfocus(dw)
+		dw.setrow(arg_row_num)
+		dw.scrolltorow(arg_row_num)
+		dw.setcolumn(arg_col_name)
+	end if
+	return 'ERROR'
+end if
+//This checks to see if LIKE or NOT LIKE command is being used
+//It then checks to see if the number of characters entered plus
+//the '%' is not greater than the max length of field.  If it is
+//a error message is displayed.  If the data_type is a number it will
+//not to this check.
+//
+if ( (operator = '=' and (match(value,'%') or match(value,'_')) ) &
+OR (operator = '<>' and (match(value,'%') or match(value,'_')) ) ) &
+AND MATCH(value,',') = FALSE Then
+	//	07/05/01	GaryR	2357d - Begin
+	IF	gnv_sql.of_is_date_data_type (data_type)		THEN
+		messagebox('INVALID OPERAND','An invalid operand was entered for ' + label )
+		if arg_object.typeof() = SINGLELINEEDIT! Then
+			sle = arg_object
+			setfocus(sle)
+		elseif arg_object.typeof() = DATAWINDOW! Then
+			dw = arg_object
+			setfocus(dw)
+			dw.setrow(arg_row_num)
+			dw.scrolltorow(arg_row_num)
+			dw.setcolumn(arg_col_name)
+		end if
+		return 'ERROR'
+	END IF
+	//	07/05/01	GaryR	2357d - End
+	
+	// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+	//if data_type = 'STRING' OR data_type = 'CHAR' OR data_type = 'VARCHAR' Then
+	IF	gnv_sql.of_is_character_data_type (data_type)		THEN
+		temp_len = len(value) - num_of_char - 1
+		if operator = '=' then
+			lv_returned_operator = 'LIKE'
+		elseif operator = '<>' Then
+			lv_returned_operator = 'NOT LIKE'
+		end if
+		//Length of field check//
+		If len(value) > length + 1 THEN
+			
+			MessageBox("INVALID DATA",label+' should be '+string(length)+lv_place_text+'in length')
+			if arg_object.typeof() = SINGLELINEEDIT! Then
+				sle = arg_object
+				setfocus(sle)
+			elseif arg_object.typeof() = DATAWINDOW! Then
+				dw = arg_object
+				setfocus(dw)
+				dw.setrow(arg_row_num)
+				dw.scrolltorow(arg_row_num)
+				dw.setcolumn(arg_col_name)
+			end if
+			return 'ERROR'
+		END IF
+	end if
+	
+//This checks if the operator is a IN or a NOT IN.  It does a loop
+//and breaks apart each value.  It makes sure a wildcard indicator has
+//not been entered for each part.  If it is a number it the lenth of the
+//value canot be greater than or equal to the max length.  But if it
+//is a STRING the length of the value has to be equal to the max length.
+//if it doesn't pass either of these it prints a error message.  
+//For Strings that have certain number of places that have to be numbers
+//the function checks the ones that are numbers.  If they aren't it displays a
+//message
+elseif operator = '=' and match(value,',') = TRUE OR operator = '<>' and match(value,',') Then
+	//	Check length
+	IF	gnv_sql.of_is_character_data_type( data_type ) THEN
+		//	Count two single quotes for each value + 4 to cover left paren-space and space-right paren.
+		ls_vals = lnv_string.of_stringtoarray( value, "," )
+		position = (UpperBound( ls_vals )*2) + Len( value ) + 4
+		
+		IF position > 255 THEN
+			MessageBox( "INVALID DATA", "The values entered for " + label + " exceed the field size limit. ~n~r" + &
+								"If you would like to include additional codes in your " + &
+								"criteria, please create a filter.", Exclamation! )
+			if arg_object.typeof() = SINGLELINEEDIT! Then
+				sle = arg_object
+				setfocus(sle)
+			elseif arg_object.typeof() = DATAWINDOW! Then
+				dw = arg_object
+				setfocus(dw)
+				dw.setrow(arg_row_num)
+				dw.scrolltorow(arg_row_num)
+				dw.setcolumn(arg_col_name)
+			end if
+			return 'ERROR'
+		END IF
+	END IF
+	
+	do while match(value,',') OR value <> ''
+		lb_blanks_crit = false //reset blanks flag
+		//Grabs each part separated by the comma//
+		position = pos(value,',')
+		if position = 0 and value <> '' Then
+			single_entry = value
+			value = ''
+		else
+			single_entry = left(value,position - 1)
+			value = mid(value,position + 1)
+		end if
+
+		// FDG 04/03/00 - Include 'DATETIME' and use lnv_datetime to edit
+		// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+		//if data_type	=	'DATE' 				&
+		//or data_type	=	'DATETIME'			&
+		//or data_type	=	'SMALLDATETIME'	Then
+		IF	gnv_sql.of_is_date_data_type (data_type)		THEN
+			li_rc			=	lnv_datetime.of_IsValidDate (single_entry)
+			//if isdate(single_entry) = FALSE Then								// FDG 04/03/00
+			if	li_rc		<	0		THEN												// FDG 04/03/00
+				choose case	li_rc
+					case	-1
+						ls_message	=	'An invalid date was entered for '	+	label
+					case	-2
+						ls_message	=	'The year entered for '	+	label	+	' must be a 4 digit year'
+					case	-3
+						ls_message	=	'The date for '	+	label	+	' must be between '	+	&
+											lnv_datetime.of_GetMinimumStringDate()	+	' and '	+	&
+											lnv_datetime.of_GetMaximumStringDate()
+					case else
+						ls_message	=	'An invalid date was entered for '	+	label
+				end choose
+				messagebox('INVALID DATE',ls_message)
+				
+				if arg_object.typeof() = SINGLELINEEDIT! Then
+					sle = arg_object
+					setfocus(sle)
+				elseif arg_object.typeof() = DATAWINDOW! Then
+					dw = arg_object
+					setfocus(dw)
+					dw.setrow(arg_row_num)
+					dw.scrolltorow(arg_row_num)
+					dw.setcolumn(arg_col_name)
+				end if
+				return 'ERROR'
+			end if
+		END IF
+
+		if ((operator = '=' and right(value,1) = '%') OR (operator = '<>' and right(value,1) = '%')) Then
+			// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+			//if data_type = 'STRING' OR data_type = 'CHAR' OR data_type = 'VARCHAR' Then
+			IF	gnv_sql.of_is_character_data_type (data_type)		THEN
+				temp_len = len(single_entry) - num_of_char - 1
+				if operator = '=' then
+					lv_returned_operator = 'LIKE'
+				elseif operator = '<>' Then
+					lv_returned_operator = 'NOT LIKE'
+				end if
+				//Length of field check//
+				If len(single_entry) > length + 1 THEN
+					MessageBox("INVALID DATA",label+' should be '+string(length)+lv_place_text+'in length')
+					if arg_object.typeof() = SINGLELINEEDIT! Then
+						sle = arg_object
+						setfocus(sle)
+					elseif arg_object.typeof() = DATAWINDOW! Then
+						dw = arg_object
+						setfocus(dw)
+						dw.setrow(arg_row_num)
+						dw.scrolltorow(arg_row_num)
+						dw.setcolumn(arg_col_name)
+					end if
+					return 'ERROR'
+				END IF
+			end if
+		end if
+		
+		if lv_returned_operator <> 'LIKE' and lv_returned_operator <> 'NOT LIKE'  Then
+			//Length Checks//
+			temp_len = len(single_entry)
+		
+			//String length Check//
+			// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+			//if data_type = 'STRING' OR data_type = 'CHAR' OR data_type = 'VARCHAR' Then
+			IF	gnv_sql.of_is_character_data_type (data_type)		THEN
+				if (UPPER(single_entry) = 'BLANKS') THEN
+					//skip length logic - Track 4525D
+				elseIf (len(single_ENTRY) < starting_length) OR (len(SINGLE_ENTRY)  > length) THEN
+					if starting_length = length Then
+						MessageBox("INVALID DATA",label+' should be '+string(length)+lv_place_text+'in length')
+					else
+						MessageBox("INVALID DATA",label+' should be between '+string(starting_length)+' and '+string(length)+lv_place_text+' in length')
+					end if //starting_length
+					if arg_object.typeof() = SINGLELINEEDIT! Then
+						sle = arg_object
+						setfocus(sle)
+					elseif arg_object.typeof() = DATAWINDOW! Then
+						dw = arg_object
+						setfocus(dw)
+						dw.setrow(arg_row_num)
+						dw.scrolltorow(arg_row_num)
+						dw.setcolumn(arg_col_name)
+					end if //SINGLELINEEDIT!
+					return 'ERROR'
+				END IF //length
+			else 
+				//Number length Check//
+				// FNC 06/02/98 Add this if statement
+				// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+				//if data_type = 'NUMBER' or data_type = 'MONEY' OR &
+				//	data_type = 'SMALLINT' OR data_type = 'INT' OR data_type = 'FLOAT' Then
+				IF	gnv_sql.of_is_numeric_data_type (data_type)		THEN
+					If len(single_entry) > length		THEN
+						MessageBox("INVALID DATA",label+' can not be over '+string(length)+lv_place_text+'in length')
+						if arg_object.typeof() = SINGLELINEEDIT! Then
+							sle = arg_object
+							setfocus(sle)
+						elseif arg_object.typeof() = DATAWINDOW! Then
+							dw = arg_object
+							setfocus(dw)
+							dw.setrow(arg_row_num)
+							dw.scrolltorow(arg_row_num)
+							dw.setcolumn(arg_col_name)
+						end if
+						return 'ERROR'
+					END IF
+				end if										// FNC 06/02/98
+			end if
+	
+			//Checks to make sure what part of string has to numeric//
+			num_of_nums = length - num_of_char
+			// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+			//if data_type = 'STRING' OR data_type = 'CHAR' OR data_type = 'VARCHAR' Then
+			IF	gnv_sql.of_is_character_data_type (data_type)		THEN
+				if num_of_char < length AND not lb_blanks_crit Then
+					temp = mid(single_entry,num_of_char+1,temp_len )
+					if isnumber(temp) = FALSE and not lb_blanks_crit Then
+						Messagebox('INVALID DATA','The last '+string(num_of_nums)+ lv_place_text+'of '+label+' can only be numbers')
+						if arg_object.typeof() = SINGLELINEEDIT! Then
+							sle = arg_object
+							setfocus(sle)
+						elseif arg_object.typeof() = DATAWINDOW! Then
+							dw = arg_object
+							setfocus(dw)
+							dw.setrow(arg_row_num)
+							dw.scrolltorow(arg_row_num)
+							dw.setcolumn(arg_col_name)
+						end if
+						RETURN 'ERROR'
+					end if
+				end if
+			end if
+		end if //not like or not like
+	loop // end IN/NOT IN LOOP
+	
+	if operator = '=' and lv_returned_operator <> 'LIKE' then
+		lv_returned_operator= 'IN'
+	elseif operator = '<>' and lv_returned_operator <> 'NOT LIKE' then
+		lv_returned_operator= 'NOT IN'	
+	end if
+	return lv_returned_operator
+//This checks if the operator is a BETWEEN.  It breaks apart each value.
+//It checks to make sure that a wildcard indicator has not been entered 
+//for each part. If it is a number it the lenth of the
+//value canot be greater than or equal to the max length.  But if it
+//is a STRING the length of the value has to be equal to the max length.
+//if it doesn't pass either of these it prints a error message.  
+//For Strings that have certain number of places that have to be numbers
+//the function checks the ones that are numbers.  If they aren't it displays a
+//message
+elseif operator = '><' Then
+	//Checks to make sure a comma has been entered//
+	if match(value,',') = FALSE then 
+		messagebox('INVALID DATA',label+' has only one value for the between. Please enter another one by separating them by a comma')
+		if arg_object.typeof() = SINGLELINEEDIT! Then
+			sle = arg_object
+			setfocus(sle)
+		elseif arg_object.typeof() = DATAWINDOW! Then
+			dw = arg_object
+			setfocus(dw)
+			dw.setrow(arg_row_num)
+			dw.scrolltorow(arg_row_num)
+			dw.setcolumn(arg_col_name)
+		end if
+		RETURN 'ERROR'
+	end if
+	//Splits up the two values//
+	left_side_between = split(value,'L',',')
+	right_side_between = split(value,'R',',')
+
+	//Checks to make sure there was only two values entered//
+	if match(right_side_between,',') Then
+		messagebox('INVALID DATA','Only two values can be entered in the '+label+ ' field when using the '+operator+' or BETWEEN operators')
+		if arg_object.typeof() = SINGLELINEEDIT! Then
+			sle = arg_object
+			setfocus(sle)
+		elseif arg_object.typeof() = DATAWINDOW! Then
+			dw = arg_object
+			setfocus(dw)
+			dw.setrow(arg_row_num)
+			dw.scrolltorow(arg_row_num)
+			dw.setcolumn(arg_col_name)
+		end if
+		RETURN 'ERROR'
+	end if
+
+	//VALID DATE CHECK for the left side
+	// FDG 04/03/00 - Include 'DATETIME' and use lnv_datetime to edit
+	//if data_type = 'DATE' OR data_type = 'SMALLDATETIME' Then			//ALABAMA1 SCOTT_D	// FDG 04/03/00
+	// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+	//if data_type	=	'DATE' 				&
+	//or data_type	=	'DATETIME'			&
+	//or data_type	=	'SMALLDATETIME'	Then
+	IF	gnv_sql.of_is_date_data_type (data_type)		THEN
+		li_rc			=	lnv_datetime.of_IsValidDate (left_side_between)
+		//if isdate(left_side_between) = FALSE Then						// FDG 04/03/00
+		if	li_rc		<	0		THEN												// FDG 04/03/00
+			choose case	li_rc
+				case	-1
+					ls_message	=	'An invalid date was entered for '	+	label
+				case	-2
+					ls_message	=	'The year entered for '	+	label	+	' must be a 4 digit year'
+				case	-3
+					ls_message	=	'The date for '	+	label	+	' must be between '	+	&
+										lnv_datetime.of_GetMinimumStringDate()	+	' and '	+	&
+										lnv_datetime.of_GetMaximumStringDate()
+				case else
+					ls_message	=	'An invalid date was entered for '	+	label
+			end choose
+			messagebox('INVALID DATE',ls_message + ' in the first value')		
+		if arg_object.typeof() = SINGLELINEEDIT! Then
+			sle = arg_object
+			setfocus(sle)
+		elseif arg_object.typeof() = DATAWINDOW! Then
+			dw = arg_object
+			setfocus(dw)
+			dw.setrow(arg_row_num)
+			dw.scrolltorow(arg_row_num)
+			dw.setcolumn(arg_col_name)
+		end if
+			return 'ERROR'
+		end if
+	END IF
+	// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+	//if data_type	=	'DATE' 				&
+	//or data_type	=	'DATETIME'			&
+	//or data_type	=	'SMALLDATETIME'	Then
+	IF	gnv_sql.of_is_date_data_type (data_type)		THEN
+		li_rc			=	lnv_datetime.of_IsValidDate (right_side_between)
+		if	li_rc		<	0		THEN												// FDG 04/03/00
+			choose case	li_rc
+				case	-1
+					ls_message	=	'An invalid date was entered for '	+	label
+				case	-2
+					ls_message	=	'The year entered for '	+	label	+	' must be a 4 digit year'
+				case	-3
+					ls_message	=	'The date for '	+	label	+	' must be between '	+	&
+										lnv_datetime.of_GetMinimumStringDate()	+	' and '	+	&
+										lnv_datetime.of_GetMaximumStringDate()
+				case else
+					ls_message	=	'An invalid date was entered for '	+	label
+			end choose
+			messagebox('INVALID DATE',ls_message + ' in the second value')		
+			if arg_object.typeof() = SINGLELINEEDIT! Then
+				sle = arg_object
+				setfocus(sle)
+			elseif arg_object.typeof() = DATAWINDOW! Then
+				dw = arg_object
+				setfocus(dw)
+				dw.setrow(arg_row_num)
+				dw.scrolltorow(arg_row_num)
+				dw.setcolumn(arg_col_name)
+			end if
+			return 'ERROR'
+		end if
+	END IF
+	
+	//Wildcard indicator check for left side//
+	if match(left_side_between,'%') Then
+ 		messagebox('INVALID DATA',' % in the '+label+' field can only be used with the =, <>, LIKE, and NOT LIKE operators')
+		if arg_object.typeof() = SINGLELINEEDIT! Then
+			sle = arg_object
+			setfocus(sle)
+		elseif arg_object.typeof() = DATAWINDOW! Then
+			dw = arg_object
+			setfocus(dw)
+			dw.setrow(arg_row_num)
+			dw.scrolltorow(arg_row_num)
+			dw.setcolumn(arg_col_name)
+		end if
+		RETURN 'ERROR'
+	end if
+	
+	//Wildcard indicator check for the right side//
+	if match(right_side_between,'%') Then
+ 		messagebox('INVALID DATA','The Second value of '+label +' cannot have a % in it when using the '+operator+' operator')
+		if arg_object.typeof() = SINGLELINEEDIT! Then
+			sle = arg_object
+			setfocus(sle)
+		elseif arg_object.typeof() = DATAWINDOW! Then
+			dw = arg_object
+			setfocus(dw)
+			dw.setrow(arg_row_num)
+			dw.scrolltorow(arg_row_num)
+			dw.setcolumn(arg_col_name)
+		end if
+		RETURN 'ERROR'
+	end if
+	
+	//Length Checks for strings//
+	// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+	//if data_type = 'STRING' OR data_type = 'CHAR' OR data_type = 'VARCHAR' Then
+	IF	gnv_sql.of_is_character_data_type (data_type)		THEN
+		If (len(left_side_between) < starting_length) OR (len(left_side_between)  > length) THEN
+			if starting_length = length Then
+				MessageBox("INVALID DATA",'The first value of the '+label+' should be '+string(length)+lv_place_text+'in length')
+			else
+				MessageBox("INVALID DATA",'The first value of the '+label+' should be between '+string(starting_length)+' and '+string(length)+lv_place_text+'in length')
+			end if
+			if arg_object.typeof() = SINGLELINEEDIT! Then
+				sle = arg_object
+				setfocus(sle)
+			elseif arg_object.typeof() = DATAWINDOW! Then
+				dw = arg_object
+				setfocus(dw)
+				dw.setrow(arg_row_num)
+				dw.scrolltorow(arg_row_num)
+				dw.setcolumn(arg_col_name)
+			end if
+			return 'ERROR'
+		END IF
+		If (len(right_side_between) < starting_length) OR (len(right_side_between)  > length) THEN
+			if starting_length = length Then
+				MessageBox("INVALID DATA",'The second value of the '+label+' should be '+string(length)+lv_place_text+'in length')
+			else
+				MessageBox("INVALID DATA",'The second value of the '+label+' should be between '+string(starting_length)+' and '+string(length)+lv_place_text+'in length')
+			end if
+			if arg_object.typeof() = SINGLELINEEDIT! Then
+				sle = arg_object
+				setfocus(sle)
+			elseif arg_object.typeof() = DATAWINDOW! Then
+				dw = arg_object
+				setfocus(dw)
+				dw.setrow(arg_row_num)
+				dw.scrolltorow(arg_row_num)
+				dw.setcolumn(arg_col_name)
+			end if
+			return 'ERROR'
+		end if
+	else 
+		//Length Checks for numerics//
+		// FNC 06/02/98 Add this if statement
+		// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+		//if data_type = 'NUMBER' or data_type = 'MONEY' OR &
+		//	data_type = 'SMALLINT' OR data_type = 'INT' OR data_type = 'FLOAT' Then
+		IF	gnv_sql.of_is_numeric_data_type (data_type)		THEN
+			If len(left_side_between) > length  Then
+				MessageBox("INVALID DATA",'The first value of the '+label+' cannot be over '+string(length)+lv_place_text+'in length')
+				if arg_object.typeof() = SINGLELINEEDIT! Then
+					sle = arg_object
+					setfocus(sle)
+				elseif arg_object.typeof() = DATAWINDOW! Then
+					dw = arg_object
+					setfocus(dw)
+					dw.setrow(arg_row_num)
+					dw.scrolltorow(arg_row_num)
+					dw.setcolumn(arg_col_name)
+				end if
+				return 'ERROR'
+			END IF
+			If len(right_side_between) > length THEN
+				MessageBox("INVALID DATA",'The second value of the '+label+' cannot be over '+string(length)+lv_place_text+'in length')
+				if arg_object.typeof() = SINGLELINEEDIT! Then
+					sle = arg_object
+					setfocus(sle)
+				elseif arg_object.typeof() = DATAWINDOW! Then
+					dw = arg_object
+					setfocus(dw)
+					dw.setrow(arg_row_num)
+					dw.scrolltorow(arg_row_num)
+					dw.setcolumn(arg_col_name)
+				end if
+				return 'ERROR'
+			end if
+		end if				// FNC 06/02/98
+	end if
+	
+	//Checks to make sure what part of string has to numeric//
+	num_of_nums = length - num_of_char
+	// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+	//if data_type = 'STRING' OR data_type = 'CHAR' OR data_type = 'VARCHAR' Then
+	IF	gnv_sql.of_is_character_data_type (data_type)		THEN
+		temp_len = len(left_side_between)
+		if num_of_char < length and not lb_blanks_crit Then
+			temp = mid(left_side_between,num_of_char+1,temp_len)
+			if isnumber(temp) = FALSE and not lb_blanks_crit Then
+				Messagebox('INVALID DATA','The last '+string(num_of_nums)+ lv_place_text+'of the first value in '+label+' can only be numbers')
+				if arg_object.typeof() = SINGLELINEEDIT! Then
+					sle = arg_object
+					setfocus(sle)
+				elseif arg_object.typeof() = DATAWINDOW! Then
+					dw = arg_object
+					setfocus(dw)
+					dw.setrow(arg_row_num)
+					dw.scrolltorow(arg_row_num)
+					dw.setcolumn(arg_col_name)
+				end if
+				RETURN 'ERROR'
+			end if
+			temp_len = len(left_side_between)
+			temp = mid(right_side_between,num_of_char+1,temp_len)
+			if isnumber(temp) = FALSE and not lb_blanks_crit Then
+				Messagebox('INVALID DATA','The last '+string(num_of_nums)+ lv_place_text+'of the second value in '+label+' can only be numbers')
+				if arg_object.typeof() = SINGLELINEEDIT! Then
+					sle = arg_object
+					setfocus(sle)
+				elseif arg_object.typeof() = DATAWINDOW! Then
+					dw = arg_object
+					setfocus(dw)
+					dw.setrow(arg_row_num)
+					dw.scrolltorow(arg_row_num)
+					dw.setcolumn(arg_col_name)
+				end if
+				RETURN 'ERROR'
+			end if
+		end if
+	end if
+	
+	//Checks to see if the left side is bigger than the right side//
+	//john_wo 8/97 -added the check for a data_type = Datetime on the following line.
+	//john_wo 8/97  This was done for prob 279.
+	// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+	//if data_type = 'DATE' OR data_type = 'SMALLDATETIME' OR data_type = 'DATETIME'THEN			//ALABAMA1 SCOTT_D
+	IF	gnv_sql.of_is_date_data_type (data_type)		THEN
+		left_date = date(left_side_between)
+		right_date = date(right_side_between)
+		if left_date > right_date Then
+			Messagebox('INVALID DATA','The first value cannot be bigger than the second value in a between for '+label)
+			if arg_object.typeof() = SINGLELINEEDIT! Then
+				sle = arg_object
+				setfocus(sle)
+			elseif arg_object.typeof() = DATAWINDOW! Then
+				dw = arg_object
+				setfocus(dw)
+				dw.setrow(arg_row_num)
+				dw.scrolltorow(arg_row_num)
+				dw.setcolumn(arg_col_name)
+			end if
+			RETURN 'ERROR'
+		end if
+		//Checks to see if the left side is equal to the right side.//
+		if left_date = right_date then
+			Messagebox('INVALID DATA','The two values in a between cannot be equal for '+label)
+			if arg_object.typeof() = SINGLELINEEDIT! Then
+				sle = arg_object
+				setfocus(sle)
+			elseif arg_object.typeof() = DATAWINDOW! Then
+				dw = arg_object
+				setfocus(dw)
+				dw.setrow(arg_row_num)
+				dw.scrolltorow(arg_row_num)
+				dw.setcolumn(arg_col_name)
+				end if
+			RETURN 'ERROR'
+		end if
+		
+	//12/23/97 Archana Converts string to a double field for data type of Money.
+	// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+	//elseif data_type = 'MONEY' then
+	ELSEIF gnv_sql.of_is_money_data_type (data_type)		THEN
+			left_money = double(left_side_between)
+			right_money = double(right_side_between)
+			if left_money > right_money then
+				Messagebox('INVALID DATA','The first value cannot be bigger than the second value in a between for '+label)
+				if arg_object.typeof() = SINGLELINEEDIT! Then
+					sle = arg_object
+					setfocus(sle)
+				else
+					if arg_object.typeof() = DATAWINDOW! Then
+					dw = arg_object
+					setfocus(dw)
+					dw.setrow(arg_row_num)
+					dw.scrolltorow(arg_row_num)
+					dw.setcolumn(arg_col_name)
+					end if
+				RETURN 'ERROR'
+				end if
+			end if
+
+	elseif left_side_between > right_side_between Then
+			Messagebox('INVALID DATA','The first value cannot be bigger than the second value in a between for '+label)
+			if arg_object.typeof() = SINGLELINEEDIT! Then
+				sle = arg_object
+				setfocus(sle)
+			elseif arg_object.typeof() = DATAWINDOW! Then
+				dw = arg_object
+				setfocus(dw)
+				dw.setrow(arg_row_num)
+				dw.scrolltorow(arg_row_num)
+				dw.setcolumn(arg_col_name)
+			end if
+			RETURN 'ERROR'
+//		end if
+		//Checks to see if the left side is equal to the right side.//
+		if left_side_between = right_side_between then
+			Messagebox('INVALID DATA','The two values in a between cannot be equal in '+label)
+			if arg_object.typeof() = SINGLELINEEDIT! Then
+				sle = arg_object
+				setfocus(sle)
+			elseif arg_object.typeof() = DATAWINDOW! Then
+				dw = arg_object
+				setfocus(dw)
+				dw.setrow(arg_row_num)
+				dw.scrolltorow(arg_row_num)
+				dw.setcolumn(arg_col_name)
+			end if
+			RETURN 'ERROR'
+		end if
+	end if											//ALABAMA1 SCOTT_D
+	lv_returned_operator = 'BETWEEN'
+	return lv_returned_operator
+//This checks to see if SOUNDS LIKE operator is being used.
+//It then checks for commas, spaces, and then non-letter characters
+//by looping through the characters of hte value and comparing 
+//the ascii code.
+//
+elseif operator = 'SOUNDS LIKE' or operator = '=' and match(value, 'SOUNDEX') then
+	lv_returned_operator = '='
+	IF gnv_sql.of_is_character_data_type (data_type) THEN
+		if match(value, ",") then
+			Messagebox('INVALID DATA', label+' has too many values in it for using the operator '+operator)
+			if arg_object.typeof() = SINGLELINEEDIT! Then
+				sle = arg_object
+				setfocus(sle)
+			elseif arg_object.typeof() = DATAWINDOW! Then
+				dw = arg_object
+				setfocus(dw)
+				dw.setrow(arg_row_num)
+				dw.scrolltorow(arg_row_num)
+				dw.setcolumn(arg_col_name)
+			end if
+			RETURN 'ERROR'
+		end if
+		if match(trim(value), " ") then
+			Messagebox('INVALID DATA', label+' cannot have any spaces when using the operator '+operator)
+			if arg_object.typeof() = SINGLELINEEDIT! Then
+				sle = arg_object
+				setfocus(sle)
+			elseif arg_object.typeof() = DATAWINDOW! Then
+				dw = arg_object
+				setfocus(dw)
+				dw.setrow(arg_row_num)
+				dw.scrolltorow(arg_row_num)
+				dw.setcolumn(arg_col_name)
+			end if
+			RETURN 'ERROR'
+		end if
+	//Loop through characters of the value to determine if they contain non-letter characters 
+	//via their ASCII code.  
+		int i = 0
+		do until i = len(value)
+			if ASC(mid(value,i,1))<65 or (ASC(mid(value,i,1))>90 and ASC(mid(value,i,1))<97) &
+					or ASC(mid(value,i,1))>122	then
+				Messagebox('INVALID DATA', label+' should only contain letters when using the operator '+operator)
+				if arg_object.typeof() = SINGLELINEEDIT! Then
+					sle = arg_object
+					setfocus(sle)
+				elseif arg_object.typeof() = DATAWINDOW! Then
+					dw = arg_object
+					setfocus(dw)
+					dw.setrow(arg_row_num)
+					dw.scrolltorow(arg_row_num)
+					dw.setcolumn(arg_col_name)
+				end if
+				RETURN 'ERROR'
+			end if
+			i = i+1
+		loop
+	else 
+	//Throw error for non-character field.
+		Messagebox('INVALID DATA',label+' cannot use the operator '+operator+' because it is not a character string.')
+		if arg_object.typeof() = SINGLELINEEDIT! Then
+			sle = arg_object
+			setfocus(sle)
+		elseif arg_object.typeof() = DATAWINDOW! Then
+			dw = arg_object
+			setfocus(dw)
+			dw.setrow(arg_row_num)
+			dw.scrolltorow(arg_row_num)
+			dw.setcolumn(arg_col_name)
+		end if
+		RETURN 'ERROR'			
+	end if
+//This is for <,<=,>,>=,=,<>.  It checks to see that the value does not have a wildcard indicator.
+//If it is a number it the lenth of the value canot be greater than or
+// equal to the max length.  But if it is a STRING the length of the
+// value has to be equal to the max length.  if it doesn't pass either
+// of these it prints a error message.
+else
+	temp_len = len(value)
+	lv_returned_operator = operator
+	//Wild card indicator check//
+	if match(value,'%') Then
+		messagebox('INVALID DATA',' % in the '+label+' field can only be used with the =, <>, LIKE and NOT LIKE operators')
+		if arg_object.typeof() = SINGLELINEEDIT! Then
+			sle = arg_object
+			setfocus(sle)
+		elseif arg_object.typeof() = DATAWINDOW! Then
+			dw = arg_object
+			setfocus(dw)
+			dw.setrow(arg_row_num)
+			dw.scrolltorow(arg_row_num)
+			dw.setcolumn(arg_col_name)
+		end if
+		RETURN 'ERROR'
+	end if
+
+	//Makes sure there is only one value//
+	if match(value,',') Then
+		messagebox('INVALID DATA',label+' has too many values in it when using the operator '+operator)
+		if arg_object.typeof() = SINGLELINEEDIT! Then
+			sle = arg_object
+			setfocus(sle)
+		elseif arg_object.typeof() = DATAWINDOW! Then
+			dw = arg_object
+			setfocus(dw)
+			dw.setrow(arg_row_num)
+			dw.scrolltorow(arg_row_num)
+			dw.setcolumn(arg_col_name)
+		end if
+		return 'ERROR'
+	end if
+	//String length check//
+	// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+	//if data_type = 'STRING' OR data_type = 'CHAR' OR data_type = 'VARCHAR' Then
+	IF gnv_sql.of_is_character_data_type (data_type)		THEN
+		If (len(value) < starting_length) OR (len(value)  > length) AND (not UPPER(value) = 'BLANKS') THEN
+			if starting_length = length Then
+				MessageBox("INVALID DATA",label+' should be '+string(length)+lv_place_text+'in length')
+			else
+				MessageBox("INVALID DATA",label+' should be between '+string(starting_length)+' and '+string(length)+lv_place_text+'in length')
+			end if
+			if arg_object.typeof() = SINGLELINEEDIT! Then
+				sle = arg_object
+				setfocus(sle)
+			elseif arg_object.typeof() = DATAWINDOW! Then
+				dw = arg_object
+				setfocus(dw)
+				dw.setrow(arg_row_num)
+				dw.scrolltorow(arg_row_num)
+				dw.setcolumn(arg_col_name)
+			end if
+			return 'ERROR'
+		END IF
+	else 
+		//Number length check//
+		// FNC 06/02/98 Add this if statement
+		// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+		//if data_type = 'NUMBER' or data_type = 'MONEY' OR &
+		//	data_type = 'SMALLINT' OR data_type = 'INT' OR data_type = 'FLOAT' Then
+		IF gnv_sql.of_is_numeric_data_type (data_type)		THEN
+			If len(value) > length THEN
+				MessageBox("INVALID DATA",label+' can not be over '+string(length)+lv_place_text+'in length')
+				if arg_object.typeof() = SINGLELINEEDIT! Then
+					sle = arg_object
+					setfocus(sle)
+				elseif arg_object.typeof() = DATAWINDOW! Then
+					dw = arg_object
+					setfocus(dw)
+					dw.setrow(arg_row_num)
+					dw.scrolltorow(arg_row_num)
+					dw.setcolumn(arg_col_name)
+				end if
+				return 'ERROR'
+			END IF
+		end if 									// FNC 06/02/98 FNC
+	end if
+end if
+//The next section is for operations other than IN or BETWEEN
+	//Checks to make sure what part of string has to numeric
+num_of_nums = length - num_of_char
+// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+//if data_type = 'STRING' OR data_type = 'CHAR' OR data_type = 'VARCHAR' Then
+IF gnv_sql.of_is_character_data_type (data_type)		THEN
+	if num_of_char < length and temp_len > 0 Then
+		temp = mid(value,num_of_char+1,temp_len )
+		if isnumber(temp) = FALSE and not lb_blanks_crit Then
+			Messagebox('INVALID DATA','The last '+string(num_of_nums)+ lv_place_text+'of '+label+' can only be numbers')
+			if arg_object.typeof() = SINGLELINEEDIT! Then
+				sle = arg_object
+				setfocus(sle)
+			elseif arg_object.typeof() = DATAWINDOW! Then
+				dw = arg_object
+				setfocus(dw)
+				dw.setrow(arg_row_num)
+				dw.scrolltorow(arg_row_num)
+				dw.setcolumn(arg_col_name)
+			end if
+			RETURN 'ERROR'
+		end if
+	end if
+end if
+
+// FDG 04/03/00 - Use lnv_datetime to edit
+// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+//if data_type	=	'DATE' 				&
+//or data_type	=	'DATETIME'			&
+//or data_type	=	'SMALLDATETIME'	Then
+IF gnv_sql.of_is_date_data_type (data_type)		THEN
+	li_rc			=	lnv_datetime.of_IsValidDate (value)
+	//if isdate(value) = FALSE Then										// FDG 04/03/00
+	if	li_rc		<	0		THEN												// FDG 04/03/00
+		choose case	li_rc
+			case	-1
+				ls_message	=	'An invalid date was entered for '	+	label
+			case	-2
+				ls_message	=	'The year entered for '	+	label	+	' must be a 4 digit year'
+			case	-3
+				ls_message	=	'The date for '	+	label	+	' must be between '	+	&
+									lnv_datetime.of_GetMinimumStringDate()	+	' and '	+	&
+									lnv_datetime.of_GetMaximumStringDate()
+			case else
+				ls_message	=	'An invalid date was entered for '	+	label
+		end choose
+		messagebox('INVALID DATE',ls_message)		
+		//messagebox('INVALID DATE','An invalid date was entered for '+label)
+		if arg_object.typeof() = SINGLELINEEDIT! Then
+			sle = arg_object
+			setfocus(sle)
+		elseif arg_object.typeof() = DATAWINDOW! Then
+			dw = arg_object
+			setfocus(dw)
+			dw.setrow(arg_row_num)
+			dw.scrolltorow(arg_row_num)
+			dw.setcolumn(arg_col_name)
+		end if
+		return 'ERROR'
+	end if
+END IF
+
+return lv_returned_operator
+
+end function
+

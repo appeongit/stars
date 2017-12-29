@@ -1,0 +1,46 @@
+HA$PBExportHeader$split.srf
+global type split from function_object
+end type
+
+forward prototypes
+global function string split (string splitobject, string side, string splitat)
+end prototypes
+
+global function string split (string splitobject, string side, string splitat);//***********************************************************************
+//   Date   Init               Description of Changes Made                
+// -------- ---- -------------------------------------------------------- 
+// 09/30/93 SWD  Created
+//***********************************************************************
+
+
+//************************************************************************
+// This function accepts a string with a tab separator in it(~t) and a 
+//	,a character telling them which side they want (L or R), and what
+// character to spit on.  If they want the right side of the character 
+// it return everyting right of the tab separator.  If they want the left
+// side of the character it will return everything left of the tab separator.
+//	If there is no separator or it is an invalid side then it will return
+//	the orginal value passed in. 
+//************************************************************************	
+int charpos
+string split,no_change
+no_change = splitobject
+
+charpos = pos(splitobject,splitat)
+if charpos = 0 Then
+	return '-1'
+elseif side = "L" Then
+
+	split = left(splitobject,(charpos - 1))
+	return split
+elseif side = "R" Then
+	if len(splitat) > 1 then 
+		charpos = charpos + len(splitat) - 1
+	end if
+	split= mid(splitobject,(charpos + 1))
+	return split
+else 
+	return '-1'
+end if
+end function
+

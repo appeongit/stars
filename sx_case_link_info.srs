@@ -1,0 +1,13 @@
+HA$PBExportHeader$sx_case_link_info.srs
+global type sx_case_link_info from structure
+	string		come_from
+	string		link_type
+	string		link_id
+	string		link_name
+	string		case_id
+	string		case_spl
+	string		case_ver
+	string		link_parm
+	string		link_desc
+end type
+

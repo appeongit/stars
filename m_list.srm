@@ -1,0 +1,751 @@
+HA$PBExportHeader$m_list.srm
+$PBExportComments$Right-mouse menu for tabpage_list
+forward
+global type m_list from menu
+end type
+type m_menu from menu within m_list
+end type
+type m_new from menu within m_menu
+end type
+type m_windowoperations from menu within m_menu
+end type
+type m_sort from menu within m_windowoperations
+end type
+type m_find from menu within m_windowoperations
+end type
+type m_displayfilter from menu within m_windowoperations
+end type
+type m_- from menu within m_windowoperations
+end type
+type m_uniquecount from menu within m_windowoperations
+end type
+type m_windowoperations from menu within m_menu
+m_sort m_sort
+m_find m_find
+m_displayfilter m_displayfilter
+m_- m_-
+m_uniquecount m_uniquecount
+end type
+type m_-1 from menu within m_menu
+end type
+type m_delete from menu within m_menu
+end type
+type m_list_pdq from menu within m_menu
+end type
+type m_select_pdq from menu within m_menu
+end type
+type m_ from menu within m_menu
+end type
+type m_importpdq from menu within m_menu
+end type
+type m_-2 from menu within m_menu
+end type
+type m_help from menu within m_menu
+end type
+type m_menu from menu within m_list
+m_new m_new
+m_windowoperations m_windowoperations
+m_-1 m_-1
+m_delete m_delete
+m_list_pdq m_list_pdq
+m_select_pdq m_select_pdq
+m_ m_
+m_importpdq m_importpdq
+m_-2 m_-2
+m_help m_help
+end type
+global type m_list from menu
+m_menu m_menu
+end type
+end forward
+
+global type m_list from menu
+m_menu m_menu
+end type
+global m_list m_list
+
+type variables
+datawindow idw_main
+w_query_engine  iw_Parent
+uo_query             iuo_Query
+end variables
+
+on m_list.create
+m_list=this
+call super::create
+this.m_menu=create m_menu
+this.Item[UpperBound(this.Item)+1]=this.m_menu
+end on
+
+on m_list.destroy
+call super::destroy
+destroy(this.m_menu)
+end on
+
+type m_menu from menu within m_list
+m_new m_new
+m_windowoperations m_windowoperations
+m_-1 m_-1
+m_delete m_delete
+m_list_pdq m_list_pdq
+m_select_pdq m_select_pdq
+m_ m_
+m_importpdq m_importpdq
+m_-2 m_-2
+m_help m_help
+end type
+
+on m_menu.create
+call super::create
+this.text = "m_list"
+this.m_new=create m_new
+this.m_windowoperations=create m_windowoperations
+this.m_-1=create m_-1
+this.m_delete=create m_delete
+this.m_list_pdq=create m_list_pdq
+this.m_select_pdq=create m_select_pdq
+this.m_=create m_
+this.m_importpdq=create m_importpdq
+this.m_-2=create m_-2
+this.m_help=create m_help
+this.Item[UpperBound(this.Item)+1]=this.m_new
+this.Item[UpperBound(this.Item)+1]=this.m_windowoperations
+this.Item[UpperBound(this.Item)+1]=this.m_-1
+this.Item[UpperBound(this.Item)+1]=this.m_delete
+this.Item[UpperBound(this.Item)+1]=this.m_list_pdq
+this.Item[UpperBound(this.Item)+1]=this.m_select_pdq
+this.Item[UpperBound(this.Item)+1]=this.m_
+this.Item[UpperBound(this.Item)+1]=this.m_importpdq
+this.Item[UpperBound(this.Item)+1]=this.m_-2
+this.Item[UpperBound(this.Item)+1]=this.m_help
+end on
+
+on m_menu.destroy
+call super::destroy
+destroy(this.m_new)
+destroy(this.m_windowoperations)
+destroy(this.m_-1)
+destroy(this.m_delete)
+destroy(this.m_list_pdq)
+destroy(this.m_select_pdq)
+destroy(this.m_)
+destroy(this.m_importpdq)
+destroy(this.m_-2)
+destroy(this.m_help)
+end on
+
+type m_new from menu within m_menu
+end type
+
+on m_new.create
+call super::create
+this.text = "&New"
+this.microhelp = "Create a new query"
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_List						m_new
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// This will enable tabpage_source, populate it will all possible datasources and select it.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	J.Mattis			01/05/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iuo_query = iw_Parent.wf_GetActiveQuery()
+End If
+
+If IsValid(iuo_Query) Then
+	iuo_query.event ue_new_query()
+End If
+
+end event
+
+on m_new.destroy
+call super::destroy
+end on
+
+type m_windowoperations from menu within m_menu
+m_sort m_sort
+m_find m_find
+m_displayfilter m_displayfilter
+m_- m_-
+m_uniquecount m_uniquecount
+end type
+
+on m_windowoperations.create
+call super::create
+this.text = "&Window Operations"
+this.m_sort=create m_sort
+this.m_find=create m_find
+this.m_displayfilter=create m_displayfilter
+this.m_-=create m_-
+this.m_uniquecount=create m_uniquecount
+this.Item[UpperBound(this.Item)+1]=this.m_sort
+this.Item[UpperBound(this.Item)+1]=this.m_find
+this.Item[UpperBound(this.Item)+1]=this.m_displayfilter
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_uniquecount
+end on
+
+on m_windowoperations.destroy
+call super::destroy
+destroy(this.m_sort)
+destroy(this.m_find)
+destroy(this.m_displayfilter)
+destroy(this.m_-)
+destroy(this.m_uniquecount)
+end on
+
+type m_sort from menu within m_windowoperations
+end type
+
+on m_sort.create
+call super::create
+this.text = "&Sort..."
+this.microhelp = "Sort the data on this tab."
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_List						m_sort
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	J.Mattis			01/05/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iuo_Query = iw_Parent.wf_GetActiveQuery()
+End If
+
+If IsValid(iuo_Query) Then
+	iuo_Query.event ue_window_operations("Sort","LIST")
+End If
+end event
+
+on m_sort.destroy
+call super::destroy
+end on
+
+type m_find from menu within m_windowoperations
+end type
+
+on m_find.create
+call super::create
+this.text = "&Find..."
+this.microhelp = "Find data displayed on this tab."
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_List						m_find
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	J.Mattis			01/05/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iuo_Query = iw_Parent.wf_GetActiveQuery()
+End If
+
+If IsValid(iuo_Query) Then
+	iuo_Query.event ue_window_operations("Find","LIST")
+End If
+end event
+
+on m_find.destroy
+call super::destroy
+end on
+
+type m_displayfilter from menu within m_windowoperations
+end type
+
+on m_displayfilter.create
+call super::create
+this.text = "&Display Filter..."
+this.microhelp = "Filter the data displayed on this tab."
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_List						m_displayfilter
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	J.Mattis			01/05/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iuo_Query = iw_Parent.wf_GetActiveQuery()
+End If
+
+If IsValid(iuo_Query) Then
+	iuo_Query.event ue_window_operations("Display Filter","LIST")
+End If
+end event
+
+on m_displayfilter.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_windowoperations
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_uniquecount from menu within m_windowoperations
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_List						m_uniquecount
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+//
+//	12/14/04	GaryR	Track 4016d	Add Unique Count to RMM
+//	12/15/04	GaryR	Track	4161d	Rename Unique Count to Count Unique Values
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iuo_Query = iw_Parent.wf_GetActiveQuery()
+End If
+
+If IsValid(iuo_Query) Then
+	iuo_Query.event ue_window_operations("Count Unique Values","LIST")
+End If
+end event
+
+on m_uniquecount.create
+call super::create
+this.text = "&Count Unique Values..."
+this.microhelp = "Count unique values"
+end on
+
+on m_uniquecount.destroy
+call super::destroy
+end on
+
+type m_-1 from menu within m_menu
+end type
+
+on m_-1.create
+call super::create
+this.text = "-"
+end on
+
+on m_-1.destroy
+call super::destroy
+end on
+
+type m_delete from menu within m_menu
+end type
+
+on m_delete.create
+call super::create
+this.text = "&Delete"
+this.microhelp = "Delete the highlighted query."
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_List						m_delete
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// Will delete the selected query from the system if owned by the user of if the user 
+// has Administrator privileges.  
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	J.Mattis			01/05/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iuo_Query = iw_Parent.wf_GetActiveQuery()
+End If
+
+If IsValid(iw_Parent) Then
+	iuo_Query.event ue_tabpage_list_delete_query()
+End If
+end event
+
+on m_delete.destroy
+call super::destroy
+end on
+
+type m_list_pdq from menu within m_menu
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_List						m_list_pdq
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// Will list pdqs matching search criteria
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	A.Sola			08/18/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iuo_Query = iw_Parent.wf_GetActiveQuery()
+End If
+
+If IsValid(iw_Parent) Then
+	iuo_Query.event ue_tabpage_list_create_list(iuo_Query.is_query_id)
+End If
+end event
+
+on m_list_pdq.create
+call super::create
+this.text = "&List"
+this.microhelp = "List queries matching search criteria"
+end on
+
+on m_list_pdq.destroy
+call super::destroy
+end on
+
+type m_select_pdq from menu within m_menu
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_List						m_select_pdq
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// The script will trigger a user event ue_select_pdq() to select the 
+// highlighted query.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	A.Sola			08/18/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iuo_Query = iw_Parent.wf_GetActiveQuery()
+End If
+
+If IsValid(iw_Parent) Then
+	iw_Parent.event ue_select_pdq()
+End If
+end event
+
+on m_select_pdq.create
+call super::create
+this.text = "&Select"
+this.microhelp = "Select the highlighted query"
+end on
+
+on m_select_pdq.destroy
+call super::destroy
+end on
+
+type m_ from menu within m_menu
+end type
+
+on m_.create
+call super::create
+this.text = "-"
+end on
+
+on m_.destroy
+call super::destroy
+end on
+
+type m_importpdq from menu within m_menu
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_List						m_importpdq
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// Will import a pdq from a flat file 
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	FNC				10/27/99		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iw_parent.event ue_import_pdq()
+End If
+
+
+end event
+
+on m_importpdq.create
+call super::create
+this.text = "&Import  PDQ"
+end on
+
+on m_importpdq.destroy
+call super::destroy
+end on
+
+type m_-2 from menu within m_menu
+end type
+
+on m_-2.create
+call super::create
+this.text = "-"
+end on
+
+on m_-2.destroy
+call super::destroy
+end on
+
+type m_help from menu within m_menu
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_list						m_help
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// This will display help for this tabpage.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		05/06/98		Created.
+//	GaryR		04/29/03		Track 3541d	Add PDR tab-sensitive help
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	IF iw_parent.of_is_pdr_mode() THEN
+		iw_parent.of_help ('','TABPAGE_PDRLIST')
+	ELSE
+		iw_parent.of_help ('','TABPAGE_LIST')
+	END IF
+End If
+
+
+end event
+
+on m_help.create
+call super::create
+this.text = "&Help"
+this.microhelp = "Display help for this tab."
+end on
+
+on m_help.destroy
+call super::destroy
+end on
+

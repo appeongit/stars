@@ -1,0 +1,9 @@
+﻿$PBExportHeader$sx_prov_query_structure.srs
+global type sx_prov_query_structure from structure
+	boolean		do_prov_query
+	string		relational_op
+	string		left_paren
+	string		right_paren
+	sx_prov_fields		prov_fields[]
+end type
+

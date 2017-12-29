@@ -1,0 +1,36 @@
+HA$PBExportHeader$fx_decode_tables.srf
+global type fx_decode_tables from function_object
+end type
+
+forward prototypes
+global function integer fx_decode_tables (string arg_tbl_string, ref string tbl_array[])
+end prototypes
+
+global function integer fx_decode_tables (string arg_tbl_string, ref string tbl_array[]);// Script for fx_decode_tables
+//**************************************************************
+//Created 02-28-95 PLB This function will decode a string sent
+//                 as a parm and place it into an array
+//**************************************************************
+
+int lv_pos,lv_cnt
+string lv_string,lv_tbl
+
+setpointer(hourglass!)
+
+lv_string = arg_tbl_string
+Do While len(lv_string) > 0
+	lv_cnt = lv_cnt + 1
+	lv_pos = pos(lv_string,'+')
+	If lv_pos = 0 Then
+		tbl_array[lv_cnt] = lv_string
+		lv_string = ''
+	Else
+		lv_tbl = left(lv_string,lv_pos - 1)
+		tbl_array[lv_cnt] = lv_tbl
+	   lv_string = Mid(lv_string,lv_pos + 1)
+	End If
+Loop
+
+Return 0
+end function
+

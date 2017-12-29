@@ -1,0 +1,12 @@
+﻿$PBExportHeader$sx_field.srs
+$PBExportComments$used in generic summaries to pass grouping fields
+global type sx_field from structure
+    string label
+    string col_name
+    string sum_col_name
+    string tbl_type
+    string lookup_type
+    string operator
+    string value
+end type
+

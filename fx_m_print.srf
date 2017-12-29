@@ -1,0 +1,84 @@
+HA$PBExportHeader$fx_m_print.srf
+$PBExportComments$File|Print
+global type fx_m_print from function_object
+end type
+
+forward prototypes
+global subroutine fx_m_print ()
+end prototypes
+
+global subroutine fx_m_print ();//***********************************************************************
+//   Date   Init               Description of Changes Made                
+// -------- ---- 	-------------------------------------------------------- 
+//	02-12-98	FDG	If a datawindow was specified as the "print" d/w,
+//						then prin that d/w.  This can prevent multiple
+//						visible datawindows from being printed.
+//	04-04-96	FDG	If the datawindow to be printed is a "Criteria" d/w
+//					  	(showing SQL criteria), then print it directly
+//					  	instead of going thru the chain of scripts causing it
+//					  	to display the print options window.  Calling f_dw_print
+//					  	with 1 copy as a parm will print the d/w without
+//					  	opening the print options window.
+// 01-12-95 FNC  	check to see if window is still open just in case the
+//               	user cancelled print and closed window before windows
+//               	finished cancelling the print.
+// 03/11/94 JMS  	Modified to display message if no sheet is currently
+//               	active.
+// 03/11/94 JMS  	Modified so only visible datawindows are printed.	
+// 10/27/00	GaryR	2315d	Conforming STARS to the HIPAA Act
+//	05/01/01	GaryR	Stars 4.7 DataBase Port - Eliminate view CODE_DESC
+//	10/20/05	GaryR	Track 4563d	Do not print screen if no datawindow
+//***********************************************************************
+
+w_master		lw_active_sheet
+u_dw			ldw_control
+Integer		li_control,		&
+				li_max_controls
+Boolean		lb_has_dw
+
+lw_active_sheet = MDI_main_frame.GetActiveSheet()
+if (Not IsValid(lw_active_sheet)) then
+   MessageBox('Print Report','No sheet is currently active.',StopSign!)
+	return
+end if
+
+//	FDG 02/12/98 - Begin
+
+//	Get idw_
+ldw_control		=	lw_active_sheet.of_GetPrintDW()
+
+IF	IsValid (ldw_control)		THEN
+	lb_has_dw	=	True
+	MDI_main_frame.SetMicroHelp('Printing Report')
+	OpenWithParm(w_dw_print_what_cols,ldw_control)
+	Return
+END IF
+//	FDG 02/12/98 - End
+
+li_max_controls = UpperBound(lw_active_sheet.control[]) 
+
+for li_control = 1 to li_max_controls
+	//Archana 11-20-97
+  if (lw_active_sheet.control[li_control].TypeOf() = DataWindow!) then
+	//     (lw_active_sheet.control[li_control].visible  = True)        then 
+     lb_has_dw     = True
+     ldw_control = lw_active_sheet.control[li_control]
+     MDI_main_frame.SetMicroHelp('Printing Report')
+			// FDG 04/04/96 - Begin
+		//	05/01/01	GaryR	Stars 4.7 DataBase Port - Begin	
+			if (lw_active_sheet.control[li_control].visible  = True) then
+       		OpenWithParm(w_dw_print_what_cols,ldw_control)
+	   	End If
+	  //	05/01/01	GaryR	Stars 4.7 DataBase Port - End
+			// FDG 04/04/96 - End
+  end if
+next
+
+if (lb_has_dw = False) then 
+	MessageBox('Print Report','The Print/Report option is not valid for this window because it does not contain a datawindow',StopSign!)
+end if
+
+setpointer(arrow!)
+MDI_main_frame.SetMicroHelp('Ready')
+end subroutine
+

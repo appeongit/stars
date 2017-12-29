@@ -1,0 +1,30 @@
+﻿$PBExportHeader$d_sql_formula.srd
+$PBExportComments$<logic>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=1 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes grid.lines=0 selected.mouse=yes hidegrayline=no showbackcoloronxp=no)
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(16) key=yes update=yes updatewhereclause=yes name=formula_id dbname="SQL_FORMULA.FORMULA_ID"  )
+column=(type=long key=yes update=yes updatewhereclause=yes name=formula_line dbname="SQL_FORMULA.FORMULA_LINE"  )
+column=(type=char(255) update=yes updatewhereclause=yes name=formula_syntax dbname="SQL_FORMULA.FORMULA_SYNTAX"  )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"SQL_FORMULA~" ) COLUMN(NAME=~"SQL_FORMULA.FORMULA_ID~") COLUMN(NAME=~"SQL_FORMULA.FORMULA_LINE~") COLUMN(NAME=~"SQL_FORMULA.FORMULA_SYNTAX~")WHERE(    EXP1 =~"SQL_FORMULA.FORMULA_ID~"   OP =~"=~"    EXP2 =~":as_formula~" ) ) ORDER(NAME=~"SQL_FORMULA.FORMULA_LINE~" ASC=yes ) ARG(NAME = ~"as_formula~" TYPE = string) "
+  update="SQL_FORMULA" updatewhere=1 updatekeyinplace=no
+  arguments=(("as_formula", string))
+)
+text(name=formula_id_t visible="1" band=header font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="9" y="8" height="64" width="622" text="Formula Id" html.valueishtml="0" accessibledescription="~"Formula Id~"	~"Formula Id~"" accessiblename="~"Formula Id~"	~"Formula Id~"" accessiblerole=42 )
+text(name=formula_line_t visible="1" band=header font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="640" y="8" height="64" width="462" text="Formula Line" html.valueishtml="0" accessibledescription="~"Formula Line~"	~"Formula Line~"" accessiblename="~"Formula Line~"	~"Formula Line~"" accessiblerole=42 )
+text(name=formula_syntax_t visible="1" band=header font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="1111" y="8" height="64" width="3950" text="Formula Syntax" html.valueishtml="0" accessibledescription="~"Formula Syntax~"	~"Formula Syntax~"" accessiblename="~"Formula Syntax~"	~"Formula Syntax~"" accessiblerole=42 )
+column(name=formula_id visible="1" band=detail id=1 x="9" y="8" height="76" width="622" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=16 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=10 accessibledescription="~"Formula Id~"	~"Formula Id~"" accessiblename="~"Formula Id ~"	~"Formula Id ~"" accessiblerole=27 )
+column(name=formula_line visible="1" band=detail id=2 x="640" y="8" height="76" width="462" color="33554432" border="0" alignment="1" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=20 accessibledescription="~"Formula Line~"	~"Formula Line~"" accessiblename="~"Formula Line~"	~"Formula Line~"" accessiblerole=27 )
+column(name=formula_syntax visible="1" band=detail id=3 x="1111" y="8" height="76" width="3950" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=255 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=30 accessibledescription="~"Formula Syntax~"	~"Formula Syntax~"" accessiblename="~"Formula Syntax~"	~"Formula Syntax~"" accessiblerole=27 )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )

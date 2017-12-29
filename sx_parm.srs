@@ -1,0 +1,7 @@
+HA$PBExportHeader$sx_parm.srs
+global type sx_parm from structure
+    string main_tbls[]
+    string dep_tbl
+    string label
+end type
+

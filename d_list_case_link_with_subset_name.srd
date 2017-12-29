@@ -1,0 +1,38 @@
+HA$PBExportHeader$d_list_case_link_with_subset_name.srd
+$PBExportComments$called from nvo_subset_functions <logic>
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(10) updatewhereclause=yes name=link_key dbname="case_link.link_key" )
+ column=(type=char(10) updatewhereclause=yes name=case_id dbname="case_link.case_id" )
+ column=(type=char(2) updatewhereclause=yes name=case_spl dbname="case_link.case_spl" )
+ column=(type=char(2) updatewhereclause=yes name=case_ver dbname="case_link.case_ver" )
+ column=(type=char(80) updatewhereclause=yes name=link_desc dbname="case_link.link_desc" )
+ retrieve="  SELECT CASE_LINK.LINK_KEY,   
+         CASE_LINK.CASE_ID,   
+         CASE_LINK.CASE_SPL,   
+         CASE_LINK.CASE_VER,
+			CASE_LINK.LINK_DESC
+    FROM CASE_LINK  
+   WHERE ( CASE_LINK.LINK_NAME = Upper(:arg_subset_name) ) AND  
+         ( CASE_LINK.LINK_TYPE = 'SUB' ) AND  
+         ( CASE_LINK.LINK_STATUS = 'A' )    
+" arguments=(("arg_subset_name", string)) )
+text(band=header alignment="2" text="Link Key" border="0" color="0" x="5" y="4" height="64" width="402" html.valueishtml="0"  name=link_key_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Case Id" border="0" color="0" x="571" y="4" height="64" width="402" html.valueishtml="0"  name=case_id_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Case Spl" border="0" color="0" x="1120" y="8" height="64" width="325" html.valueishtml="0"  name=case_spl_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Case Ver" border="0" color="0" x="1573" y="0" height="64" width="329" html.valueishtml="0"  name=case_ver_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="76" width="521" format="[general]" html.valueishtml="0"  name=link_key visible="1" edit.limit=10 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="562" y="8" height="76" width="526" format="[general]" html.valueishtml="0"  name=case_id visible="1" edit.limit=10 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1175" y="4" height="76" width="110" format="[general]" html.valueishtml="0"  name=case_spl visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1609" y="4" height="76" width="110" format="[general]" html.valueishtml="0"  name=case_ver visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=0 border="0" color="0" x="1888" y="8" height="64" width="2962" html.valueishtml="0"  name=link_desc visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

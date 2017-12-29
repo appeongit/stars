@@ -1,0 +1,17 @@
+HA$PBExportHeader$d_get_tag_cols.srd
+$PBExportComments$Used for datastore in tabpage_view. Event ue_tabpage_view_mapping. <logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(32) update=yes updatewhereclause=yes name=col_name dbname="STARS_WIN_PARM.COL_NAME" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=a_dflt dbname="STARS_WIN_PARM.A_DFLT" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"stars_win_parm~" ) COLUMN(NAME=~"stars_win_parm.COL_NAME~") COLUMN(NAME=~"stars_win_parm.A_DFLT~")WHERE(    EXP1 =~"win_id~"   OP =~"=~"    EXP2 =~"'*'~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"sys_id~"   OP =~"=~"    EXP2 =~"Upper(:as_sys_dflt)~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"cntl_id~"   OP =~"=~"    EXP2 =~"'MAPPING'~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"tbl_type~"   OP =~"in~"    EXP2 =~"(Upper(:as_inv_type), Upper(:as_sys_dflt))~" ) ) ARG(NAME = ~"as_inv_type~" TYPE = string)  ARG(NAME = ~"as_sys_dflt~" TYPE = string) " arguments=(("as_inv_type", string),("as_sys_dflt", string)) )
+text(band=header alignment="2" text="A Dflt" border="0" color="0" x="1234" y="0" height="64" width="2743"  name=a_dflt_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Col Name" border="0" color="0" x="9" y="0" height="64" width="1207"  name=col_name_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=90 border="0" color="0" x="1234" y="4" height="76" width="2743" format="[general]"  name=a_dflt edit.limit=255 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=70 border="0" color="0" x="9" y="4" height="76" width="1207" format="[general]"  name=col_name edit.limit=32 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

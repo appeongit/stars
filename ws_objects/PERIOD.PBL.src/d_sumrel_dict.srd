@@ -1,0 +1,22 @@
+﻿$PBExportHeader$d_sumrel_dict.srd
+$PBExportComments$retrieves patprofile summary table type and corresponding claims invoice type for period_cntl_list <logic>
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=144 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(3) updatewhereclause=yes name=sum_rel_inv_type dbname="SUM_REL.INV_TYPE" )
+ column=(type=char(32) updatewhereclause=yes name=sum_rel_table_name dbname="SUM_REL.TABLE_NAME" )
+ column=(type=char(2) updatewhereclause=yes name=dictionary_elem_tbl_type dbname="dictionary.ELEM_TBL_TYPE" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"dictionary~" )  TABLE(NAME=~"SUM_REL~" ) COLUMN(NAME=~"SUM_REL.INV_TYPE~") COLUMN(NAME=~"SUM_REL.TABLE_NAME~") COLUMN(NAME=~"dictionary.ELEM_TBL_TYPE~")    JOIN (LEFT=~"dictionary.ELEM_NAME~"    OP =~"=~"RIGHT=~"SUM_REL.TABLE_NAME~" )WHERE(    EXP1 =~"SUM_REL.SUM_FLAG~"   OP =~"=~"    EXP2 =~"'B'~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"SUM_REL.SUM_FLD1_SEQ~"   OP =~"=~"    EXP2 =~"0~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"SUM_REL.PERIOD~"   OP =~"=~"    EXP2 =~"999999~" ) ) ORDER(NAME=~"SUM_REL.INV_TYPE~" ASC=yes ) " )
+text(band=header alignment="2" text="Sum Rel
+Inv Type"border="0" color="0" x="9" y="8" height="128" width="311"  name=sum_rel_inv_type_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sum Rel
+Table Name"border="0" color="0" x="864" y="8" height="128" width="1207"  name=sum_rel_table_name_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Dictionary
+Elem Tbl Type"border="0" color="0" x="329" y="8" height="128" width="526"  name=dictionary_elem_tbl_type_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="311" format="[general]"  name=sum_rel_inv_type edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="864" y="8" height="76" width="1207" format="[general]"  name=sum_rel_table_name edit.limit=32 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="329" y="8" height="76" width="526" format="[general]"  name=dictionary_elem_tbl_type edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,22 @@
+HA$PBExportHeader$d_dddw_patt_inv_type.srd
+$PBExportComments$External source DDDW for invoice types <gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=0 print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(2) updatewhereclause=yes name=inv_type dbname="inv_type"  )
+column=(type=char(60) updatewhereclause=yes name=description dbname="description"  )
+)
+compute(name=inv_type_desc band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" x="5" y="4" height="64" width="1609" format="[GENERAL]" expression=" inv_type + '-' +  description " alignment="0" border="0" crosstab.repeat=no accessibledescription="~"Invoice Type Description~"	~"Invoice Type Description~"" accessiblename="~"Invoice Type Description~"	~"Invoice Type Description~"" )
+htmltable(border="1" cellPadding="0" cellSpacing="0" generateCSS="no" noWrap="yes" )
+htmlgen(pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

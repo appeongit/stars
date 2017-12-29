@@ -1,0 +1,16 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "RATIO.PBL" "";
+@end;
+@begin Objects
+ "d_ratio_rpt_3_ver_1.srd" "RATIO.PBL";
+ "d_ratio_rpt_3_ver_2.srd" "RATIO.PBL";
+ "sx_ratio_select_parms.srs" "RATIO.PBL";
+ "sx_ratio_rpt_parms.srs" "RATIO.PBL";
+ "w_ratio_proc_sum.srw" "RATIO.PBL";
+ "w_ratio_select.srw" "RATIO.PBL";
+ "d_ratio_rpt.srd" "RATIO.PBL";
+ "d_ratio_proc_sum_tables.srd" "RATIO.PBL";
+ "w_ratio_rpt.srw" "RATIO.PBL";
+ "d_ratio_proc_sum_rat_3.srd" "RATIO.PBL";
+@end;

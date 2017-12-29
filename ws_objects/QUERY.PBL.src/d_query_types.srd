@@ -1,0 +1,30 @@
+﻿$PBExportHeader$d_query_types.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=97 print.margin.bottom=97 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=char(255) updatewhereclause=yes name=dictionary_elem_desc dbname="dictionary.elem_desc"  )
+column=(type=char(2) updatewhereclause=yes name=stars_rel_id_2 dbname="stars_rel.id_2"  )
+ retrieve="  SELECT dictionary.ELEM_DESC, STARS_REL.ID_2  
+    FROM dictionary,   
+         STARS_REL  
+   WHERE ( STARS_REL.ID_2 = dictionary.ELEM_TBL_TYPE ) AND  
+         ( STARS_REL.REL_TYPE in ('QT','AN') ) AND  
+         ( dictionary.ELEM_TYPE = 'TB' )   
+	ORDER BY 1 
+"
+ )
+compute(name=compute_0001 visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="2" background.color="1073741824" color="33554432" x="9" y="4" height="56" width="2181" format="[GENERAL]" expression="stars_rel_id_2 + ~" - ~" + dictionary_elem_desc " alignment="0" border="0" html.valueishtml="0" crosstab.repeat=no accessibledescription="~"Query Type and Description~"	~"Query Type and Description~"" accessiblename="~"Query Type and Description~"	~"Query Type and Description~"" )
+htmltable(border="0" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen(sessionSpecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

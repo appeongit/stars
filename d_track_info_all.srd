@@ -1,0 +1,187 @@
+HA$PBExportHeader$d_track_info_all.srd
+$PBExportComments$<logic>
+release 10;
+datawindow(units=0 timer_interval=60000 color=16777215 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=244 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(10) update=yes updatewhereclause=yes key=yes name=case_id dbname="track.case_id" initial=" " )
+ column=(type=char(2) update=yes updatewhereclause=yes key=yes name=case_spl dbname="track.case_spl" initial=" " )
+ column=(type=char(2) update=yes updatewhereclause=yes key=yes name=case_ver dbname="track.case_ver" initial=" " )
+ column=(type=char(2) update=yes updatewhereclause=yes key=yes name=trk_type dbname="track.trk_type" initial=" " values="BE - Beneficiary	BE/PV - Provider	PV/PC - Procedure	PC/RV - Revenue	RV/" )
+ column=(type=char(50) update=yes updatewhereclause=yes key=yes name=trk_key dbname="track.trk_key" initial=" " )
+ column=(type=char(50) update=yes updatewhereclause=yes name=trk_key_alt dbname="track.trk_key_alt" initial=" " )
+ column=(type=char(2) update=yes updatewhereclause=yes name=trk_rel_type dbname="track.trk_rel_type" initial=" " values="BE - Beneficiary	BE/PV - Provider	PV/PC - Procedure	PC/RV - Revenue	RV/" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=trk_rel_key dbname="track.trk_rel_key" initial=" " )
+ column=(type=char(255) update=yes updatewhereclause=yes name=trk_name dbname="track.trk_name" initial=" " )
+ column=(type=char(1) update=yes updatewhereclause=yes name=alert_ind dbname="track.alert_ind" initial=" " )
+ column=(type=datetime update=yes updatewhereclause=yes name=create_datetime dbname="track.create_datetime" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=status dbname="track.status" initial=" " )
+ column=(type=char(8) update=yes updatewhereclause=yes name=disp dbname="track.disp" initial=" " )
+ column=(type=datetime update=yes updatewhereclause=yes name=status_datetime dbname="track.status_datetime" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=from_period dbname="track.from_period" initial="0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=to_period dbname="track.to_period" initial="0" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=op_type dbname="track.op_type" initial=" " )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=op_amt dbname="track.op_amt" initial="0" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=amt_recv dbname="track.amt_recv" initial="0" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=amt_writeoff dbname="track.amt_writeoff" initial="0" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_req dbname="track.date_req" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_rev dbname="track.date_rev" )
+ column=(type=char(60) update=yes updatewhereclause=yes name=trk_desc dbname="track.trk_desc" initial=" " )
+ column=(type=char(60) update=yes updatewhereclause=yes name=status_desc dbname="track.status_desc" initial=" " )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=referred_amt dbname="track.referred_amt" initial="0" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=recovered_addtl_amt dbname="track.recovered_addtl_amt" initial="0" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=balance_remaining_amt dbname="track.balance_remaining_amt" initial="0" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=custom1_amt dbname="track.custom1_amt" initial="0" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=custom2_amt dbname="track.custom2_amt" initial="0" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=custom3_amt dbname="track.custom3_amt" initial="0" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=custom4_amt dbname="track.custom4_amt" initial="0" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=custom5_amt dbname="track.custom5_amt" initial="0" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=custom6_amt dbname="track.custom6_amt" initial="0" )
+ column=(type=char(1) updatewhereclause=yes name=compute_0034 dbname="compute_0034" )
+ column=(type=number updatewhereclause=yes name=payment_amt dbname="payment_amt" )
+ column=(type=char(15) updatewhereclause=yes name=check_no dbname="check_no" )
+ column=(type=char(22) updatewhereclause=yes name=payment_type dbname="payment_type" )
+ column=(type=char(10) updatewhereclause=yes key=yes name=target_id dbname="track.target_id" )
+ column=(type=char(9) updatewhereclause=yes name=prov_id_type dbname="track.prov_id_type" )
+ retrieve="  SELECT track.CASE_ID,   
+         track.CASE_SPL,   
+         track.CASE_VER,
+         track.TRK_TYPE, 
+			track.TRK_KEY, 
+       	track.TRK_KEY_ALT,
+         track.TRK_REL_TYPE,   
+         track.TRK_REL_KEY,      
+         track.TRK_NAME, 
+         track.ALERT_IND,  
+         track.CREATE_DATETIME,   
+         track.STATUS,   
+         track.DISP,   
+         track.STATUS_DATETIME,  
+         track.FROM_PERIOD,   
+         track.TO_PERIOD,  
+         track.OP_TYPE,  
+       	track.OP_AMT,    
+         track.AMT_RECV,  
+         track.AMT_WRITEOFF,   
+         track.DATE_REQ,   
+         track.DATE_REV, 
+         track.TRK_DESC, 
+         track.STATUS_DESC,  
+         track.REFERRED_AMT,   
+         track.RECOVERED_ADDTL_AMT,   
+         track.BALANCE_REMAINING_AMT,   
+         track.CUSTOM1_AMT,   
+         track.CUSTOM2_AMT,   
+         track.CUSTOM3_AMT,   
+         track.CUSTOM4_AMT,   
+         track.CUSTOM5_AMT,   
+         track.CUSTOM6_AMT,
+		'0',
+		0.00 as PAYMENT_AMT,
+		'               ' as CHECK_NO,
+		'                      ' as PAYMENT_TYPE,
+		track.TARGET_ID,
+		track.prov_id_type
+    FROM track  
+   WHERE ( track.CASE_ID = Upper(:case_id) ) AND  
+         ( track.CASE_SPL = Upper(:case_spl) ) AND  
+         ( track.CASE_VER = Upper(:case_ver) ) 
+			" update="track" updatewhere=0 updatekeyinplace=no arguments=(("case_id", string),("case_spl", string),("case_ver", string)) )
+text(band=background alignment="2" text="Case Tracking list" border="0" color="0" x="928" y="20" height="64" width="997" html.valueishtml="0"  name=t_1 visible="1"  moveable=1  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=background alignment="0" expression="today()"border="0" color="0" x="2094" y="16" height="64" width="654" format="mm/dd/yy hh:mm" html.valueishtml="0"  name=compute_1 visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=background alignment="0" expression="'Page ' + page()"border="0" color="0" x="2843" y="16" height="64" width="521" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Track
+Type" border="4" color="0" x="9" y="112" height="124" width="443" html.valueishtml="0"  name=trk_type_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Track Key" border="4" color="0" x="462" y="112" height="124" width="530" html.valueishtml="0"  name=trk_key_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Track Name" border="4" color="0" x="1001" y="112" height="124" width="722" html.valueishtml="0"  name=trk_name_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Overpayment
+Amount" border="4" color="0" x="1733" y="112" height="124" width="448" html.valueishtml="0"  name=op_amt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Recoupment
+Amount" border="4" color="0" x="2190" y="112" height="124" width="448" html.valueishtml="0"  name=amt_recv_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Amount
+Referred" border="4" color="0" x="2647" y="112" height="124" width="480" html.valueishtml="0"  name=referred_amt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Additional Amt
+Recovered" border="4" color="0" x="3136" y="112" height="124" width="544" html.valueishtml="0"  name=recovered_addtl_amt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Balance
+Remaining" border="4" color="0" x="3689" y="112" height="124" width="521" html.valueishtml="0"  name=balance_remaining_amt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Write Off
+Amount" border="4" color="0" x="4219" y="112" height="124" width="530" html.valueishtml="0"  name=amt_writeoff_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="UPIN" border="4" color="0" x="4759" y="112" height="124" width="585" html.valueishtml="0"  name=trk_key_alt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Related
+Type" border="4" color="0" x="5353" y="112" height="124" width="507" html.valueishtml="0"  name=trk_rel_type_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Related
+Key" border="4" color="0" x="5870" y="112" height="124" width="585" html.valueishtml="0"  name=trk_rel_key_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Create
+Datetime" border="4" color="0" x="6464" y="112" height="124" width="485" html.valueishtml="0"  name=create_datetime_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Track Description" border="4" color="0" x="6958" y="112" height="124" width="1486" html.valueishtml="0"  name=trk_desc_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Status" border="4" color="0" x="8453" y="112" height="124" width="567" html.valueishtml="0"  name=status_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Disposition" border="4" color="0" x="9029" y="112" height="124" width="677" html.valueishtml="0"  name=disp_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Status
+Date" border="4" color="0" x="9714" y="112" height="124" width="494" html.valueishtml="0"  name=status_datetime_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Status Description" border="4" color="0" x="10217" y="112" height="124" width="1367" html.valueishtml="0"  name=status_desc_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Op Type" border="4" color="0" x="11593" y="112" height="124" width="306" html.valueishtml="0"  name=op_type_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date
+Requested" border="4" color="0" x="11909" y="112" height="124" width="517" html.valueishtml="0"  name=date_req_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date
+Received" border="4" color="0" x="12434" y="112" height="124" width="466" html.valueishtml="0"  name=date_rev_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Alert
+Ind" border="4" color="0" x="12910" y="112" height="124" width="302" html.valueishtml="0"  name=alert_ind_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Custom1 Amt" border="4" color="0" x="13221" y="112" height="124" width="594" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Custom2 Amt" border="4" color="0" x="13824" y="112" height="124" width="603" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Custom3 Amt" border="4" color="0" x="14437" y="112" height="124" width="617" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Custom4 Amt" border="4" color="0" x="15063" y="112" height="124" width="631" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Custom5 Amt" border="4" color="0" x="15703" y="112" height="124" width="539" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Custom6 Amt" border="4" color="0" x="16251" y="112" height="124" width="567" html.valueishtml="0"  name=t_7 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Compute 0034" border="0" color="0" x="16827" y="4" height="76" width="14" html.valueishtml="0"  name=compute_0034_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Payment Amt" border="0" color="0" x="16850" y="4" height="76" width="1582" html.valueishtml="0"  name=payment_amt_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Check No" border="0" color="0" x="18441" y="4" height="76" width="544" html.valueishtml="0"  name=check_no_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Payment Type" border="0" color="0" x="18994" y="4" height="76" width="805" html.valueishtml="0"  name=payment_type_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Target Id" border="0" color="0" x="19808" y="4" height="76" width="462" html.valueishtml="0"  name=target_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Prov Id Type" border="0" color="0" x="20279" y="4" height="76" width="430" html.valueishtml="0"  name=prov_id_type_t visible="1"  font.face="Tahoma" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="443" format="[general]" html.valueishtml="0"  name=trk_type visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="462" y="8" height="76" width="530" format="[general]" html.valueishtml="0"  name=trk_key visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="1001" y="8" height="76" width="722" format="[general]" html.valueishtml="0"  name=trk_name visible="1" edit.limit=32 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="4759" y="8" height="76" width="585" format="[general]" html.valueishtml="0"  name=trk_key_alt visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="5353" y="8" height="76" width="507" format="[general]" html.valueishtml="0"  name=trk_rel_type visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="5870" y="8" height="76" width="585" format="[general]" html.valueishtml="0"  name=trk_rel_key visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="6464" y="8" height="76" width="485" format="[shortdate] [time]" html.valueishtml="0"  name=create_datetime visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="0" x="6958" y="8" height="76" width="1486" format="[general]" html.valueishtml="0"  name=trk_desc visible="1" edit.limit=60 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="8453" y="8" height="76" width="567" format="[general]" html.valueishtml="0"  name=status visible="1" dddw.name=d_dddw_case_status dddw.displaycolumn=code_description dddw.datacolumn=code_code dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="9029" y="8" height="76" width="677" format="[general]" html.valueishtml="0"  name=disp visible="1" dddw.name=d_dddw_case_disposition dddw.displaycolumn=code_description dddw.datacolumn=code_code dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="9714" y="8" height="76" width="494" format="[shortdate] [time]" html.valueishtml="0"  name=status_datetime visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="0" x="10217" y="8" height="76" width="1367" format="[general]" html.valueishtml="0"  name=status_desc visible="1" edit.limit=60 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="0" x="11593" y="8" height="76" width="306" format="[general]" html.valueishtml="0"  name=op_type visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="0" x="11909" y="8" height="76" width="517" format="[shortdate] [time]" html.valueishtml="0"  name=date_req visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="0" x="12434" y="8" height="76" width="466" format="[shortdate] [time]" html.valueishtml="0"  name=date_rev visible="1" editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="12910" y="8" height="76" width="302" format="[general]" html.valueishtml="0"  name=alert_ind visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="1" tabsequence=32766 border="0" color="0" x="1733" y="8" height="76" width="448" format="$###,###,##0.00" html.valueishtml="0"  name=op_amt visible="1" editmask.mask="$###,###,##0.00" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="1" tabsequence=32766 border="0" color="0" x="2190" y="8" height="76" width="448" format="$###,###,##0.00" html.valueishtml="0"  name=amt_recv visible="1" editmask.mask="$###,###,##0.00" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=25 alignment="1" tabsequence=32766 border="0" color="0" x="2647" y="8" height="76" width="480" format="$###,###,##0.00" html.valueishtml="0"  name=referred_amt visible="1" editmask.mask="$###,###,##0.00" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="1" tabsequence=32766 border="0" color="0" x="3136" y="8" height="76" width="544" format="$###,###,##0.00" html.valueishtml="0"  name=recovered_addtl_amt visible="1" editmask.mask="$###,###,##0.00" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=28 alignment="0" tabsequence=32766 border="0" color="0" x="13221" y="8" height="76" width="594" format="$###,###,##0.00" html.valueishtml="0"  name=custom1_amt visible="1" editmask.mask="$###,###,##0.00" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=29 alignment="0" tabsequence=32766 border="0" color="0" x="13824" y="8" height="76" width="603" format="$###,###,##0.00" html.valueishtml="0"  name=custom2_amt visible="1" editmask.mask="$###,###,##0.00" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=30 alignment="0" tabsequence=32766 border="0" color="0" x="14437" y="8" height="76" width="617" format="$###,###,##0.00" html.valueishtml="0"  name=custom3_amt visible="1" editmask.mask="$###,###,##0.00" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=31 alignment="0" tabsequence=32766 border="0" color="0" x="15063" y="8" height="76" width="631" format="$###,###,##0.00" html.valueishtml="0"  name=custom4_amt visible="1" editmask.mask="$###,###,##0.00" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=32 alignment="0" tabsequence=32766 border="0" color="0" x="15703" y="8" height="76" width="539" format="$###,###,##0.00" html.valueishtml="0"  name=custom5_amt visible="1" editmask.mask="$###,###,##0.00" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=33 alignment="0" tabsequence=32766 border="0" color="0" x="16251" y="8" height="76" width="567" format="$###,###,##0.00" html.valueishtml="0"  name=custom6_amt visible="1" editmask.mask="$###,###,##0.00" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=27 alignment="1" tabsequence=32766 border="0" color="0" x="3689" y="8" height="76" width="521" format="[currency]" html.valueishtml="0"  name=balance_remaining_amt visible="1" editmask.mask="$###,###,###.00" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="1" tabsequence=32766 border="0" color="0" x="4219" y="8" height="76" width="530" format="$###,###,##0.00" html.valueishtml="0"  name=amt_writeoff visible="1" editmask.mask="$###,###,##0.00" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=34 alignment="0" tabsequence=32766 border="0" color="0" x="16827" y="0" height="64" width="14" format="[general]" html.valueishtml="0"  name=compute_0034 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=35 alignment="0" tabsequence=32766 border="0" color="0" x="16850" y="0" height="64" width="1582" format="[general]" html.valueishtml="0"  name=payment_amt visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=36 alignment="0" tabsequence=32766 border="0" color="0" x="18441" y="0" height="64" width="544" format="[general]" html.valueishtml="0"  name=check_no visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=37 alignment="0" tabsequence=32766 border="0" color="0" x="18994" y="0" height="64" width="805" format="[general]" html.valueishtml="0"  name=payment_type visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=38 alignment="0" tabsequence=32766 border="0" color="0" x="19808" y="0" height="64" width="462" format="[general]" html.valueishtml="0"  name=target_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=39 alignment="0" tabsequence=32766 border="0" color="0" x="20279" y="0" height="64" width="430" format="[general]" html.valueishtml="0"  name=prov_id_type visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

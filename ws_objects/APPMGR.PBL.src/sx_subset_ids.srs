@@ -1,0 +1,10 @@
+﻿$PBExportHeader$sx_subset_ids.srs
+global type sx_subset_ids from structure
+	string		subset_case_id
+	string		subset_case_spl
+	string		subset_case_ver
+	string		subset_id
+	string		subset_name
+	string		subset_desc
+end type
+

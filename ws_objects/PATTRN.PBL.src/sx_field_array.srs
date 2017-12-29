@@ -1,0 +1,10 @@
+﻿$PBExportHeader$sx_field_array.srs
+$PBExportComments$used to hold fields and prefixes
+global type sx_field_array from structure
+	string		field
+	string		tbl_alias
+	string		tbl_type
+	string		tbl_rel
+	string		operator
+end type
+

@@ -1,0 +1,24 @@
+HA$PBExportHeader$d_total_buttons.srd
+$PBExportComments$Totals dw for w_subset_sort. <gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=67108864 processing=0 print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=97 print.margin.bottom=97 print.paper.size=0 print.paper.source=0 selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=284 color="536870912" )
+table(column=(type=char(1) updatewhereclause=yes initial="A" name=totals dbname="totals" 
+ values="All Money and Quantities	A/All Quantities Only	Q/All Money Only	M/No Totals	N/"  )
+)
+rectangle(name=r_1 band=detail pen.style="0" pen.width="5" pen.color="0" brush.hatch="7" brush.color="553648127" background.mode="2" background.color="0" x="82" y="36" height="240" width="1440" )
+text(name=totals_t band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="2" background.color="67108864" color="134217741" alignment="1" border="0" x="119" y="4" height="64" width="754" text="Totals for Selected Fields" accessibledescription="~"Totals for Selected Fields~"	~"Totals for Selected Fields~"" accessiblename="~"Totals for Selected Fields~"	~"Totals for Selected Fields~"" accessiblerole=42 )
+column(name=totals band=detail id=1 x="105" y="80" height="164" width="1659" color="33554432" border="0" alignment="0" format="[general]" radiobuttons.columns=2 radiobuttons.lefttext=no radiobuttons.scale=no radiobuttons.threed=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=10 accessibledescription="~"Totals  for Selected Fields~"	~"Totals  for Selected Fields~"" accessiblename="~"Totals for Selected Fields~"	~"Totals for Selected Fields~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" generateJavaScript="1" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

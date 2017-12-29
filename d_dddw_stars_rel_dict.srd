@@ -1,0 +1,65 @@
+HA$PBExportHeader$d_dddw_stars_rel_dict.srd
+$PBExportComments$Retrieves from stars_rel, dictionary where rel_type = DP, GP, QT <gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=97 print.margin.bottom=97 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=char(2) update=yes updatewhereclause=yes name=rel_type dbname="STARS_REL.REL_TYPE"  )
+column=(type=char(10) update=yes updatewhereclause=yes name=rel_id dbname="STARS_REL.REL_ID"  )
+column=(type=number update=yes updatewhereclause=yes name=rel_seq dbname="STARS_REL.REL_SEQ"  )
+column=(type=char(2) update=yes updatewhereclause=yes name=id_2 dbname="STARS_REL.ID_2"  )
+column=(type=char(2) update=yes updatewhereclause=yes name=id_3 dbname="STARS_REL.ID_3"  )
+column=(type=char(2) update=yes updatewhereclause=yes name=rel_mod dbname="STARS_REL.REL_MOD"  )
+column=(type=char(255) update=yes updatewhereclause=yes name=value_a dbname="STARS_REL.VALUE_A"  )
+column=(type=number update=yes updatewhereclause=yes name=value_n dbname="STARS_REL.VALUE_N"  )
+column=(type=char(255) update=yes updatewhereclause=yes name=rel_desc dbname="STARS_REL.REL_DESC"  )
+column=(type=char(32) update=yes updatewhereclause=yes name=key1 dbname="STARS_REL.KEY1"  )
+column=(type=char(32) update=yes updatewhereclause=yes name=key2 dbname="STARS_REL.KEY2"  )
+column=(type=char(32) update=yes updatewhereclause=yes name=key3 dbname="STARS_REL.KEY3"  )
+column=(type=char(32) update=yes updatewhereclause=yes name=key4 dbname="STARS_REL.KEY4"  )
+column=(type=char(32) update=yes updatewhereclause=yes name=key5 dbname="STARS_REL.KEY5"  )
+column=(type=char(32) update=yes updatewhereclause=yes name=key6 dbname="STARS_REL.KEY6"  )
+column=(type=char(32) updatewhereclause=yes name=elem_name dbname="dictionary.ELEM_NAME"  )
+column=(type=char(32) updatewhereclause=yes name=dictionary_value_a dbname="dictionary.VALUE_A"  )
+column=(type=char(255) updatewhereclause=yes name=elem_desc dbname="dictionary.ELEM_DESC"  )
+column=(type=char(1) updatewhereclause=yes name=dictionary_multi_ind dbname="dictionary.MULTI_IND"  )
+ retrieve="  SELECT STARS_REL.REL_TYPE,   
+         STARS_REL.REL_ID,   
+         STARS_REL.REL_SEQ,   
+         STARS_REL.ID_2,   
+         STARS_REL.ID_3,   
+         STARS_REL.REL_MOD,   
+         STARS_REL.VALUE_A,   
+         STARS_REL.VALUE_N,   
+         STARS_REL.REL_DESC,   
+         STARS_REL.KEY1,   
+         STARS_REL.KEY2,   
+         STARS_REL.KEY3,   
+         STARS_REL.KEY4,   
+         STARS_REL.KEY5,   
+         STARS_REL.KEY6,   
+         DICTIONARY.ELEM_NAME,   
+         DICTIONARY.VALUE_A,   
+         DICTIONARY.ELEM_DESC,   
+         DICTIONARY.MULTI_IND
+    FROM STARS_REL,   
+         DICTIONARY  
+   WHERE ( DICTIONARY.ELEM_TBL_TYPE = STARS_REL.ID_2 ) and  
+         ( STARS_REL.REL_TYPE in ('GP','DP', 'QT')) AND  
+         ( DICTIONARY.ELEM_TYPE = 'TB')    
+"
+  sort="rel_type A, rel_id A, rel_seq A"
+)
+compute(name=description visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="2" background.color="1073741824" color="33554432" x="5" y="4" height="56" width="1998" format="[GENERAL]" expression=" id_2 + ~" - ~" +  elem_desc" alignment="0" border="0" html.valueishtml="0" crosstab.repeat=no accessibledescription="~"Description~"	~"Description~"" accessiblename="~"Description~"	~"Description~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen(sessionSpecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

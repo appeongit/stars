@@ -1,0 +1,102 @@
+HA$PBExportHeader$fx_disable_menu_item.srf
+global type fx_disable_menu_item from function_object
+end type
+
+forward prototypes
+global function integer fx_disable_menu_item (string arg_menu[], string arg_cntl_id, integer arg_count)
+end prototypes
+
+global function integer fx_disable_menu_item (string arg_menu[], string arg_cntl_id, integer arg_count);//	HRB 12/14/94 Disable or Hide Menu Item
+//
+//	This function disables or makes invisible a menu item passed to it:
+//	There are 3 arguments needed:
+//		arg_menu = string array containing the menu name broken down by levels
+//		arg_cntl_id = string containg 'DISABLE' or 'HIDE'
+//		arg_count = integer containing the number of levels the item is nested in
+//						the menu
+//	An example of how the arguments are used:
+//		To disable the Print Item on the File Menu:
+//			arg_menu[1] = '&File'
+//			arg_menu[2] = '&Print'
+//			arg_cntl_id = 'DISABLE'
+//			arg_count   = 2
+//
+//	Note:	the menu name must be exactly as it is on the menu, including
+//			the '&' used for underlining.
+//
+//	The best example of the use of this function is the window function
+// WF_DISABLE in W_SIGN_ON.  The arguments are filled from the WinParm table.
+
+
+int j,k,l,lv_upperbound
+boolean lv_found
+
+setpointer(hourglass!)
+
+if arg_count < 1 or arg_count > 3 then return -1  //designed to handle only 3 levels
+
+lv_upperbound = upperbound(w_main.menuid.item)		//KMM 10/4/95
+for j = 1 to lv_upperbound									//KMM 10/4/95
+	if upper(w_main.menuid.item[j].text) = upper(arg_menu[1]) then
+		lv_found = TRUE
+		exit
+	end if
+next
+if arg_count > 1 and lv_found then
+	lv_upperbound = upperbound(w_main.menuid.item[j].item)		//KMM 10/4/95
+	for k = 1 to lv_upperbound												//KMM 10/4/95
+		if upper(w_main.menuid.item[j].item[k].text) = upper(arg_menu[2]) then
+			lv_found = TRUE
+			exit
+		else
+			lv_found = FALSE
+		end if
+	next	
+	if arg_count > 2 and lv_found then
+		lv_upperbound = upperbound(w_main.menuid.item[j].item[k].item)		//KMM 10/4/95
+		for l = 1 to lv_upperbound														//KMM 10/4/95
+			if upper(w_main.menuid.item[j].item[k].item[l].text) = upper(arg_menu[3]) then
+				lv_found = TRUE
+				exit
+			else
+				lv_found = FALSE
+			end if
+		next
+	end if
+end if
+
+if lv_found then
+	if l > 0 then
+		if upper(arg_cntl_id) = 'DISABLE' then
+			w_main.menuid.item[j].item[k].item[l].enabled = FALSE
+		elseif upper(arg_cntl_id) = 'HIDE' then
+			w_main.menuid.item[j].item[k].item[l].visible = FALSE
+		end if
+//DJP 8/2/95 prob#873 - change microhelp to ready for PB bug
+		w_main.menuid.item[j].item[k].item[l].microhelp='Ready'
+	elseif k > 0 then
+		if upper(arg_cntl_id) = 'DISABLE' then
+			w_main.menuid.item[j].item[k].enabled = FALSE
+		elseif upper(arg_cntl_id) = 'HIDE' then
+			w_main.menuid.item[j].item[k].visible = FALSE
+		end if
+//DJP 8/2/95 prob#873 - change microhelp to ready for PB bug
+		w_main.menuid.item[j].item[k].microhelp='Ready'
+	elseif j > 0 then
+		if upper(arg_cntl_id) = 'DISABLE' then
+			w_main.menuid.item[j].enabled = FALSE
+		elseif upper(arg_cntl_id) = 'HIDE' then
+			w_main.menuid.item[j].visible = FALSE
+		end if
+//DJP 8/2/95 prob#873 - change microhelp to ready for PB bug
+		w_main.menuid.item[j].microhelp='Ready'
+	end if
+end if
+
+if lv_found then
+	return 0
+else
+	return -1
+end if
+end function
+

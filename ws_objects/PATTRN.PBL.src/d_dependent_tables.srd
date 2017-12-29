@@ -1,0 +1,37 @@
+﻿$PBExportHeader$d_dependent_tables.srd
+$PBExportComments$List all all dependent tables (joins stars_rel and dictionary) <logic>
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=184 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(2) updatewhereclause=yes name=id_2 dbname="STARS_REL.ID_2" )
+ column=(type=char(255) updatewhereclause=yes name=elem_desc dbname="dictionary.ELEM_DESC" )
+ column=(type=char(10) updatewhereclause=yes name=rel_id dbname="STARS_REL.REL_ID" )
+ column=(type=char(2) updatewhereclause=yes name=rel_type dbname="STARS_REL.REL_TYPE" )
+ column=(type=char(2) updatewhereclause=yes name=elem_type dbname="dictionary.ELEM_TYPE" )
+ column=(type=char(2) updatewhereclause=yes name=elem_tbl_type dbname="dictionary.ELEM_TBL_TYPE" )
+ column=(type=char(32) updatewhereclause=yes name=elem_name dbname="dictionary.ELEM_NAME" )
+ column=(type=char(15) updatewhereclause=yes name=elem_elem_label dbname="dictionary.ELEM_ELEM_LABEL" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"dictionary~" )  TABLE(NAME=~"STARS_REL~" ) COLUMN(NAME=~"STARS_REL.ID_2~") COLUMN(NAME=~"dictionary.ELEM_DESC~") COLUMN(NAME=~"STARS_REL.REL_ID~") COLUMN(NAME=~"STARS_REL.REL_TYPE~") COLUMN(NAME=~"dictionary.ELEM_TYPE~") COLUMN(NAME=~"dictionary.ELEM_TBL_TYPE~") COLUMN(NAME=~"dictionary.ELEM_NAME~") COLUMN(NAME=~"dictionary.ELEM_ELEM_LABEL~")    JOIN (LEFT=~"STARS_REL.ID_2~"    OP =~"=~"RIGHT=~"dictionary.ELEM_TBL_TYPE~" )WHERE(    EXP1 =~"STARS_REL.REL_TYPE~"   OP =~"=~"    EXP2 =~"'DP' ~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"dictionary.ELEM_TYPE~"   OP =~"=~"    EXP2 =~"'TB' ~" ) ) "  sort="id_2 A rel_id A " )
+text(band=header alignment="0" text="ID 2"border="0" color="0" x="9" y="112" height="64" width="119"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Rel ID"border="0" color="0" x="261" y="112" height="64" width="183"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Elem Desc"border="0" color="0" x="626" y="112" height="64" width="320"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Rel
+Type"border="0" color="0" x="2144" y="52" height="128" width="146"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Elem
+Type"border="0" color="0" x="2354" y="48" height="128" width="151"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Elem
+Tbl Type"border="0" color="0" x="2560" y="48" height="128" width="256"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Elem Name"border="0" color="0" x="2871" y="116" height="64" width="343"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Elem Elem Label"border="0" color="0" x="3721" y="116" height="64" width="503"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="14" y="4" height="64" width="229" format="[general]"  name=id_2 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="617" y="4" height="64" width="1495" format="[general]"  name=elem_desc edit.limit=0 edit.case=any edit.autoselect=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="2162" y="4" height="64" width="110" format="[general]"  name=rel_type edit.limit=0 edit.case=any edit.autoselect=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2359" y="4" height="64" width="137" format="[general]"  name=elem_type edit.limit=0 edit.case=any edit.autoselect=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="2615" y="4" height="64" width="119" format="[general]"  name=elem_tbl_type edit.limit=0 edit.case=any edit.autoselect=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="2871" y="4" height="64" width="814" format="[general]"  name=elem_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="3726" y="4" height="64" width="521" format="[general]"  name=elem_elem_label edit.limit=0 edit.case=any edit.autoselect=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="270" y="4" height="64" width="320" format="[general]"  name=rel_id edit.limit=0 edit.case=any edit.autoselect=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

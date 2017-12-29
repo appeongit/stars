@@ -1,0 +1,11 @@
+HA$PBExportHeader$sx_rpt_cols.srs
+$PBExportComments$In drilldown, to hold column names and labels to pass to report tab
+global type sx_rpt_cols from structure
+	string		label
+	string		name
+	string		tbl_type
+	long		crit_seq
+	long		col_number
+	string		data_type
+end type
+

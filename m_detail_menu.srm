@@ -1,0 +1,1086 @@
+HA$PBExportHeader$m_detail_menu.srm
+forward
+global type m_detail_menu from m_parent_menu
+end type
+type m_details from menu within m_detail_menu
+end type
+type m_print1 from menu within m_details
+end type
+type m_printall from menu within m_print1
+end type
+type m_printcounts0 from menu within m_print1
+end type
+type m_printcounts01 from menu within m_print1
+end type
+type m_print1 from menu within m_details
+m_printall m_printall
+m_printcounts0 m_printcounts0
+m_printcounts01 m_printcounts01
+end type
+type m_close from menu within m_details
+end type
+type m_closeall from menu within m_close
+end type
+type m_closedetails from menu within m_close
+end type
+type m_closecounts0 from menu within m_close
+end type
+type m_closecounts01 from menu within m_close
+end type
+type m_close from menu within m_details
+m_closeall m_closeall
+m_closedetails m_closedetails
+m_closecounts0 m_closecounts0
+m_closecounts01 m_closecounts01
+end type
+type m_details from menu within m_detail_menu
+m_print1 m_print1
+m_close m_close
+end type
+type m_window from menu within m_detail_menu
+end type
+type m_cascade from menu within m_window
+end type
+type m_tile from menu within m_window
+end type
+type m_layer from menu within m_window
+end type
+type m_arrangeicons from menu within m_window
+end type
+type m_window from menu within m_detail_menu
+m_cascade m_cascade
+m_tile m_tile
+m_layer m_layer
+m_arrangeicons m_arrangeicons
+end type
+type m_help from menu within m_detail_menu
+end type
+global type m_detail_menu from m_parent_menu
+m_details m_details
+m_window m_window
+m_help m_help
+end type
+end forward
+
+global type m_detail_menu from m_parent_menu
+m_details m_details
+m_window m_window
+m_help m_help
+end type
+global m_detail_menu m_detail_menu
+
+on m_detail_menu.create
+m_detail_menu=this
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_details=create m_details
+this.m_window=create m_window
+this.m_help=create m_help
+this.Item[UpperBound(this.Item)+1]=this.m_details
+this.Item[UpperBound(this.Item)+1]=this.m_window
+this.Item[UpperBound(this.Item)+1]=this.m_help
+end on
+
+on m_detail_menu.destroy
+call super::destroy
+destroy(this.m_details)
+destroy(this.m_window)
+destroy(this.m_help)
+end on
+
+type m_file from m_parent_menu`m_file within m_detail_menu
+end type
+
+on m_file.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_file.destroy
+call super::destroy
+end on
+
+type m_print from m_parent_menu`m_print within m_file
+end type
+
+on m_print.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_print.destroy
+call super::destroy
+end on
+
+type m_printersetup from m_parent_menu`m_printersetup within m_file
+end type
+
+on m_printersetup.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_printersetup.destroy
+call super::destroy
+end on
+
+type m_fax from m_parent_menu`m_fax within m_file
+end type
+
+on m_fax.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_fax.destroy
+call super::destroy
+end on
+
+type m_- from m_parent_menu`m_- within m_file
+end type
+
+on m_-.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_savereport from m_parent_menu`m_savereport within m_file
+end type
+
+on m_savereport.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_savereport.destroy
+call super::destroy
+end on
+
+type m_export from m_parent_menu`m_export within m_file
+end type
+
+on m_export.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_export.destroy
+call super::destroy
+end on
+
+type m_-1 from m_parent_menu`m_-1 within m_file
+end type
+
+on m_-1.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-1.destroy
+call super::destroy
+end on
+
+type m_star from m_parent_menu`m_star within m_file
+end type
+
+on m_star.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_star.destroy
+call super::destroy
+end on
+
+type m_-2 from m_parent_menu`m_-2 within m_file
+end type
+
+on m_-2.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-2.destroy
+call super::destroy
+end on
+
+type m_showsql from m_parent_menu`m_showsql within m_file
+end type
+
+on m_showsql.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_showsql.destroy
+call super::destroy
+end on
+
+type m_-3 from m_parent_menu`m_-3 within m_file
+end type
+
+on m_-3.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-3.destroy
+call super::destroy
+end on
+
+type m_cancelquery from m_parent_menu`m_cancelquery within m_file
+end type
+
+on m_cancelquery.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_cancelquery.destroy
+call super::destroy
+end on
+
+type m_-4 from m_parent_menu`m_-4 within m_file
+end type
+
+on m_-4.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-4.destroy
+call super::destroy
+end on
+
+type m_exit from m_parent_menu`m_exit within m_file
+end type
+
+on m_exit.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_exit.destroy
+call super::destroy
+end on
+
+type m_edit from m_parent_menu`m_edit within m_detail_menu
+end type
+
+on m_edit.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_edit.destroy
+call super::destroy
+end on
+
+type m_copytoclipboard from m_parent_menu`m_copytoclipboard within m_edit
+end type
+
+on m_copytoclipboard.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copytoclipboard.destroy
+call super::destroy
+end on
+
+type m_details from menu within m_detail_menu
+m_print1 m_print1
+m_close m_close
+end type
+
+on m_details.create
+call super::create
+this.text = "Details"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_print1=create m_print1
+this.m_close=create m_close
+this.Item[UpperBound(this.Item)+1]=this.m_print1
+this.Item[UpperBound(this.Item)+1]=this.m_close
+end on
+
+on m_details.destroy
+call super::destroy
+destroy(this.m_print1)
+destroy(this.m_close)
+end on
+
+type m_print1 from menu within m_details
+m_printall m_printall
+m_printcounts0 m_printcounts0
+m_printcounts01 m_printcounts01
+end type
+
+on m_print1.create
+call super::create
+this.text = "&Print"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_printall=create m_printall
+this.m_printcounts0=create m_printcounts0
+this.m_printcounts01=create m_printcounts01
+this.Item[UpperBound(this.Item)+1]=this.m_printall
+this.Item[UpperBound(this.Item)+1]=this.m_printcounts0
+this.Item[UpperBound(this.Item)+1]=this.m_printcounts01
+end on
+
+on m_print1.destroy
+call super::destroy
+destroy(this.m_printall)
+destroy(this.m_printcounts0)
+destroy(this.m_printcounts01)
+end on
+
+type m_printall from menu within m_print1
+end type
+
+on clicked;w_detail_main.in_u_prepare_left_side.fuo_print_windows('ALL')
+w_detail_main.in_u_prepare_right_side.fuo_print_windows('ALL')
+
+end on
+
+on m_printall.create
+call super::create
+this.text = "&Print ALL"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_printall.destroy
+call super::destroy
+end on
+
+type m_printcounts0 from menu within m_print1
+end type
+
+on clicked;w_detail_main.in_u_prepare_left_side.fuo_print_windows('>ZERO')
+w_detail_main.in_u_prepare_right_side.fuo_print_windows('>ZERO')
+
+end on
+
+on m_printcounts0.create
+call super::create
+this.text = "Print &Counts > 0"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_printcounts0.destroy
+call super::destroy
+end on
+
+type m_printcounts01 from menu within m_print1
+end type
+
+on clicked;w_detail_main.in_u_prepare_left_side.fuo_print_windows('=ZERO')
+w_detail_main.in_u_prepare_right_side.fuo_print_windows('=ZERO')
+
+end on
+
+on m_printcounts01.create
+call super::create
+this.text = "Print Counts = &0"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_printcounts01.destroy
+call super::destroy
+end on
+
+type m_close from menu within m_details
+m_closeall m_closeall
+m_closedetails m_closedetails
+m_closecounts0 m_closecounts0
+m_closecounts01 m_closecounts01
+end type
+
+on m_close.create
+call super::create
+this.text = "&Close"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_closeall=create m_closeall
+this.m_closedetails=create m_closedetails
+this.m_closecounts0=create m_closecounts0
+this.m_closecounts01=create m_closecounts01
+this.Item[UpperBound(this.Item)+1]=this.m_closeall
+this.Item[UpperBound(this.Item)+1]=this.m_closedetails
+this.Item[UpperBound(this.Item)+1]=this.m_closecounts0
+this.Item[UpperBound(this.Item)+1]=this.m_closecounts01
+end on
+
+on m_close.destroy
+call super::destroy
+destroy(this.m_closeall)
+destroy(this.m_closedetails)
+destroy(this.m_closecounts0)
+destroy(this.m_closecounts01)
+end on
+
+type m_closeall from menu within m_close
+end type
+
+on clicked;w_detail_main.in_u_prepare_left_side.fuo_close_windows('ALL')
+w_detail_main.in_u_prepare_right_side.fuo_close_windows('ALL')
+close(w_detail_main)
+
+end on
+
+on m_closeall.create
+call super::create
+this.text = "Close &ALL"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_closeall.destroy
+call super::destroy
+end on
+
+type m_closedetails from menu within m_close
+end type
+
+on clicked;w_detail_main.in_u_prepare_left_side.fuo_close_windows('ALL')
+w_detail_main.in_u_prepare_right_side.fuo_close_windows('ALL')
+end on
+
+on m_closedetails.create
+call super::create
+this.text = "Close &Details"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_closedetails.destroy
+call super::destroy
+end on
+
+type m_closecounts0 from menu within m_close
+end type
+
+on clicked;w_detail_main.in_u_prepare_left_side.fuo_close_windows('>ZERO')
+w_detail_main.in_u_prepare_right_side.fuo_close_windows('>ZERO')
+
+w_detail_main.in_u_prepare_left_side.fuo_reposition_windows('LEFT')
+w_detail_main.in_u_prepare_right_side.fuo_reposition_windows('RIGHT')
+this.enabled = FALSE
+end on
+
+on m_closecounts0.create
+call super::create
+this.text = "Close &Counts > 0"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_closecounts0.destroy
+call super::destroy
+end on
+
+type m_closecounts01 from menu within m_close
+end type
+
+on clicked;w_detail_main.in_u_prepare_left_side.fuo_close_windows('=ZERO')
+w_detail_main.in_u_prepare_right_side.fuo_close_windows('=ZERO')
+
+w_detail_main.in_u_prepare_left_side.fuo_reposition_windows('LEFT')
+w_detail_main.in_u_prepare_right_side.fuo_reposition_windows('RIGHT')
+this.enabled = FALSE
+end on
+
+on m_closecounts01.create
+call super::create
+this.text = "Close Counts = &0"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_closecounts01.destroy
+call super::destroy
+end on
+
+type m_window from menu within m_detail_menu
+m_cascade m_cascade
+m_tile m_tile
+m_layer m_layer
+m_arrangeicons m_arrangeicons
+end type
+
+on m_window.create
+call super::create
+this.text = "&Window"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_cascade=create m_cascade
+this.m_tile=create m_tile
+this.m_layer=create m_layer
+this.m_arrangeicons=create m_arrangeicons
+this.Item[UpperBound(this.Item)+1]=this.m_cascade
+this.Item[UpperBound(this.Item)+1]=this.m_tile
+this.Item[UpperBound(this.Item)+1]=this.m_layer
+this.Item[UpperBound(this.Item)+1]=this.m_arrangeicons
+end on
+
+on m_window.destroy
+call super::destroy
+destroy(this.m_cascade)
+destroy(this.m_tile)
+destroy(this.m_layer)
+destroy(this.m_arrangeicons)
+end on
+
+type m_cascade from menu within m_window
+end type
+
+on clicked;MDI_main_frame.ArrangeSheets(Cascade!)
+
+end on
+
+on m_cascade.create
+call super::create
+this.text = "&Cascade~tShift+F5"
+this.shortcut = 1140
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_cascade.destroy
+call super::destroy
+end on
+
+type m_tile from menu within m_window
+end type
+
+on clicked;MDI_main_frame.ArrangeSheets(Tile!)
+end on
+
+on m_tile.create
+call super::create
+this.text = "&Tile~tShift+F4"
+this.shortcut = 1139
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_tile.destroy
+call super::destroy
+end on
+
+type m_layer from menu within m_window
+end type
+
+on clicked;MDI_main_frame.ArrangeSheets(Layer!)
+end on
+
+on m_layer.create
+call super::create
+this.text = "&Layer"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_layer.destroy
+call super::destroy
+end on
+
+type m_arrangeicons from menu within m_window
+end type
+
+on clicked;MDI_main_frame.ArrangeSheets(Icons!)
+end on
+
+on m_arrangeicons.create
+call super::create
+this.text = "&Arrange Icons"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_arrangeicons.destroy
+call super::destroy
+end on
+
+type m_help from menu within m_detail_menu
+end type
+
+on m_help.create
+call super::create
+this.text = "&Help"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_help.destroy
+call super::destroy
+end on
+

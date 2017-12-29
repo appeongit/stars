@@ -1,0 +1,65 @@
+﻿$PBExportHeader$fx_m_listtargetlists.srf
+$PBExportComments$Case|Target|ListTargetLists
+global type fx_m_listtargetlists from function_object
+end type
+
+forward prototypes
+global subroutine fx_m_listtargetlists ()
+end prototypes
+
+global subroutine fx_m_listtargetlists ();//Modifications:
+// 08-31-98 NLG FS362 convert case to case_cntl
+//03-04-98 ajs 4.0 TS145-Globals
+//--------------------------------------------------------------------
+Int li_rc 
+String ls_case_id,ls_case_spl,ls_case_ver,ls_category
+
+setpointer(hourglass!)
+setmicrohelp(w_main,'')
+
+li_rc = fx_active_case_edit()
+If li_rc <>0 Then
+	COMMIT using Stars2ca;
+	if Stars2ca.of_check_status() <> 0 then
+		errorbox(stars2ca,'Error performing commit in fx_m_listtargetlists.')
+	end if
+	RETURN
+End If
+
+COMMIT using Stars2ca;
+if Stars2ca.of_check_status() <> 0 then
+	errorbox(stars2ca,'Error performing commit in fx_m_listtargetlists.')
+end if
+
+
+ls_case_id = left(gv_active_case,10)	
+ls_case_spl = mid(gv_active_case,11,2)
+ls_case_ver = mid(gv_active_case,13,2)
+
+// 08-31-98 NLG FS362 convert case to case_cntl
+Select case_cat into :ls_category
+	from Case_cntl
+	where case_id = Upper( :ls_case_id ) and
+			case_spl = Upper( :ls_case_spl ) and
+			case_ver = Upper( :ls_case_ver )
+Using Stars2ca;
+If Stars2ca.of_check_status() <> 0 then
+	Errorbox(Stars2ca,"Error reading Active Case to Category")
+	RETURN
+End IF
+
+COMMIT using Stars2ca;
+if Stars2ca.of_check_status() <> 0 then
+	errorbox(stars2ca,'Error performing commit in fx_m_listtargetlists.')
+end if
+
+
+If ls_category = 'CA?' or ls_category = 'REF' then
+	Messagebox("EDIT",'No Targets Exist for Potential/Refered Case')
+	Return
+End IF
+
+//gv_case_active = gv_active_case	//ajs 4.0 03-04-98 
+OpenSheet(w_target_list,mdi_main_frame,help_menu_position,Layered!)
+end subroutine
+

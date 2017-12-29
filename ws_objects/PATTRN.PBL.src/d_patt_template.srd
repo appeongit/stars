@@ -1,0 +1,23 @@
+﻿$PBExportHeader$d_patt_template.srd
+$PBExportComments$Retrieves patt_template for a pattern ID <logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=136 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(10) updatewhereclause=yes name=patt_id dbname="PATT_TEMPLATE.PATT_ID" )
+ column=(type=long updatewhereclause=yes name=line_num dbname="PATT_TEMPLATE.LINE_NUM" )
+ column=(type=char(255) updatewhereclause=yes name=sql_text dbname="PATT_TEMPLATE.SQL_TEXT" )
+ column=(type=char(1) updatewhereclause=yes name=subset_type dbname="PATT_TEMPLATE.SUBSET_TYPE" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"PATT_TEMPLATE~" ) COLUMN(NAME=~"PATT_TEMPLATE.PATT_ID~") COLUMN(NAME=~"PATT_TEMPLATE.LINE_NUM~") COLUMN(NAME=~"PATT_TEMPLATE.SQL_TEXT~") COLUMN(NAME=~"PATT_TEMPLATE.SUBSET_TYPE~")WHERE(    EXP1 =~"PATT_TEMPLATE.PATT_ID~"   OP =~"=~"    EXP2 =~"Upper(:patt_id)~" ) ) ORDER(NAME=~"PATT_TEMPLATE.PATT_ID~" ASC=yes )  ORDER(NAME=~"PATT_TEMPLATE.LINE_NUM~" ASC=yes ) ARG(NAME = ~"patt_id~" TYPE = string) " arguments=(("patt_id", string)) )
+text(band=header alignment="2" text="Patt Id" border="4" color="0" x="9" y="8" height="120" width="334"  name=patt_id_t  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Line Num" border="4" color="0" x="352" y="8" height="120" width="439"  name=line_num_t  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Sql Text" border="4" color="0" x="800" y="8" height="120" width="3109"  name=sql_text_t  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Subset Type" border="4" color="0" x="3918" y="8" height="120" width="453"  name=subset_type_t  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="9" y="8" height="76" width="334" format="[general]"  name=patt_id edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="0" color="0" x="352" y="8" height="76" width="439" format="[general]"  name=line_num edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="800" y="8" height="76" width="3109" format="[general]"  name=sql_text edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="0" color="0" x="3918" y="8" height="76" width="453" format="[general]"  name=subset_type edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

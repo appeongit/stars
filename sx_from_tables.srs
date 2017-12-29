@@ -1,0 +1,13 @@
+HA$PBExportHeader$sx_from_tables.srs
+$PBExportComments$tables in from clause
+global type sx_from_tables from structure
+	string		prefix
+	string		tbl_name
+	string		tbl_type
+	string		tbl_rel
+	string		main_tbl
+	integer		select_seq
+	n_ds		ids_index_columns
+	n_ds		ids_claim_keys
+end type
+

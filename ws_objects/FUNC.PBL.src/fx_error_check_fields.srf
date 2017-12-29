@@ -1,0 +1,448 @@
+﻿$PBExportHeader$fx_error_check_fields.srf
+global type fx_error_check_fields from function_object
+end type
+
+forward prototypes
+global function string fx_error_check_fields (string data_type, string operator, string value, string label, singlelineedit sle, integer starting_length, integer length, integer num_of_char)
+end prototypes
+
+global function string fx_error_check_fields (string data_type, string operator, string value, string label, singlelineedit sle, integer starting_length, integer length, integer num_of_char);//***********************************************************************
+//   Date   Init               Description of Changes Made                
+// -------- ----	-------------------------------------------------------- 
+// 03/02/94 SWD	Added checks for validation of date fields during the ALBAMA1 trip
+//	12/14/00	FDG	Stars 4.7.	Make the checking of data types DBMS-independent.
+//	04/09/01	FDG	Stars 4.7.	Numeric & date data types don't need to check for length.
+// 10/15/09 RickB LKP.650.5678.001 Fixed issues with the text of the BETWEEN messages.
+//***********************************************************************
+
+//***********************************************************************
+//This function error checks the fields by lenghth, by special characters, and 
+//if they should be a number or not.
+//
+// Usage:
+//   operator = error_check_fields(data_type,operator,value,label,sle,length,num_of_char)
+// Where:
+//   data_type      = (String)      This tells if it is a number or character.For a Number
+//												it will get the value of 'NUMBER' and for a character	
+//												it will get the value 'STRING'												 
+//	  operator		 =	(String)			This will give the operator of the value that is being checked.
+//   value		    = (String)       The actual value that is being checked.
+//   label         = (string) 		When there is a error this label is used to
+//												tell the user which field is wrong. 
+//												only two values that can be in this argument.
+//	  sle		 = (single_line_edit)	When there is an error it will set focus
+//												to this sle.
+//	  											Zero means to grab everything.
+//	  length  = (integer)				This is the maxium that the field can be.
+//
+// Usage Notes:
+//   If there is a errorcheck is activated a message is displayed and
+//	  'ERROR' is returned
+//   if it passes the checks it returns a the new operator.
+//***********************************************************************
+
+string lv_returned_operator,temp,single_entry,left_side_between,right_side_between
+int num_of_nums,temp_len,position
+date left_date,right_date
+string lv_place_text
+
+setpointer(hourglass!)
+
+if length = 1 then 
+	lv_place_text = ' place '
+else
+	lv_place_text = ' places '
+end if
+
+//This checks to see if it is a number field and if it is, it then checks
+//to make sure there are no characters in the field.  If there is a message
+//is displayed.  It also checkes and makes sure the wild card indicator
+//has not been entered for the numeric field 
+
+// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+//if upper(data_type) = 'NUMBER' or upper(DATA_TYPE) = 'MONEY' OR &
+//	upper(data_type) = 'SMALLINT' OR upper(data_type) = 'INT' OR upper(data_type) = 'FLOAT' Then
+IF	gnv_sql.of_is_numeric_data_type (data_type)	THEN
+	// FDG 04/09/01 - Modify length edit since numeric length could now = 0.
+	IF	length	=	0		THEN
+		length	=	14
+	END IF
+	// FDG 04/09/01 - end
+	//Wild Card Indicator check//
+	if match(value,'%') Then    
+		messagebox('INVALID DATA',label +' cannot have a % in it ')
+		setfocus(sle)
+		return 'ERROR'
+	end if
+	//Numeric Check//
+	if isnumber(value) = FALSE then       
+		messagebox('INVALID DATA',label+' is a numeric field')
+		setfocus(sle)
+		return 'ERROR'
+	end if
+end if
+
+if match(value,'~'') Then
+	messagebox('INVALID DATA',label+' should not contain quotes')
+	setfocus(sle)
+	return 'ERROR'
+end if
+//This checks to see if LIKE or NOT LIKE command is being used
+//It then checks to see if the number of characters entered plus 
+//the '%' is not greater than the max length of field.  If it is
+//a error message is displayed.  If the data_type is a number it will
+//not to this check.
+//
+if ((operator = '=' and match(value,'%')) OR (operator = '<>' and match(value,'%'))) AND MATCH(value,',') = FALSE Then
+	if right(value,1) <> '%' Then
+		messagebox('INVALID ENTRY','The percent sign has to be the last character for '+label)				
+		setfocus(sle)
+		return 'ERROR'
+	end if
+	// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+	//if data_type = 'STRING' OR data_type = 'CHAR' OR data_type = 'VARCHAR' Then
+	IF	gnv_sql.of_is_character_data_type (data_type)	THEN
+		temp_len = len(value) - num_of_char - 1
+		if operator = '=' then
+			lv_returned_operator = 'LIKE'
+		elseif operator = '<>' Then
+			lv_returned_operator = 'NOT LIKE' 
+		end if
+		//Length of field check//
+		If len(value) > length + 1 THEN
+			MessageBox("INVALID DATA",label+' should be '+string(length)+lv_place_text+'in length')
+			setfocus(sle)
+			return 'ERROR'
+		END IF
+	end if
+//This checks if the operator is a IN or a NOT IN.  It does a loop
+//and breaks apart each value.  It makes sure a wildcard indicator has
+//not been entered for each part.  If it is a number it the lenth of the
+//value canot be greater than or equal to the max length.  But if it
+//is a STRING the length of the value has to be equal to the max length.
+//if it doesn't pass either of these it prints a error message.  
+//For Strings that have certain number of places that have to be numbers
+//the function checks the ones that are numbers.  If they aren't it displays a
+//message
+elseif operator = '=' and match(value,',') = TRUE OR operator = '<>' and match(value,',') Then
+	do while match(value,',') OR value <> ''
+
+		//Grabs each part separated by the comma//
+		position = pos(value,',')
+		if position = 0 and value <> '' Then
+			single_entry = value
+			value = ''
+		else
+			single_entry = left(value,position - 1)
+			value = mid(value,position + 1)
+		end if
+
+		//VALID DATE CHECK
+		// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+		//if data_type = 'DATE' OR data_type = 'SMALLDATETIME' Then
+		IF	gnv_sql.of_is_date_data_type (data_type)	THEN
+			if isdate(single_entry) = FALSE Then								//ALABAMA1 SCOTT_D
+				messagebox('INVALID DATE','An invalid date was entered for '+label)		//ALABAMA1 SCOTT_D
+				return 'ERROR'												//ALABAMA1 SCOTT_D
+				setfocus(sle)												//ALABAMA1 SCOTT_D
+			end if															//ALABAMA1 SCOTT_D
+		END IF																//ALABAMA1 SCOTT_D
+
+	if ((operator = '=' and right(value,1) = '%') OR (operator = '<>' and right(value,1) = '%')) Then
+		// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+		//if data_type = 'STRING' OR data_type = 'CHAR' OR data_type = 'VARCHAR' Then
+		IF	gnv_sql.of_is_character_data_type (data_type)	THEN
+			temp_len = len(single_entry) - num_of_char - 1
+			if operator = '=' then
+				lv_returned_operator = 'LIKE'
+			elseif operator = '<>' Then
+				lv_returned_operator = 'NOT LIKE' 
+			end if
+			//Length of field check//
+			If len(single_entry) > length + 1 THEN
+				MessageBox("INVALID DATA",label+' should be '+string(length)+lv_place_text+'in length')
+				setfocus(sle)
+				return 'ERROR'
+			END IF
+		end if
+	end if
+		if lv_returned_operator <> 'LIKE' and lv_returned_operator <> 'NOT LIKE' Then
+		//Length Checks//
+		temp_len = len(single_entry)
+		//String length Check//
+		// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+		//if data_type = 'STRING' OR data_type = 'CHAR' OR data_type = 'VARCHAR' Then
+		IF	gnv_sql.of_is_character_data_type (data_type)	THEN
+			If (len(single_ENTRY) < starting_length) OR (len(SINGLE_ENTRY)  > length) THEN
+				if starting_length = length Then
+					MessageBox("INVALID DATA",label+' should be '+string(length)+lv_place_text+'in length')
+				else
+					MessageBox("INVALID DATA",label+' should be between '+string(starting_length)+' and '+string(length)+lv_place_text+'in length')
+				end if
+				setfocus(sle)
+				return 'ERROR'
+			END IF
+		else 
+			//Number length Check//
+			If len(single_entry) > length THEN
+				MessageBox("INVALID DATA",label+' can not be over '+string(length)+lv_place_text+'in length')
+				setfocus(sle)
+				return 'ERROR'
+			END IF
+		end if
+	
+	//Checks to make sure what part of string has to numeric//
+	num_of_nums = length - num_of_char
+	// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+	//if data_type = 'STRING' OR data_type = 'CHAR' OR data_type = 'VARCHAR' Then
+	IF	gnv_sql.of_is_character_data_type (data_type)	THEN
+		if num_of_char < length Then
+			temp = mid(single_entry,num_of_char+1,temp_len )
+			if isnumber(temp) = FALSE Then
+				Messagebox('INVALID DATA','The last '+string(num_of_nums)+ lv_place_text+'of '+label+' can only be numbers')
+				setfocus(sle)
+				RETURN 'ERROR'
+			end if
+		end if
+	end if
+	end if //not like or not like
+	loop
+	if operator = '=' and lv_returned_operator <> 'LIKE' then
+		lv_returned_operator= 'IN'
+	elseif operator = '<>' and lv_returned_operator <> 'NOT LIKE' then
+		lv_returned_operator= 'NOT IN'	
+	end if
+	return lv_returned_operator
+//This checks if the operator is a BETWEEN.  It breaks apart each value.
+//It checks to make sure that a wildcard indicator has not been entered 
+//for each part. If it is a number it the lenth of the
+//value canot be greater than or equal to the max length.  But if it
+//is a STRING the length of the value has to be equal to the max length.
+//if it doesn't pass either of these it prints a error message.  
+//For Strings that have certain number of places that have to be numbers
+//the function checks the ones that are numbers.  If they aren't it displays a
+//message
+elseif operator = '><' Then
+	//Checks to make sure a comma has been entered//
+	if match(value,',') = FALSE then 
+		messagebox('INVALID DATA',label+' has only one value for the BETWEEN. Please enter another value separated with a comma.')
+		setfocus(sle)
+		RETURN 'ERROR'
+	end if
+	//Splits up the two values//
+	left_side_between = split(value,'L',',')
+	right_side_between = split(value,'R',',')
+
+	//Checks to make sure there was only two values entered//
+	if match(right_side_between,',') Then
+		messagebox('INVALID DATA','Only two values can be entered in the '+label+ ' field when using the '+operator+' operator.')
+		setfocus(sle)
+		RETURN 'ERROR'
+	end if
+
+	//VALID DATE CHECK for the left side
+	// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+	//if data_type = 'DATE' OR data_type = 'SMALLDATETIME' Then	
+	IF	gnv_sql.of_is_date_data_type (data_type)	THEN
+		if isdate(left_side_between) = FALSE Then								//ALABAMA1 SCOTT_D
+			messagebox('INVALID DATE','An invalid date was entered for '+label+' in the first value')		//ALABAMA1 SCOTT_D
+			setfocus(sle)												//ALABAMA1 SCOTT_D
+			return 'ERROR'												//ALABAMA1 SCOTT_D
+		end if															//ALABAMA1 SCOTT_D
+	END IF																//ALABAMA1 SCOTT_D
+
+	//VALID DATE CHECK for the right side
+	// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+	//if data_type = 'DATE' OR data_type = 'SMALLDATETIME' Then	
+	IF	gnv_sql.of_is_date_data_type (data_type)	THEN
+		if isdate(right_side_between) = FALSE Then								//ALABAMA1 SCOTT_D
+			messagebox('INVALID DATE','An invalid date was entered for '+label+' in the second value')		//ALABAMA1 SCOTT_D
+			setfocus(sle)												//ALABAMA1 SCOTT_D
+			return 'ERROR'												//ALABAMA1 SCOTT_D
+		end if															//ALABAMA1 SCOTT_D
+	END IF																//ALABAMA1 SCOTT_D
+
+
+	//Wildcard indicator check for left side//
+	if match(left_side_between,'%') Then
+	 		messagebox('INVALID DATA',' % in the '+label+' field can only be used with the = and <> operators')
+		setfocus(sle)
+		RETURN 'ERROR'
+	end if
+	
+	//Wildcard indicator check for the right side//
+	if match(right_side_between,'%') Then
+ 		messagebox('INVALID DATA','The Second value of '+label +' cannot have a % in it when using the '+operator+' operator')
+		setfocus(sle)
+		RETURN 'ERROR'
+	end if
+
+	//Length Checks//
+	//Length Checks for strings//
+	// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+	//if data_type = 'STRING' OR data_type = 'CHAR' OR data_type = 'VARCHAR' Then
+	IF	gnv_sql.of_is_character_data_type (data_type)	THEN
+		If (len(left_side_between) < starting_length) OR (len(left_side_between)  > length) THEN
+			if starting_length = length Then
+				MessageBox("INVALID DATA",'The first value of the '+label+' should be '+string(length)+lv_place_text+'in length')
+			else
+				MessageBox("INVALID DATA",'The first value of the '+label+' should be between '+string(starting_length)+' and '+string(length)+lv_place_text+'in length')
+			end if
+			setfocus(sle)
+			return 'ERROR'
+		END IF
+		If (len(right_side_between) < starting_length) OR (len(right_side_between)  > length) THEN
+			if starting_length = length Then
+				MessageBox("INVALID DATA",'The first value of the '+label+' should be '+string(length)+lv_place_text+'in length')
+			else
+				MessageBox("INVALID DATA",'The second value of the '+label+' should be between '+string(starting_length)+' and '+string(length)+lv_place_text+'in length')
+			end if
+			setfocus(sle)
+			return 'ERROR'
+		end if
+	else 
+		//Length Checks for numerics//
+		If len(left_side_between) > length  Then
+			MessageBox("INVALID DATA",'The first value of the '+label+' cannot be over '+string(length)+lv_place_text+'in length')
+			setfocus(sle)
+			return 'ERROR'
+		END IF
+		If len(right_side_between) > length THEN
+			MessageBox("INVALID DATA",'The second value of the '+label+' cannot be over '+string(length)+lv_place_text+'in length')
+			setfocus(sle)
+			return 'ERROR'
+		end if
+	end if
+
+	//Checks to make sure what part of string has to numeric//
+	num_of_nums = length - num_of_char
+	// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+	//if data_type = 'STRING' OR data_type = 'CHAR' OR data_type = 'VARCHAR' Then
+	IF	gnv_sql.of_is_character_data_type (data_type)	THEN
+		temp_len = len(left_side_between)
+		if num_of_char < length Then
+			temp = mid(left_side_between,num_of_char+1,temp_len)
+			if isnumber(temp) = FALSE Then
+				Messagebox('INVALID DATA','The last '+string(num_of_nums)+ lv_place_text+'of the first value in '+label+' can only be numbers')
+				setfocus(sle)
+				RETURN 'ERROR'
+			end if
+			temp_len = len(left_side_between)
+			temp = mid(right_side_between,num_of_char+1,temp_len)
+			if isnumber(temp) = FALSE Then
+				Messagebox('INVALID DATA','The last '+string(num_of_nums)+ lv_place_text+'of the second value in '+label+' can only be numbers')
+				setfocus(sle)
+				RETURN 'ERROR'
+			end if
+		end if
+	end if
+	//Checks to see if the left side is bigger than the right side//
+	// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+	//if data_type = 'DATE' OR data_type = 'SMALLDATETIME' OR data_type = 'DATETIME' THEN
+	IF	gnv_sql.of_is_date_data_type (data_type)	THEN
+		left_date = date(left_side_between)
+		right_date = date(right_side_between)
+		if left_date > right_date Then
+			Messagebox('INVALID DATA','The first value cannot be bigger than the second value in a between for '+label)
+			setfocus(sle)
+			RETURN 'ERROR'
+		end if
+		//Checks to see if the left side is equal to the right side.//
+		if left_date = right_date then
+			Messagebox('INVALID DATA','The two values in a between cannot be equal for '+label)
+			setfocus(sle)
+			RETURN 'ERROR'
+		end if
+	else		 
+		if left_side_between > right_side_between Then
+			Messagebox('INVALID DATA','The first value cannot be bigger than the second value in a between for '+label)
+			setfocus(sle)
+			RETURN 'ERROR'
+		end if
+		//Checks to see if the left side is equal to the right side.//
+		if left_side_between = right_side_between then
+			Messagebox('INVALID DATA','The two values in a between cannot be equal in '+label)
+			setfocus(sle)
+			RETURN 'ERROR'
+		end if
+	end if											//ALABAMA1 SCOTT_D
+	lv_returned_operator = 'BETWEEN'
+	return lv_returned_operator
+//This is for <,<=,>,>=,=,<>.  It checks to see that the value does not have a wildcard indicator.
+//If it is a number it the lenth of the value canot be greater than or
+// equal to the max length.  But if it is a STRING the length of the
+// value has to be equal to the max length.  if it doesn't pass either
+// of these it prints a error message.
+else
+	temp_len = len(value)
+	lv_returned_operator = operator
+	//Wild card indicator check//
+	if match(value,'%') Then
+	 		messagebox('INVALID DATA',' % in the '+label+' field can only be used with the = and <> operators')
+		setfocus(sle)
+		RETURN 'ERROR'
+	end if
+
+	//Makes sure there is only one value//
+	if match(value,',') Then
+		messagebox('INVALID DATA',label+' has too many values in it when using the operator '+operator)
+		setfocus(sle)
+		return 'ERROR'
+	end if
+	//String length check//
+	// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+	//if data_type = 'STRING' OR data_type = 'CHAR' OR data_type = 'VARCHAR' Then
+	IF	gnv_sql.of_is_character_data_type (data_type)	THEN
+		If (len(value) < starting_length) OR (len(value)  > length) THEN
+			if starting_length = length Then
+				MessageBox("INVALID DATA",label+' should be '+string(length)+lv_place_text+'in length')
+			else
+				MessageBox("INVALID DATA",label+' should be between '+string(starting_length)+' and '+string(length)+lv_place_text+'in length')
+			end if
+			setfocus(sle)
+			return 'ERROR'
+		END IF
+	else 
+		//Number length check//
+		If len(value) > length THEN
+			MessageBox("INVALID DATA",label+' can not be over '+string(length)+lv_place_text+'in length')
+			setfocus(sle)
+			return 'ERROR'
+		END IF
+	end if
+end if
+
+//For Strings that have certain number of places that have to be numbers
+//the function checks the ones that are numbers.  If they aren't it displays a
+//message
+
+
+//The next section is for operations other than IN or BETWEEN
+	//Checks to make sure what part of string has to numeric//
+num_of_nums = length - num_of_char
+// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+//if data_type = 'STRING' OR data_type = 'CHAR' OR data_type = 'VARCHAR' Then
+IF	gnv_sql.of_is_character_data_type (data_type)	THEN
+	if num_of_char < length and temp_len > 0 Then
+		temp = mid(value,num_of_char+1,temp_len )
+		if isnumber(temp) = FALSE Then
+			Messagebox('INVALID DATA','The last '+string(num_of_nums)+ lv_place_text+'of '+label+' can only be numbers')
+			setfocus(sle)
+			RETURN 'ERROR'
+		end if
+	end if
+end if
+
+// FDG 12/14/00 - Make the checking of data types DBMS-independent.
+//if data_type = 'DATE' OR data_type = 'SMALLDATETIME' OR data_type = 'DATETIME' Then
+IF	gnv_sql.of_is_date_data_type (data_type)	THEN
+	if isdate(value) = FALSE Then								//ALABAMA1 SCOTT_D
+		messagebox('INVALID DATE','An invalid date was entered for '+label)		//ALABAMA1 SCOTT_D
+		setfocus(sle)												//ALABAMA1 SCOTT_D
+		return 'ERROR'												//ALABAMA1 SCOTT_D
+	end if															//ALABAMA1 SCOTT_D
+END IF																//ALABAMA1 SCOTT_D
+
+return lv_returned_operator
+end function
+

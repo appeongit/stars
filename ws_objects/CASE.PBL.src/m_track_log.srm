@@ -1,0 +1,520 @@
+﻿$PBExportHeader$m_track_log.srm
+forward
+global type m_track_log from menu
+end type
+type m_menu from menu within m_track_log
+end type
+type m_previoustrack from menu within m_menu
+end type
+type m_nexttrack from menu within m_menu
+end type
+type m_1 from menu within m_menu
+end type
+type m_2 from menu within m_1
+end type
+type m_3 from menu within m_1
+end type
+type m_4 from menu within m_1
+end type
+type m_5 from menu within m_1
+end type
+type m_6 from menu within m_1
+end type
+type m_7 from menu within m_1
+end type
+type m_8 from menu within m_1
+end type
+type m_9 from menu within m_1
+end type
+type m_10 from menu within m_1
+end type
+type m_11 from menu within m_1
+end type
+type m_12 from menu within m_1
+end type
+type m_1 from menu within m_menu
+m_2 m_2
+m_3 m_3
+m_4 m_4
+m_5 m_5
+m_6 m_6
+m_7 m_7
+m_8 m_8
+m_9 m_9
+m_10 m_10
+m_11 m_11
+m_12 m_12
+end type
+type m_-1 from menu within m_menu
+end type
+type m_help from menu within m_menu
+end type
+type m_menu from menu within m_track_log
+m_previoustrack m_previoustrack
+m_nexttrack m_nexttrack
+m_1 m_1
+m_-1 m_-1
+m_help m_help
+end type
+global type m_track_log from menu
+m_menu m_menu
+end type
+end forward
+
+global type m_track_log from menu
+m_menu m_menu
+end type
+global m_track_log m_track_log
+
+type variables
+w_track_maint		iw_parent
+end variables
+
+forward prototypes
+public subroutine of_window_operations (string as_operation)
+end prototypes
+
+public subroutine of_window_operations (string as_operation);//********************************************************************
+// m_case_log.Of_Window_Operations
+//
+// Args:  Sting as_operation
+//
+// Returns:  None
+//
+// Description:  Called by each of the different operations on the menu, 
+//					  m_case_log.m_windowoperaitons, which passes
+//				     the operation to be performed.  This funciton calls
+//				     of_set_window_operation on the parent window and triggers
+//					  ue_set_window_operaitons(), also on parent window
+//
+//**********************************************************************
+
+integer li_rc
+
+iw_parent = This.ParentWindow
+
+iw_parent.of_set_is_operation(as_operation)
+
+if isvalid(iw_parent) then
+	iw_parent.event ue_set_window_operations()
+end if 
+end subroutine
+
+on m_track_log.create
+m_track_log=this
+call super::create
+this.m_menu=create m_menu
+this.Item[UpperBound(this.Item)+1]=this.m_menu
+end on
+
+on m_track_log.destroy
+call super::destroy
+destroy(this.m_menu)
+end on
+
+type m_menu from menu within m_track_log
+m_previoustrack m_previoustrack
+m_nexttrack m_nexttrack
+m_1 m_1
+m_-1 m_-1
+m_help m_help
+end type
+
+on m_menu.create
+call super::create
+this.text = "m_track_log"
+this.m_previoustrack=create m_previoustrack
+this.m_nexttrack=create m_nexttrack
+this.m_1=create m_1
+this.m_-1=create m_-1
+this.m_help=create m_help
+this.Item[UpperBound(this.Item)+1]=this.m_previoustrack
+this.Item[UpperBound(this.Item)+1]=this.m_nexttrack
+this.Item[UpperBound(this.Item)+1]=this.m_1
+this.Item[UpperBound(this.Item)+1]=this.m_-1
+this.Item[UpperBound(this.Item)+1]=this.m_help
+end on
+
+on m_menu.destroy
+call super::destroy
+destroy(this.m_previoustrack)
+destroy(this.m_nexttrack)
+destroy(this.m_1)
+destroy(this.m_-1)
+destroy(this.m_help)
+end on
+
+type m_previoustrack from menu within m_menu
+end type
+
+on m_previoustrack.create
+call super::create
+this.text = "P&revious Track"
+this.microhelp = "Scroll to the previous track in this case."
+end on
+
+event clicked;//*********************************************************************************
+// Script Name: clicked for m_previoustrack
+//
+//	Arguments: none		
+//						
+//
+// Returns:	none		
+//
+//	Description: This event will save the current track and scroll back one record. 	
+//		
+//
+//*********************************************************************************
+//	
+// 09/29/99 AJS	Created Rls 4.5 TS2363
+//
+//*********************************************************************************
+iw_parent = This.ParentWindow
+If Isvalid(iw_parent) Then
+	iw_parent.Event	ue_save()
+End If
+If Isvalid(iw_parent) Then
+	iw_parent.Event	ue_scroll_tracks(-1)
+End If
+end event
+
+on m_previoustrack.destroy
+call super::destroy
+end on
+
+type m_nexttrack from menu within m_menu
+end type
+
+event clicked;//*********************************************************************************
+// Script Name: clicked for m_nexttrack	
+//
+//	Arguments: none		
+//						
+//
+// Returns:	none		
+//
+//	Description: This event will save the current track and scroll forward one record. 	
+//		
+//
+//*********************************************************************************
+//	
+// 10/21/99 AJS	Created Rls 4.5 TS2363
+//
+//*********************************************************************************
+iw_parent = This.ParentWindow
+If Isvalid(iw_parent) Then
+	iw_parent.Event	ue_save()
+End If
+If Isvalid(iw_parent) Then
+	iw_parent.Event	ue_scroll_tracks(+1)
+End If
+end event
+
+on m_nexttrack.create
+call super::create
+this.text = "N&ext Track"
+this.microhelp = "Scroll to the next track in this case."
+end on
+
+on m_nexttrack.destroy
+call super::destroy
+end on
+
+type m_1 from menu within m_menu
+m_2 m_2
+m_3 m_3
+m_4 m_4
+m_5 m_5
+m_6 m_6
+m_7 m_7
+m_8 m_8
+m_9 m_9
+m_10 m_10
+m_11 m_11
+m_12 m_12
+end type
+
+on m_1.create
+call super::create
+this.text = "&Window Operations..."
+this.m_2=create m_2
+this.m_3=create m_3
+this.m_4=create m_4
+this.m_5=create m_5
+this.m_6=create m_6
+this.m_7=create m_7
+this.m_8=create m_8
+this.m_9=create m_9
+this.m_10=create m_10
+this.m_11=create m_11
+this.m_12=create m_12
+this.Item[UpperBound(this.Item)+1]=this.m_2
+this.Item[UpperBound(this.Item)+1]=this.m_3
+this.Item[UpperBound(this.Item)+1]=this.m_4
+this.Item[UpperBound(this.Item)+1]=this.m_5
+this.Item[UpperBound(this.Item)+1]=this.m_6
+this.Item[UpperBound(this.Item)+1]=this.m_7
+this.Item[UpperBound(this.Item)+1]=this.m_8
+this.Item[UpperBound(this.Item)+1]=this.m_9
+this.Item[UpperBound(this.Item)+1]=this.m_10
+this.Item[UpperBound(this.Item)+1]=this.m_11
+this.Item[UpperBound(this.Item)+1]=this.m_12
+end on
+
+on m_1.destroy
+call super::destroy
+destroy(this.m_2)
+destroy(this.m_3)
+destroy(this.m_4)
+destroy(this.m_5)
+destroy(this.m_6)
+destroy(this.m_7)
+destroy(this.m_8)
+destroy(this.m_9)
+destroy(this.m_10)
+destroy(this.m_11)
+destroy(this.m_12)
+end on
+
+type m_2 from menu within m_1
+end type
+
+event clicked;SetPointer(HourGlass!)
+SetMicroHelp(w_main, 'Ready to Append Column Filter.  Doubleclick Column Header to Begin')
+
+
+m_track_log.of_window_operations('Append Col Filter')
+end event
+
+on m_2.create
+call super::create
+this.text = "&Append Filter"
+end on
+
+on m_2.destroy
+call super::destroy
+end on
+
+type m_3 from menu within m_1
+end type
+
+event clicked;SetPointer(HourGlass!)
+SetMicroHelp(w_main, 'Ready to Create Filter.  Double-click Column Header to Begin')
+
+
+m_track_log.of_window_operations('Create Col Filter')
+end event
+
+on m_3.create
+call super::create
+this.text = "&Create  Filter"
+end on
+
+on m_3.destroy
+call super::destroy
+end on
+
+type m_4 from menu within m_1
+end type
+
+on m_4.create
+call super::create
+this.text = "-"
+end on
+
+on m_4.destroy
+call super::destroy
+end on
+
+type m_5 from menu within m_1
+end type
+
+event clicked;SetPointer(HourGlass!)
+SetMicroHelp(w_main, 'Ready to Code/Decode.  Double-click Column Header to Begin')
+
+
+m_track_log.of_window_operations('Code/Decode')
+end event
+
+on m_5.create
+call super::create
+this.text = "C&ode/Decode"
+end on
+
+on m_5.destroy
+call super::destroy
+end on
+
+type m_6 from menu within m_1
+end type
+
+event clicked;SetPointer(HourGlass!)
+
+m_track_log.of_window_operations('Sort/Rank')
+end event
+
+on m_6.create
+call super::create
+this.text = "Sort/Rank"
+end on
+
+on m_6.destroy
+call super::destroy
+end on
+
+type m_7 from menu within m_1
+end type
+
+on m_7.create
+call super::create
+this.text = "-"
+end on
+
+on m_7.destroy
+call super::destroy
+end on
+
+type m_8 from menu within m_1
+end type
+
+event clicked;SetPointer(HourGlass!)
+SetMicroHelp(w_main, 'Ready to Display Filter.  Doubleclick Column Header to Begin')
+
+
+m_track_log.of_window_operations('Display Filter')
+end event
+
+on m_8.create
+call super::create
+this.text = "&Display Filter"
+end on
+
+on m_8.destroy
+call super::destroy
+end on
+
+type m_9 from menu within m_1
+end type
+
+event clicked;SetPointer(HourGlass!)
+
+m_track_log.of_window_operations('Find')
+end event
+
+on m_9.create
+call super::create
+this.text = "&Find"
+end on
+
+on m_9.destroy
+call super::destroy
+end on
+
+type m_10 from menu within m_1
+end type
+
+on m_10.create
+call super::create
+this.text = "-"
+end on
+
+on m_10.destroy
+call super::destroy
+end on
+
+type m_11 from menu within m_1
+end type
+
+event clicked;SetPointer(HourGlass!)
+SetMicroHelp(w_main, 'Ready to Align Columns. Double-click Column Header to Begin')
+
+
+m_track_log.of_window_operations('Align')
+end event
+
+on m_11.create
+call super::create
+this.text = "&Align"
+end on
+
+on m_11.destroy
+call super::destroy
+end on
+
+type m_12 from menu within m_1
+end type
+
+event clicked;////////////////////////////////////////////////////////////////////////////
+//
+//	05/11/04	GaryR	Track 4016d	Add a Unique Count option to Window Operations
+//	12/15/04	GaryR	Track	4161d	Rename Unique Count to Count Unique Values
+//
+////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+w_main.SetMicroHelp('Double-click column header to obtain unique value count')
+
+m_track_log.of_window_operations('Count Unique Values')
+end event
+
+on m_12.create
+call super::create
+this.text = "Count &Unique Values"
+this.microhelp = "Count unique values"
+end on
+
+on m_12.destroy
+call super::destroy
+end on
+
+type m_-1 from menu within m_menu
+end type
+
+on m_-1.create
+call super::create
+this.text = "-"
+end on
+
+on m_-1.destroy
+call super::destroy
+end on
+
+type m_help from menu within m_menu
+end type
+
+on m_help.create
+call super::create
+this.text = "&Help"
+this.microhelp = "Display help on this tab."
+end on
+
+event clicked;//*********************************************************************************
+// Script Name: clicked for m_help
+//
+//	Arguments: none		
+//						
+//
+// Returns:	none		
+//
+//	Description: This event will bring up the help menu. 	
+//		
+//
+//*********************************************************************************
+//	
+// 10/21/99 AJS	Created Rls 4.5 TS2363
+//
+//*********************************************************************************
+
+SetPointer(HourGlass!)
+
+iw_parent = this.parentwindow
+
+If IsValid(iw_parent) Then
+	iw_parent.of_help ('W_TRACK_MAINT','TABPAGE_LOG')
+End If
+end event
+
+on m_help.destroy
+call super::destroy
+end on
+

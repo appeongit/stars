@@ -1,0 +1,49 @@
+﻿$PBExportHeader$d_notes.srd
+$PBExportComments$case folder view - update notes <logic>
+release 8;
+datawindow(units=0 timer_interval=0 color=1090519039 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=char(3) update=yes updatewhereclause=yes name=dept_id dbname="notes.dept_id" initial=" " )
+ column=(type=char(8) update=yes updatewhereclause=yes name=user_id dbname="notes.user_id" initial=" " )
+ column=(type=char(2) update=yes updatewhereclause=yes key=yes name=note_rel_type dbname="notes.note_rel_type" initial=" " )
+ column=(type=char(2) update=yes updatewhereclause=yes name=note_sub_type dbname="notes.note_sub_type" initial=" " )
+ column=(type=char(20) update=yes updatewhereclause=yes key=yes name=note_rel_id dbname="notes.note_rel_id" initial=" " )
+ column=(type=char(10) update=yes updatewhereclause=yes key=yes name=note_id dbname="notes.note_id" initial=" " )
+ column=(type=datetime update=yes updatewhereclause=yes name=note_datetime dbname="notes.note_datetime" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=rte_ind dbname="notes.rte_ind" initial=" " )
+ column=(type=char(80) updatewhereclause=yes name=note_desc dbname="notes.note_desc" )
+ retrieve="SELECT  NOTES.DEPT_ID ,
+           NOTES.USER_ID ,
+           NOTES.NOTE_REL_TYPE ,
+           NOTES.NOTE_SUB_TYPE ,
+           NOTES.NOTE_REL_ID ,
+           NOTES.NOTE_ID ,
+           NOTES.NOTE_DATETIME ,
+           NOTES.RTE_IND,
+			  NOTES.NOTE_DESC    
+        FROM NOTES      
+        WHERE ( NOTES.NOTE_REL_TYPE = Upper(:arg_note_rel_type) ) and          ( NOTES.NOTE_REL_ID = Upper(:arg_note_rel_id) )   " update="NOTES" updatewhere=0 updatekeyinplace=no arguments=(("arg_note_rel_type", string),("arg_note_rel_id", string)) )
+text(band=header alignment="2" text="Dept Id" border="0" color="0" x="9" y="8" height="64" width="261" html.valueishtml="0"  name=dept_id_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="User Id" border="0" color="0" x="279" y="8" height="64" width="329" html.valueishtml="0"  name=user_id_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Note Rel Type" border="0" color="0" x="617" y="8" height="64" width="521" html.valueishtml="0"  name=note_rel_type_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Note Sub Type" border="0" color="0" x="1147" y="8" height="64" width="535" html.valueishtml="0"  name=note_sub_type_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Note Rel Id" border="0" color="0" x="1691" y="8" height="64" width="768" html.valueishtml="0"  name=note_rel_id_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Note Id" border="0" color="0" x="2469" y="8" height="64" width="402" html.valueishtml="0"  name=note_id_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Note Datetime" border="0" color="0" x="2880" y="8" height="64" width="805" html.valueishtml="0"  name=note_datetime_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Rte Ind" border="0" color="0" x="3694" y="8" height="64" width="169" html.valueishtml="0"  name=t_1 visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="261" format="[general]" html.valueishtml="0"  name=dept_id visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="279" y="8" height="76" width="329" format="[general]" html.valueishtml="0"  name=user_id visible="1" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="617" y="8" height="76" width="521" format="[general]" html.valueishtml="0"  name=note_rel_type visible="1" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1147" y="8" height="76" width="535" format="[general]" html.valueishtml="0"  name=note_sub_type visible="1" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1691" y="8" height="76" width="768" format="[general]" html.valueishtml="0"  name=note_rel_id visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="2469" y="8" height="76" width="402" format="[general]" html.valueishtml="0"  name=note_id visible="1" edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="2880" y="8" height="76" width="805" format="[shortdate] [time]" html.valueishtml="0"  name=note_datetime visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="3694" y="8" height="76" width="169" format="[general]" html.valueishtml="0"  name=rte_ind visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=0 border="0" color="0" x="3877" y="0" height="64" width="2953" html.valueishtml="0"  name=note_desc visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Note Desc" border="0" color="0" x="3872" y="4" height="76" width="2958" html.valueishtml="0"  name=note_desc_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )
+ 

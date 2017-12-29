@@ -1,0 +1,13 @@
+﻿$PBExportHeader$sx_query_save.srs
+global type sx_query_save from structure
+	character		path
+	character		common_flg
+	string		query_id
+	string		query_name
+	string		query_type
+	string		query_desc
+	string		link
+	string		case_id
+	string		link_type
+end type
+

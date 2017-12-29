@@ -1,0 +1,337 @@
+HA$PBExportHeader$fx_m_export.srf
+$PBExportComments$File|Export stmenu.pbl
+global type fx_m_export from function_object
+end type
+
+forward prototypes
+global subroutine fx_m_export (uo_query auo_query, string as_path)
+end prototypes
+
+global subroutine fx_m_export (uo_query auo_query, string as_path);//****************************Clicked for m_export*******************
+//*   Date   Init               Description of Changes Made         *
+//* -------- ---- --------------------------------------------------*
+//* 04/25/94 SWD  Created by tom-b and modified by scott-d to be    *
+//*					used in the toolbar										  *
+//*******************************************************************
+//*DESCRIPTION  																	  *
+//* OF SCRIPT:		This script scans all objects in the active sheet *
+//*					and finds all data window conrols.  **If the data *
+//*					window is tagged as 'NO SAVE' Then it goes to the *
+//*					next control.  All data windows that contain the  *
+//*					criteria from the mle get tagged.  Then it goes   *
+//*					and opens the save as window so the user can pick *
+//*					what file type they want it saved as.  When OK is *
+//*					hit the user can pick the path and name of file.  *
+//*					It then saves the data in a file where the user   *
+//*					specified.
+//*********************************************************************************************
+//	10-02-95 FNC	Take upperbound out of loop
+//	01/29/98	JTM	Made major modifications due to adding auo_query 
+//						argument.
+//	04/27/98	FDG	Track 1108.  New file formats: WMF, HTML
+// 08/04/98 FNC	Track 1537. 1. When check for type of datawindow, datawindow
+//						must be lower cased since the type of returns lower case.
+//						2. The index used to move the datawindow objects into the 
+//						datawindow control must be different than the index
+//						that is looping through all of the window objects.
+// 01/12/99 AJS   FS2042c. Add Save As choices.
+// 10/16/00	GaryR 3022c Unable to export Pattern Reports.
+// 10/27/00 GaryR	3029c Eliminate multiple messages in a row on datawindow export.
+// 10/27/00	GaryR	2315d	Conforming STARS to the HIPAA Act
+//	08/19/01	FDG	Stars 5.0.  If no d/w found, find the print d/w to export.
+// 10/02/01	GaryR	Stars 4.8.1	- WIC 18.3	Abiltiy to retain labels and totals during export.
+//	11/14/01	FDG	Stars 4.8.1.	Undo the Excel SaveAs.
+// 11/15/01	GaryR	Stars 4.8.1	- WIC 18.3	Abiltiy to retain labels
+//	03/18/02	GaryR	Track 4113c Saving to Text creates blank rows
+// 03/19/02 SAH   Track 2734  If from case log, no longer need extra columns msgbx
+// 03/27/02 MikeF Track 2560  Replace w_save_as with GetFileSave
+//	05/02/02	GaryR	Track 4195c	Pass -4143 as the FileFormat to excel SaveAs
+//										method to save in current excel version
+//	08/09/02	GaryR	Track 3249d	Provide export to PDF format
+//	11/26/02	GaryR	SPR 4837c	Citrix bug with excel and local drives
+//	01/13/03	GaryR	Track 3411d	Add logic for duplicate column names like in Patterns
+//	04/24/03	GaryR	Track 3538d	Remove the HTML option for 5.2
+//	08/15/03	GaryR	Track 2451d	Carry the dictionary format to Excel
+// 09/08/03 MikeF	Track 3644d Add TRY/CATCH around OLE code (GPF when Export to excel w/ file open)
+// 11/14/03 MikeF	Track 3703d	Delete Excel columns if visible=0 OR no header 
+//	01/06/04	GaryR	Track 3703d	Fix message handling
+//	01/20/04	GaryR	Track 3644d	Check if file is already open 
+//	08/19/04	MikeF	SPR3851d		Export to Microsoft Access
+// 11/08/04 MikeF	SPR4107c		Re-direct calendars to w_calendar function
+// 01/06/05 MikeF SPR4219d Still getting complete message when cancelling Access export
+// 09/25/09	GaryR	EXP.650.4897.001	Add support for exporting to Excel 2007
+// 09/25/09	GaryR	EXP.650.4897.002	Add support for Excel WYSIWYG export
+// 09/25/09	GaryR	EXP.650.4897.003	Add message handling for Excel exports
+// 09/28/09	GaryR	EXP.650.4897.001	QCD148-Default to XLS
+//	10/31/09	GaryR	EXP.650.4897.005	Add support for formatted export to all versions of Excel
+//	11/06/09	GaryR	EXP.650.4897.003	QCD156-Account for the header row when computing Excel row limits
+//
+//**********************************************************************************************
+
+String 		ls_path_file, ls_file_type, ls_title, ls_tag
+w_master    active_sheet			// FDG 08/19/01
+DataWindow 	dw_control[]
+Long       	ll_cnt, ll_xlrowlimit = 2147483647
+Integer 		li_Index, li_Control, li_count, li_Return, li_Pos
+Integer 		li_dw_index, li_start_pos, li_end_pos, li_length, li_filenum
+u_dw			ldw_control				// FDG 08/19/01
+boolean 		lb_surpressed
+string		ls_filename, ls_extension			// MF 3/27/02
+n_cst_export	lnv_export
+n_cst_filesrv	lnv_file
+
+active_sheet = gnv_App.of_Get_Frame().GetActiveSheet()
+
+// 4.0 JTM 1/29/98 add
+if isvalid(auo_query) then
+	IF as_Path = 'REPORT' THEN
+		// store report datawindow in an array
+		dw_Control[1] = auo_query.of_Get_Report_Dw()
+	ELSEIF as_Path = 'VIEW' THEN
+		// store view datawindow in an array
+		dw_Control[1] = auo_query.of_Get_View_Dw()
+	END IF	
+else
+	//add each visible datawindow to a control array
+	li_count = UpperBound(active_sheet.control[])  
+	for li_Index = 1 to li_count    
+		If (active_sheet.control[li_Index].TypeOf() = datawindow!) and &		
+			(active_sheet.control[li_Index].visible  = True)        then 		// FNC 08/04/98
+			li_dw_index++																		// FNC 08/04/98
+			dw_control[li_dw_index] = active_sheet.control[li_Index]				// FNC 08/04/98
+		End If
+	next
+end if
+// 4.0 JTM 1/29/98 end
+
+// 10/16/2000	GaryR 3022c Begin
+IF active_sheet.ClassName() = "w_sampling_analysis_new" THEN
+	IF	IsValid( w_sampling_analysis_new.tab_patt.tabpage_report.dw_report ) THEN
+		IF	w_sampling_analysis_new.tab_patt.SelectedTab = 6 THEN
+			dw_control[1] = w_sampling_analysis_new.tab_patt.tabpage_report.dw_report
+		END IF
+	END IF	
+END IF
+// 10/16/2000	GaryR 3022c End
+
+// If calendar, only valid export is PDF. Call window event
+IF active_sheet.ClassName() = "w_calendar" THEN
+	active_sheet.dynamic event ue_export_pdf()
+	RETURN
+END IF
+
+//Loops through all visible dw controls 
+li_count = UpperBound(dw_control[])
+
+// FDG 08/19/01 begin
+IF	li_count	<	1		THEN
+	ldw_control	=	active_sheet.of_GetPrintDW()
+	IF IsValid(ldw_control)		THEN
+		li_count++
+		dw_control[li_count]	=	ldw_control
+	END IF
+END IF
+// FDG 08/19/01 end
+
+// MF 3/27/02 Track 2650 - BEGIN 1
+//	08/09/02	GaryR	Track 3249d
+// ############################ NOTE ############################
+// ###	The order of the file filter is sensitive for Excel exports
+// ###	If you add or remove any filers, you must asses the Excel logic below
+// ############################ NOTE ############################
+lnv_file = Create n_cst_filesrv
+li_return = lnv_file.of_GetSaveFileName( Handle( active_sheet ), ls_path_file, 	+ &
+									"Microsoft Excel (*.XLS), *.XLS,"							+ &
+									"Microsoft Excel WYSIWYG (*.XLS), *.XLS,"					+ &
+									"Microsoft Excel 2007 (*.XLSX), *.XLSX,"					+ &
+									"Microsoft Excel 2007 WYSIWYG (*.XLSX), *.XLSX,"		+ &
+									"Microsoft Access (*.MDB), *.MDB,"							+ &
+									"Portable Document Format (*.PDF), *.PDF,"				+ &									
+									"Text File (*.TXT), *.TXT,"									+ &
+									"Comma Seperated Value (*.CSV),*.CSV," 					+ &
+									"STARS Report Format (*.PSR), *.PSR," 						+ &
+									"dBASE 3 (*.DBF), *.DBF,"										+ &
+									"Enhanced Metafile (*.EMF), *.EMF,"							+ &									
+									"Data Interchange (*.DIF), *.DIF" )
+
+Destroy lnv_file
+
+IF li_return > 0 THEN
+	// Determine the File Type from the file extension
+	li_pos = LastPos( ls_path_file, "." )
+	ls_extension = Upper( Mid( ls_path_file, li_pos + 1 ) )
+	
+	CHOOSE CASE ls_extension
+		CASE 'CSV','EMF','DIF','PDF' //	08/09/02	GaryR	Track 3249d
+			ls_file_type = ls_extension + '!'
+		CASE 'DBF'
+			ls_file_type = 'dBASE3!'
+		CASE 'XLS'
+			IF li_return = 2 THEN
+				// WYSIWYG
+				ls_file_type = 'XLSW!'
+			ELSE
+				ls_file_type = 'XLS!'
+			END IF
+			lb_surpressed = TRUE
+			ll_xlrowlimit = lnv_export.il_xlrowlimit
+		CASE 'XLSX'
+			IF li_return = 4 THEN
+				// WYSIWYG
+				ls_file_type = 'XLSXW!'
+			ELSE
+				ls_file_type = 'XLSX!'
+			END IF
+			lb_surpressed = TRUE
+			ll_xlrowlimit = lnv_export.il_xl2007rowlimit
+		CASE 'TXT'
+			ls_file_type = 'Text!'
+		CASE 'PSR'
+			ls_file_type = 'PSReport!'
+		CASE 'MDB'	
+			ls_file_type = ls_extension + '!'
+			lb_surpressed = TRUE
+		CASE ELSE
+			MessageBox("Warning", "Unable to export data successfully. ~r~rInvalid File Extension: " + ls_extension, Exclamation!)
+			RETURN
+	END CHOOSE
+ELSE
+	IF li_return = 0 THEN 
+		//User clicked 'Cancel'
+	ELSE //Problems with File Save
+		MessageBox("Warning", "Unable to export data successfully. ~r~rThe file cannot be created", Exclamation!)
+	END IF
+	
+	RETURN
+	
+END IF
+// MF 3/27/02 Track 2650 - END 1
+
+//	Check if file already open
+IF ls_file_type = 'MDB!' THEN
+	IF NOT FileExists( ls_path_file ) THEN
+		MessageBox( "Export Error", "Microsoft Access database does not exist.~n~r" + &
+						"This option requires an existing Access database.", StopSign! )
+		RETURN
+	END IF
+ELSE
+	IF FileExists( ls_path_file ) THEN
+		li_filenum = FileOpen( ls_path_file, LineMode!, Read!, LockReadWrite! )
+		IF li_filenum = -1 THEN
+			MessageBox( "Export Error", "There is a problem saving the report.~n~r" + &
+							"Verify that you are not trying to export your report to a file that is already open.", StopSign! )
+			Return
+		ELSE
+			FileClose( li_filenum )
+		END IF
+	END IF
+END IF
+
+FOR li_Index = 1 to li_count    
+   // SAH 03/19/02 Track 2734 -Begin
+	ls_tag = Upper(dw_control[li_index].tag)
+	
+	if pos(upper(dw_Control[li_Index].tag),'NO SAVE') > 0  Then continue
+	
+	IF ls_tag = 'CASE LOG' THEN lb_surpressed = TRUE
+
+	IF Trim( ls_file_type ) <> "" THEN			
+		li_start_pos = pos(upper(dw_Control[li_Index].tag),"TITLE")
+
+		if li_start_pos = 0 then
+			ls_title = "Data Window"
+		else
+			li_end_pos = pos(dw_Control[li_Index].tag, "," ,li_start_pos)  
+			li_start_pos = pos(dw_Control[li_Index].tag,"=")
+			if li_end_pos = 0 then  //no comma, end of string
+			  li_length = 100       //so will read to end of string
+			else
+			  li_length = li_end_pos - li_start_pos - 1
+			end if
+			ls_title = mid(dw_Control[li_Index].tag,li_start_pos+1,li_length)      
+		end if
+		
+		//	Notify user of Excel row limit
+		//	Also include the header row
+		ll_cnt = dw_Control[li_Index].RowCount() + 1
+		IF ll_cnt > ll_xlrowlimit THEN
+			MessageBox( "Export Failed", "User is attempting to export more than the maximum " + &
+							"Excel row limit of " + String( ll_xlrowlimit, "#,###,###" ) + " rows", Exclamation! )
+			Return
+		END IF
+
+		IF fx_disclaimer() <> 1 THEN
+			MessageBox( "Save Report", "Export was canceled and no data was saved." )
+			Return
+		END IF
+		
+		IF NOT lb_surpressed THEN
+			IF messagebox('Save Report',Trim( ls_title ) + &
+				"~r~nSaved report may contain columns not selected in the report!" + &
+				'~n~r~n~rDo you wish to proceed saving this data?', Question!, YesNo! ) = 1 THEN	
+			ELSE
+				ls_file_type = ""
+			END IF
+		END IF
+		
+	END IF
+
+	//Based on the filetype it saves the file to the path and
+	//name specified in lv_file_type in the format specified
+	//in ls_file_type.  
+	CHOOSE CASE ls_file_type
+		CASE 'CSV!'
+			li_Return = dw_control[li_Index].SaveAs(ls_path_file,CSV!,true)
+		CASE 'dBASE3!'
+			li_Return = dw_control[li_Index].SaveAs(ls_path_file,dBASE3!,true)
+		CASE 'DIF!'
+			li_Return = dw_control[li_Index].SaveAs(ls_path_file,DIF!,true)
+		CASE 'XLS!', 'XLSW!', 'XLSX!', 'XLSXW!'
+			//	Call Excel logic
+			li_Return = lnv_export.event ue_excel( dw_control[li_Index], ls_path_file, ls_file_type )
+		CASE 'PSReport!'
+			li_Return = dw_control[li_Index].SaveAs(ls_path_file, PSReport!,true) 	//AJS 01-12-99
+		CASE 'Text!'
+			li_Return = dw_control[li_Index].SaveAs(ls_path_file,Text!,true)
+		CASE 'EMF!'
+			li_Return = dw_control[li_Index].SaveAs(ls_path_file,EMF!,true)
+		CASE 'PDF!'
+			li_Return = lnv_export.Event ue_pdf( ls_path_file, dw_control[li_Index], ls_title )		//	08/09/02	GaryR	Track 3249d
+		CASE 'MDB!'
+			li_pos = LastPos( ls_path_file, "\" )
+			ls_filename = Right( ls_path_file, Len( ls_path_file ) - li_pos )
+			lnv_export.is_path 		= ls_path_file
+			lnv_export.is_file_name = ls_filename
+			li_return = lnv_export.Event ue_access (dw_control[li_Index])	
+			IF li_return = -2 THEN RETURN // User cancelled at Options window
+		CASE ELSE
+			//  Presumes that the CANCEL button was selected on the SAVE AS window.
+			//MESSAGEBOX('NO ACTION TAKEN','Nothing was selected, no action was taken.')
+			MessageBox( "Save Report", "Export was canceled and no data was saved." )
+			RETURN
+	END CHOOSE
+	
+	IF li_Return = -1 then
+		MessageBox( "Save Report", "The attempt to export data to " + &
+						ls_path_file + " failed.~n~rNo data was saved.", StopSign! )
+		RETURN
+	ELSEIF li_Return = -2 then
+		//	Cancel out of Excel Export
+		MessageBox( "Save Report", "Export was canceled and no data was saved." )
+		RETURN
+	ELSE
+		IF ls_file_type = 'MDB!' AND lnv_export.ib_cancelled THEN
+			MessageBox("Save Report","Data was partially saved to~n~r" + ls_path_file )
+		ELSE
+			MessageBox("Save Report","Data was successfully saved to~n~r" + ls_path_file )
+		END IF
+	END IF
+		
+NEXT
+
+//If there is no datawindow in the active sheet a message is displayed// 
+if UpperBound(dw_control[]) < 1 then MessageBox('Export Report','Current Sheet does NOT contain a datawindow to export.',StopSign!)
+  
+MDI_main_frame.SetMicroHelp('Ready')
+end subroutine
+

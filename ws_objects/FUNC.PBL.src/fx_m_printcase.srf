@@ -1,0 +1,15 @@
+﻿$PBExportHeader$fx_m_printcase.srf
+$PBExportComments$Case|PrintCase
+global type fx_m_printcase from function_object
+end type
+
+forward prototypes
+global subroutine fx_m_printcase ()
+end prototypes
+
+global subroutine fx_m_printcase ();Setpointer(hourglass!)
+setmicrohelp(w_main,'Opening Case Print')
+opensheet(w_case_print,mdi_main_frame,help_menu_position,layered!)
+Setpointer(arrow!)
+end subroutine
+

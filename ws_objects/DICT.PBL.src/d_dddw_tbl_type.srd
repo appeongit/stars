@@ -1,0 +1,27 @@
+﻿$PBExportHeader$d_dddw_tbl_type.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(2) key=yes updatewhereclause=yes name=elem_type dbname="DICTIONARY.ELEM_TYPE"  )
+column=(type=char(2) key=yes updatewhereclause=yes name=elem_tbl_type dbname="DICTIONARY.ELEM_TBL_TYPE"  )
+column=(type=char(32) key=yes updatewhereclause=yes name=elem_name dbname="DICTIONARY.ELEM_NAME"  )
+column=(type=char(255) updatewhereclause=yes name=elem_desc dbname="DICTIONARY.ELEM_DESC"  )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"DICTIONARY~" ) COLUMN(NAME=~"DICTIONARY.ELEM_TYPE~") COLUMN(NAME=~"DICTIONARY.ELEM_TBL_TYPE~") COLUMN(NAME=~"DICTIONARY.ELEM_NAME~") COLUMN(NAME=~"DICTIONARY.ELEM_DESC~")WHERE(    EXP1 =~"DICTIONARY.ELEM_TYPE~"   OP =~"in~"    EXP2 =~"('TB','VW')~" ) ) "
+  update="DICTIONARY" updatewhere=0 updatekeyinplace=no
+  sort="elem_tbl_type A"
+)
+compute(name=cf_tbl_desc visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" x="9" y="4" height="64" width="1321" format="[GENERAL]" expression="elem_tbl_type + ~" - ~" + If( IsNull(  elem_name ) OR Trim(  elem_name ) = ~"~", ~"No Name Available~", Trim(  elem_name )) + ~" - ~" + If ( IsNull( elem_desc ) OR Trim( elem_desc ) = ~"~", ~"No Description Available~", If ( Pos(  elem_desc, ~"/~") = 0, Trim(  elem_desc ),  If ( Trim(  Left( elem_desc, Pos( elem_desc, ~"/~") - 1 ) ) = ~"~", ~"No Description Available~", Trim(  Left( elem_desc, Pos( elem_desc, ~"/~") - 1 ) ) ) ) )" alignment="0" border="0" html.valueishtml="0" crosstab.repeat=no accessibledescription="~"Table Description~"	~"Table Description~"" accessiblename="~"Table Description~"	~"Table Description~"" )
+compute(name=cf_tbl_types visible="0" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" x="1335" y="8" height="64" width="69" format="[GENERAL]" expression="elem_tbl_type + ~" - ~" + If ( IsNull(  elem_name ) OR Trim(  elem_name ) = ~"~", ~"No Name Available~", Trim(  elem_name ))" alignment="0" border="0" html.valueishtml="0" crosstab.repeat=no accessibledescription="~"Table Type~"	~"Table Type~"" accessiblename="~"Table Type~"	~"Table Type~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )

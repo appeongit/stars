@@ -1,0 +1,6 @@
+﻿$PBExportHeader$sx_filter_info_container.srs
+$PBExportComments$Contains an array of sx_filter_info
+global type sx_filter_info_container from structure
+	sx_filter_info		lsx_filter_info[]
+end type
+

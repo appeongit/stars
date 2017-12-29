@@ -1,0 +1,34 @@
+﻿$PBExportHeader$sx_dw_format.srs
+global type sx_dw_format from structure
+	string		title
+	string		description
+	string		subset
+	string		inv_type
+	string		report_name
+	string		report_id
+	string		criteria
+	string		statement
+	string		client_name
+	string		logo_file
+	string		subtitle1
+	string		subtitle2
+	string		subtitle3
+	string		subtitle4
+	boolean		gridlines
+	boolean		page_numbers
+	boolean		portrait
+	string		report_date
+	string		subject_label
+	string		subject
+	boolean		display_report_id
+	boolean		display_report_name
+	boolean		display_report_date
+	boolean		display_subset
+	boolean		display_criteria
+	boolean		display_subject
+	boolean		display_inv_type
+	integer		report_options
+	string		stmt_code
+	string		client_code
+end type
+

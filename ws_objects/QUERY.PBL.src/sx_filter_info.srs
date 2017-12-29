@@ -1,0 +1,11 @@
+﻿$PBExportHeader$sx_filter_info.srs
+global type sx_filter_info from structure
+	integer		level_num
+	string		filter_id
+	string		col_name
+	string		col_desc
+	string		data_type
+	string		tbl_type
+	boolean		filter_used
+end type
+

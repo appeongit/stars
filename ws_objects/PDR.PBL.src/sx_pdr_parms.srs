@@ -1,0 +1,18 @@
+﻿$PBExportHeader$sx_pdr_parms.srs
+global type sx_pdr_parms from structure
+	string		pdr_name
+	string		pdr_label
+	string		pdr_cat
+	string		pdr_type
+	string		pdr_desc
+	long		pdr_criteria
+	string		pdr_drilldown
+	string		pdr_window_ops
+	string		case_security
+	long		pdr_security
+	long		pdr_source
+	integer		format_flags
+	boolean		enable_calendar
+	string		rpt_name
+end type
+

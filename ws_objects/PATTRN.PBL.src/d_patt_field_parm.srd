@@ -1,0 +1,15 @@
+﻿$PBExportHeader$d_patt_field_parm.srd
+$PBExportComments$Retrieves all rows from patt_field_parm.  Also used as a DDDW <logic>
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(255) updatewhereclause=yes name=parm_label dbname="PATT_FIELD_PARM.PARM_LABEL" )
+ column=(type=char(32) updatewhereclause=yes name=parm_name dbname="PATT_FIELD_PARM.PARM_NAME" )
+ column=(type=char(2) updatewhereclause=yes name=tbl_type dbname="PATT_FIELD_PARM.TBL_TYPE" )
+ column=(type=char(10) updatewhereclause=yes name=patt_id dbname="PATT_FIELD_PARM.PATT_ID" )
+ column=(type=char(10) updatewhereclause=yes name=patt_field dbname="PATT_FIELD_PARM.PATT_FIELD" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"PATT_FIELD_PARM~" ) COLUMN(NAME=~"PATT_FIELD_PARM.PARM_LABEL~") COLUMN(NAME=~"PATT_FIELD_PARM.PARM_NAME~") COLUMN(NAME=~"PATT_FIELD_PARM.TBL_TYPE~") COLUMN(NAME=~"PATT_FIELD_PARM.PATT_ID~") COLUMN(NAME=~"PATT_FIELD_PARM.PATT_FIELD~")) ORDER(NAME=~"PATT_FIELD_PARM.PATT_ID~" ASC=yes )  ORDER(NAME=~"PATT_FIELD_PARM.PATT_FIELD~" ASC=yes )  ORDER(NAME=~"PATT_FIELD_PARM.TBL_TYPE~" ASC=yes )  ORDER(NAME=~"PATT_FIELD_PARM.PARM_LABEL~" ASC=yes ) " )
+compute(band=detail alignment="0" expression=" tbl_type + '.' +  parm_label "border="0" color="0" x="5" y="4" height="76" width="1175" format="[general]"  name=display_field  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,388 @@
+HA$PBExportHeader$save_anal_crit.srf
+global type save_anal_crit from function_object
+end type
+
+forward prototypes
+global function integer save_anal_crit (string win_type, string table_type[], string rank, integer rank_num, string crit_lines[50, 4], string sort[25, 4], string group[25, 2])
+end prototypes
+
+global function integer save_anal_crit (string win_type, string table_type[], string rank, integer rank_num, string crit_lines[50, 4], string sort[25, 4], string group[25, 2]);//********************************************************************
+//		Object Type:	Global Function
+//		Object Name:	save_anal_crit
+//		Event Name:		N/A
+//
+//This function uses values passed to it to insert rows into various
+//tables to save a criteria for a window.  The tables that are being 
+//inserted are ANAL_CRIT_CNTL(links all the tables together), 
+//ANAL_CRIT_LINE (Is each line of criteria),ANAL_CRIT_SORT(Captures 
+//the sorts),ANAL_CRIT_GRP (Captures any grouping being used), 
+//and CRIT_LINK(to link the criteria to the case)
+//
+// Usage:
+//   rc = save_anal_crit(win_type,table_type,rank,rank_num,
+//								crit_lines,sorts,groups)
+// Where:
+//   win_type      = (String)       A three character code describing 
+//												what window that the criteria 
+//												is being saved from
+//   table_type    = (String)       A two character code describing 
+//												what table this information is 
+//												building a criteria for
+//   rank          = (string) 		This tells whether they are 
+//												grabing from the top or
+//												the bottom of the criteria.  
+//												Top & Bottom are the 
+//												only two values that can be in 
+//												this argument.
+//	  rank_num		 = (integer)		A Number telling how many should 
+//												be grapped from the criteria.
+//	  											Zero means to grab everything.
+//	  crit_lines	 = (multi dimensional array of strings 25,4)
+//												A array containing the actual 
+//												criteria
+//							Array(X,1)     This is the column name
+//							Array(X,2)		This is operator for the criteria
+//							Array(X,3)		This is the actual value or values 
+//												being searched for
+//							Array(X,4)		This is the logic connector
+//												(and/or)
+//	  sorts			 = (muti dimensional array of strings 25,4)
+//						 						A array containg the sorts for 
+//												the criteria
+//							Array(X,1)		This is the coulmn name that 
+//												the sort is for
+//							Array(X,2)		This is a function for the 
+//												sort such as count or sum
+//							Array(X,3)		This is the sequence in which 
+//												the sort should be performed
+//							Array(X,4)		This is order of the sort
+//												(asc or desc)
+//	  groups			 = (multi dimensional array 25,2)
+//												A array containg any groups for 
+//												the criteria
+//							Array(X,1)		This the column name that is 
+//												being grouped.
+//							Array(X,2)		The sequence the groups should 
+//												be performed
+// Usage Notes:
+//   If there is a error a -1 is returned else
+//   it returns a 0.
+//   DO NOT STRIP OFF TABLE TYPES FROM COLUMN NAMES BEFORE ENTERING!!!
+//********************************************************************
+//
+//	HRB	11/15/94 Change save to criteria_line table to save 
+//						join properly
+//	FDG	10/11/95	1.	Get Stars_rel from w_main.dw_1 instead of using
+//							embedded SQL.
+//						2.	Remove the temporary transaction because it is
+//							not needed.
+//	JTM	01/30/98	1. Removed commit since fx_get_next_key_id() performs its own commit.
+//						2. Replaced Today(),Now() with of_Get_Server_Date_Time().
+//						3. Added 4.0 CASE_LINK columns to insert stmt..
+// FNC	07/09/98	Track 1329 Set status to an 'A' instead of 'C'
+//	FDG	09/23/98	Track 1794.  Tables anal_crit_from_tbls and
+//						anal_crit_grp are being removed.
+//	FDG	12/05/00	Stars 4.7.  Make error checking DBMS-independent.
+//	GaryR	01/11/01	Stars 4.7 DataBase Port - Empty String in SQL
+//	GaryR	03/15/01	Stars 4.7 DataBase Port - Case Sensitivity
+//	GaryR	03/20/01	Stars 4.7 DataBase Port - Replace SQLCMD()
+//	FDG	04/16/01	Stars 4.7.	Account for empty string or space in case_spl, case_ver.
+//	FDG	09/10/01	Stars 4.8.1.  If the active case is closed or deleted,
+//						do not allow the data to be saved.  Also, add a
+//						case_log.
+//	GaryR	04/26/02	Track 2552d	Predefined Report (PDR)
+//	GaryR	03/11/03	Track 3445d	Convert character criteria to upper case
+// MikeF 10/15/04	Track 3650d	Replace Dictionary SQL with gnv_dict
+//	GaryR	11/05/04	Changed gv_user_id to gc_user_id
+//	GaryR	12/20/04	Track 4170d	Allow saving formula criteria 
+//********************************************************************
+
+string 	hicn, lv_crit_id, lv_data_type, lv_case_id
+string	lv_case_id_spl, lv_case_id_ver
+string 	lv_col_name[], lv_alias_name[]
+datetime date_key, lv_datetime
+long		cnt, nx, hicn_cnt
+int 		rc, upper_bound, index, lv_sort_seq, lv_grp_seq, i, lv_pos, li_rc
+boolean 	lv_join
+String 	lv_where_message, ls_empty
+
+// FDG 04/16/01 - Empty string = ' ' in Oracle
+li_rc	=	gnv_sql.of_TrimData (ls_empty)
+
+setpointer(hourglass!)
+
+lv_datetime = gnv_App.of_Get_Server_Date_Time()
+
+//Calls the function fx_active_case_edit to get a active case
+rc = fx_active_case_edit()
+if rc = -1 Then
+	// HRB 10/20/95 - comment out & add COMMIT for CONNECT/DISCONNECT swat
+	//sqlcmd('disconnect',stars2ca,'Error disconnecting from the database',1)
+	COMMIT using Stars2ca;
+	if Stars2ca.of_check_status() <> 0 then
+		errorbox(stars2ca,'Error performing commit in save_anal_crit.')
+	end if	
+	return -1
+end if
+
+// FDG 09/10/01 - Don't allow the criteria to be saved to a case that's
+//						closed or deleted.
+n_cst_case		lnv_case
+Boolean			lb_edit_ok
+
+lnv_case	=	CREATE	n_cst_case
+
+lb_edit_ok	=	lnv_case.uf_edit_case_closed( gv_active_case )
+
+IF	lb_edit_ok	=	FALSE		THEN
+	MessageBox ('Error', 'The criteria cannot be saved because the active case is either '	+	&
+					'closed or deleted.')
+	Destroy	lnv_case
+	Return	-1
+END IF
+// FDG 09/10/01 end
+
+//This gets the next crit id by using the function fx_get_next_key_id
+lv_crit_id = fx_get_next_key_id('CRITERIA')
+
+if lv_crit_id = 'ERROR' Then 
+	Destroy	lnv_case					// FDG 09/10/01
+	return -1
+end if
+
+upper_bound= upperBound(crit_lines)
+//Skim off alias for certain queries
+for i = 1 to upper_bound
+	lv_pos = pos(crit_lines[i,1],".")
+	if lv_pos > 0 then
+		lv_alias_name[i] = Mid(crit_lines[i,1], lv_pos - 2,2)
+	   lv_col_name[i] = mid(crit_lines[i,1], lv_pos + 1)
+
+		lv_pos = Pos( lv_col_name[i], ")" )
+		IF	lv_pos <> 0 THEN lv_col_name[i] = Left( lv_col_name[i], lv_pos - 1 )
+  	else
+		// GaryR	04/26/02	Track 2552d - Begin
+		// This is PDR mode Retrieval Argument
+		//lv_alias_name[i] = table_type[1]
+		lv_alias_name[i] = "##"
+		// GaryR	04/26/02	Track 2552d - End
+ 
+		lv_col_name[i] = crit_lines[i,1]
+	end if
+next
+
+//get table type to insert into anal_crit_cntl table
+if upperbound(table_type) >=2 Then
+	if table_type[2] <> '' Then 
+   	lv_join = true
+		rc	=	fx_get_stars_rel_rel_id ('JN', table_type[1], ' ', &
+												gv_crit_sub_type)
+		IF	rc	=	-1		THEN
+			ErrorBox(Stars2ca,'Cannot find any data')
+			Destroy	lnv_case					// FDG 09/10/01
+			Return -1
+		END IF
+	else
+   	lv_join = false
+		gv_crit_sub_type = table_type[1]
+	end if
+else
+  	lv_join = false
+	gv_crit_sub_type = table_type[1]
+end if
+
+//	GaryR	01/11/01	Stars 4.7 DataBase Port		// FDG 04/16/01
+IF Trim( rank ) = "" THEN rank = ls_empty
+
+// FDG 09/10/01 begin
+String	ls_message
+
+ls_message	=	"Criteria "	+	lv_crit_id	+	" added to case."
+
+li_rc			=	lnv_case.uf_audit_log ( gv_active_case, ls_message )
+
+IF	li_rc		<	0		THEN
+	Stars2ca.of_rollback()
+	MessageBox ('Database Error', 'Could not insert case log for criteria '	+	lv_crit_id	+	&
+					'.  Case: ' + gv_active_case + '. Script: '		+	&
+					'save_anal_crit().')
+	Destroy	lnv_case					// FDG 09/10/01
+	Return	-1
+END IF
+
+Destroy	lnv_case					// FDG 09/10/01
+// FDG 09/10/01 end
+
+//Inserts into the anal_crit_cntl table
+Insert into anal_crit_cntl 
+	(user_id,dept_id,win_type,tbl_type,crit_ID,crit_rank,crit_num,crit_date)
+ 	Values  (:gc_user_id,:Gc_user_DEPT,:win_type,:gv_crit_sub_type,:lv_crit_id,:rank,:rank_num,
+						:lv_datetime)
+	using Stars2ca;	
+	
+If Stars2ca.of_check_status() < 0 Then
+	// FDG 12/05/00 - Make error checking DBMS-independent
+	//If stars2ca.sqldbcode = gv_sql_dup or stars2ca.sqldbcode = gv_sql_dup2 then
+	IF	gnv_sql.of_is_duplicate_insert (Stars2ca.sqldbcode)	=	TRUE		THEN
+		SetMicroHelp(w_main,'Add Cancelled')
+		errorbox(Stars2ca, &
+				'Error attempting to insert a duplicate record ' + &
+				'into the Analyis criteria table')
+		RETURN -1
+	Else
+// 		if return code -1, database error
+		SetMicroHelp(w_main, &
+			'Error Adding to Analysis Criteria Table, Add Cancelled') 
+		errorbox(Stars2ca, &
+			'Error inserting into the Analysis Criteria Table')
+		return -1
+	end if
+end if
+
+//Inserts all the criteria lines into the Anal_crit_line
+index = 1
+do while index <=upper_bound 
+	If crit_lines[index,1] <> '' then
+	 //Gets the data_type for each column in the criteria     //HRB 11/15/94 start
+		if lv_join and right(crit_lines[index,1],3) = 'ICN' and right(crit_lines[index,3],3) = 'ICN' then  
+	   	lv_data_type = 'JOIN'
+		else  									  //HRB 11/15/94 end
+			//	GaryR	04/26/02	Track 2552d - Begin
+			IF lv_alias_name[index] = "##" THEN
+				//	PDR Retrieval Argument
+				lv_data_type = crit_lines[index,4]
+				crit_lines[index,4] = ""
+			ELSE
+				lv_data_type = gnv_dict.event ue_get_elem_data_type( lv_alias_name[index], lv_col_name[index])
+				
+				IF lv_data_type = gnv_dict.ics_not_found THEN
+					Stars2ca.of_RollBack()
+					lv_where_message = 'elem_type = CL and elem_tbl_type = ' + lv_alias_name[index] + ' and elem_name = ' + lv_col_name[index]
+					messagebox('Not found', &
+						'Info Not found, building criteria cancelled: ' + &
+						lv_where_message)	
+					return -1
+				elseif lv_data_type = gnv_dict.ics_error then 
+					lv_where_message = 'elem_type = CL and elem_tbl_type = ' + lv_alias_name[index] + ' and elem_name = ' + lv_col_name[index]
+					errorbox(Stars2ca, &
+						'Error reading the dictionary table: ' + &
+						lv_where_message)
+					return -1
+				end if
+			END IF
+			//	GaryR	04/26/02	Track 2552d - End
+		end if
+		
+		//	GaryR	01/11/01	Stars 4.7 DataBase Port		// FDG 04/16/01
+		IF Trim( crit_lines[index,4] ) = "" THEN crit_lines[index,4] = ls_empty
+
+		Insert into anal_crit_line		
+			(crit_ID,crit_LINE,crit_col_name,crit_data_type, crit_and_or,&
+	 		crit_op,crit_exp)
+			 values (:lv_crit_id,:index,:crit_lines[index,1],:lv_data_type,:crit_lines[index,4],
+					:crit_lines[index,2],:crit_lines[index,3])
+ 		using Stars2ca;
+		If Stars2ca.of_check_status() < 0 Then
+			// FDG 12/05/00 - Make error checking DBMS-independent
+			//If stars2ca.sqldbcode = gv_sql_dup or stars2ca.sqldbcode = gv_sql_dup2 then
+			IF	gnv_sql.of_is_duplicate_insert (Stars2ca.sqldbcode)	=	TRUE		THEN
+				SetMicroHelp(w_main,'Add Cancelled')
+  				errorbox(Stars2ca, &
+					'Error attempting to insert a duplcate record ' + &
+					'into the Analysis criteria line table')
+ 				RETURN -1
+			Else
+	// 		if return code -1, database error
+				SetMicroHelp(w_main, &
+					'Error Adding to Analysis Criteria line ' + &
+					'Table, Add Cancelled') 
+				errorbox(Stars2ca, &
+					'Error inserting into the Analyis Criteria line Table')
+				return -1
+		   end if
+		end if
+	end if
+	index = index + 1
+loop
+
+//Inserts all the sorts into the Anal_crit_sort
+index = 1
+upper_bound = upperbound(sort) 
+do while index <=upper_bound 
+	If sort[index,1] <> '' then
+		lv_sort_seq = integer(sort[index,3])
+				
+		//	GaryR	01/11/01	Stars 4.7 DataBase Port			// FDG 04/16/01
+		IF Trim( sort[index,2] ) = "" THEN sort[index,2] = ls_empty
+				
+		Insert into anal_crit_sort
+			(crit_ID,col_no,col_name,col_func,sort_seq,sort_type)
+		 	Values  (:lv_crit_id,0,:sort[index,1],:sort[index,2],:lv_sort_seq,:sort[index,4])
+ 		using Stars2ca;										
+		If Stars2ca.of_check_status() < 0 Then
+			// FDG 12/05/00 - Make error checking DBMS-independent
+			//If stars2ca.sqldbcode = gv_sql_dup or stars2ca.sqldbcode = gv_sql_dup2 then
+			IF	gnv_sql.of_is_duplicate_insert (Stars2ca.sqldbcode)	=	TRUE		THEN
+				SetMicroHelp(w_main,'Add Cancelled')
+  				errorbox(Stars2ca, &
+					'Error attempting to insert a duplcate record ' + &
+					'into the Analyis sort table')
+				RETURN -1
+			Else
+		// 		if return code -1, database error
+				SetMicroHelp(w_main, &
+					'Error Adding to Analysis Criteria Table, Add Cancelled') 
+				errorbox(Stars2ca, &
+					'Error inserting into the Analysis Sort Table')
+				return -1
+   		end if
+		end if
+	end if
+	index = index + 1
+loop
+
+//Links the criteria info to a case by inserting into the case link
+lv_case_id = left(gv_active_case,10)
+lv_case_id_spl = mid(gv_active_case,11,2)
+lv_case_id_ver = mid(gv_active_case,13,2)
+
+// FDG 04/16/01 - Make sure case_spl & case_ver is properly trimmed.
+li_rc	=	gnv_sql.of_TrimData (lv_case_id_spl)
+li_rc	=	gnv_sql.of_TrimData (lv_case_id_ver)
+// FDG 04/16/01 - end
+
+// JTM 1/30/98 add NOTE: these values are patchwork since 4.0 spec. omitted them.
+// FNC 07/09/98 
+Insert into Case_link
+	(CASE_ID,Case_spl,Case_ver,Link_type,Link_key,LINK_NAME,LINK_DESC,USER_ID,LINK_DATE,LINK_STATUS)
+	 values (:lv_case_id,:lv_case_id_spl,:lv_case_id_ver,'CRA',:lv_crit_id,Upper(:lv_crit_id),:lv_crit_id,:gc_user_id,:lv_datetime,'A')
+// 03/15/01	GaryR	Stars 4.7 DataBase Port
+// JTM 1/30/98 end 	 
+
+ 	using Stars2ca;
+	If Stars2ca.of_check_status() < 0 Then
+		// FDG 12/05/00 - Make error checking DBMS-independent
+		//If stars2ca.sqldbcode = gv_sql_dup or stars2ca.sqldbcode = gv_sql_dup2 then
+		IF	gnv_sql.of_is_duplicate_insert (Stars2ca.sqldbcode)	=	TRUE		THEN
+			SetMicroHelp(w_main,'Add Cancelled')
+  			errorbox(Stars2ca, &
+				'Error attempting to insert a duplcate record ' + &
+				'into the case_link table')
+ 			RETURN -1
+		Else
+// 		if return code -1, database error
+			SetMicroHelp(w_main, &
+				'Error Adding to Criteria line Table, Add Cancelled') 
+			errorbox(Stars2ca, &
+				'Error inserting into the Case link Table')
+			return -1
+	   end if
+	end if
+
+Stars2ca.of_commit()
+
+w_main.setmicrohelp('Criteria added.  Criteria key = ' + lv_crit_id + '.')
+
+return 0
+end function
+

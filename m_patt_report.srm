@@ -1,0 +1,838 @@
+HA$PBExportHeader$m_patt_report.srm
+$PBExportComments$View Report tab RMM for w_sampling_analysis_new
+forward
+global type m_patt_report from m_patt_ancestor
+end type
+type m_windowoperations from menu within m_dummyitem
+end type
+type m_appendfilter from menu within m_windowoperations
+end type
+type m_createfilter from menu within m_windowoperations
+end type
+type m_-11 from menu within m_windowoperations
+end type
+type m_codedecode from menu within m_windowoperations
+end type
+type m_sortrank from menu within m_windowoperations
+end type
+type m_-12 from menu within m_windowoperations
+end type
+type m_displayfilter from menu within m_windowoperations
+end type
+type m_find from menu within m_windowoperations
+end type
+type m_- from menu within m_windowoperations
+end type
+type m_align from menu within m_windowoperations
+end type
+type m_uniquecount from menu within m_windowoperations
+end type
+type m_windowoperations from menu within m_dummyitem
+m_appendfilter m_appendfilter
+m_createfilter m_createfilter
+m_-11 m_-11
+m_codedecode m_codedecode
+m_sortrank m_sortrank
+m_-12 m_-12
+m_displayfilter m_displayfilter
+m_find m_find
+m_- m_-
+m_align m_align
+m_uniquecount m_uniquecount
+end type
+type m_-1 from menu within m_dummyitem
+end type
+type m_save from menu within m_dummyitem
+end type
+type m_userpattern from menu within m_save
+end type
+type m_createsubset from menu within m_save
+end type
+type m_reportsave from menu within m_save
+end type
+type m_save from menu within m_dummyitem
+m_userpattern m_userpattern
+m_createsubset m_createsubset
+m_reportsave m_reportsave
+end type
+type m_saveas from menu within m_dummyitem
+end type
+type m_link from menu within m_dummyitem
+end type
+type m_exportpattern from menu within m_dummyitem
+end type
+type m_-4 from menu within m_dummyitem
+end type
+type m_notes from menu within m_dummyitem
+end type
+type m_-2 from menu within m_dummyitem
+end type
+type m_reporttools from menu within m_dummyitem
+end type
+type m_map from menu within m_reporttools
+end type
+type m_graph from menu within m_reporttools
+end type
+type m_crystalreports from menu within m_reporttools
+end type
+type m_exportreports from menu within m_reporttools
+end type
+type m_reporttools from menu within m_dummyitem
+m_map m_map
+m_graph m_graph
+m_crystalreports m_crystalreports
+m_exportreports m_exportreports
+end type
+type m_-3 from menu within m_dummyitem
+end type
+type m_help from menu within m_dummyitem
+end type
+type m_dummyitem from m_patt_ancestor`m_dummyitem within m_patt_report
+m_windowoperations m_windowoperations
+m_-1 m_-1
+m_save m_save
+m_saveas m_saveas
+m_link m_link
+m_exportpattern m_exportpattern
+m_-4 m_-4
+m_notes m_notes
+m_-2 m_-2
+m_reporttools m_reporttools
+m_-3 m_-3
+m_help m_help
+end type
+end forward
+
+global type m_patt_report from m_patt_ancestor
+end type
+global m_patt_report m_patt_report
+
+on m_patt_report.create
+m_patt_report=this
+call super::create
+end on
+
+on m_patt_report.destroy
+call super::destroy
+end on
+
+type m_dummyitem from m_patt_ancestor`m_dummyitem within m_patt_report
+m_windowoperations m_windowoperations
+m_-1 m_-1
+m_save m_save
+m_saveas m_saveas
+m_link m_link
+m_exportpattern m_exportpattern
+m_-4 m_-4
+m_notes m_notes
+m_-2 m_-2
+m_reporttools m_reporttools
+m_-3 m_-3
+m_help m_help
+end type
+
+on m_dummyitem.create
+call super::create
+this.text = "m_report"
+this.m_windowoperations=create m_windowoperations
+this.m_-1=create m_-1
+this.m_save=create m_save
+this.m_saveas=create m_saveas
+this.m_link=create m_link
+this.m_exportpattern=create m_exportpattern
+this.m_-4=create m_-4
+this.m_notes=create m_notes
+this.m_-2=create m_-2
+this.m_reporttools=create m_reporttools
+this.m_-3=create m_-3
+this.m_help=create m_help
+this.Item[UpperBound(this.Item)+1]=this.m_windowoperations
+this.Item[UpperBound(this.Item)+1]=this.m_-1
+this.Item[UpperBound(this.Item)+1]=this.m_save
+this.Item[UpperBound(this.Item)+1]=this.m_saveas
+this.Item[UpperBound(this.Item)+1]=this.m_link
+this.Item[UpperBound(this.Item)+1]=this.m_exportpattern
+this.Item[UpperBound(this.Item)+1]=this.m_-4
+this.Item[UpperBound(this.Item)+1]=this.m_notes
+this.Item[UpperBound(this.Item)+1]=this.m_-2
+this.Item[UpperBound(this.Item)+1]=this.m_reporttools
+this.Item[UpperBound(this.Item)+1]=this.m_-3
+this.Item[UpperBound(this.Item)+1]=this.m_help
+end on
+
+on m_dummyitem.destroy
+call super::destroy
+destroy(this.m_windowoperations)
+destroy(this.m_-1)
+destroy(this.m_save)
+destroy(this.m_saveas)
+destroy(this.m_link)
+destroy(this.m_exportpattern)
+destroy(this.m_-4)
+destroy(this.m_notes)
+destroy(this.m_-2)
+destroy(this.m_reporttools)
+destroy(this.m_-3)
+destroy(this.m_help)
+end on
+
+type m_windowoperations from menu within m_dummyitem
+m_appendfilter m_appendfilter
+m_createfilter m_createfilter
+m_-11 m_-11
+m_codedecode m_codedecode
+m_sortrank m_sortrank
+m_-12 m_-12
+m_displayfilter m_displayfilter
+m_find m_find
+m_- m_-
+m_align m_align
+m_uniquecount m_uniquecount
+end type
+
+on m_windowoperations.create
+call super::create
+this.text = "&Window Operations"
+this.m_appendfilter=create m_appendfilter
+this.m_createfilter=create m_createfilter
+this.m_-11=create m_-11
+this.m_codedecode=create m_codedecode
+this.m_sortrank=create m_sortrank
+this.m_-12=create m_-12
+this.m_displayfilter=create m_displayfilter
+this.m_find=create m_find
+this.m_-=create m_-
+this.m_align=create m_align
+this.m_uniquecount=create m_uniquecount
+this.Item[UpperBound(this.Item)+1]=this.m_appendfilter
+this.Item[UpperBound(this.Item)+1]=this.m_createfilter
+this.Item[UpperBound(this.Item)+1]=this.m_-11
+this.Item[UpperBound(this.Item)+1]=this.m_codedecode
+this.Item[UpperBound(this.Item)+1]=this.m_sortrank
+this.Item[UpperBound(this.Item)+1]=this.m_-12
+this.Item[UpperBound(this.Item)+1]=this.m_displayfilter
+this.Item[UpperBound(this.Item)+1]=this.m_find
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_align
+this.Item[UpperBound(this.Item)+1]=this.m_uniquecount
+end on
+
+on m_windowoperations.destroy
+call super::destroy
+destroy(this.m_appendfilter)
+destroy(this.m_createfilter)
+destroy(this.m_-11)
+destroy(this.m_codedecode)
+destroy(this.m_sortrank)
+destroy(this.m_-12)
+destroy(this.m_displayfilter)
+destroy(this.m_find)
+destroy(this.m_-)
+destroy(this.m_align)
+destroy(this.m_uniquecount)
+end on
+
+type m_appendfilter from menu within m_windowoperations
+end type
+
+on m_appendfilter.create
+call super::create
+this.text = "&Append Filter..."
+this.microhelp = "Append unique column values to an existing filter."
+end on
+
+event clicked;//**********************************************************************
+//	M_Patt_Report.M_WindowOperations.M_AppendFilter
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_Window_Operations('Append Col Filter')
+end event
+
+on m_appendfilter.destroy
+call super::destroy
+end on
+
+type m_createfilter from menu within m_windowoperations
+end type
+
+on m_createfilter.create
+call super::create
+this.text = "&Create Filter.."
+this.microhelp = "Create a new filter for this pattern."
+end on
+
+event clicked;//**********************************************************************
+//	M_Patt_Report.M_WindowOperations.M_CreateFilter
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_Window_Operations('Create Col Filter')
+end event
+
+on m_createfilter.destroy
+call super::destroy
+end on
+
+type m_-11 from menu within m_windowoperations
+end type
+
+on m_-11.create
+call super::create
+this.text = "-"
+end on
+
+on m_-11.destroy
+call super::destroy
+end on
+
+type m_codedecode from menu within m_windowoperations
+end type
+
+on m_codedecode.create
+call super::create
+this.text = "C&ode/Decode..."
+this.microhelp = "Display the description for each code in a selected column."
+end on
+
+event clicked;//**********************************************************************
+//	M_Patt_Report.M_WindowOperations.M_CodeDecode
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_Window_Operations('Code/Decode')
+end event
+
+on m_codedecode.destroy
+call super::destroy
+end on
+
+type m_sortrank from menu within m_windowoperations
+end type
+
+on m_sortrank.create
+call super::create
+this.text = "&Sort Rank..."
+this.microhelp = "Sort the report data."
+end on
+
+event clicked;//**********************************************************************
+//	M_Patt_Report.M_WindowOperations.M_SortRank
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_Window_Operations('Sort/Rank')
+end event
+
+on m_sortrank.destroy
+call super::destroy
+end on
+
+type m_-12 from menu within m_windowoperations
+end type
+
+on m_-12.create
+call super::create
+this.text = "-"
+end on
+
+on m_-12.destroy
+call super::destroy
+end on
+
+type m_displayfilter from menu within m_windowoperations
+end type
+
+on m_displayfilter.create
+call super::create
+this.text = "&Display Filter..."
+this.microhelp = "Filter the existing data on the report."
+end on
+
+event clicked;//**********************************************************************
+//	M_Patt_Report.M_WindowOperations.M_AppendFilter
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_Window_Operations('Display Filter')
+end event
+
+on m_displayfilter.destroy
+call super::destroy
+end on
+
+type m_find from menu within m_windowoperations
+end type
+
+on m_find.create
+call super::create
+this.text = "&Find..."
+this.microhelp = "Find a value in a column on the report."
+end on
+
+event clicked;//**********************************************************************
+//	M_Patt_Report.M_WindowOperations.M_AppendFilter
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_Window_Operations('Find')
+end event
+
+on m_find.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_windowoperations
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_align from menu within m_windowoperations
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////////////
+//
+// OBJECT:	  		m_align:m_patt_report::m_pat_ancestor
+// METHOD:			Clicked
+// ARGUMENTS:		None
+// RETURNS:			None
+// DESCRIPTION:	Controls the alignment window operation processing environment.
+//-----------------------------------------------------------------------------------
+// Revision History:
+//
+// Gary-R	07/18/2000	Created for 1707d column alignment.
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+of_Window_Operations( "Align" )
+end event
+
+on m_align.create
+call super::create
+this.text = "A&lign..."
+end on
+
+on m_align.destroy
+call super::destroy
+end on
+
+type m_uniquecount from menu within m_windowoperations
+end type
+
+event clicked;//	05/11/04	GaryR	Track 4016d	Add a Unique Count option to Window Operations
+//	12/15/04	GaryR	Track	4161d	Rename Unique Count to Count Unique Values
+
+of_Window_Operations( "Count Unique Values" )
+end event
+
+on m_uniquecount.create
+call super::create
+this.text = "Count &Unique Values..."
+this.microhelp = "Count unique values"
+end on
+
+on m_uniquecount.destroy
+call super::destroy
+end on
+
+type m_-1 from menu within m_dummyitem
+end type
+
+on m_-1.create
+call super::create
+this.text = "-"
+end on
+
+on m_-1.destroy
+call super::destroy
+end on
+
+type m_save from menu within m_dummyitem
+m_userpattern m_userpattern
+m_createsubset m_createsubset
+m_reportsave m_reportsave
+end type
+
+on m_save.create
+call super::create
+this.text = "&Save"
+this.m_userpattern=create m_userpattern
+this.m_createsubset=create m_createsubset
+this.m_reportsave=create m_reportsave
+this.Item[UpperBound(this.Item)+1]=this.m_userpattern
+this.Item[UpperBound(this.Item)+1]=this.m_createsubset
+this.Item[UpperBound(this.Item)+1]=this.m_reportsave
+end on
+
+on m_save.destroy
+call super::destroy
+destroy(this.m_userpattern)
+destroy(this.m_createsubset)
+destroy(this.m_reportsave)
+end on
+
+type m_userpattern from menu within m_save
+end type
+
+event clicked;//**********************************************************************
+//	M_Patt_Report.M_Save.M_UserPattern
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_save('S')
+
+end event
+
+on m_userpattern.create
+call super::create
+this.text = "&User Pattern"
+this.microhelp = "Save this pattern."
+end on
+
+on m_userpattern.destroy
+call super::destroy
+end on
+
+type m_createsubset from menu within m_save
+end type
+
+event clicked;//**********************************************************************
+//	M_Patt_Report.M_Save.M_Create_Subset
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+integer li_rc
+
+iw_parent = This.ParentWindow
+
+if isvalid(iw_parent) then
+	iw_parent.event UE_Subset()
+end if
+end event
+
+on m_createsubset.create
+call super::create
+this.text = "&Create Subset..."
+this.enabled = false
+this.microhelp = "Create a subset based on this report."
+end on
+
+on m_createsubset.destroy
+call super::destroy
+end on
+
+type m_reportsave from menu within m_save
+end type
+
+event clicked;//**********************************************************************
+//	M_Patt_Report.M_Save.M_Report_Save
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+fx_m_save()
+end event
+
+on m_reportsave.create
+call super::create
+this.text = "&Report Save"
+this.enabled = false
+this.microhelp = "Save the contents of the report."
+end on
+
+on m_reportsave.destroy
+call super::destroy
+end on
+
+type m_saveas from menu within m_dummyitem
+end type
+
+event clicked;//**********************************************************************
+//	M_Patt_Report.M_SaveAs
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_save('A')
+end event
+
+on m_saveas.create
+call super::create
+this.text = "Save &As"
+this.microhelp = "Create a new pattern based on the data on the tabs."
+end on
+
+on m_saveas.destroy
+call super::destroy
+end on
+
+type m_link from menu within m_dummyitem
+end type
+
+event clicked;//**********************************************************************
+//	M_Patt_Report.M_Link
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_link()
+end event
+
+on m_link.create
+call super::create
+this.text = "&Link..."
+this.microhelp = "Link this pattern to a case."
+end on
+
+on m_link.destroy
+call super::destroy
+end on
+
+type m_exportpattern from menu within m_dummyitem
+end type
+
+event clicked;//**********************************************************************
+//	M_Patt_Report.M_ExportPattern
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_export()
+end event
+
+on m_exportpattern.create
+call super::create
+this.text = "&Export Pattern"
+this.microhelp = "Export the pattern to a file."
+end on
+
+on m_exportpattern.destroy
+call super::destroy
+end on
+
+type m_-4 from menu within m_dummyitem
+end type
+
+on m_-4.create
+call super::create
+this.text = "-"
+end on
+
+on m_-4.destroy
+call super::destroy
+end on
+
+type m_notes from menu within m_dummyitem
+end type
+
+event clicked;//**********************************************************************
+//	m_notes
+//
+// 10/03/00	FDG	Track 3006c.  Stars 4.6.  Created. 
+//**********************************************************************
+
+of_notes()
+
+end event
+
+on m_notes.create
+call super::create
+this.text = "Notes..."
+this.microhelp = "Add or modify a note for this pattern"
+end on
+
+on m_notes.destroy
+call super::destroy
+end on
+
+type m_-2 from menu within m_dummyitem
+end type
+
+on m_-2.create
+call super::create
+this.text = "-"
+end on
+
+on m_-2.destroy
+call super::destroy
+end on
+
+type m_reporttools from menu within m_dummyitem
+m_map m_map
+m_graph m_graph
+m_crystalreports m_crystalreports
+m_exportreports m_exportreports
+end type
+
+on m_reporttools.create
+call super::create
+this.text = "&Report Tools"
+this.m_map=create m_map
+this.m_graph=create m_graph
+this.m_crystalreports=create m_crystalreports
+this.m_exportreports=create m_exportreports
+this.Item[UpperBound(this.Item)+1]=this.m_map
+this.Item[UpperBound(this.Item)+1]=this.m_graph
+this.Item[UpperBound(this.Item)+1]=this.m_crystalreports
+this.Item[UpperBound(this.Item)+1]=this.m_exportreports
+end on
+
+on m_reporttools.destroy
+call super::destroy
+destroy(this.m_map)
+destroy(this.m_graph)
+destroy(this.m_crystalreports)
+destroy(this.m_exportreports)
+end on
+
+type m_map from menu within m_reporttools
+end type
+
+event clicked;//**********************************************************************
+//	M_Patt_Report.M_ReportTools.M_Map
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+integer li_rc
+
+iw_parent = This.ParentWindow
+
+if isvalid(iw_parent) then
+	iw_parent.event Ue_Mapping()
+end if
+end event
+
+on m_map.create
+call super::create
+this.text = "&Map..."
+this.microhelp = "Create a map in MapInfo."
+end on
+
+on m_map.destroy
+call super::destroy
+end on
+
+type m_graph from menu within m_reporttools
+end type
+
+event clicked;//**********************************************************************
+//	M_Patt_Report.M_ReportTools.M_Graph
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+uo_query luo_query
+
+OpenWithParm(w_graph_stars_select,luo_query)
+
+end event
+
+on m_graph.create
+call super::create
+this.text = "&Graph..."
+this.microhelp = "Graph the report."
+end on
+
+on m_graph.destroy
+call super::destroy
+end on
+
+type m_crystalreports from menu within m_reporttools
+end type
+
+event clicked;//**********************************************************************
+//	M_Patt_Report.M_ReportTools.M_CrystalReports
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+uo_query luo_query
+
+FX_Crystal_Reports(luo_query,'VIEW')
+end event
+
+on m_crystalreports.create
+call super::create
+this.text = "&Crystal Reports..."
+this.microhelp = "Save the report as a .dbf file and invoke Crystal Reports."
+end on
+
+on m_crystalreports.destroy
+call super::destroy
+end on
+
+type m_exportreports from menu within m_reporttools
+end type
+
+event clicked;//**********************************************************************
+//	M_Patt_Report.M_ReportTools.M_ExportReports
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+uo_query luo_query
+
+fx_m_export(luo_query, 'VIEW')
+end event
+
+on m_exportreports.create
+call super::create
+this.text = "&Export Reports..."
+this.microhelp = "Export the report to a file format."
+end on
+
+on m_exportreports.destroy
+call super::destroy
+end on
+
+type m_-3 from menu within m_dummyitem
+end type
+
+on m_-3.create
+call super::create
+this.text = "-"
+end on
+
+on m_-3.destroy
+call super::destroy
+end on
+
+type m_help from menu within m_dummyitem
+end type
+
+event clicked;//**********************************************************************
+//	M_Patt_Report.M_Help
+//
+// 01/19/00	FNC	Created. 
+//**********************************************************************
+
+of_help('TABPAGE_REPORT')
+end event
+
+on m_help.create
+call super::create
+this.text = "&Help"
+this.microhelp = "Display help for this tab."
+end on
+
+on m_help.destroy
+call super::destroy
+end on
+

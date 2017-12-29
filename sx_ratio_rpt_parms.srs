@@ -1,0 +1,16 @@
+HA$PBExportHeader$sx_ratio_rpt_parms.srs
+global type sx_ratio_rpt_parms from structure
+	string		s_full_sql
+	string		s_rpt_type
+	string		s_invoice_type
+	string		s_use_catgproc
+	string		s_perform_query_sw
+	long		l_period_key
+	long		l_period
+	boolean		b_use_bill
+	long		ll_prior_period
+	integer		li_prior_period_key
+	boolean		b_alw_chrg
+	boolean		b_npi
+end type
+

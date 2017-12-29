@@ -1,0 +1,184 @@
+HA$PBExportHeader$fx_lookup.srf
+global type fx_lookup from function_object
+end type
+
+forward prototypes
+global function any fx_lookup (ref datawindow data_window_name, string table_type)
+end prototypes
+
+global function any fx_lookup (ref datawindow data_window_name, string table_type);//************************************************************************
+//		Object Type:	Global function
+//		Object Name:	fx_lookup
+//		Event Name:		N/A
+//
+//
+//************************************************************************
+//
+// FNC	06/22/95	Get specific table type if table type is an all and
+//						lookup is on proc code because the look up code for
+//						proc code varies based on the table type
+//
+// FDG	11/28/95	Access dictionary (elem_type = 'TB') thru 
+//						w_main.dw_stars_rel_dict
+//
+//	KMM	12/18/95	Reversed previous step.
+//
+// FNC	11/24/98	Track 1989. Don't think we need to truncate 'c' any more. It
+//						is causing problems with looking up cat_of_serv on ratio_proc_Sum
+//						report.
+//	GaryR	04/11/01	Stars 4.7 DataBase Port - Trimming Data
+//	GaryR	05/29/02	Track 3100d	Lookup on non-character columns not allowed.
+// JasonS 08/23/02 Track 2982d  account for duplicate columns in dw
+// JasonS 09/05/02 Track 3091d
+// 10/19/04 MikeF	SPR3650d	Changed to use n_cst_dict methods
+// 09/11/09 RickB LKP.650.5678.003 - Changed the IF statement looking for 'MC' and 'PROC_CODE'
+// 						to just look for 'MC'.  That way, the Inv Type on the same row as the 
+//						cell lookup will be used to get the correct lookup type.  (Backlog Item 5727)
+//************************************************************************
+
+int title_pos,tabpos
+int x,sqldbrc
+int conversion
+string lv_x,hposition,lv_hold_row,lv_hold_object,lv_table_type,table_name,lv_hold_col
+string lv_invoice_type
+string lv_where_message
+String lt_datatype, lt_sql
+
+setpointer(hourglass!)
+lv_table_type = table_type 
+lv_hold_object = Getobjectatpointer(data_window_name)
+
+if lv_hold_object = '' Then
+	return (TRUE)
+end if
+//store the current row number and the column name
+
+tabpos = pos(lv_hold_object,"~t")
+lv_hold_row = mid(lv_hold_object,(tabpos + 1))
+lv_hold_object = left(lv_hold_object,(tabpos - 1))
+lv_hold_col = lv_hold_object
+
+if lv_table_type = 'MC' then
+   lv_invoice_type = getitemstring(data_window_name,integer(lv_hold_row),'invoice_type')
+   SELECT CODE.CODE_VALUE_A  
+   INTO :lv_table_type  
+   FROM CODE  
+   WHERE ( CODE.CODE_TYPE = 'IT' ) AND  
+         ( CODE.CODE_CODE = Upper( :lv_invoice_type ) )  
+   USING STARS2CA ;
+
+   If stars2ca.of_check_status() <> 0 then
+		COMMIT using Stars2ca;
+		if Stars2ca.of_check_status() <> 0 then
+			errorbox(stars2ca,'Error performing commit in fx_lookup.')
+		end if		
+		Messagebox('Lookup','Error looking up table type')
+		return(false)
+	End IF
+end if
+
+if right(lv_hold_object,2) = '_t' Then
+	gv_element_table_type = lv_table_type
+	lv_x = Describe(data_window_name,lv_hold_object+'.x')
+	x = PixelsToUnits(integer(lv_x),XPixelsToUnits!)	
+	hposition = Describe(data_window_name,'datawindow.horizontalscrollposition')
+	conversion = PixelstoUnits(integer(hposition),XPixelsToUnits!)
+	gv_win_x_pos = x + data_window_name.x+170
+	if gv_win_x_pos < data_window_name.x Then
+		gv_win_x_pos = data_window_name.x +x+10+data_window_name.x+10
+	end if
+	gv_win_y_pos =  data_window_name.y
+	title_pos = len(lv_hold_object) -2
+	// JasonS 08/23/02 Begin - Track 2982d
+	// get the correct element name so db retrieve will work
+	if match(right(lv_hold_object,6), '^_t_[0-9]_t$') then
+		gv_element_name = mid(lv_hold_object, 1, len(lv_hold_object) - 6)
+	else
+		gv_element_name = mid(lv_hold_object, 1, len(lv_hold_object) - 2)
+	end if
+	//	gv_element_name = left(lv_hold_object,(title_pos))
+	// JasonS 08/23/02 End - Track 2982d
+	COMMIT using Stars2ca;
+	if Stars2ca.of_check_status() <> 0 then
+		errorbox(stars2ca,'Error performing commit in fx_lookup.')
+	end if			
+	open(w_dwlabel_definition)
+else
+//
+////**********************CALL ELEMENT LOOKUP SECTION**************************
+////This first finds if the column has a lookup type.  If it does it calls
+////w_definition giving it code_type and code_id so it can perform the lookup
+////This lookup window is positioned om top of dw_2 
+////***************************************************************************
+
+	// JasonS 08/23/02 Begin - Track 2982d - get db name so db retrieve will work
+	lv_hold_object = 	data_window_name.Describe('#' + string(data_window_name.getclickedcolumn()) + '.dbname')
+	
+	// JasonS 09/05/02 Begin - Track 3091d
+	if pos(lv_hold_object, '.') > 0 then
+		lv_hold_object = mid(lv_hold_object, pos(lv_hold_object, '.') + 1)
+	end if
+	// JasonS 09/05/02 End - Track 3091d
+	// JasonS 08/23/02 End - Track 2982d
+
+	table_name = gnv_dict.event ue_get_table_name( lv_table_type )
+	
+	IF table_name = gnv_dict.ics_not_found THEN
+		table_name = gnv_dict.event ue_get_table_name( gv_element_table_type2  )
+	END IF
+	
+	// Look in table 1
+	gv_code_to_use = gnv_dict.event ue_get_lookup_type( lv_table_type, lv_hold_object )
+
+	// If not found, look in table 2
+	IF  gv_code_to_use = gnv_dict.ics_not_found &
+	AND len(gv_element_table_type2) > 0 THEN
+		gv_code_to_use = gnv_dict.event ue_get_lookup_type( gv_element_table_type2, lv_hold_object )
+	END IF
+	
+	// Nope? Try table 3
+	IF  gv_code_to_use = gnv_dict.ics_not_found &
+	AND len(gv_element_table_type3) > 0 THEN
+		gv_code_to_use = gnv_dict.event ue_get_lookup_type( gv_element_table_type3, lv_hold_object )
+	END IF
+
+	//	GaryR	04/11/01	Stars 4.7 DataBase Port
+	IF gv_code_to_use = gnv_dict.ics_not_found THEN
+		messagebox('ERROR',"Lookup Type cannot be found in dictionary for Table Type " + lv_table_type + " and Column " + lv_hold_object)  
+		return (FALSE) 
+	ELSEIF gv_code_to_use = gnv_dict.ics_error THEN
+		lv_where_message = 'elem_tbl_type = ' + lv_table_type + ' and elem_name = ' + lv_hold_object
+		errorbox(stars2ca,'Error Reading Dictionary Table: ' + lv_where_message)
+		return (FALSE) 
+	END IF
+	
+	if gv_code_to_use = 'UP' then
+		gv_code_to_use = gv_code_to_use + '~~' + 'L'
+	end if
+	
+	lt_sql = data_window_name.GetSQLSelect()	
+	lt_datatype = data_window_name.Describe(lv_hold_col + ".Coltype")
+	
+	//	GaryR	05/29/02	Track 3100d - Begin
+	IF NOT gnv_sql.of_is_character_data_type( lt_datatype ) THEN
+		MessageBox( "Lookup Error", "Only character fields can be decoded", Exclamation! )
+		Return FALSE
+	END IF
+	//	GaryR	05/29/02	Track 3100d - End
+	
+//	gv_code_id_to_use = GetItemString(data_window_name,integer(lv_hold_row),lv_hold_col)
+	gv_code_id_to_use = GetItemString(data_window_name,long(lv_hold_row),lv_hold_col)
+
+	gv_win_x_pos = data_window_name.x+10+x+data_window_name.x
+	gv_win_y_pos = 315 + data_window_name.y
+
+//DJP 7/13/95 prob#527 - must trigger open script so right info will be seen
+	if isvalid(w_definition) then
+		w_definition.triggerevent(open!)
+	else
+		open(w_definition)
+	end if
+end if
+return (TRUE)
+end function
+

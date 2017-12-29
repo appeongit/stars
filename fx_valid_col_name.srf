@@ -1,0 +1,24 @@
+HA$PBExportHeader$fx_valid_col_name.srf
+global type fx_valid_col_name from function_object
+end type
+
+forward prototypes
+global function boolean fx_valid_col_name (datawindow arg_datawindow_name, string arg_col_name_to_be_found)
+end prototypes
+
+global function boolean fx_valid_col_name (datawindow arg_datawindow_name, string arg_col_name_to_be_found);int lv_num_of_col,lv_counter
+string lv_col_name
+
+lv_num_of_col = integer(arg_datawindow_name.Describe('datawindow.column.count'))
+
+for lv_counter = 1 to lv_num_of_col
+	arg_datawindow_name.setcolumn(lv_counter)
+	lv_col_name = UPPER(arg_datawindow_name.getcolumnname())
+	if UPPER(arg_col_name_to_be_found) = lv_col_name then
+		return TRUE
+	end if
+next
+return FALSE
+
+end function
+

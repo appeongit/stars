@@ -1,0 +1,76 @@
+﻿$PBExportHeader$fx_filter_stars_rel_name.srf
+$PBExportComments$Use elem_name to filter w_main.dw_stars_rel_dict
+global type fx_filter_stars_rel_name from function_object
+end type
+
+forward prototypes
+global function long fx_filter_stars_rel_name (string as_elem_name)
+end prototypes
+
+global function long fx_filter_stars_rel_name (string as_elem_name);//*************************************************************************
+//		Object Type:	Global function
+//		Object Name:	fx_filter_stars_rel_name
+//		Event Name:		N/A
+//
+//		This function is only called when Dictionary.Elem_Type = 'TB'.
+//
+//		This function filters table stars_rel based on dictionary.elem_name.
+//
+//		Arguments passed to this function:
+//
+//		1.	as_elem_name	-	Dictionary.elem_name
+//
+//		Returns: long - The # of rows once filtered.
+//
+//*************************************************************************
+//	
+
+string	ls_filter, ls_elem_name
+int		li_rc
+long		ll_max_rows
+
+
+	//	Make sure that nothing has been previously filtered
+li_rc				=	w_main.dw_stars_rel_dict.SetFilter("")
+li_rc				=	w_main.dw_stars_rel_dict.Filter()
+
+ls_elem_name	=	Trim (as_elem_name)
+
+ls_filter		=	"dictionary_elem_name = '"	+	ls_elem_name	+	"'"
+
+li_rc				=	w_main.dw_stars_rel_dict.SetFilter(ls_filter)
+li_rc				=	w_main.dw_stars_rel_dict.Filter()
+
+If	li_rc		<>	1	Then
+	MessageBox ("ERROR","Unable to set the filter on stars_rel in "	+	&
+					"fx_filter_stars_rel_name().")
+	Return 0
+End If
+
+	//	Determine the maximum row count 
+
+ll_max_rows		=	w_main.dw_stars_rel_dict.RowCount()
+
+IF ll_max_rows	<	1		THEN
+	Return 0
+END IF
+
+//HRB 1/4/96 - added to filter out FastTrack invoice types
+int i
+long ll_count=0
+string ls_temp
+for i = 1 to ll_max_rows
+	ls_temp = w_main.dw_stars_rel_dict.GetItemString(i,"id_2")
+	ls_temp = upper(left(ls_temp,1))
+	if ls_temp <> 'O' and ls_temp <> 'Q' then
+		ll_count++  //only count non-fasttrack invoice types
+	end if
+next
+if ll_count > 0 then ll_max_rows = ll_count
+//HRB 1/4/96 - end
+
+Return ll_max_rows
+
+
+end function
+

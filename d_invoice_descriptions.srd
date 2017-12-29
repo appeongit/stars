@@ -1,0 +1,18 @@
+HA$PBExportHeader$d_invoice_descriptions.srd
+$PBExportComments$<logic>
+release 4;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no )
+header(height=77 color="536870912" )
+summary(height=1 color="536870912" )
+footer(height=1 color="536870912" )
+detail(height=89 color="536870912" )
+table(column=(type=char(255) name=code_desc dbname="CODE.CODE_DESC" )
+ column=(type=char(32) name=code_value_a dbname="CODE.CODE_VALUE_A" )
+ column=(type=char(15) name=code_code dbname="CODE.CODE_CODE" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"CODE~" ) COLUMN(NAME=~"CODE.CODE_DESC~") COLUMN(NAME=~"CODE.CODE_VALUE_A~") COLUMN(NAME=~"CODE.CODE_CODE~")WHERE( EXP1 =~"CODE.CODE_TYPE~" OP =~"=~" EXP2 =~"'IT'~" ) ) ORDER(NAME=~"CODE.CODE_CODE~" ASC=yes ) " )
+text(band=header alignment="2" text="Code Desc"border="0" color="0" x="5" y="4" height="65" width="2195"  name=code_desc_t  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Code Value A"border="0" color="0" x="2204" y="4" height="65" width="1057"  name=code_value_a_t  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Code Code"border="0" color="0" x="3265" y="4" height="65" width="513"  name=code_code_t  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="77" width="2195" format="[general]"  name=code_desc edit.limit=255 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="2204" y="4" height="77" width="1057" format="[general]"  name=code_value_a edit.limit=32 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="3265" y="4" height="77" width="513" format="[general]"  name=code_code edit.limit=15 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )

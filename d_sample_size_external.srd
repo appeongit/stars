@@ -1,0 +1,24 @@
+HA$PBExportHeader$d_sample_size_external.srd
+$PBExportComments$External source d/w to enter the r/b for sample size. <gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=67108864 processing=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=97 print.margin.bottom=97 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=236 color="536870912" )
+table(column=(type=number updatewhereclause=no initial="2" name=sample_size dbname="sample_size" 
+ values="by #	2/by %	3/"  )
+column=(type=number updatewhereclause=no name=size_val dbname="size_val"  )
+)
+column(name=sample_size visible="1" band=detail id=1 x="0" y="8" height="224" width="279" color="33554432" border="0" alignment="1" format="[general]" html.valueishtml="0" radiobuttons.columns=1 radiobuttons.lefttext=no radiobuttons.scale=yes radiobuttons.threed=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" tabsequence=10 accessibledescription="~"Sample By~"	~"Sample By~"" accessiblename="~"Sample By~"	~"Sample By~"" )
+column(name=size_val visible="1" band=detail id=2 x="846" y="76" height="64" width="256" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" editmask.focusrectangle=no editmask.autoskip=no editmask.required=no editmask.readonly=no editmask.codetable=no editmask.ddcalendar=no editmask.spin=yes editmask.useformat=no editmask.spinincr=1 editmask.spinrange="1~~99999" editmask.mask="#####" editmask.imemode=0 editmask.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" tabsequence=20 accessibledescription="~"Size Value~"	~"Size Value~"" accessiblename="~"Size Value~"	~"Size Value~"" )
+text(name=t_1 visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="475" y="76" height="64" width="338" text="Enter Size:" html.valueishtml="0" accessibledescription="~"Enter Size~"	~"Enter Size~"" accessiblename="~"Enter Size~"	~"Enter Size~"" accessiblerole=42 )
+htmltable(border="0" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )

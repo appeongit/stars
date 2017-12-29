@@ -1,0 +1,22 @@
+HA$PBExportHeader$d_case_stars_win_parm.srd
+$PBExportComments$Retrieves stars_win_parm for w_case_maint <logic>
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(32) updatewhereclause=yes name=win_id dbname="STARS_WIN_PARM.WIN_ID" )
+ column=(type=char(32) updatewhereclause=yes name=cntl_id dbname="STARS_WIN_PARM.CNTL_ID" )
+ column=(type=char(32) updatewhereclause=yes name=col_name dbname="STARS_WIN_PARM.COL_NAME" )
+ column=(type=char(255) updatewhereclause=yes name=a_dflt dbname="STARS_WIN_PARM.A_DFLT" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"STARS_WIN_PARM~" ) COLUMN(NAME=~"STARS_WIN_PARM.WIN_ID~") COLUMN(NAME=~"STARS_WIN_PARM.CNTL_ID~") COLUMN(NAME=~"STARS_WIN_PARM.COL_NAME~") COLUMN(NAME=~"STARS_WIN_PARM.A_DFLT~")WHERE(    EXP1 =~"STARS_WIN_PARM.WIN_ID~"   OP =~"=~"    EXP2 =~"'W_HELP'~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"STARS_WIN_PARM.CNTL_ID~"   OP =~"=~"    EXP2 =~"'W_CASE_MAINT'~" ) ) " )
+text(band=header alignment="2" text="Win Id"border="0" color="0" x="9" y="8" height="64" width="603"  name=win_id_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Cntl Id"border="0" color="0" x="622" y="8" height="64" width="823"  name=cntl_id_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Col Name"border="0" color="0" x="1454" y="8" height="64" width="1207"  name=col_name_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="A Dflt"border="0" color="0" x="2670" y="8" height="64" width="608"  name=a_dflt_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="603" format="[general]"  name=win_id edit.limit=32 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="622" y="8" height="76" width="823" format="[general]"  name=cntl_id edit.limit=32 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1454" y="8" height="76" width="1207" format="[general]"  name=col_name edit.limit=32 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="2670" y="8" height="76" width="608" format="[general]"  name=a_dflt edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

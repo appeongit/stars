@@ -1,0 +1,19 @@
+HA$PBExportHeader$sx_keys.srs
+$PBExportComments$These are the key fields currently retrieved in claim report now.  These will be retrieved as report is created now on tabpage_view.  Looks like from_date might not be needed.
+global type sx_keys from structure
+	sx_key_col		icn
+	sx_key_col		icn_key2
+	sx_key_col		icn_key3
+	sx_key_col		icn_key4
+	sx_key_col		icn_key5
+	sx_key_col		icn_key6
+	sx_key_col		date_paid
+	sx_key_col		from_date
+	sx_key_col		recip_id
+	sx_key_col		prov_id
+	sx_key_col		allowed_srvc
+	sx_key_col		invoice_type
+	sx_key_col		rev_code
+	string		rev_tbl_type
+end type
+

@@ -1,0 +1,67 @@
+﻿$PBExportHeader$fx_get_next_key_id.srf
+$PBExportComments$Function to retrieve next key from sys control
+global type fx_get_next_key_id from function_object
+end type
+
+forward prototypes
+global function string fx_get_next_key_id (string arg_key_type)
+end prototypes
+
+global function string fx_get_next_key_id (string arg_key_type);//************************************************************************
+// This function assumes you are connected to stars2 when calling
+//************************************************************************
+//
+//	06/10/96	FDG	Prob ?? - When an error occurs, do not close the window
+//						from this script.  The calling script should do this.
+//
+//************************************************************************
+
+setpointer(hourglass!)
+//setmicrohelp(w_main,'')
+
+string lv_return_key
+long lv_next_key
+
+setpointer(hourglass!)
+
+//assign key id
+
+Update Sys_cntl
+		set cntl_no = cntl_no + 1
+		where cntl_id = Upper( :arg_key_type )
+	using stars2ca;	
+	If stars2ca.of_check_status() <> 0 then
+		Errorbox(stars2ca,'Error Updating System Control Table')
+		RETURN 'ERROR'
+	End If
+
+Select cntl_no into :lv_next_key
+		from sys_cntl 
+		where cntl_id = Upper( :arg_key_type )
+	using stars2ca;		
+	If stars2ca.of_check_status() <> 0 then
+		Errorbox(stars2ca,'ERROR Getting Next Key Id')
+		RETURN 'ERROR'
+	End If
+
+if arg_key_type = 'TEMPSUBSET' then
+	if lv_next_key = 99999999 then
+		Update Sys_cntl
+		set cntl_no = 00000000
+		where cntl_id = Upper( :arg_key_type )
+		using stars2ca;	
+		If stars2ca.of_check_status() <> 0 then
+			Errorbox(stars2ca,'Error Updating System Control Table')
+			RETURN 'ERROR'
+		End If
+	end if
+end if
+
+lv_return_key = string(lv_next_key)
+
+Stars2CA.of_commit()
+
+setmicrohelp(w_main,'Key Created:  ' + arg_key_type + '/' + lv_return_key)
+RETURN lv_return_key
+end function
+

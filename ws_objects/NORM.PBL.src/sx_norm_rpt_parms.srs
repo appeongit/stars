@@ -1,0 +1,8 @@
+﻿$PBExportHeader$sx_norm_rpt_parms.srs
+global type sx_norm_rpt_parms from structure
+	string		s_invoice_type
+	string		s_proc_mod
+	long		l_period
+	long		l_period_key
+end type
+

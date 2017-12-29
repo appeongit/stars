@@ -1,0 +1,27 @@
+﻿$PBExportHeader$sx_subset_details.srs
+global type sx_subset_details from structure
+    string criteria_lp[25, 25]
+    string criteria_exp1[25, 25]
+    string criteria_rel_op[25, 25]
+    string criteria_exp2[25, 25]
+    string criteria_rp[25, 25]
+    string criteria_logical_op[25, 25]
+    string from_statement[]
+    string sql_where_statement[]
+    string table_directory[25, 36]
+    string invoice_type[]
+    string level_table_types[25, 3]
+    string level_src_type[]
+    string source_type
+    string source_case
+    string source_subset
+    string source_criteria
+    string active_case
+    string filter_ids[25, 25]
+    integer num_filters_applied[]
+    string output_type
+    string output_subset_id
+    boolean source_filter_exists
+    datetime Subset_Datetime
+end type
+

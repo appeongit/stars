@@ -1,0 +1,16 @@
+﻿$PBExportHeader$sx_dep_set.srs
+$PBExportComments$arg for fx_dep_set_sql
+global type sx_dep_set from structure
+    string col_name
+    string tbl_type
+    string tbl_name
+    string main_tbl
+    string main_tbl_name
+    string values[]
+    string sub_src_type
+    string case_id
+    string case_spl
+    string case_ver
+    string subc_id
+end type
+

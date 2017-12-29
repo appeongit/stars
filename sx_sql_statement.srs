@@ -1,0 +1,9 @@
+HA$PBExportHeader$sx_sql_statement.srs
+$PBExportComments$This will be an array of struct where each struct contains one SQL statement.  Will have multiple statements (struct) if multiple invoice types or multiple months.
+global type sx_sql_statement from structure
+	string		select_clause
+	string		from_clause
+	string		where_clause[]
+	string		tbl_type
+end type
+

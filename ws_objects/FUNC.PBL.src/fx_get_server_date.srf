@@ -1,0 +1,23 @@
+﻿$PBExportHeader$fx_get_server_date.srf
+$PBExportComments$Get the DBMS independent server date and time - GR.
+global type fx_get_server_date from function_object
+end type
+
+forward prototypes
+global function datetime fx_get_server_date ()
+end prototypes
+
+global function datetime fx_get_server_date ();////////////////////////////////////////////////////////////////////////////
+//
+//	This method will return the DBMS independent server date and time.
+//	This method can be implemented as computed field in datawindow objects.
+//
+////////////////////////////////////////////////////////////////////////////
+//
+//	01/29/02	GaryR	Created
+//
+////////////////////////////////////////////////////////////////////////////
+
+Return gnv_sql.of_get_current_datetime()
+end function
+

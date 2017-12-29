@@ -1,0 +1,23 @@
+HA$PBExportHeader$d_bg_sql_line.srd
+$PBExportComments$<logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=char(10) update=yes updatewhereclause=yes key=yes name=job_id dbname="BG_SQL_LINE.JOB_ID" initial=" " )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=step_num dbname="BG_SQL_LINE.STEP_NUM" initial="0" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=line_num dbname="BG_SQL_LINE.LINE_NUM" initial="0" )
+ column=(type=char(80) update=yes updatewhereclause=yes name=sql_line dbname="BG_SQL_LINE.SQL_LINE" initial=" " )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"BG_SQL_LINE~" ) COLUMN(NAME=~"BG_SQL_LINE.JOB_ID~") COLUMN(NAME=~"BG_SQL_LINE.STEP_NUM~") COLUMN(NAME=~"BG_SQL_LINE.LINE_NUM~") COLUMN(NAME=~"BG_SQL_LINE.SQL_LINE~")) " update="BG_SQL_LINE" updatewhere=0 updatekeyinplace=no )
+text(band=header alignment="2" text="Job Id" border="0" color="0" x="9" y="8" height="64" width="402"  name=job_id_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Step Num" border="0" color="0" x="421" y="8" height="64" width="439"  name=step_num_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Line Num" border="0" color="0" x="869" y="8" height="64" width="439"  name=line_num_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sql Line" border="0" color="0" x="1317" y="8" height="64" width="2743"  name=sql_line_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="9" y="8" height="76" width="402" format="[general]"  name=job_id edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="0" color="0" x="421" y="8" height="76" width="439" format="[general]"  name=step_num edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=30 border="0" color="0" x="869" y="8" height="76" width="439" format="[general]"  name=line_num edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="0" color="0" x="1317" y="8" height="76" width="2743" format="[general]"  name=sql_line edit.limit=80 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

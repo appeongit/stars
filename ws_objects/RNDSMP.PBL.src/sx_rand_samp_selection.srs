@@ -1,0 +1,9 @@
+﻿$PBExportHeader$sx_rand_samp_selection.srs
+global type sx_rand_samp_selection from structure
+	string		invoice_type
+	string		subc_id
+	string		case_id
+	string		case_spl
+	string		case_ver
+end type
+

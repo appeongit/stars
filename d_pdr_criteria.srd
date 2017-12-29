@@ -1,0 +1,112 @@
+HA$PBExportHeader$d_pdr_criteria.srd
+$PBExportComments$Retrieves the criteria for a specific pdr_link - GR. <logic>
+release 10;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=144 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=pdr_criteria_pdr_link dbname="PDR_CRITERIA.PDR_LINK" )
+ column=(type=char(2) updatewhereclause=no name=dictionary_elem_tbl_type dbname="dictionary.ELEM_TBL_TYPE" )
+ column=(type=char(32) updatewhereclause=no name=dictionary_elem_name dbname="dictionary.ELEM_NAME" )
+ column=(type=char(5) updatewhereclause=yes name=dictionary_elem_lookup_type dbname="dictionary.ELEM_LOOKUP_TYPE" )
+ column=(type=long updatewhereclause=yes name=pdr_criteria_seq_num dbname="PDR_CRITERIA.SEQ_NUM" )
+ column=(type=char(32) updatewhereclause=yes name=pdr_criteria_tbl_name dbname="PDR_CRITERIA.TBL_NAME" )
+ column=(type=char(2) updatewhereclause=yes name=pdr_criteria_left_paren dbname="PDR_CRITERIA.LEFT_PAREN" )
+ column=(type=char(30) updatewhereclause=yes name=pdr_criteria_col_name dbname="PDR_CRITERIA.COL_NAME" )
+ column=(type=char(12) updatewhereclause=yes name=pdr_criteria_rel_op dbname="PDR_CRITERIA.REL_OP" )
+ column=(type=char(255) updatewhereclause=yes name=pdr_criteria_dflt_value dbname="PDR_CRITERIA.DFLT_VALUE" )
+ column=(type=char(2) updatewhereclause=yes name=pdr_criteria_right_paren dbname="PDR_CRITERIA.RIGHT_PAREN" )
+ column=(type=char(3) updatewhereclause=yes name=pdr_criteria_logic_op dbname="PDR_CRITERIA.LOGIC_OP" )
+ column=(type=char(1) updatewhereclause=yes name=pdr_criteria_req_ind dbname="PDR_CRITERIA.REQ_IND" )
+ column=(type=char(15) updatewhereclause=yes name=pdr_criteria_ra_data_type dbname="PDR_CRITERIA.RA_DATA_TYPE" )
+ retrieve="  SELECT DISTINCT PDR_CRITERIA.PDR_LINK,
+			DICTIONARY.ELEM_TBL_TYPE,
+			DICTIONARY.ELEM_NAME,
+			DICTIONARY.ELEM_LOOKUP_TYPE,  
+         PDR_CRITERIA.SEQ_NUM,   
+         PDR_CRITERIA.TBL_NAME,   
+         PDR_CRITERIA.LEFT_PAREN,   
+         PDR_CRITERIA.COL_NAME,   
+         PDR_CRITERIA.REL_OP,   
+         PDR_CRITERIA.DFLT_VALUE,   
+         PDR_CRITERIA.RIGHT_PAREN,   
+         PDR_CRITERIA.LOGIC_OP,   
+         PDR_CRITERIA.REQ_IND,   
+         PDR_CRITERIA.RA_DATA_TYPE  
+    FROM PDR_CRITERIA, DICTIONARY
+   WHERE PDR_CRITERIA.PDR_LINK = :an_pdr_link
+	  AND ( PDR_CRITERIA.REQ_IND = 'Y' )
+     AND ( DICTIONARY.ELEM_TYPE IN ('CL','CC') )
+	  AND ( DICTIONARY.ELEM_NAME = PDR_CRITERIA.COL_NAME )
+     AND ( DICTIONARY.ELEM_TBL_TYPE in ( SELECT DICTIONARY.ELEM_TBL_TYPE 
+														FROM DICTIONARY, PDR_CRITERIA 
+														WHERE DICTIONARY.ELEM_TYPE = 'TB'
+														AND DICTIONARY.ELEM_NAME = PDR_CRITERIA.TBL_NAME
+														AND PDR_CRITERIA.PDR_LINK = :an_pdr_link ) )
+UNION SELECT DISTINCT PDR_CRITERIA.PDR_LINK,
+			' ',
+			PDR_CRITERIA.COL_NAME,
+			' ',  
+         PDR_CRITERIA.SEQ_NUM,   
+         PDR_CRITERIA.TBL_NAME,   
+         PDR_CRITERIA.LEFT_PAREN,   
+         PDR_CRITERIA.COL_NAME,   
+         PDR_CRITERIA.REL_OP,   
+         PDR_CRITERIA.DFLT_VALUE,   
+         PDR_CRITERIA.RIGHT_PAREN,   
+         PDR_CRITERIA.LOGIC_OP,   
+         PDR_CRITERIA.REQ_IND,   
+         PDR_CRITERIA.RA_DATA_TYPE  
+    FROM PDR_CRITERIA
+   WHERE PDR_CRITERIA.PDR_LINK = :an_pdr_link
+	  AND PDR_CRITERIA.TBL_NAME = 'ARGUMENT'" arguments=(("an_pdr_link", number)) )
+text(band=header alignment="2" text="Pdr Criteria
+Seq Num" border="0" color="0" x="2377" y="8" height="128" width="411" html.valueishtml="0"  name=pdr_criteria_seq_num_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pdr Criteria
+Tbl Name" border="0" color="0" x="2798" y="8" height="128" width="960" html.valueishtml="0"  name=pdr_criteria_tbl_name_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pdr Criteria
+Left Paren" border="0" color="0" x="3767" y="8" height="128" width="411" html.valueishtml="0"  name=pdr_criteria_left_paren_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pdr Criteria
+Col Name" border="0" color="0" x="4187" y="8" height="128" width="901" html.valueishtml="0"  name=pdr_criteria_col_name_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pdr Criteria
+Rel Op" border="0" color="0" x="5097" y="8" height="128" width="411" html.valueishtml="0"  name=pdr_criteria_rel_op_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pdr Criteria
+Dflt Value" border="0" color="0" x="5518" y="8" height="128" width="7077" html.valueishtml="0"  name=pdr_criteria_dflt_value_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pdr Criteria
+Right Paren" border="0" color="0" x="12603" y="8" height="128" width="421" html.valueishtml="0"  name=pdr_criteria_right_paren_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pdr Criteria
+Logic Op" border="0" color="0" x="13033" y="8" height="128" width="411" html.valueishtml="0"  name=pdr_criteria_logic_op_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pdr Criteria
+Req Ind" border="0" color="0" x="13454" y="8" height="128" width="411" html.valueishtml="0"  name=pdr_criteria_req_ind_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pdr Criteria
+Ra Data Type" border="0" color="0" x="13874" y="8" height="128" width="498" html.valueishtml="0"  name=pdr_criteria_ra_data_type_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Dictionary
+Elem Lookup Type" border="0" color="0" x="1701" y="8" height="128" width="667" html.valueishtml="0"  name=dictionary_elem_lookup_type_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pdr Criteria
+Pdr Link" border="0" color="0" x="9" y="8" height="128" width="411" html.valueishtml="0"  name=pdr_criteria_pdr_link_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Column Name" border="0" color="0" x="430" y="8" height="128" width="1262" html.valueishtml="0"  name=col_name_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="411" format="[General]" html.valueishtml="0"  name=pdr_criteria_pdr_link  tag=" " visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="0" x="2377" y="8" height="76" width="411" format="[General]" html.valueishtml="0"  name=pdr_criteria_seq_num  tag=" " visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="2798" y="8" height="76" width="960" format="[general]" html.valueishtml="0"  name=pdr_criteria_tbl_name  tag=" " visible="1" edit.limit=32 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="3767" y="8" height="76" width="411" format="[general]" html.valueishtml="0"  name=pdr_criteria_left_paren  tag=" " visible="1" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="4187" y="8" height="76" width="901" format="[general]" html.valueishtml="0"  name=pdr_criteria_col_name  tag=" " visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="5097" y="8" height="76" width="411" format="[general]" html.valueishtml="0"  name=pdr_criteria_rel_op  tag=" " visible="1" edit.limit=12 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="5518" y="8" height="76" width="7077" format="[general]" html.valueishtml="0"  name=pdr_criteria_dflt_value  tag=" " visible="1" edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="12603" y="8" height="76" width="421" format="[general]" html.valueishtml="0"  name=pdr_criteria_right_paren  tag=" " visible="1" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="13033" y="8" height="76" width="411" format="[general]" html.valueishtml="0"  name=pdr_criteria_logic_op  tag=" " visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="13454" y="8" height="76" width="411" format="[general]" html.valueishtml="0"  name=pdr_criteria_req_ind  tag=" " visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="13874" y="8" height="76" width="498" format="[general]" html.valueishtml="0"  name=pdr_criteria_ra_data_type  tag=" " visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1701" y="8" height="76" width="667" format="[general]" html.valueishtml="0"  name=dictionary_elem_lookup_type visible="1" edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="Trim(  if( Trim( dictionary_elem_tbl_type ) = ~"~", dictionary_elem_name,  dictionary_elem_tbl_type + ~".~" +  dictionary_elem_name ) )"border="0" color="0" x="430" y="8" height="76" width="1262" format="[GENERAL]" html.valueishtml="0"  name=col_name visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

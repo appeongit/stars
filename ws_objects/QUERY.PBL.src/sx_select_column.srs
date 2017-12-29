@@ -1,0 +1,6 @@
+﻿$PBExportHeader$sx_select_column.srs
+$PBExportComments$Container for a string array of selected columns
+global type sx_select_column from structure
+	string		s_select_column[]
+end type
+

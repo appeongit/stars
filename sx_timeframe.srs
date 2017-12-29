@@ -1,0 +1,9 @@
+HA$PBExportHeader$sx_timeframe.srs
+$PBExportComments$timeframe info
+global type sx_timeframe from structure
+    long timeframe_btn
+    char from_thru
+    sx_fields timeframe_fields[]
+    long num_of_days
+end type
+

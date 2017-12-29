@@ -1,0 +1,186 @@
+﻿$PBExportHeader$format_where.srf
+global type format_where from function_object
+end type
+
+forward prototypes
+global function string format_where (string in_string, string in_op, string in_exp1)
+end prototypes
+
+global function string format_where (string in_string, string in_op, string in_exp1);////////////////////////////////////////////////////////////////////////////////
+//
+//	03/13/02	GaryR	Track 2541d	Eliminate last comma
+//	09/03/02	GaryR	Track 3289d	Trim spaces with between and in values
+//	06/22/05 Katie Track 4316d Fixed Error Message for '=' being passed multiple values
+//	07/08/05 Katie Track 3661d Change BLANKS to ' ' with single space
+//	08/01/05 Katie Track 3661d Removed case sesitivity for keyword BLANKS
+//	09/02/05	GaryR	Track 4492d	Accomodate trailing spaces in data
+//  09/29/05 Katie Track 4526d Added BLANKS functionality for IN and NOT IN operands.
+//	01/27/06	HYL	Track 4628d 	Both Sybase and Oracle fails to run this clause : ... NOT IN (( ' ', '71020 )). Two parens with space character
+//                               					Hence the code change in order not to create that kind of clause.
+//	02/01/06 HYL	Track 4629d	When field value 'Blanks' is solely entered, where clause formed looks like this: ( '' ) - paren space single single space paren.
+//											We need to handle this empty string according to backend database. n_cst_sql.of_trimdata(ref) gets called.
+// 	03/01/06 HYL 	Track 4492d	Removed PB Trim fuction to build where clause using values entered as is. Ex: CR.HCPCS code in ('    4', '    5', '    7')		
+//  10/14/09 RickB LKP.650.5678.001 Added NOT IN to "You must use IN or NOT IN operator with multiple values" 
+//  10/15/09 RickB LKP.650.5678.001 Added BETWEEN to message.
+////////////////////////////////////////////////////////////////////////////////
+
+STRING s1, s2, op,lv_connector
+INT p1, p2, len1, len2, i_rtn
+boolean eos, lv_first = TRUE
+
+setpointer(hourglass!)
+
+op = trim(in_op)
+s1 = RightTrim(in_string)
+
+//	03/13/02	GaryR	Track 2541d
+IF Right( s1, 1 ) = "," THEN s1 = Left( s1, Len(s1 ) - 1 )
+
+len1 = len(s1)
+s2 = ''
+
+if s1 = '' then
+   s1 = '! no item passed'
+   RETURN s1
+end if
+
+if upper(s1) = 'BLANKS' then
+   s1 = ' '
+end if
+
+CHOOSE CASE op
+   CASE '=','<>', '>=', '<=', '>', '<'
+        p1 = pos(s1,',')
+        if p1 > 0 then
+           s1 = '! You must use the IN, NOT IN, or BETWEEN operator with multiple values '
+           RETURN s1
+        end if
+        s1 = '~'' + s1 + '~''
+   CASE 'like','not like', 'LIKE', 'NOT LIKE'
+        p1 = pos(s1,',')
+        if p1 > 0 then
+//           s1 = '! more than 1 item passed'
+				 eos = false
+        		 p2 = 1
+				if UPPER(in_op) = 'LIKE' Then
+					lv_connector = 'OR'
+				elseif UPPER(in_op) = 'NOT LIKE' Then
+					lv_connector = 'AND'
+				end if
+ 
+        		DO WHILE eos = false
+           	p1 = pos(s1,',',p2)
+           	if p1 = 0 then
+           		eos = true
+              	len2 = len1 - p2 + 1
+
+					if match(mid(s1,p2,len2),'%') then
+						s2 = s2 + ' ' + lv_connector+ ' '+ in_exp1 + ' ' + in_op + " '" + mid(s1,p2,len2) + "'"
+					else
+						s2 = s2 + ' ' + lv_connector+' '+in_exp1 + ' ' + in_op + " '" + mid(s1,p2,len2) + '%' + "'"
+					end if
+              	EXIT
+           	end if
+					len2 = p1 - p2
+					if lv_first = TRUE then
+						if match(mid(s1,p2,len2),'%') then
+							s2 = '('+ in_exp1 + ' ' + in_op + " '" + mid(s1,p2,len2) + "'"
+						else
+							s2 = '('+ in_exp1 + ' ' + in_op + " '" + mid(s1,p2,len2) + '%' + "'"
+						end if
+
+						lv_first = FALSE
+					else
+
+						if match(mid(s1,p2,len2),'%') then
+							s2 = s2 + ' ' +lv_connector+' '+ in_exp1 + ' ' + in_op + " '" + mid(s1,p2,len2) + "'"
+						else
+							s2 = s2 + ' ' +lv_connector+' '+ in_exp1 + ' ' + in_op + " '" + mid(s1,p2,len2) + '%' + "'"
+						end if
+					end if
+           		p2 = p1 + 1
+        		LOOP
+        		s1 = s2 + ')'
+			else
+			 if match(s1,'%') = FALSE then
+			 	s1 = '~'' + s1 + '%~''
+			 else
+				s1 = "'" + s1 + "'"
+			 end if
+        end if
+
+   CASE 'in', 'not in', 'IN', 'NOT IN'
+        eos = false
+        p2 = 1
+        DO WHILE eos = false
+           p1 = pos(s1,',',p2)
+           if p1 = 0 then
+              eos = true
+              len2 = len1 - p2 + 1
+			if (Upper(Trim( Mid( s1, p2, len2 ))) = 'BLANKS' ) then 	  
+  		     	s2 += ' '
+			else
+				s2 += Mid( s1, p2, len2 )  // 03/01/06 HYL Track 4492
+				IF s1 = ' ' THEN // Variable s1 with 'Blanks' chnaged to ' ' at the top of this function. 02/01/06 HYL Track 4629d
+					i_rtn = gnv_sql.of_trimdata(s2)
+				END IF
+			end if	  
+              EXIT
+           end if
+           len2 = p1 - p2
+		 if (UPPER(Trim( Mid( s1, p2, len2 ))) = 'BLANKS' ) then
+			s2 += ' ' + "','"
+		else
+			s2 += Mid( s1, p2, len2 ) + "','" // 03/01/06 HYL Track 4492 
+		end if
+           p2 = p1 + 1
+        LOOP
+	   	  			  
+		IF Pos(s2, '(') > 0 THEN // HYL 01/27/06 Track 4628 Concatenate only additional pair of parenthesis, not with single quotes.
+			s1 = s2 // HYL 01/27/06 If there is already a pair of parenthesis, do not concatenate.
+		ELSE
+			s1 = '( ~'' + s2 + '~' )' // HYL 02/01/06 Track 4629d Make sure that the change made for 4628d still works.
+		END IF
+   CASE 'between', 'BETWEEN'
+        eos = false
+        p2 = 1
+// KTB - Tr2926 - STARCare
+		  p1 = pos(Upper(s1),'AND',p2)
+		  if ( p1 > 0 ) then 
+			  RETURN s1
+		  end if
+// End KTB
+        p1 = pos(s1,',',p2)
+        if p1 = 0 then
+           s1 = '! second item missing'
+           RETURN s1
+        end if
+        len2 = p1 - p2
+		  
+		  //	09/03/02	GaryR	Track 3289d
+        //s2 = mid(s1,p2,len2) + '~'' + ' and ' + '~''
+		  s2 = Trim( Mid( s1, p2, len2 ) ) + "' and '"
+		  
+        p2 = p1 + 1
+        p1 = pos(s1,',',p2)
+        if p1 > 0 then
+           s1 = '! too many items passed'
+           RETURN s1 
+        end if
+        len2 = len1 - p2 + 1
+        if len2 = 0 then
+           s1 = '! second item missing'
+           RETURN s1
+        end if
+		  
+		  //	09/03/02	GaryR	Track 3289d
+        //s2 = s2 + mid(s1,p2,len2)
+		  s2 += Trim( Mid( s1, p2, len2 ) )
+		  
+        s1 = '~'' + s2 + '~''
+   CASE ELSE
+        s1 = '! invalid operator' 
+END CHOOSE 
+RETURN s1
+end function
+

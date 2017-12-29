@@ -1,0 +1,21 @@
+﻿$PBExportHeader$d_sum_rel_pat_profile.srd
+$PBExportComments$Determine if summary is patient profile <logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(1) updatewhereclause=yes name=sum_flag dbname="SUM_REL.SUM_FLAG" )
+ retrieve="  SELECT SUM_REL.SUM_FLAG  
+    FROM SUM_REL  
+   WHERE ( SUM_REL.INV_TYPE = Upper(:inv_type) ) AND  
+         ( SUM_REL.FUNCTION_NAME = 'SUM' ) AND  
+         ( SUM_REL.PERIOD = :period ) AND  
+         ( SUM_REL.TABLE_NAME = Upper(:table_name) ) AND  
+         ( SUM_REL.SUM_FLD1_SEQ = 0 )    
+" arguments=(("inv_type", string),("period", number),("table_name", string)) )
+text(band=header alignment="2" text="Sum Flag" border="4" color="0" x="9" y="8" height="64" width="334"  name=sum_flag_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="334" format="[general]"  name=sum_flag edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

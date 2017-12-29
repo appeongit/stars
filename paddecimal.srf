@@ -1,0 +1,20 @@
+HA$PBExportHeader$paddecimal.srf
+global type paddecimal from function_object
+end type
+
+forward prototypes
+global function string paddecimal (decimal pad_number, integer num_chars)
+end prototypes
+
+global function string paddecimal (decimal pad_number, integer num_chars);STRING lv_string1, lv_string2
+
+setpointer(hourglass!)
+
+lv_string1 = "00000000000" + String ( pad_number, "0.00" )
+lv_string2 = Right ( lv_string1, num_chars )
+
+RETURN lv_string2
+
+
+end function
+

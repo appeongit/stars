@@ -1,0 +1,45 @@
+HA$PBExportHeader$fx_get_table.srf
+$PBExportComments$Retrieve required table from STARS_WIN_PARM
+global type fx_get_table from function_object
+end type
+
+forward prototypes
+global function string fx_get_table (string window, string which_event, ref string invoice_type)
+end prototypes
+
+global function string fx_get_table (string window, string which_event, ref string invoice_type);// Function: fx_get_table
+// Author: Skip Goldie   Date: September 1994
+// Description: Retrieves table name (and type) from STARS_WIN_PARM 
+// Arguments: (1) window (passed by value)
+//            (2) which_event (passed by value)
+//            (3) invoice_type (passed by reference)
+// Returns: A string containing the table name and type.
+//          The first two characters are the table type.
+//          The remainder of the string is the table name.
+
+string lv_type, lv_table, lv_type_and_table
+string lv_where_message
+
+setpointer(hourglass!)
+
+select label, col_name into :lv_table, :lv_type
+from stars_win_parm
+where win_id   = Upper( :window )
+  and tbl_type = Upper( :invoice_type )
+  and cntl_id  = Upper( :which_event )
+using stars2ca;
+
+if stars2ca.of_check_status() <> 0 then
+	lv_where_message = 'win_id = ' + window +  ' and tbl_type = ' + invoice_type + ' and cntl_id = ' + which_event
+   errorbox(stars2ca, 'Error reading from the STARS_WIN_PARM table: ' + lv_where_message)
+	return 'ERROR'
+end if
+
+lv_type_and_table = lv_type + lv_table
+Return lv_type_and_table
+
+
+
+
+end function
+

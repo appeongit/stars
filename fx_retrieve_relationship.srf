@@ -1,0 +1,82 @@
+HA$PBExportHeader$fx_retrieve_relationship.srf
+global type fx_retrieve_relationship from function_object
+end type
+
+forward prototypes
+global function integer fx_retrieve_relationship (string lv_table_type, string lv_relationship_type, ref string lv_relationship_table_type[], ref string lv_relationship_table_name[], ref string lv_tbl_join[])
+end prototypes
+
+global function integer fx_retrieve_relationship (string lv_table_type, string lv_relationship_type, ref string lv_relationship_table_type[], ref string lv_relationship_table_name[], ref string lv_tbl_join[]);//******************************************************************
+// This function reads the STARS Relationship table and retrieves
+// the table type, table name and join table id (Value_A) for all of 
+// the values in the relationship specified
+//
+// Arguments passed to function:
+//
+// lv_table_Type - The type of group for which the relationship will
+//                 be retrieved. Ex. MA, MB, MC
+// lv_relationship_type - The type of relationship. Ex GP, DP, QT
+//
+// Arguments sent back to script:
+//
+// lv_relationship_table_type[] - An array containing all of the table
+//       types in the relationship.
+// lv_relationship_table_name[] - An array containing all of the table
+//       names in the relationship.
+// lv_tbl_join[] - An array containing the Value_A fields for each corresponding
+//       table type and table name
+//******************************************************************
+//*Pat-d 11/95 - for GP rel type do not load the fast track table type
+//******************************************************************
+
+int X, lv_rc, li_idx
+string lv_filter
+string lv_hold_relationship_table_type,lv_hold_relationship_table_name
+string lv_hold_tbl_join
+
+setpointer(hourglass!)
+
+// BV 8/21/95 - enhance - took out read of stars_rel and replaced it
+// with a filter of the new stars_rel dw on w_main.
+
+lv_rc = w_main.dw_stars_rel_dict.rowcount()
+lv_rc = w_main.dw_stars_rel_dict.SetFilter("")
+lv_rc = w_main.dw_stars_rel_dict.Filter()
+lv_filter = "rel_type = '" + lv_relationship_type + "' and rel_id = '" + lv_table_type + "'"
+lv_rc = w_main.dw_stars_rel_dict.SetFilter(lv_filter)
+lv_rc = w_main.dw_stars_rel_dict.Filter()
+if lv_rc <> 1 then
+	messagebox("ERROR","Unable to set filter on STARS_REL in fx_retrieve_relationship().")
+	RETURN -1
+end if
+lv_rc = w_main.dw_stars_rel_dict.rowcount()
+
+//HRB 9/19/95 - commented out below - if no dependent tables, its OK
+//if lv_rc < 1 then
+//	messagebox("ERROR","No rows selected from STARS_REL in fx_retrieve_relationship().")
+//	RETURN -1
+//end if
+
+li_idx = 1 		//pat-d
+for x = 1 to lv_rc
+//	lv_relationship_table_type[X] = w_main.dw_stars_rel_dict.GetItemstring(x,"id_2")
+//	lv_relationship_table_name[X] = w_main.dw_stars_rel_dict.GetItemstring(x,"dictionary_elem_name")
+//	lv_tbl_join[X]                = w_main.dw_stars_rel_dict.GetItemstring(x,"dictionary_value_a")
+
+//pat-d 11/95 added code to exclude fast track
+	If lv_relationship_type = 'GP' then
+		If left(w_main.dw_stars_rel_dict.GetItemstring(x,"id_2"),1) = 'Q' then
+			Continue
+		End IF
+	End IF
+	lv_relationship_table_type[li_idx] = w_main.dw_stars_rel_dict.GetItemstring(x,"id_2")
+	lv_relationship_table_name[li_idx] = w_main.dw_stars_rel_dict.GetItemstring(x,"dictionary_elem_name")
+	lv_tbl_join[li_idx]                = w_main.dw_stars_rel_dict.GetItemstring(x,"dictionary_value_a")
+	li_idx++
+next
+
+Return 0
+
+
+end function
+

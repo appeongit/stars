@@ -1,0 +1,14 @@
+﻿$PBExportHeader$d_table_desc.srd
+$PBExportComments$<logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(255) updatewhereclause=yes name=elem_desc dbname="dictionary.ELEM_DESC" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"dictionary~" ) COLUMN(NAME=~"dictionary.ELEM_DESC~")WHERE(    EXP1 =~"dictionary.ELEM_TYPE~"   OP =~"=~"    EXP2 =~"'TB'~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"dictionary.ELEM_TBL_TYPE~"   OP =~"=~"    EXP2 =~"Upper(:arg_tbl_type)~" ) ) ARG(NAME = ~"arg_tbl_type~" TYPE = string) " arguments=(("arg_tbl_type", string)) )
+text(band=header alignment="2" text="Elem Desc" border="0" color="0" x="9" y="8" height="64" width="2743"  name=elem_desc_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="2743" format="[general]"  name=elem_desc edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

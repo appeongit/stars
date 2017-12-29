@@ -1,0 +1,11 @@
+﻿$PBExportHeader$sx_track_data.srs
+global type sx_track_data from structure
+	string		track_key
+	string		track_type
+	string		track_name
+	string		track_number
+	string		track_lob
+	string		proc_track_code
+	string		prov_id_type
+end type
+

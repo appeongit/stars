@@ -1,0 +1,30 @@
+﻿$PBExportHeader$d_random_sampling_provider_list.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=97 print.margin.bottom=97 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=100 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(25) updatewhereclause=yes name=prov_id dbname="PROV_ID"  )
+column=(type=char(50) updatewhereclause=yes name=providers_prov_name dbname="PROV_NAME"  )
+ retrieve="SELECT DISTINCT PROV_ID, PROV_NAME     
+FROM            PROVIDERS 
+ORDER BY        PROV_ID ASC
+ "
+ )
+line(name=l_1 visible="1" band=header background.mode="1" background.color="553648127" pen.style="0" pen.width="5" pen.color="0" x1="5" y1="84" x2="2011" y2="84" )
+text(name=prov_id_t visible="1" band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="9" y="12" height="64" width="512" text="Provider Id " html.valueishtml="0" accessibledescription="~"Provider Id ~"	~"Provider Id ~"" accessiblename="~"Provider Id ~"	~"Provider Id ~"" accessiblerole=42 )
+text(name=prov_name_t visible="1" band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="562" y="12" height="64" width="462" text="Name " html.valueishtml="0" accessibledescription="~"Name ~"	~"Name ~"" accessiblename="~"Name ~"	~"Name ~"" accessiblerole=42 )
+column(name=prov_id visible="1" band=detail id=1 x="5" y="4" height="56" width="530" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Provider Id ~"	~"Provider Id ~"" accessiblename="~"Provider Id ~"	~"Provider Id ~"" )
+column(name=providers_prov_name visible="1" band=detail id=2 x="562" y="4" height="56" width="1454" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Provider Name~"	~"Provider Name~"" accessiblename="~"Provider Name~"	~"Provider Name~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen(sessionSpecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

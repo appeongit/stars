@@ -1,0 +1,15 @@
+﻿$PBExportHeader$fx_m_activesubset.srf
+$PBExportComments$Case|ActiveSubset
+global type fx_m_activesubset from function_object
+end type
+
+forward prototypes
+global subroutine fx_m_activesubset ()
+end prototypes
+
+global subroutine fx_m_activesubset ();setpointer(hourglass!)
+OpenSheet(w_case_active,mdi_main_frame,help_menu_position,Original!)
+
+OpenSheet(w_subset_active,mdi_main_frame,help_menu_position,Original!)
+end subroutine
+

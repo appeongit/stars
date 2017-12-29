@@ -1,0 +1,15 @@
+HA$PBExportHeader$sx_decode_structure.srs
+global type sx_decode_structure from structure
+	string		col_name[]
+	string		col_lookup_type[]
+	string		data_type[]
+	string		col_len[]
+	string		table_name[]
+	string		table_type[]
+	integer		decoded
+	boolean		pattern
+	boolean		is_ml_query
+	boolean		is_ml_patt
+	string		db_col_name[]
+end type
+

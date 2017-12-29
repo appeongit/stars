@@ -1,0 +1,66 @@
+﻿$PBExportHeader$fx_get_stars_rel_elem_name.srf
+$PBExportComments$Get Dictionary.elem_name from stars_rel
+global type fx_get_stars_rel_elem_name from function_object
+end type
+
+forward prototypes
+global function string fx_get_stars_rel_elem_name (string as_elem_tbl_type)
+end prototypes
+
+global function string fx_get_stars_rel_elem_name (string as_elem_tbl_type);//*************************************************************************
+//		Object Type:	Global function
+//		Object Name:	fx_get_stars_rel_elem_name
+//		Event Name:		N/A
+//
+//		This function is only called when Dictionary.Elem_Type = 'TB'.
+//
+//		This function filters table stars_rel based on dictionary.elem_tbl_type.
+//		Once filtered, dictionary.elem_name (table name) will be returned
+//		from the 1st row in w_main.dw_stars_rel_dict.
+//
+//		Arguments passed to this function:
+//
+//		1.	as_elem_tbl_type	-	The same as stars_rel.id_2
+//
+//		Returns: string - Dictionary.elem_name.  If not found, '' is returned.
+//
+//*************************************************************************
+//	
+
+string	ls_filter, ls_id_2, ls_elem_name
+int		li_rc
+long		ll_max_rows
+
+
+	//	Make sure that nothing has been previously filtered
+li_rc			=	w_main.dw_stars_rel_dict.SetFilter("")
+li_rc			=	w_main.dw_stars_rel_dict.Filter()
+
+ls_id_2		=	Trim (as_elem_tbl_type)
+
+ls_filter	=	"id_2 = '"		+	ls_id_2		+	"'"
+
+li_rc			=	w_main.dw_stars_rel_dict.SetFilter(ls_filter)
+li_rc			=	w_main.dw_stars_rel_dict.Filter()
+
+If	li_rc		<>	1	Then
+	MessageBox ("ERROR","Unable to set the filter on stars_rel in "	+	&
+					"fx_get_stars_rel_elem_name().")
+	Return ''
+End If
+
+	//	Determine the maximum row count 
+
+ll_max_rows		=	w_main.dw_stars_rel_dict.RowCount()
+
+IF ll_max_rows	<	1		THEN
+	Return ''
+END IF
+
+ls_elem_name	=	w_main.dw_stars_rel_dict.GetItemString (1, "dictionary_elem_name")
+
+Return ls_elem_name
+
+
+end function
+

@@ -1,0 +1,18 @@
+HA$PBExportHeader$d_sum_rel_table_name.srd
+$PBExportComments$Gets sum table name for patient profiles (period_cntl windows) <logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(32) updatewhereclause=yes name=table_name dbname="SUM_REL.TABLE_NAME" )
+ column=(type=long updatewhereclause=yes name=sum_fld1_seq dbname="SUM_REL.SUM_FLD1_SEQ" )
+ column=(type=long updatewhereclause=yes name=sum_fld2_seq dbname="SUM_REL.SUM_FLD2_SEQ" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"SUM_REL~" ) COLUMN(NAME=~"SUM_REL.TABLE_NAME~") COLUMN(NAME=~"SUM_REL.SUM_FLD1_SEQ~") COLUMN(NAME=~"SUM_REL.SUM_FLD2_SEQ~")WHERE(    EXP1 =~"SUM_REL.INV_TYPE~"   OP =~"=~"    EXP2 =~"Upper(:inv_type)~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"SUM_REL.PERIOD~"   OP =~"=~"    EXP2 =~":period~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"SUM_REL.FUNCTION_NAME~"   OP =~"=~"    EXP2 =~"Upper(:as_function)~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"SUM_REL.SUM_FLAG~"   OP =~"=~"    EXP2 =~"'B'~" ) ) ORDER(NAME=~"SUM_REL.SUM_FLD1_SEQ~" ASC=yes )  ORDER(NAME=~"SUM_REL.SUM_FLD2_SEQ~" ASC=yes ) ARG(NAME = ~"inv_type~" TYPE = string)  ARG(NAME = ~"period~" TYPE = number)  ARG(NAME = ~"as_function~" TYPE = string) " arguments=(("inv_type", string),("period", number),("as_function", string)) )
+text(band=header alignment="2" text="Table Name" border="0" color="0" x="5" y="4" height="64" width="1207"  name=table_name_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="76" width="1207" format="[general]"  name=table_name edit.limit=32 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1253" y="12" height="64" width="96" format="[general]"  name=sum_fld1_seq edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1422" y="12" height="64" width="123" format="[general]"  name=sum_fld2_seq edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

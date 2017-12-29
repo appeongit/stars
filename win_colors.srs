@@ -1,0 +1,45 @@
+HA$PBExportHeader$win_colors.srs
+global type win_colors from structure
+	long		label_back
+	long		label_text
+	long		input_back
+	long		input_text
+	long		lookup_back
+	long		lookup_text
+	long		protected_back
+	long		protected_text
+	long		index_back
+	long		index_text
+	long		datawindow_back
+	long		window_background
+	long		window_text
+	long		application_workspace
+	long		button_face
+	long		scroll_bar
+	long		desktop
+	long		active_title_bar
+	long		inactive_title_bar
+	long		menu_bar
+	long		window_frame
+	long		menu_text
+	long		active_title_bar_text
+	long		active_border
+	long		inactive_border
+	long		highlight
+	long		highlight_text
+	long		button_shadow
+	long		disabled_text
+	long		button_text
+	long		inactive_title_bar_text
+	long		button_highlight
+	long		button_dark_shadow
+	long		button_light_shadow
+	long		tooltip_text
+	long		tooltip
+	long		link
+	long		link_hover
+	long		link_active
+	long		link_visited
+	long		transparent
+end type
+

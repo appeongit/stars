@@ -1,0 +1,16 @@
+﻿$PBExportHeader$sx_drilldown.srs
+$PBExportComments$In drilldown use to pass info from original uo_query to new uo_query.
+global type sx_drilldown from structure
+	string		data_type
+	string		case_id
+	string		subset_id
+	string		subset_name
+	string		inv_type
+	string		temp_table_name
+	string		path
+	string		join_fields[]
+	sx_rpt_cols		columns[]
+	boolean		column_flag
+	string		main_inv_type
+end type
+

@@ -1,0 +1,21 @@
+﻿$PBExportHeader$d_patt_cntl_patt_id.srd
+$PBExportComments$Retrieves patt_cntl by patt_id only. <logic>
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=108 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(10) update=yes updatewhereclause=yes key=yes name=patt_id dbname="PATT_CNTL.PATT_ID" initial="spaces" )
+ column=(type=char(2) update=yes updatewhereclause=yes key=yes name=patt_inv_type dbname="PATT_CNTL.PATT_INV_TYPE" initial="spaces" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=patt_desc dbname="PATT_CNTL.PATT_DESC" initial="empty" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=base_plus dbname="PATT_CNTL.BASE_PLUS" initial="spaces" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=exe_ind dbname="PATT_CNTL.EXE_IND" initial="spaces" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=patt_cond dbname="PATT_CNTL.PATT_COND" initial="empty" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=patt_type dbname="PATT_CNTL.PATT_TYPE" initial="spaces" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"PATT_CNTL~" ) COLUMN(NAME=~"PATT_CNTL.PATT_ID~") COLUMN(NAME=~"PATT_CNTL.PATT_INV_TYPE~") COLUMN(NAME=~"PATT_CNTL.PATT_DESC~") COLUMN(NAME=~"PATT_CNTL.BASE_PLUS~") COLUMN(NAME=~"PATT_CNTL.EXE_IND~") COLUMN(NAME=~"PATT_CNTL.PATT_COND~") COLUMN(NAME=~"PATT_CNTL.PATT_TYPE~")WHERE(    EXP1 =~"PATT_CNTL.PATT_ID~"   OP =~"=~"    EXP2 =~":patt_id~" ) ) ARG(NAME = ~"patt_id~" TYPE = string) " update="PATT_CNTL" updatewhere=0 updatekeyinplace=no arguments=(("patt_id", string)) )
+text(band=header alignment="0" text="Pattern ID"border="0" color="0" x="23" y="24" height="64" width="293"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="18" y="12" height="64" width="453" format="[general]"  name=patt_id edit.limit=0 edit.case=any edit.autoselect=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Patt Type"border="0" color="0" x="530" y="28" height="64" width="279"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="530" y="12" height="64" width="261" format="[general]"  name=patt_type edit.limit=0 edit.case=any edit.autoselect=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

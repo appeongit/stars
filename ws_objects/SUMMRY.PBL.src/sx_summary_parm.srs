@@ -1,0 +1,25 @@
+﻿$PBExportHeader$sx_summary_parm.srs
+$PBExportComments$used to pass parms in generic summaries
+global type sx_summary_parm from structure
+	sx_field		group_fields[]
+	string		asterisk_cols[]
+	string		sql_statement
+	string		sum_tbl_type
+	string		sum_tbl_name
+	string		invoice_type
+	long		rank
+	string		rank_btn
+	string		sort
+	string		period
+	string		header
+	boolean		join
+	boolean		provider_universe
+	long		period_key
+	string		function_nm
+	string		filter
+	string		group_by_flag
+	boolean		pat_sum_flag
+	string		s_calc_cols
+	string		calc_disp_format[]
+end type
+

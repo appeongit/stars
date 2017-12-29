@@ -1,0 +1,27 @@
+﻿$PBExportHeader$padstring.srf
+$PBExportComments$Pads a string with blanks to x number of characters.
+global type padstring from function_object
+end type
+
+forward prototypes
+global function string padstring (string string_text, integer num_chars)
+end prototypes
+
+global function string padstring (string string_text, integer num_chars);INT X
+STRING lv_string1, lv_string2
+
+setpointer(hourglass!)
+
+IF IsNull(string_text) OR (string_text = " ") OR (string_text = "") THEN
+	lv_string2 = Space(num_chars)
+ELSE
+	lv_string1 = string_text + Space ( num_chars )
+	lv_string2 = Left ( lv_string1, num_chars )
+END IF
+
+x = 0
+RETURN lv_string2
+
+
+end function
+

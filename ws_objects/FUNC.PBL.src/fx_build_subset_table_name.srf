@@ -1,0 +1,52 @@
+﻿$PBExportHeader$fx_build_subset_table_name.srf
+global type fx_build_subset_table_name from function_object
+end type
+
+forward prototypes
+global function string fx_build_subset_table_name (string arg_table_type, string arg_subset_id)
+end prototypes
+
+global function string fx_build_subset_table_name (string arg_table_type, string arg_subset_id);//**********************************************************************************
+//	Object type:	Global function
+//	Object name:	fx_build_subset_table_name
+//	Event name:		n/a
+//
+//	This function verifies both arguments have been passed and are of correct length.
+//	If an argument is missing, it returns "ERROR"; otherwise, it returns the subset
+//	name by concatenating:  "SUB_MEDC" + arg_table_type + arg_subset_id.
+//
+//	Arguments:
+//		1)	arg_table_type (2 positions)
+//		2) arg_subset_id	(10 positions)
+//
+//	Returns:
+//		String - The subset name
+//
+//**********************************************************************************
+//
+//	03/12/01	FDG	Stars 4.7.  Dynamically get the subsetset prefix (instead of 'SUB_MEDC_')
+//
+//**********************************************************************************
+
+string ls_table_type, ls_subset_id, ls_table
+
+ls_table_type = trim(UPPER(arg_table_type))
+ls_subset_id = trim(UPPER(arg_subset_id))
+
+if (ls_table_type = "") or (ISNULL(ls_table_type)) or (len(ls_table_type) <> 2) then
+	return "ERROR"
+end if
+
+if (ls_subset_id = "") or (ISNULL(ls_subset_id)) or (len(ls_subset_id) <> 10) then
+	return "ERROR"
+end if
+
+// FDG 03/12/01 - dynamically get 'SUB_MEDC_'
+//ls_table = "SUB_MEDC" + "_" + ls_table_type + "_" + ls_subset_id
+ls_table = gnv_sql.of_get_subset_prefix() + ls_table_type + "_" + ls_subset_id
+
+return ls_table
+
+
+end function
+

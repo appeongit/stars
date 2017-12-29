@@ -1,0 +1,7 @@
+﻿$PBExportHeader$sx_pattern_field.srs
+global type sx_pattern_field from structure
+    character field_set
+    integer number
+    string label
+end type
+

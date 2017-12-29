@@ -1,0 +1,24 @@
+HA$PBExportHeader$fx_convert_label.srf
+global type fx_convert_label from function_object
+end type
+
+forward prototypes
+global function string fx_convert_label (string label_from_dic)
+end prototypes
+
+global function string fx_convert_label (string label_from_dic);string str1, str2
+long tabpos
+
+setpointer(hourglass!)
+
+tabpos = pos (label_from_dic, '~~r')
+
+if tabpos = 0 then
+  return label_from_dic
+else
+  str1 = Left (label_from_dic, tabpos - 1)
+  str2 = Mid (label_from_dic, tabpos + 2)
+  return (str1 + ' ' + str2)
+end if
+end function
+

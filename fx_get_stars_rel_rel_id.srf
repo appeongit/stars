@@ -1,0 +1,81 @@
+HA$PBExportHeader$fx_get_stars_rel_rel_id.srf
+$PBExportComments$Reads rel_id from stars_rel
+global type fx_get_stars_rel_rel_id from function_object
+end type
+
+forward prototypes
+global function integer fx_get_stars_rel_rel_id (string as_rel_type, string as_id_2, string as_id_3, ref string as_rel_id)
+end prototypes
+
+global function integer fx_get_stars_rel_rel_id (string as_rel_type, string as_id_2, string as_id_3, ref string as_rel_id);//*************************************************************************
+//		Object Type:	Global function
+//		Object Name:	fx_get_stars_rel_rel_id
+//		Event Name:		N/A
+//
+//		This function gets the rel_id from table stars_rel.  This table
+//		has already been read into hidden datawindow w_main.dw_stars_rel_dict.
+//
+//		Arguments passed to this function:
+//
+//		1.	as_rel_type	-	The type of relationship (i.e. 'JN', 'QT', 'GP')
+//		2.	as_id_2		-	stars_rel.id_2
+//		3.	as_id_3		-	stars_rel.id_3 (If blank, it is ignored)
+//
+//		Arguments returned from this function:
+//
+//		4.	as_rel_id	-	stars_rel.rel_id found in w_main.dw_stars_rel_dict
+//								(Passed by reference)
+//
+//		Return code:
+//			-1:	rel_id not found in w_main.dw_stars_rel_dict.
+//			 0:	rel_id found in w_main.dw_stars_rel_dict.
+//
+//*************************************************************************
+//	
+
+string	ls_filter,		ls_id_3_filter
+int		li_rc
+long		ll_max_rows
+
+	//	If as_id_3 was passed, use this in the filter criteria, otherwise
+	// ignore it.
+
+If	as_id_3	>	'  '	Then
+	ls_id_3_filter	=	" and id_3 = '"	+	as_id_3	+	"'"
+Else
+	ls_id_3_filter	=	""
+End if
+
+	//	Make sure that nothing has been previously filtered
+li_rc			=	w_main.dw_stars_rel_dict.SetFilter("")
+li_rc			=	w_main.dw_stars_rel_dict.Filter()
+
+ls_filter	=	"rel_type = '"		+	as_rel_type	+	&
+					"' and id_2 ='"	+	as_id_2		+	&
+					"'"					+	ls_id_3_filter
+
+li_rc			=	w_main.dw_stars_rel_dict.SetFilter(ls_filter)
+li_rc			=	w_main.dw_stars_rel_dict.Filter()
+
+If	li_rc		<>	1	Then
+	MessageBox ("ERROR","Unable to set the filter on stars_rel in "	+	&
+					"fx_get_stars_rel_rel_id().")
+	Return -1
+End If
+
+	//	Determine the maximum row count and get the 1st occurence
+	//	of the new filtered datawindow.
+
+ll_max_rows		=	w_main.dw_stars_rel_dict.RowCount()
+
+If	ll_max_rows	=	0		Then
+	as_rel_id	=	' '
+	Return -1
+End If
+
+as_rel_id		=	w_main.dw_stars_rel_dict.GetItemString(1,	"rel_id")
+
+
+Return 0
+end function
+

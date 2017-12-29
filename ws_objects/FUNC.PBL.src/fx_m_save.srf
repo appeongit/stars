@@ -1,0 +1,213 @@
+﻿$PBExportHeader$fx_m_save.srf
+$PBExportComments$File|Save Report
+global type fx_m_save from function_object
+end type
+
+forward prototypes
+global function integer fx_m_save ()
+end prototypes
+
+global function integer fx_m_save ();//		Return Values
+//
+//		1 - successfull
+//		0 - user hit cancel
+//	  -1 - error of some sort
+//***********************************************************************
+//   Date   Init               Description of Changes Made                
+// -------- ----	-------------------------------------------------------- 
+// 03/11/94 JMS	Modified to display message if no sheet is currently
+//             	active.
+// 03/11/94 JMS	Modified so only visible datawindows are saved.
+// 03/08/94 JMS	Modified to call fx_get_next_key_id to get the report
+//             	name instead of get_report_cntl_number to eliminate
+//             	the problem with 2 or more users selecting the same
+//             	report control number.
+// 04/04/94 MSD	Modified to change RPT default case link to MED for
+//             	a specific data window. 
+// 10-02-95 FNC	Take upperbound out of loop
+// 02-28-98 JGG	Update case link table columns for STARS 4.0
+//	05/07/98	FDG	Track 1199 (Stars 4.0) - Reformat the script to take
+//						into consideration w_master.idw_print.  Also renamed
+//						the variables to conform to standards.  idw_print is
+//						set in case there are multiple visible datawindows
+//						or the print datawindow is on a tab.
+//	01/18/99	FDG	Track 2055c.  Convert dates to 'mm/dd/yyyy' format.
+// 01/11/01	GaryR	Stars 4.7 DataBase Port - Date Conversion
+// 03/15/01	GaryR	Stars 4.7 DataBase Port - Case Sensitivity
+//	04/16/01	FDG	Stars 4.7.	Account for empty string in case_spl, case_ver.
+//	10/10/01	FDG	Stars 4.8.1.  Do not allow if case is closed.
+//						Create a case_log entry.
+//	12/21/01	FDG	Track 2497.  Destroy lnv_case to prevent memory leaks.
+// 06/13/02 JasonS Track 2946d  Change the report save window and methods
+// 06/25/02 JasonS Track 3157d  Saving all RDM reports as type MED
+// 07/10/02	JasonS Track 3157d  changed dw to dw_1 for w_random_sampling_unique_hics
+// 07/16/02 JasonS Track 3198d  only send a case_id of 10 chars or less to the db
+// 08/09/02 JasonS Track 3220d  return interger 
+//	02/27/03	GaryR Track	3455d	Check for duplicate case link entry
+//	09/05/03	GaryR	Track 3598d	Add seed logic to sampling process
+//	05/04/04	GaryR	Track 3544d	Redesign report save/view logic to improve performance
+//	06/17/04	GaryR	Track 3544d	Do not save report if rowcount is 0
+// 11/03/04 MikeF Track 4107d If saving a calendar, get the data dw, not calendar one
+//***********************************************************************
+
+w_master		lw_sheet
+u_dw			ldw
+Boolean		lb_has_dw          = False
+String		ls_save_name
+DateTime		ldtm_curr_datetime		// Track 2946d
+String		ls_case_id
+String		ls_case_spl
+String		ls_case_ver
+String		ls_case_link = "RPT"
+String		ls_link_desc
+String		ls_report			// Track 2946d
+int			li_upper
+int			li_control
+int			li_rc
+blob			lblb_dw
+sx_query_save lsx_query_save 			// Track 2946d
+n_cst_report	lnv_report
+
+// Check for active sheet
+lw_sheet = MDI_main_frame.GetActiveSheet()
+if (Not IsValid(lw_sheet)) then
+   MessageBox('Save Report to DataBase','No sheet is currently active.',StopSign!)
+	return -1	// JasonS 08/09/02  Track 3220d
+end if
+
+// See if the "Print" datawindow has been set.  If so, use this.  Otherwise,
+//	loop thru the window's control array for the first visible datawindow.
+ldw	= lw_sheet.of_getprintdw()
+
+CHOOSE CASE Lower(lw_sheet.ClassName())
+	CASE "w_random_sampling_unique_hics"
+		ldw = w_random_sampling_unique_hics.dw_1
+	CASE "w_calendar" 
+		ldw = w_calendar.dw_data
+END CHOOSE
+
+IF	IsValid (ldw)		THEN
+	lb_has_dw		=	TRUE
+ELSE
+	// The print datawindow was not set.  Loop thru the control array
+	//	to find the first visible datawindow
+	li_upper	=	UpperBound ( lw_sheet.control[] )
+	FOR	li_control	=	1	TO	li_upper
+		IF (lw_sheet.control[li_control].TypeOf()	= DataWindow!) 	&
+		AND (lw_sheet.control[li_control].visible	= True)				THEN 
+			lb_has_dw	=	True
+			ldw			=	lw_sheet.control[li_control]
+			Exit
+		END IF
+	NEXT
+END IF
+
+// Save dw and link to active case
+IF	lb_has_dw	=	TRUE		THEN
+	// Check if rows exist
+	IF ldw.RowCount() < 1 THEN
+		MessageBox( "Report Save", "Current report does not contain any data to save.", StopSign! )
+		Return 1
+	END IF
+	
+  	MDI_main_frame.SetMicroHelp('Saving Report to Database')
+ 	// FDG 10/10/01 - Case cannot be closed
+	Boolean		lb_valid
+	n_cst_case	lnv_case
+	String		ls_message
+	lnv_case		=	CREATE	n_cst_case
+	SetPointer(HourGlass!)
+
+  ls_save_name = fx_get_next_key_id('REPORT')
+  if Stars2ca.of_commit() <> 0 then
+	errorbox(stars2ca,'Error performing commit in fx_m_save.')
+  end if     
+  if (ls_save_name = 'ERROR') then ls_save_name = ''
+  
+  // Begin - Track 2946d
+  lsx_query_save.query_id = ls_save_name
+  ls_report = ls_save_name
+  lsx_query_save.query_name = ls_report
+  ldtm_curr_datetime = gnv_app.of_get_server_date_time()
+  
+  if Left(upper(ldw.DataObject),17) = "D_RANDOM_SAMPLING" 	then
+		// Begin - Track 3157d
+		if (Lower( lw_sheet.ClassName() ) = "w_random_sampling_unique_hics") then
+			ls_case_link = 'RDM'
+		else
+			ls_case_link = 'MED'
+		end if
+		// End - Track 3157d
+		lsx_query_save.query_desc = "Random Sample Report saved on " + string(ldtm_curr_datetime) + " by " + &
+												gc_user_id
+  else
+		ls_case_link = "RPT"
+		lsx_query_save.query_desc = "Report saved on " + string(ldtm_curr_datetime) + " by " + &
+												gc_user_id
+  end if		
+  lsx_query_save.query_type = ls_case_link
+  lsx_query_save.link_type = ls_case_link
+  lsx_query_save.path = "R"
+
+  openwithparm(w_query_save, lsx_query_save)
+  lsx_query_save = message.powerobjectparm
+
+  ls_report = lsx_query_save.query_name
+  ls_link_desc = lsx_query_save.query_desc
+  ls_case_id = lsx_query_save.case_id
+  ls_case_spl  = Mid(ls_case_id,11,2)      
+  ls_case_ver  = Mid(ls_case_id,13,2)
+
+  if (lsx_query_save.path = "N") then
+	 MDI_main_frame.SetMicroHelp('Report save cancelled.')
+	 Return 0	// JasonS 08/09/02  Track 3220d
+  end if
+  // End - Track 2946d
+
+	IF lnv_report.of_save( ldw, ls_save_name, ldtm_curr_datetime ) > 0 THEN
+		ls_message	=	"Report "	+	ls_report	+	" added to case."
+		li_rc			=	lnv_case.uf_audit_log (ls_case_id, ls_message)
+
+		IF	li_rc		<	0		THEN
+			Stars2ca.of_rollback()
+			MessageBox ('Database Error', 'Could not insert case log for report '	+	ls_report	+	&
+							'.  Case: ' + ls_case_id + '. Script: '		+	&
+							'fx_m_save()')
+			IF IsValid(lnv_case)		THEN	Destroy	lnv_case		// FDG 12/21/01
+			Return -1	// JasonS 08/09/02  Track 3220d
+		END IF
+		
+		IF IsValid(lnv_case)		THEN	Destroy	lnv_case
+		
+		// FDG 04/16/01 - Make sure case_spl & case_ver is properly trimmed.
+		ls_case_id = Trim( Left( ls_case_id, 10 ) )
+		li_rc	=	gnv_sql.of_TrimData (ls_case_spl)
+		li_rc	=	gnv_sql.of_TrimData (ls_case_ver)
+		// FDG 04/16/01 - end
+
+	  INSERT INTO CASE_LINK
+		 (CASE_ID,     CASE_SPL,      CASE_VER,    LINK_TYPE,    LINK_KEY, &
+		  LINK_NAME,   LINK_DESC,     USER_ID,     LINK_DATE,    LINK_STATUS)
+	  VALUES
+		 (:ls_case_id,   :ls_case_spl,     :ls_case_ver,   :ls_case_link,    :ls_save_name,	&
+		  Upper( :ls_report ), :ls_link_desc, :gc_user_id, :ldtm_curr_datetime, 'A')	// 01/11/01	GaryR	Stars 4.7 DataBase Port
+	  USING Stars2CA;																					// 03/15/01	GaryR	Stars 4.7 DataBase Port
+
+	  if (Stars2CA.of_check_status() <> 0) then
+		  ErrorBox(Stars2CA,'Could NOT update case link information.')
+		  lnv_report.of_delete( ls_save_name, "" )
+		  return -1	// JasonS 08/09/02  Track 3220d
+	  end if
+
+		Stars2ca.of_commit()
+		MDI_main_frame.SetMicroHelp('Report successfully saved to DataBase as ' + ls_report)		// Track 2946d
+  else
+		MDI_main_frame.SetMicroHelp('Report save Cancelled as requested')
+  end if
+ELSE
+	MessageBox('Save Report to DataBase','Current sheet does NOT contain a datawindow to save.',StopSign!)
+END IF
+
+return 1 // JasonS 08/09/02  Track 3220d
+end function
+

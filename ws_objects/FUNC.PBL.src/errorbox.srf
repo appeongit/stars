@@ -1,0 +1,83 @@
+﻿$PBExportHeader$errorbox.srf
+global type errorbox from function_object
+end type
+
+forward prototypes
+global subroutine errorbox (ref n_tr sqltransname, string usererrmsg)
+end prototypes
+
+global subroutine errorbox (ref n_tr sqltransname, string usererrmsg);// ERRORBOX Function
+// 
+// This function will display a Error box with information corresponding to
+//	the error using the specified transaction code.  Before the error box 
+// is displayed Rollback and a dissconnect is called which will not have 
+// to be done in the orginal code. So now only one line needs to be written 
+// to get a errorbox.  Also the user has a choice of cancel the application
+// or continuing
+// 
+// Usage: 
+//   Errorbox(<SqlTransName>,"<UserErrorMsg>")
+//
+// Where:
+//   SqlTransName     = SQL Transaction Object to use.  
+//                      The transaction object MUST be declared, created, and initialized
+//                      BEFORE calling this function. 
+//   UserErrorMsg     = A message that you wish to display in the error box if the specified
+//                      function is NOT successfully performed.
+//   
+//***********************************************************************
+//   Date   Init               Description of Changes Made                
+// -------- ---- -------------------------------------------------------- 
+// 09/27/93 JMS  Redesigned and recreated
+// 10/23/95 FNC  Execute disconnect if transaction not = Stars1ca or Stars2ca
+// 02/20/01	FDG	Stars 4.7.  Use of_connect() in case an alter session command is needed
+//						Change sqltransname from type transaction to type n_tr
+//***********************************************************************int resp,sqldbrc,sqlnrows
+int resp
+long sqldbrc,sqlnrows
+string sqldbmsg
+
+
+if (NOT IsValid(SqlTransName)) then
+	messagebox("SQL TRANSACTION ERROR",&
+				  UserErrMsg + &
+				  "~n~nSQL Transaction Object Specified Does Not Exist"+ &
+				  "~n~nApplication is being Terminated",Stopsign!,OK!,1)
+	Halt Close
+end if
+sqldbrc = SqlTransName.SqlDBCode
+sqldbmsg = SqlTransName.sqlerrText
+sqlnrows = SqlTransName.sqlnrows
+
+//SQLCMD("ROLLBACK",SqlTransName,sqldbmsg,1)				// FDG 02/20/01
+SqlTransName.of_rollback()										// FDG 02/20/01
+
+//10-23-95 FNC Start
+if SqlTransName <> STARS1CA and SqlTransName <> STARS2CA then
+   //SQLCMD("DISCONNECT",SqlTransName,sqldbmsg,1)		// FDG 02/20/01
+	SqlTransName.of_disconnect()								// FDG 02/20/01
+end if
+//10-23-95 FNC End
+
+// HRB 10/20/95 - comment out for CONNECT/DISCONNECT swat 
+//SQLCMD("DISCONNECT",SqlTransName,sqldbmsg,1)
+
+resp=MessageBox(  "DB ERROR",&
+				"User MSG:  " + UserErrMsg + &  
+		      "~rError MSG: " + sqldbmsg + &
+				"~rDB Code:   " + String ( sqldbrc ) + &
+				"~rSQL Rows:  " + String ( sqlnrows ) + &
+				"~r-----------------------------------" + &
+				"~rDBMS:      " + SqlTransname.dbms + &
+				"~rServer:    " + SqlTransName.servername + &
+				"~rDatabase:  " + SqlTransName.database + &
+				"~rLocking:   " + SqlTransName.lock, Information!,OKCancel!,1)
+
+if resp = 2 then
+// ROLLBACK;
+ HALT
+ RETURN
+end if
+
+end subroutine
+

@@ -1,0 +1,81 @@
+﻿$PBExportHeader$fx_get_stars_rel_tbl_type.srf
+$PBExportComments$Get Dictionary.Elem_tbl_type (id_2) from stars_rel
+global type fx_get_stars_rel_tbl_type from function_object
+end type
+
+forward prototypes
+global function string fx_get_stars_rel_tbl_type (string as_elem_name)
+end prototypes
+
+global function string fx_get_stars_rel_tbl_type (string as_elem_name);//*************************************************************************
+//		Object Type:	Global function
+//		Object Name:	fx_get_stars_rel_tbl_type
+//		Event Name:		N/A
+//
+//		This function is only called when Dictionary.Elem_Type = 'TB'.
+//
+//		This function filters table stars_rel based on dictionary.elem_name.
+//		Once filtered, id_2 (= dictionary.elem_tbl_type) will be returned
+//		from the 1st row in w_main.dw_stars_rel_dict.
+//
+//		Arguments passed to this function:
+//
+//		1.	as_elem_name	-	Table name
+//
+//		Returns: string - id_2 which = Dictionary.elem_tbl_type  
+//								If not found, '' is returned.
+//
+//*************************************************************************
+//	
+//		HRB 12/19/95 - revised to filter out FastTrack invoice types, thus
+//							canNOT be used to find FastTrack invoice types
+//
+//*************************************************************************
+
+string	ls_filter, ls_id_2, ls_elem_name
+int		li_rc
+long		ll_max_rows
+
+
+	//	Make sure that nothing has been previously filtered
+li_rc			=	w_main.dw_stars_rel_dict.SetFilter("")
+li_rc			=	w_main.dw_stars_rel_dict.Filter()
+
+ls_elem_name =	Trim (as_elem_name)
+
+ls_filter	=	"dictionary_elem_name = '"	+	ls_elem_name	+	"'"
+ 
+li_rc			=	w_main.dw_stars_rel_dict.SetFilter(ls_filter)
+li_rc			=	w_main.dw_stars_rel_dict.Filter()
+
+If	li_rc		<>	1	Then
+	MessageBox ("ERROR","Unable to set the filter on stars_rel in "	+	&
+					"fx_get_stars_rel_tbl_type().")
+	Return ''
+End If
+
+	//	Determine the maximum row count 
+
+ll_max_rows		=	w_main.dw_stars_rel_dict.RowCount()
+
+IF ll_max_rows	<	1		THEN
+	Return ''
+END IF
+
+//HRB 12/19/95 - added to filter out FastTrack invoice types
+int i
+string ls_temp
+for i = 1 to ll_max_rows
+	ls_id_2	=	w_main.dw_stars_rel_dict.GetItemString (i, "id_2")
+	ls_temp = upper(left(ls_id_2,1))
+	if ls_temp <> 'O' and ls_temp <> 'Q' then
+		exit  //return id_2 which is not fasttrack
+	end if
+next  
+//HRB 12/190/95 - end
+
+Return ls_id_2
+
+
+end function
+

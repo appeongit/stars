@@ -1,0 +1,79 @@
+﻿$PBExportHeader$d_dictionary_maint.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=67108864 processing=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=556 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=elem_col_number dbname="DICTIONARY.ELEM_COL_NUMBER"  )
+column=(type=char(2) key=yes update=yes updatewhereclause=yes name=elem_tbl_type dbname="DICTIONARY.ELEM_TBL_TYPE"  )
+column=(type=char(32) key=yes update=yes updatewhereclause=yes name=elem_name dbname="DICTIONARY.ELEM_NAME"  )
+column=(type=char(15) update=yes updatewhereclause=yes name=elem_elem_label dbname="DICTIONARY.ELEM_ELEM_LABEL"  )
+column=(type=char(15) update=yes updatewhereclause=yes name=elem_data_type dbname="DICTIONARY.ELEM_DATA_TYPE"  )
+column=(type=long update=yes updatewhereclause=yes name=elem_data_len dbname="DICTIONARY.ELEM_DATA_LEN"  )
+column=(type=char(1) update=yes updatewhereclause=yes name=elem_indx_ind dbname="DICTIONARY.ELEM_INDX_IND"  )
+column=(type=char(255) update=yes updatewhereclause=yes name=elem_desc dbname="DICTIONARY.ELEM_DESC"  )
+column=(type=long update=yes updatewhereclause=yes name=crit_seq dbname="DICTIONARY.CRIT_SEQ"  )
+column=(type=char(2) key=yes update=yes updatewhereclause=yes name=elem_type dbname="DICTIONARY.ELEM_TYPE"  )
+column=(type=char(5) update=yes updatewhereclause=yes name=elem_lookup_type dbname="DICTIONARY.elem_lookup_type" 
+ values=""  )
+column=(type=long update=yes updatewhereclause=yes name=min_len dbname="DICTIONARY.MIN_LEN"  )
+column=(type=long update=yes updatewhereclause=yes name=lead_alpha dbname="DICTIONARY.LEAD_ALPHA"  )
+column=(type=long update=yes updatewhereclause=yes name=disp_seq dbname="DICTIONARY.DISP_SEQ"  )
+column=(type=char(32) update=yes updatewhereclause=yes name=disp_format dbname="DICTIONARY.DISP_FORMAT" 
+ values=""  )
+column=(type=long updatewhereclause=yes name=elem_data_scale dbname="DICTIONARY.ELEM_DATA_SCALE"  )
+column=(type=char(15) updatewhereclause=yes name=elem_crit_label dbname="ELEM_CRIT_LABEL"  )
+ retrieve="  SELECT DICTIONARY.ELEM_COL_NUMBER,   
+         DICTIONARY.ELEM_TBL_TYPE,   
+         DICTIONARY.ELEM_NAME,   
+         DICTIONARY.ELEM_ELEM_LABEL,   
+         DICTIONARY.ELEM_DATA_TYPE,   
+         DICTIONARY.ELEM_DATA_LEN,   
+         DICTIONARY.ELEM_INDX_IND,   
+         DICTIONARY.ELEM_DESC,   
+         DICTIONARY.CRIT_SEQ,   
+         DICTIONARY.ELEM_TYPE,   
+         DICTIONARY.elem_lookup_type,   
+         DICTIONARY.MIN_LEN,   
+         DICTIONARY.LEAD_ALPHA,   
+         DICTIONARY.DISP_SEQ,   
+         DICTIONARY.DISP_FORMAT,   
+         DICTIONARY.ELEM_DATA_SCALE,
+  			'               ' AS ELEM_CRIT_LABEL
+    FROM DICTIONARY  
+   WHERE ( DICTIONARY.ELEM_TYPE = :as_elem_type ) AND  
+         ( DICTIONARY.ELEM_TBL_TYPE = :as_elem_tbl_type ) AND  
+         ( DICTIONARY.ELEM_NAME = :as_elem_name )    
+"
+  update="DICTIONARY" updatewhere=0 updatekeyinplace=no
+  arguments=(("as_elem_type", string), ("as_elem_tbl_type", string), ("as_elem_name", string))
+)
+column(name=elem_lookup_type visible="1" band=detail id=11 x="2080" y="228" height="76" width="1038" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" dddw.allowedit=no dddw.autohscroll=no dddw.autoretrieve=yes dddw.useasborder=yes dddw.datacolumn=code_code dddw.displaycolumn=cf_codes dddw.hscrollbar=yes dddw.hsplitscroll=no dddw.imemode=0 dddw.limit=0 dddw.name=d_dddw_lookup_type dddw.nilisnull=no dddw.percentwidth=150 dddw.required=no dddw.showlist=no dddw.vscrollbar=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" tabsequence=80 accessibledescription="~"Lookup Type~"	~"Lookup Type~"" accessiblename="~"Lookup Type~"	~"Lookup Type~"" )
+column(name=disp_format visible="1" band=detail id=15 x="498" y="228" height="76" width="1115" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" dddw.allowedit=no dddw.autohscroll=no dddw.autoretrieve=no dddw.useasborder=yes dddw.datacolumn=code_value_a dddw.displaycolumn=code_value_a dddw.hscrollbar=yes dddw.hsplitscroll=no dddw.imemode=0 dddw.limit=0 dddw.name=d_dddw_disp_format dddw.nilisnull=no dddw.percentwidth=150 dddw.required=no dddw.showlist=no dddw.vscrollbar=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" tabsequence=70 accessibledescription="~"Display Format~"	~"Display Format~"" accessiblename="~"Display Format~"	~"Display Format~"" )
+column(name=elem_elem_label visible="1" band=detail id=4 x="498" y="120" height="76" width="814" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=15 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" tabsequence=20 accessibledescription="~"Display Label~"	~"Display Label~"" accessiblename="~"Display Label~"	~"Display Label~"" )
+column(name=elem_crit_label visible="1" band=detail id=17 x="498" y="12" height="76" width="814" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=15 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" tabsequence=10 accessibledescription="~"Criteria Label~"	~"Criteria Label~"" accessiblename="~"Criteria Label~"	~"Criteria Label~"" )
+column(name=disp_seq visible="1" band=detail id=14 x="1929" y="120" height="76" width="343" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" editmask.focusrectangle=no editmask.autoskip=no editmask.required=no editmask.readonly=no editmask.codetable=no editmask.ddcalendar=no editmask.spin=yes editmask.useformat=no editmask.spinincr=0 editmask.mask="###0" editmask.imemode=0 editmask.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" tabsequence=40 accessibledescription="~"Display Sequence~"	~"Display Sequence~"" accessiblename="~"Display Sequence~"	~"Display Sequence~"" )
+column(name=lead_alpha visible="1" band=detail id=13 x="2770" y="120" height="76" width="343" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" editmask.focusrectangle=no editmask.autoskip=no editmask.required=no editmask.readonly=no editmask.codetable=no editmask.ddcalendar=no editmask.spin=yes editmask.useformat=no editmask.spinincr=0 editmask.spinrange="0" editmask.mask="###0" editmask.imemode=0 editmask.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" tabsequence=60 accessibledescription="~"Alpha Length~"	~"Alpha Length~"" accessiblename="~"Alpha Length~"	~"Alpha Length~"" )
+column(name=crit_seq visible="1" band=detail id=9 x="1929" y="12" height="76" width="343" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" editmask.focusrectangle=no editmask.autoskip=no editmask.required=no editmask.readonly=no editmask.codetable=no editmask.ddcalendar=no editmask.spin=yes editmask.useformat=no editmask.spinincr=0 editmask.spinrange="0" editmask.mask="###0" editmask.imemode=0 editmask.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" tabsequence=30 accessibledescription="~"Criteria Sequence~"	~"Criteria Sequence~"" accessiblename="~"Criteria Sequence~"	~"Criteria Sequence~"" )
+column(name=min_len visible="1" band=detail id=12 x="2770" y="12" height="76" width="343" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" editmask.focusrectangle=no editmask.autoskip=no editmask.required=no editmask.readonly=no editmask.codetable=no editmask.ddcalendar=no editmask.spin=yes editmask.useformat=no editmask.spinincr=0 editmask.spinrange="0" editmask.mask="###0" editmask.imemode=0 editmask.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" tabsequence=50 accessibledescription="~"Minimum Length~"	~"Minimum Length~"" accessiblename="~"Minimum Length~"	~"Minimum Length~"" )
+column(name=elem_desc visible="1" band=detail id=8 x="498" y="336" height="212" width="2619" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=239 edit.password=no edit.vscrollbar=yes edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" tabsequence=90 accessibledescription="~"Description~"	~"Description~"" accessiblename="~"Description ~"	~"Description ~"" )
+text(name=elem_desc_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="14" y="340" height="52" width="462" text="Description:" html.valueishtml="0" accessibledescription="~"Description~"	~"Description~"" accessiblename="~"Description~"	~"Description~"" accessiblerole=42 )
+text(name=disp_format_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="14" y="232" height="52" width="462" text="Display Format:" html.valueishtml="0" accessibledescription="~"Display Format~"	~"Display Format~"" accessiblename="~"Display Format~"	~"Display Format~"" accessiblerole=42 )
+text(name=elem_elem_label_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="14" y="124" height="52" width="462" text="Display Label:" html.valueishtml="0" accessibledescription="~"Display Label~"	~"Display Label~"" accessiblename="~"Display Label~"	~"Display Label~"" accessiblerole=42 )
+text(name=elem_crit_label_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="14" y="16" height="52" width="462" text="Criteria Label:" html.valueishtml="0" accessibledescription="~"Criteria Label~"	~"Criteria Label~"" accessiblename="~"Criteria Label~"	~"Criteria Label~"" accessiblerole=42 )
+text(name=crit_seq_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="1" border="0" x="1376" y="16" height="52" width="521" text="Criteria Sequence:" html.valueishtml="0" accessibledescription="~"Criteria Sequence~"	~"Criteria Sequence~"" accessiblename="~"Criteria Sequence~"	~"Criteria Sequence~"" accessiblerole=42 )
+text(name=disp_seq_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="1" border="0" x="1376" y="124" height="52" width="521" text="Display Sequence:" html.valueishtml="0" accessibledescription="~"Display Sequence~"	~"Display Sequence~"" accessiblename="~"Display Sequence~"	~"Display Sequence~"" accessiblerole=42 )
+text(name=elem_lookup_type_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="1" border="0" x="1650" y="236" height="52" width="407" text="Lookup Type:" html.valueishtml="0" accessibledescription="~"Lookup Type~"	~"Lookup Type~"" accessiblename="~"Lookup Type~"	~"Lookup Type~"" accessiblerole=42 )
+text(name=lead_alpha_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="1" border="0" x="2309" y="124" height="52" width="439" text="Alpha Length:" html.valueishtml="0" accessibledescription="~"Alpha Length~"	~"Alpha Length~"" accessiblename="~"Alpha Length~"	~"Alpha Length~"" accessiblerole=42 )
+text(name=min_len_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="1" border="0" x="2309" y="16" height="52" width="439" text="Minimum Length:" html.valueishtml="0" accessibledescription="~"Minimum Length~"	~"Minimum Length~"" accessiblename="~"Minimum Length~"	~"Minimum Length~"" accessiblerole=42 )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )

@@ -1,0 +1,27 @@
+﻿$PBExportHeader$d_window_apps.srd
+$PBExportComments$Lists Windows APPs from Code ('WA') <gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=0 print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=97 print.margin.bottom=97 print.paper.size=0 print.paper.source=0 selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(5) updatewhereclause=yes name=code_type dbname="CODE.CODE_TYPE"  )
+column=(type=char(15) updatewhereclause=yes name=code_code dbname="CODE.CODE_CODE"  )
+column=(type=char(255) updatewhereclause=yes name=code_desc dbname="CODE.CODE_DESC"  )
+column=(type=char(32) updatewhereclause=yes name=code_value_a dbname="CODE.CODE_VALUE_A"  )
+column=(type=number updatewhereclause=yes name=code_value_n dbname="CODE.CODE_VALUE_N"  )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"CODE~" ) COLUMN(NAME=~"CODE.CODE_TYPE~") COLUMN(NAME=~"CODE.CODE_CODE~") COLUMN(NAME=~"CODE.CODE_DESC~") COLUMN(NAME=~"CODE.CODE_VALUE_A~") COLUMN(NAME=~"CODE.CODE_VALUE_N~")WHERE( EXP1 =~"CODE.CODE_TYPE~" OP =~"=~" EXP2 =~"'WA'~" ) ) ORDER(NAME=~"CODE.CODE_CODE~" ASC=yes ) "
+ )
+text(name=code_code_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" font.underline="1" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="9" y="8" height="64" width="325" text="Application" accessibledescription="~"Application~"	~"Application~"" accessiblename="~"Application ~"	~"Application ~"" accessiblerole=42 )
+column(name=code_code band=detail id=2 x="9" y="8" height="76" width="512" color="33554432" border="0" alignment="0" format="[general]" edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=15 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"Application~"	~"Application~"" accessiblename="~"Application~"	~"Application~"" )
+htmltable(border="1" cellPadding="0" cellSpacing="0" generateCSS="no" noWrap="yes" )
+htmlgen(pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

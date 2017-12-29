@@ -1,0 +1,7 @@
+﻿$PBExportHeader$sx_plan_elig.srs
+global type sx_plan_elig from structure
+    string id
+    string ein
+    string desc
+end type
+

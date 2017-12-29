@@ -1,0 +1,35 @@
+﻿$PBExportHeader$d_bg_step_cntl_list_by_case_id.srd
+$PBExportComments$<logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=144 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(10) updatewhereclause=yes name=bg_step_cntl_job_id dbname="BG_STEP_CNTL.JOB_ID" )
+ column=(type=datetime updatewhereclause=yes name=server_jobs_sched_next_date dbname="SERVER_JOBS.SCHED_NEXT_DATE" )
+ column=(type=char(20) updatewhereclause=yes name=bg_step_cntl_subc_name dbname="BG_STEP_CNTL.SUBC_NAME" )
+ retrieve="  SELECT BG_STEP_CNTL.JOB_ID,   
+         SERVER_JOBS.SCHED_NEXT_DATE,   
+         BG_STEP_CNTL.SUBC_NAME  
+    FROM SERVER_JOBS,   
+         BG_STEP_CNTL  
+   WHERE ( SERVER_JOBS.JOB_DESC = BG_STEP_CNTL.JOB_ID ) and  
+         ( BG_STEP_CNTL.STEP_STATUS <> 'E' AND  
+         BG_STEP_CNTL.STEP_STATUS <> 'C') AND 
+			( SERVER_JOBS.STATUS <> -1024) AND 
+         ( BG_STEP_CNTL.STEP_TYPE = 'SUBSET' ) AND  
+         ( BG_STEP_CNTL.CASE_ID = Upper(:arg_case_id) ) AND  
+         ( BG_STEP_CNTL.CASE_SPL = Upper(:arg_case_spl) ) AND  
+         ( BG_STEP_CNTL.CASE_VER = Upper(:arg_case_ver) )    
+" arguments=(("arg_case_id", string),("arg_case_spl", string),("arg_case_ver", string)) )
+text(band=header alignment="2" text="Bg Step Cntl
+ Job Id" border="0" color="0" x="9" y="8" height="128" width="626"  name=t_2  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="626" format="[general]"  name=bg_step_cntl_job_id edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Bg Step Cntl 
+Subc Name" border="0" color="0" x="645" y="8" height="128" width="731"  name=t_1  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Server Jobs Sched Next Date" border="0" color="0" x="1385" y="8" height="128" width="699"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="645" y="8" height="76" width="731" format="[general]"  name=bg_step_cntl_subc_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=0 border="0" color="0" x="1390" y="8" height="76" width="695"  name=server_jobs_sched_next_date  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

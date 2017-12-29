@@ -1,0 +1,14 @@
+﻿$PBExportHeader$sx_pdq_criteria.srs
+global type sx_pdq_criteria from structure
+	string		query_id
+	integer		level_num
+	integer		seq_num
+	string		tbl_type
+	string		left_paren
+	string		col_name
+	string		rel_op
+	string		col_value
+	string		right_paren
+	string		logic_op
+end type
+

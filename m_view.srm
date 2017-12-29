@@ -1,0 +1,3968 @@
+HA$PBExportHeader$m_view.srm
+$PBExportComments$Right-mouse menu for tabpage_view
+forward
+global type m_view from menu
+end type
+type m_menu from menu within m_view
+end type
+type m_windowoperations from menu within m_menu
+end type
+type m_appendfilter from menu within m_windowoperations
+end type
+type m_createfilter from menu within m_windowoperations
+end type
+type m_- from menu within m_windowoperations
+end type
+type m_codedecode from menu within m_windowoperations
+end type
+type m_sortrank from menu within m_windowoperations
+end type
+type m_-2 from menu within m_windowoperations
+end type
+type m_displayfilter from menu within m_windowoperations
+end type
+type m_find from menu within m_windowoperations
+end type
+type m_-5 from menu within m_windowoperations
+end type
+type m_aligncolumn from menu within m_windowoperations
+end type
+type m_uniquecount from menu within m_windowoperations
+end type
+type m_windowoperations from menu within m_menu
+m_appendfilter m_appendfilter
+m_createfilter m_createfilter
+m_- m_-
+m_codedecode m_codedecode
+m_sortrank m_sortrank
+m_-2 m_-2
+m_displayfilter m_displayfilter
+m_find m_find
+m_-5 m_-5
+m_aligncolumn m_aligncolumn
+m_uniquecount m_uniquecount
+end type
+type m_save from menu within m_menu
+end type
+type m_createsubset from menu within m_save
+end type
+type m_criteriasave from menu within m_save
+end type
+type m_querysave from menu within m_save
+end type
+type m_querysaveas from menu within m_save
+end type
+type m_reportsave from menu within m_save
+end type
+type m_save from menu within m_menu
+m_createsubset m_createsubset
+m_criteriasave m_criteriasave
+m_querysave m_querysave
+m_querysaveas m_querysaveas
+m_reportsave m_reportsave
+end type
+type m_exportpdq from menu within m_menu
+end type
+type m_nextlevel from menu within m_menu
+end type
+type m_drilldown from menu within m_menu
+end type
+type m_1 from menu within m_drilldown
+end type
+type m_2 from menu within m_drilldown
+end type
+type m_3 from menu within m_drilldown
+end type
+type m_4 from menu within m_drilldown
+end type
+type m_5 from menu within m_drilldown
+end type
+type m_6 from menu within m_drilldown
+end type
+type m_7 from menu within m_drilldown
+end type
+type m_8 from menu within m_drilldown
+end type
+type m_9 from menu within m_drilldown
+end type
+type m_10 from menu within m_drilldown
+end type
+type m_drilldown from menu within m_menu
+m_1 m_1
+m_2 m_2
+m_3 m_3
+m_4 m_4
+m_5 m_5
+m_6 m_6
+m_7 m_7
+m_8 m_8
+m_9 m_9
+m_10 m_10
+end type
+type m_undodrilldown from menu within m_menu
+end type
+type m_claimoperations from menu within m_menu
+end type
+type m_claimdetail from menu within m_claimoperations
+end type
+type m_viewclaim from menu within m_claimoperations
+end type
+type m_claimoperations from menu within m_menu
+m_claimdetail m_claimdetail
+m_viewclaim m_viewclaim
+end type
+type m_link from menu within m_menu
+end type
+type m_note from menu within m_menu
+end type
+type m_-3 from menu within m_menu
+end type
+type m_reporttools from menu within m_menu
+end type
+type m_map from menu within m_reporttools
+end type
+type m_graph from menu within m_reporttools
+end type
+type m_crystalreports from menu within m_reporttools
+end type
+type m_exportreport from menu within m_reporttools
+end type
+type m_calendar from menu within m_reporttools
+end type
+type m_reporttools from menu within m_menu
+m_map m_map
+m_graph m_graph
+m_crystalreports m_crystalreports
+m_exportreport m_exportreport
+m_calendar m_calendar
+end type
+type m_-4 from menu within m_menu
+end type
+type m_list from menu within m_menu
+end type
+type m_providers from menu within m_list
+end type
+type m_patients from menu within m_list
+end type
+type m_list from menu within m_menu
+m_providers m_providers
+m_patients m_patients
+end type
+type m_uniquecounts from menu within m_menu
+end type
+type m_revenue from menu within m_uniquecounts
+end type
+type m_patientalwdsrvc0 from menu within m_uniquecounts
+end type
+type m_uniquecounts from menu within m_menu
+m_revenue m_revenue
+m_patientalwdsrvc0 m_patientalwdsrvc0
+end type
+type m_statistics from menu within m_menu
+end type
+type m_sum from menu within m_statistics
+end type
+type m_avg from menu within m_statistics
+end type
+type m_med from menu within m_statistics
+end type
+type m_mode from menu within m_statistics
+end type
+type m_min from menu within m_statistics
+end type
+type m_max from menu within m_statistics
+end type
+type m_std from menu within m_statistics
+end type
+type m_var from menu within m_statistics
+end type
+type m_0 from menu within m_statistics
+end type
+type m_all from menu within m_statistics
+end type
+type m_statistics from menu within m_menu
+m_sum m_sum
+m_avg m_avg
+m_med m_med
+m_mode m_mode
+m_min m_min
+m_max m_max
+m_std m_std
+m_var m_var
+m_0 m_0
+m_all m_all
+end type
+type m_-7 from menu within m_menu
+end type
+type m_removelevel from menu within m_menu
+end type
+type m_-1 from menu within m_menu
+end type
+type m_help from menu within m_menu
+end type
+type m_menu from menu within m_view
+m_windowoperations m_windowoperations
+m_save m_save
+m_exportpdq m_exportpdq
+m_nextlevel m_nextlevel
+m_drilldown m_drilldown
+m_undodrilldown m_undodrilldown
+m_claimoperations m_claimoperations
+m_link m_link
+m_note m_note
+m_-3 m_-3
+m_reporttools m_reporttools
+m_-4 m_-4
+m_list m_list
+m_uniquecounts m_uniquecounts
+m_statistics m_statistics
+m_-7 m_-7
+m_removelevel m_removelevel
+m_-1 m_-1
+m_help m_help
+end type
+global type m_view from menu
+m_menu m_menu
+end type
+end forward
+
+global type m_view from menu
+m_menu m_menu
+end type
+global m_view m_view
+
+type variables
+// Window used by this menu
+w_query_engine	iw_query_engine
+
+// Query engine user object
+uo_query		iu_query
+
+// Constants
+Constant	String	ics_report = 'REPORT',	&
+		ics_append_filter = 'Append Col Filter', &
+		ics_create_filter = 'Create Col Filter', &
+		ics_code_decode = 'Code/Decode', &
+		ics_sort_rank = 'Sort/Rank',	&
+		ics_display_filter = 'Display Filter', &
+		ics_find = 'Find',		&
+		ics_align = 'Align',		&
+		ics_count = 'Count Unique Values',	&
+		ics_save = 'S',		&
+		ics_saveas = 'A',		&
+		ics_providers = 'PROVIDERS', &
+		ics_patients = 'PATIENTS',	&
+		ics_icn = 'ICN',		&
+		ics_revenue = 'REVENUE',	&
+		ics_patsrvc = 'PATSRVC',        &
+                                ics_ReportFxParm = 'VIEW'
+
+end variables
+
+forward prototypes
+public subroutine of_stats ()
+public subroutine of_reset_stats ()
+end prototypes
+
+public subroutine of_stats ();//*********************************************************************************
+// Script Name:	m_menu.m_statistics.m_sum.clicked
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:	This script calls the script that executes the statistics logic
+//
+//*********************************************************************************
+//
+//	09/10/09	GaryR	QEN.650.5229.005	Add statisitics to QE report
+//
+//*********************************************************************************
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+If IsValid(iu_Query) Then iu_query.Event	ue_tabpage_view_stats()
+end subroutine
+
+public subroutine of_reset_stats ();//*********************************************************************************
+// Script Name:	m_menu.m_statistics.m_sum.clicked
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:	This script unchecks all statistics menu items
+//
+//*********************************************************************************
+//
+//	09/10/09	GaryR	QEN.650.5229.005	Add statisitics to QE report
+//
+//*********************************************************************************
+
+m_menu.m_statistics.m_sum.checked = FALSE
+m_menu.m_statistics.m_avg.checked = FALSE
+m_menu.m_statistics.m_med.checked = FALSE
+m_menu.m_statistics.m_mode.checked = FALSE
+m_menu.m_statistics.m_min.checked = FALSE
+m_menu.m_statistics.m_max.checked = FALSE
+m_menu.m_statistics.m_std.checked = FALSE
+m_menu.m_statistics.m_var.checked = FALSE
+m_menu.m_statistics.m_all.checked = FALSE
+end subroutine
+
+on m_view.create
+m_view=this
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_menu=create m_menu
+this.Item[UpperBound(this.Item)+1]=this.m_menu
+end on
+
+on m_view.destroy
+call super::destroy
+destroy(this.m_menu)
+end on
+
+type m_menu from menu within m_view
+m_windowoperations m_windowoperations
+m_save m_save
+m_exportpdq m_exportpdq
+m_nextlevel m_nextlevel
+m_drilldown m_drilldown
+m_undodrilldown m_undodrilldown
+m_claimoperations m_claimoperations
+m_link m_link
+m_note m_note
+m_-3 m_-3
+m_reporttools m_reporttools
+m_-4 m_-4
+m_list m_list
+m_uniquecounts m_uniquecounts
+m_statistics m_statistics
+m_-7 m_-7
+m_removelevel m_removelevel
+m_-1 m_-1
+m_help m_help
+end type
+
+on m_menu.create
+call super::create
+this.text = "m_view"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_windowoperations=create m_windowoperations
+this.m_save=create m_save
+this.m_exportpdq=create m_exportpdq
+this.m_nextlevel=create m_nextlevel
+this.m_drilldown=create m_drilldown
+this.m_undodrilldown=create m_undodrilldown
+this.m_claimoperations=create m_claimoperations
+this.m_link=create m_link
+this.m_note=create m_note
+this.m_-3=create m_-3
+this.m_reporttools=create m_reporttools
+this.m_-4=create m_-4
+this.m_list=create m_list
+this.m_uniquecounts=create m_uniquecounts
+this.m_statistics=create m_statistics
+this.m_-7=create m_-7
+this.m_removelevel=create m_removelevel
+this.m_-1=create m_-1
+this.m_help=create m_help
+this.Item[UpperBound(this.Item)+1]=this.m_windowoperations
+this.Item[UpperBound(this.Item)+1]=this.m_save
+this.Item[UpperBound(this.Item)+1]=this.m_exportpdq
+this.Item[UpperBound(this.Item)+1]=this.m_nextlevel
+this.Item[UpperBound(this.Item)+1]=this.m_drilldown
+this.Item[UpperBound(this.Item)+1]=this.m_undodrilldown
+this.Item[UpperBound(this.Item)+1]=this.m_claimoperations
+this.Item[UpperBound(this.Item)+1]=this.m_link
+this.Item[UpperBound(this.Item)+1]=this.m_note
+this.Item[UpperBound(this.Item)+1]=this.m_-3
+this.Item[UpperBound(this.Item)+1]=this.m_reporttools
+this.Item[UpperBound(this.Item)+1]=this.m_-4
+this.Item[UpperBound(this.Item)+1]=this.m_list
+this.Item[UpperBound(this.Item)+1]=this.m_uniquecounts
+this.Item[UpperBound(this.Item)+1]=this.m_statistics
+this.Item[UpperBound(this.Item)+1]=this.m_-7
+this.Item[UpperBound(this.Item)+1]=this.m_removelevel
+this.Item[UpperBound(this.Item)+1]=this.m_-1
+this.Item[UpperBound(this.Item)+1]=this.m_help
+end on
+
+on m_menu.destroy
+call super::destroy
+destroy(this.m_windowoperations)
+destroy(this.m_save)
+destroy(this.m_exportpdq)
+destroy(this.m_nextlevel)
+destroy(this.m_drilldown)
+destroy(this.m_undodrilldown)
+destroy(this.m_claimoperations)
+destroy(this.m_link)
+destroy(this.m_note)
+destroy(this.m_-3)
+destroy(this.m_reporttools)
+destroy(this.m_-4)
+destroy(this.m_list)
+destroy(this.m_uniquecounts)
+destroy(this.m_statistics)
+destroy(this.m_-7)
+destroy(this.m_removelevel)
+destroy(this.m_-1)
+destroy(this.m_help)
+end on
+
+type m_windowoperations from menu within m_menu
+m_appendfilter m_appendfilter
+m_createfilter m_createfilter
+m_- m_-
+m_codedecode m_codedecode
+m_sortrank m_sortrank
+m_-2 m_-2
+m_displayfilter m_displayfilter
+m_find m_find
+m_-5 m_-5
+m_aligncolumn m_aligncolumn
+m_uniquecount m_uniquecount
+end type
+
+on m_windowoperations.create
+call super::create
+this.text = "&Window Operations"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_appendfilter=create m_appendfilter
+this.m_createfilter=create m_createfilter
+this.m_-=create m_-
+this.m_codedecode=create m_codedecode
+this.m_sortrank=create m_sortrank
+this.m_-2=create m_-2
+this.m_displayfilter=create m_displayfilter
+this.m_find=create m_find
+this.m_-5=create m_-5
+this.m_aligncolumn=create m_aligncolumn
+this.m_uniquecount=create m_uniquecount
+this.Item[UpperBound(this.Item)+1]=this.m_appendfilter
+this.Item[UpperBound(this.Item)+1]=this.m_createfilter
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_codedecode
+this.Item[UpperBound(this.Item)+1]=this.m_sortrank
+this.Item[UpperBound(this.Item)+1]=this.m_-2
+this.Item[UpperBound(this.Item)+1]=this.m_displayfilter
+this.Item[UpperBound(this.Item)+1]=this.m_find
+this.Item[UpperBound(this.Item)+1]=this.m_-5
+this.Item[UpperBound(this.Item)+1]=this.m_aligncolumn
+this.Item[UpperBound(this.Item)+1]=this.m_uniquecount
+end on
+
+on m_windowoperations.destroy
+call super::destroy
+destroy(this.m_appendfilter)
+destroy(this.m_createfilter)
+destroy(this.m_-)
+destroy(this.m_codedecode)
+destroy(this.m_sortrank)
+destroy(this.m_-2)
+destroy(this.m_displayfilter)
+destroy(this.m_find)
+destroy(this.m_-5)
+destroy(this.m_aligncolumn)
+destroy(this.m_uniquecount)
+end on
+
+type m_appendfilter from menu within m_windowoperations
+end type
+
+on m_appendfilter.create
+call super::create
+this.text = "&Append Filter..."
+this.microhelp = "Append unique column values to an existing filter."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_appendfilter
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger uo_query.ue_window_operations event for
+//		appending a column filter.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+// JSB      01/07/02    Add Microhelp (track# 2609).
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+setmicrohelp(w_main,'Ready to append filter. Double-click a column header to begin.')
+
+iw_query_engine	=	This.ParentWindow
+
+
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	iu_query.Event	ue_window_operations(ics_append_filter, ics_report)
+End If
+
+end event
+
+on m_appendfilter.destroy
+call super::destroy
+end on
+
+type m_createfilter from menu within m_windowoperations
+end type
+
+on m_createfilter.create
+call super::create
+this.text = "&Create Filter..."
+this.microhelp = "Create a new filter for this query."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_createfilter
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger uo_query.ue_window_operations event for
+//		creating a column filter.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+// JSB      01/07/02    Add Microhelp (track# 2609).
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+setmicrohelp(w_main,'Ready to create filter. Double-click a column header to begin.')
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	iu_query.Event	ue_window_operations(ics_create_filter, ics_report)
+End If
+
+end event
+
+on m_createfilter.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_windowoperations
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_codedecode from menu within m_windowoperations
+end type
+
+on m_codedecode.create
+call super::create
+this.text = "C&ode/Decode..."
+this.microhelp = "Display the description for each code in a selected column."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_codedecode
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger uo_query.ue_window_operations event for
+//		Code/Decode.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+// JSB      01/07/02    Add Microhelp (track# 2609).
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+setmicrohelp(w_main,'Ready to code/decode. Double-click a column header to begin.')
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	iu_query.Event	ue_window_operations(ics_code_decode, ics_report)
+End If
+
+end event
+
+on m_codedecode.destroy
+call super::destroy
+end on
+
+type m_sortrank from menu within m_windowoperations
+end type
+
+on m_sortrank.create
+call super::create
+this.text = "&Sort/Rank..."
+this.microhelp = "Sort the report data."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_sortrank
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger uo_query.ue_window_operations event for
+//		Sort/Rank.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+// JSB      01/07/02    Add Microhelp (track# 2609).
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+setmicrohelp(w_main,'Ready to sort/rank. Double-click column headers to begin..')
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	iu_query.Event	ue_window_operations(ics_sort_rank, ics_report)
+End If
+
+end event
+
+on m_sortrank.destroy
+call super::destroy
+end on
+
+type m_-2 from menu within m_windowoperations
+end type
+
+on m_-2.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-2.destroy
+call super::destroy
+end on
+
+type m_displayfilter from menu within m_windowoperations
+end type
+
+on m_displayfilter.create
+call super::create
+this.text = "&Display Filter..."
+this.microhelp = "Filter the existing data on the report."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_displayfilter
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger uo_query.ue_window_operations event for
+//		Display Filter.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	iu_query.Event	ue_window_operations(ics_display_filter, ics_report)
+End If
+
+end event
+
+on m_displayfilter.destroy
+call super::destroy
+end on
+
+type m_find from menu within m_windowoperations
+end type
+
+on m_find.create
+call super::create
+this.text = "&Find..."
+this.microhelp = "Find a value in a column on the report."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_find
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger uo_query.ue_window_operations event for
+//		Find.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+// JSB      01/07/02    Add Microhelp (track# 2609).
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+setmicrohelp(w_main,'Ready to find. Double-click a column header to begin.')
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	iu_query.Event	ue_window_operations(ics_find, ics_report)
+End If
+
+end event
+
+on m_find.destroy
+call super::destroy
+end on
+
+type m_-5 from menu within m_windowoperations
+end type
+
+on m_-5.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-5.destroy
+call super::destroy
+end on
+
+type m_aligncolumn from menu within m_windowoperations
+end type
+
+on m_aligncolumn.create
+call super::create
+this.text = "A&lign..."
+this.microhelp = "Align column"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_aligncolumn
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger uo_query.ue_window_operations event for
+//		Column Alignment.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	GR		04/17/2000		Created.
+//
+// JSB      01/07/02    Add Microhelp (track# 2609).
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+setmicrohelp(w_main,'Ready to align. Double-click column headers to begin.')
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	iu_query.Event	ue_window_operations(ics_align, ics_report)
+End If
+
+end event
+
+on m_aligncolumn.destroy
+call super::destroy
+end on
+
+type m_uniquecount from menu within m_windowoperations
+end type
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_uniquecount
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger uo_query.ue_window_operations event for
+//		Unique Counts.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	05/11/04	GaryR	Track 4016d	Add a Unique Count option to Window Operations
+//	12/15/04	GaryR	Track	4161d	Rename Unique Count to Count Unique Values
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+w_main.setmicrohelp('Double-click column headers to obtain unique value count.')
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	iu_query.Event	ue_window_operations(ics_count, ics_report)
+End If
+
+end event
+
+on m_uniquecount.create
+call super::create
+this.text = "Count &Unique Values..."
+this.microhelp = "Count unique values"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_uniquecount.destroy
+call super::destroy
+end on
+
+type m_save from menu within m_menu
+m_createsubset m_createsubset
+m_criteriasave m_criteriasave
+m_querysave m_querysave
+m_querysaveas m_querysaveas
+m_reportsave m_reportsave
+end type
+
+on m_save.create
+call super::create
+this.text = "&Save "
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_createsubset=create m_createsubset
+this.m_criteriasave=create m_criteriasave
+this.m_querysave=create m_querysave
+this.m_querysaveas=create m_querysaveas
+this.m_reportsave=create m_reportsave
+this.Item[UpperBound(this.Item)+1]=this.m_createsubset
+this.Item[UpperBound(this.Item)+1]=this.m_criteriasave
+this.Item[UpperBound(this.Item)+1]=this.m_querysave
+this.Item[UpperBound(this.Item)+1]=this.m_querysaveas
+this.Item[UpperBound(this.Item)+1]=this.m_reportsave
+end on
+
+on m_save.destroy
+call super::destroy
+destroy(this.m_createsubset)
+destroy(this.m_criteriasave)
+destroy(this.m_querysave)
+destroy(this.m_querysaveas)
+destroy(this.m_reportsave)
+end on
+
+type m_createsubset from menu within m_save
+end type
+
+on m_createsubset.create
+call super::create
+this.text = "&Create Subset..."
+this.microhelp = "Create a subset based on this query."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_createsubset
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger ue_create_subset event to create a subset.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iw_query_engine.Event	ue_create_subset()
+End If
+
+end event
+
+on m_createsubset.destroy
+call super::destroy
+end on
+
+type m_criteriasave from menu within m_save
+end type
+
+on m_criteriasave.create
+call super::create
+this.text = "C&riteria Save"
+this.microhelp = "Save the criteria for this query to the active case."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_criteriasave
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger the event to save the criteria to the
+//		active case.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	iu_query.Event	ue_criteriasave()
+End If
+
+end event
+
+on m_criteriasave.destroy
+call super::destroy
+end on
+
+type m_querysave from menu within m_save
+end type
+
+on m_querysave.create
+call super::create
+this.text = "Query &Save"
+this.microhelp = "Save this query."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_querysave
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger ue_save_query event to either update an
+//		existing query or create a new query.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+	If IsValid(iu_Query) Then
+		If	iu_query.Event	ue_get_new_flag()	then
+			iw_query_engine.Event	ue_save_query(ics_saveas)
+		Else
+			iw_query_engine.Event	ue_save_query(ics_save)
+		End If
+	End If
+End If
+
+end event
+
+on m_querysave.destroy
+call super::destroy
+end on
+
+type m_querysaveas from menu within m_save
+end type
+
+on m_querysaveas.create
+call super::create
+this.text = "Query Save &As..."
+this.microhelp = "Use this query to create another query."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_querysaveas
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger ue_save_query event to create a new query.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iw_query_engine.Event	ue_save_query(ics_saveas)
+End If
+
+end event
+
+on m_querysaveas.destroy
+call super::destroy
+end on
+
+type m_reportsave from menu within m_save
+end type
+
+event clicked;fx_m_save()
+end event
+
+on m_reportsave.create
+call super::create
+this.text = "&Report Save"
+this.microhelp = "Save the report for this query to the active case."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_reportsave.destroy
+call super::destroy
+end on
+
+type m_exportpdq from menu within m_menu
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_List						m_exportpdq
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// Will export a pdq to a flat file 
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	FNC				10/27/99		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+w_query_engine	lw_parent
+
+SetPointer(HourGlass!)
+
+
+lw_Parent = this.parentwindow
+
+If IsValid(lw_Parent) Then
+	lw_parent.event ue_export_pdq('VIEW')
+End If
+
+
+end event
+
+on m_exportpdq.create
+call super::create
+this.text = "&Export PDQ"
+this.microhelp = "Export the query to a file."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_exportpdq.destroy
+call super::destroy
+end on
+
+type m_nextlevel from menu within m_menu
+end type
+
+on m_nextlevel.create
+call super::create
+this.text = "Ne&xt Level"
+this.microhelp = "Create a new level for a multi-level query."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_nextlevel.destroy
+call super::destroy
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_nextlevel
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger ue_new_level event to open a new level
+//		(a new level tabpage and a new uo_query).
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iw_query_engine.Event	ue_new_level()
+End If
+
+end event
+
+type m_drilldown from menu within m_menu
+m_1 m_1
+m_2 m_2
+m_3 m_3
+m_4 m_4
+m_5 m_5
+m_6 m_6
+m_7 m_7
+m_8 m_8
+m_9 m_9
+m_10 m_10
+end type
+
+on m_drilldown.create
+call super::create
+this.text = "&Drilldown"
+this.microhelp = "Drilldown to another available type of data."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_1=create m_1
+this.m_2=create m_2
+this.m_3=create m_3
+this.m_4=create m_4
+this.m_5=create m_5
+this.m_6=create m_6
+this.m_7=create m_7
+this.m_8=create m_8
+this.m_9=create m_9
+this.m_10=create m_10
+this.Item[UpperBound(this.Item)+1]=this.m_1
+this.Item[UpperBound(this.Item)+1]=this.m_2
+this.Item[UpperBound(this.Item)+1]=this.m_3
+this.Item[UpperBound(this.Item)+1]=this.m_4
+this.Item[UpperBound(this.Item)+1]=this.m_5
+this.Item[UpperBound(this.Item)+1]=this.m_6
+this.Item[UpperBound(this.Item)+1]=this.m_7
+this.Item[UpperBound(this.Item)+1]=this.m_8
+this.Item[UpperBound(this.Item)+1]=this.m_9
+this.Item[UpperBound(this.Item)+1]=this.m_10
+end on
+
+on m_drilldown.destroy
+call super::destroy
+destroy(this.m_1)
+destroy(this.m_2)
+destroy(this.m_3)
+destroy(this.m_4)
+destroy(this.m_5)
+destroy(this.m_6)
+destroy(this.m_7)
+destroy(this.m_8)
+destroy(this.m_9)
+destroy(this.m_10)
+end on
+
+type m_1 from menu within m_drilldown
+end type
+
+event clicked;//*********************************************************************************
+// Event Name:	m_view.m_1
+//	Arguments:	None
+// Returns:		None
+//*********************************************************************************
+
+/*Must check the tag of the menu item to determine if normal drilldown or if Patient or 
+Provider Detail.  If normal drilldown, call the w_query_engine user event to perform 
+the drilldown based on the tag passed to the window.  If Patient or Provider Detail 
+drilldown, call their user event:*/
+
+iw_query_engine	=	This.ParentWindow
+
+if this.tag = "PT" or this.tag = "PR" then
+	iw_query_engine.event ue_prov_pat_drilldown (this.tag)
+else
+	iw_query_engine.event ue_parent_drilldown (this.tag)
+end if
+
+
+
+end event
+
+on m_1.create
+call super::create
+this.text = "m_1 "
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_1.destroy
+call super::destroy
+end on
+
+type m_2 from menu within m_drilldown
+end type
+
+on m_2.create
+call super::create
+this.text = "m_2 "
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//*********************************************************************************
+// Event Name:	m_view.m_2
+//	Arguments:	None
+// Returns:		None
+//*********************************************************************************
+
+/*Must check the tag of the menu item to determine if normal drilldown or if Patient or 
+Provider Detail.  If normal drilldown, call the w_query_engine user event to perform 
+the drilldown based on the tag passed to the window.  If Patient or Provider Detail 
+drilldown, call their user event:*/
+
+iw_query_engine	=	This.ParentWindow
+
+if this.tag = "PT" or this.tag = "PR" then
+	iw_query_engine.event ue_prov_pat_drilldown (this.tag)
+else
+	iw_query_engine.event ue_parent_drilldown (this.tag)
+end if
+
+
+
+end event
+
+on m_2.destroy
+call super::destroy
+end on
+
+type m_3 from menu within m_drilldown
+end type
+
+on m_3.create
+call super::create
+this.text = "m_3 "
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//*********************************************************************************
+// Event Name:	m_view.m_3
+//	Arguments:	None
+// Returns:		None
+//*********************************************************************************
+
+/*Must check the tag of the menu item to determine if normal drilldown or if Patient or 
+Provider Detail.  If normal drilldown, call the w_query_engine user event to perform 
+the drilldown based on the tag passed to the window.  If Patient or Provider Detail 
+drilldown, call their user event:*/
+
+iw_query_engine	=	This.ParentWindow
+
+if this.tag = "PT" or this.tag = "PR" then
+	iw_query_engine.event ue_prov_pat_drilldown (this.tag)
+else
+	iw_query_engine.event ue_parent_drilldown (this.tag)
+end if
+
+
+
+end event
+
+on m_3.destroy
+call super::destroy
+end on
+
+type m_4 from menu within m_drilldown
+end type
+
+on m_4.create
+call super::create
+this.text = "m_4 "
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//*********************************************************************************
+// Event Name:	m_view.m_4
+//	Arguments:	None
+// Returns:		None
+//*********************************************************************************
+
+/*Must check the tag of the menu item to determine if normal drilldown or if Patient or 
+Provider Detail.  If normal drilldown, call the w_query_engine user event to perform 
+the drilldown based on the tag passed to the window.  If Patient or Provider Detail 
+drilldown, call their user event:*/
+
+iw_query_engine	=	This.ParentWindow
+
+if this.tag = "PT" or this.tag = "PR" then
+	iw_query_engine.event ue_prov_pat_drilldown (this.tag)
+else
+	iw_query_engine.event ue_parent_drilldown (this.tag)
+end if
+
+
+
+end event
+
+on m_4.destroy
+call super::destroy
+end on
+
+type m_5 from menu within m_drilldown
+end type
+
+on m_5.create
+call super::create
+this.text = "m_5"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//*********************************************************************************
+// Event Name:	m_view.m_5
+//	Arguments:	None
+// Returns:		None
+//*********************************************************************************
+
+/*Must check the tag of the menu item to determine if normal drilldown or if Patient or 
+Provider Detail.  If normal drilldown, call the w_query_engine user event to perform 
+the drilldown based on the tag passed to the window.  If Patient or Provider Detail 
+drilldown, call their user event:*/
+
+iw_query_engine	=	This.ParentWindow
+
+if this.tag = "PT" or this.tag = "PR" then
+	iw_query_engine.event ue_prov_pat_drilldown (this.tag)
+else
+	iw_query_engine.event ue_parent_drilldown (this.tag)
+end if
+
+
+
+end event
+
+on m_5.destroy
+call super::destroy
+end on
+
+type m_6 from menu within m_drilldown
+end type
+
+on m_6.create
+call super::create
+this.text = "m_6 "
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//*********************************************************************************
+// Event Name:	m_view.m_6
+//	Arguments:	None
+// Returns:		None
+//*********************************************************************************
+
+/*Must check the tag of the menu item to determine if normal drilldown or if Patient or 
+Provider Detail.  If normal drilldown, call the w_query_engine user event to perform 
+the drilldown based on the tag passed to the window.  If Patient or Provider Detail 
+drilldown, call their user event:*/
+
+iw_query_engine	=	This.ParentWindow
+
+if this.tag = "PT" or this.tag = "PR" then
+	iw_query_engine.event ue_prov_pat_drilldown (this.tag)
+else
+	iw_query_engine.event ue_parent_drilldown (this.tag)
+end if
+
+
+
+end event
+
+on m_6.destroy
+call super::destroy
+end on
+
+type m_7 from menu within m_drilldown
+end type
+
+on m_7.create
+call super::create
+this.text = "m_7 "
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//*********************************************************************************
+// Event Name:	m_view.m_7
+//	Arguments:	None
+// Returns:		None
+//*********************************************************************************
+
+/*Must check the tag of the menu item to determine if normal drilldown or if Patient or 
+Provider Detail.  If normal drilldown, call the w_query_engine user event to perform 
+the drilldown based on the tag passed to the window.  If Patient or Provider Detail 
+drilldown, call their user event:*/
+
+iw_query_engine	=	This.ParentWindow
+
+if this.tag = "PT" or this.tag = "PR" then
+	iw_query_engine.event ue_prov_pat_drilldown (this.tag)
+else
+	iw_query_engine.event ue_parent_drilldown (this.tag)
+end if
+
+
+
+end event
+
+on m_7.destroy
+call super::destroy
+end on
+
+type m_8 from menu within m_drilldown
+end type
+
+on m_8.create
+call super::create
+this.text = "m_8 "
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//*********************************************************************************
+// Event Name:	m_view.m_8
+//	Arguments:	None
+// Returns:		None
+//*********************************************************************************
+
+/*Must check the tag of the menu item to determine if normal drilldown or if Patient or 
+Provider Detail.  If normal drilldown, call the w_query_engine user event to perform 
+the drilldown based on the tag passed to the window.  If Patient or Provider Detail 
+drilldown, call their user event:*/
+
+iw_query_engine	=	This.ParentWindow
+
+if this.tag = "PT" or this.tag = "PR" then
+	iw_query_engine.event ue_prov_pat_drilldown (this.tag)
+else
+	iw_query_engine.event ue_parent_drilldown (this.tag)
+end if
+
+
+
+end event
+
+on m_8.destroy
+call super::destroy
+end on
+
+type m_9 from menu within m_drilldown
+end type
+
+on m_9.create
+call super::create
+this.text = "m_9 "
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//*********************************************************************************
+// Event Name:	m_view.m_9
+//	Arguments:	None
+// Returns:		None
+//*********************************************************************************
+
+/*Must check the tag of the menu item to determine if normal drilldown or if Patient or 
+Provider Detail.  If normal drilldown, call the w_query_engine user event to perform 
+the drilldown based on the tag passed to the window.  If Patient or Provider Detail 
+drilldown, call their user event:*/
+
+iw_query_engine	=	This.ParentWindow
+
+if this.tag = "PT" or this.tag = "PR" then
+	iw_query_engine.event ue_prov_pat_drilldown (this.tag)
+else
+	iw_query_engine.event ue_parent_drilldown (this.tag)
+end if
+
+
+
+end event
+
+on m_9.destroy
+call super::destroy
+end on
+
+type m_10 from menu within m_drilldown
+end type
+
+on m_10.create
+call super::create
+this.text = "m_10 "
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//*********************************************************************************
+// Event Name:	m_view.m_10
+//	Arguments:	None
+// Returns:		None
+//*********************************************************************************
+
+/*Must check the tag of the menu item to determine if normal drilldown or if Patient or 
+Provider Detail.  If normal drilldown, call the w_query_engine user event to perform 
+the drilldown based on the tag passed to the window.  If Patient or Provider Detail 
+drilldown, call their user event:*/
+
+iw_query_engine	=	This.ParentWindow
+
+if this.tag = "PT" or this.tag = "PR" then
+	iw_query_engine.event ue_prov_pat_drilldown (this.tag)
+else
+	iw_query_engine.event ue_parent_drilldown (this.tag)
+end if
+
+
+
+end event
+
+on m_10.destroy
+call super::destroy
+end on
+
+type m_undodrilldown from menu within m_menu
+end type
+
+on m_undodrilldown.create
+call super::create
+this.text = "Und&o Drilldown"
+this.enabled = false
+this.microhelp = "Undo the in-process drilldown."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_undodrilldown.destroy
+call super::destroy
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_undodrilldown
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger ue_parent_undo_drilldown event to 
+//		return to the previous query.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iw_query_engine.Event	ue_parent_undo_drilldown()
+End If
+
+end event
+
+type m_claimoperations from menu within m_menu
+m_claimdetail m_claimdetail
+m_viewclaim m_viewclaim
+end type
+
+on m_claimoperations.create
+call super::create
+this.text = "Claim &Operations"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_claimdetail=create m_claimdetail
+this.m_viewclaim=create m_viewclaim
+this.Item[UpperBound(this.Item)+1]=this.m_claimdetail
+this.Item[UpperBound(this.Item)+1]=this.m_viewclaim
+end on
+
+on m_claimoperations.destroy
+call super::destroy
+destroy(this.m_claimdetail)
+destroy(this.m_viewclaim)
+end on
+
+type m_claimdetail from menu within m_claimoperations
+end type
+
+on m_claimdetail.create
+call super::create
+this.text = "&Claim Detail..."
+this.microhelp = "View dependent data related to the highlighted claim."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_claimdetail
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger the event to view dependent data related
+//		to the hilited claim, by transporting the user to the 
+//		Claim Details window.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	iu_query.Event	ue_tabpage_view_detail()
+End If
+
+end event
+
+on m_claimdetail.destroy
+call super::destroy
+end on
+
+type m_viewclaim from menu within m_claimoperations
+end type
+
+on m_viewclaim.create
+call super::create
+this.text = "&View Claim..."
+this.microhelp = "View all claim fields for the selected claim."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_viewclaim
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger the event to go to the Claim information
+//		window to view all of the claim fields on the main table
+//		(not dependents) for the selected claim in the View Report
+//		datawindow.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	iu_query.Event	ue_tabpage_view_view_claim()
+End If
+
+end event
+
+on m_viewclaim.destroy
+call super::destroy
+end on
+
+type m_link from menu within m_menu
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_view						m_link
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// Will open the Query Save window and allow the user to link the
+//	query to a case.
+//
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		04/22/98		Track 1104.  Moved from m_list.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine		=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iw_query_engine.Event	ue_save_query('L')
+End If
+
+end event
+
+on m_link.create
+call super::create
+this.text = "Lin&k Query..."
+this.microhelp = "Link this query to a case."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_link.destroy
+call super::destroy
+end on
+
+type m_note from menu within m_menu
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_view						m_note
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// Will open the Notes List window so the user can enter notes.
+//
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		04/22/98		Track 1104.  Moved from m_list.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_query_engine		=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	iu_Query.Event	ue_tabpage_list_notes()
+End If
+
+end event
+
+on m_note.create
+call super::create
+this.text = "&Note..."
+this.microhelp = "Create a note for this query."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_note.destroy
+call super::destroy
+end on
+
+type m_-3 from menu within m_menu
+end type
+
+on m_-3.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-3.destroy
+call super::destroy
+end on
+
+type m_reporttools from menu within m_menu
+m_map m_map
+m_graph m_graph
+m_crystalreports m_crystalreports
+m_exportreport m_exportreport
+m_calendar m_calendar
+end type
+
+on m_reporttools.create
+call super::create
+this.text = "Report &Tools"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_map=create m_map
+this.m_graph=create m_graph
+this.m_crystalreports=create m_crystalreports
+this.m_exportreport=create m_exportreport
+this.m_calendar=create m_calendar
+this.Item[UpperBound(this.Item)+1]=this.m_map
+this.Item[UpperBound(this.Item)+1]=this.m_graph
+this.Item[UpperBound(this.Item)+1]=this.m_crystalreports
+this.Item[UpperBound(this.Item)+1]=this.m_exportreport
+this.Item[UpperBound(this.Item)+1]=this.m_calendar
+end on
+
+on m_reporttools.destroy
+call super::destroy
+destroy(this.m_map)
+destroy(this.m_graph)
+destroy(this.m_crystalreports)
+destroy(this.m_exportreport)
+destroy(this.m_calendar)
+end on
+
+type m_map from menu within m_reporttools
+end type
+
+on m_map.create
+call super::create
+this.text = "&Map..."
+this.microhelp = "Create a map in MapInfo."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_map
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger the event to use the patients and providers
+//		on the datawindow and user selections to create a map in
+//		MapInfo.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	iu_query.Event	ue_tabpage_view_mapping()
+End If
+
+end event
+
+on m_map.destroy
+call super::destroy
+end on
+
+type m_graph from menu within m_reporttools
+end type
+
+on m_graph.create
+call super::create
+this.text = "&Graph..."
+this.microhelp = "Graph the report."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_graph
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will open w_graph_stars_select which will determine the
+//		datawindow to use the graph.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	OpenwithParm (w_graph_stars_select, iu_query)
+End If
+
+end event
+
+on m_graph.destroy
+call super::destroy
+end on
+
+type m_crystalreports from menu within m_reporttools
+end type
+
+on m_crystalreports.create
+call super::create
+this.text = "&Crystal Reports..."
+this.microhelp = "Save the report as a .dbf file and invoke Crystal Reports."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_crystalreports.destroy
+call super::destroy
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_crystalreports
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will call fx_crystal_reports which will determine the
+//		datawindow to save as a DBF and pass to Crystal Reports.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//	FDG		05/15/98		Track 1221.  Display a warning message.
+// GaryR    10/27/2000  3029c Eliminate multiple messages in a row on datawindow export.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	//MessageBox ('Warning', 'Saved report may contain columns not selected in the report') // GaryR    10/27/2000  3029c
+	fx_crystal_reports (iu_query,ics_reportfxparm)
+End If
+
+end event
+
+type m_exportreport from menu within m_reporttools
+end type
+
+on m_exportreport.create
+call super::create
+this.text = "&Export Report..."
+this.microhelp = "Export the report to a file format."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_exportreport
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will call fx_m_export which will determine the
+//		datawindow to save as a DBF and export.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//	FDG		05/15/98		Track 1221.  Display a warning message.
+// GaryR    10/27/2000  3029c Eliminate multiple messages in a row on datawindow export.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	//MessageBox ('Warning', 'Saved report may contain columns not selected in the report') // GaryR    10/27/2000  3029c
+	fx_m_export (iu_query,ics_reportfxparm)
+End If
+
+end event
+
+on m_exportreport.destroy
+call super::destroy
+end on
+
+type m_calendar from menu within m_reporttools
+end type
+
+event clicked;
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+OpenSheetwithParm(w_calendar,iu_query.tabpage_view.dw_report,MDI_main_frame,help_menu_position,Layered!)
+end event
+
+on m_calendar.create
+call super::create
+this.text = "Ca&lendar"
+this.enabled = false
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_calendar.destroy
+call super::destroy
+end on
+
+type m_-4 from menu within m_menu
+end type
+
+on m_-4.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-4.destroy
+call super::destroy
+end on
+
+type m_list from menu within m_menu
+m_providers m_providers
+m_patients m_patients
+end type
+
+on m_list.create
+call super::create
+this.text = "&List"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_providers=create m_providers
+this.m_patients=create m_patients
+this.Item[UpperBound(this.Item)+1]=this.m_providers
+this.Item[UpperBound(this.Item)+1]=this.m_patients
+end on
+
+on m_list.destroy
+call super::destroy
+destroy(this.m_providers)
+destroy(this.m_patients)
+end on
+
+type m_providers from menu within m_list
+end type
+
+on m_providers.create
+call super::create
+this.text = "P&roviders..."
+this.microhelp = "Display a list of providers found in the claim."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_providers
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger the event display a list of providers in
+//		the claim.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	iu_query.Event	ue_tabpage_view_list(ics_providers)
+End If
+
+end event
+
+on m_providers.destroy
+call super::destroy
+end on
+
+type m_patients from menu within m_list
+end type
+
+on m_patients.create
+call super::create
+this.text = "&Patients..."
+this.microhelp = "Display a list of patients found in the claim."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_patients
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger the event display a list of patients in
+//		the claim.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	iu_query.Event	ue_tabpage_view_list(ics_patients)
+End If
+
+end event
+
+on m_patients.destroy
+call super::destroy
+end on
+
+type m_uniquecounts from menu within m_menu
+m_revenue m_revenue
+m_patientalwdsrvc0 m_patientalwdsrvc0
+end type
+
+on m_uniquecounts.create
+call super::create
+this.text = "&Unique Counts"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_revenue=create m_revenue
+this.m_patientalwdsrvc0=create m_patientalwdsrvc0
+this.Item[UpperBound(this.Item)+1]=this.m_revenue
+this.Item[UpperBound(this.Item)+1]=this.m_patientalwdsrvc0
+end on
+
+on m_uniquecounts.destroy
+call super::destroy
+destroy(this.m_revenue)
+destroy(this.m_patientalwdsrvc0)
+end on
+
+type m_revenue from menu within m_uniquecounts
+end type
+
+on m_revenue.create
+call super::create
+this.text = "R&evenue"
+this.microhelp = "Display the unique count of revenue codes from the report."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_revenue
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger the event to give the unique count of 
+//		rev_codes in the d/w on the View Report tabpage.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	iu_query.Event	ue_tabpage_view_unique_count(ics_revenue)
+End If
+
+end event
+
+on m_revenue.destroy
+call super::destroy
+end on
+
+type m_patientalwdsrvc0 from menu within m_uniquecounts
+end type
+
+on m_patientalwdsrvc0.create
+call super::create
+this.text = "Patient /&Alwd Srvc > 0"
+this.microhelp = "Display the unique count of patients with allowed services > 0."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_patientalwdsrvc0
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger the event to give the unique count of 
+//		patients with allowed services greater than zero in the 
+//		d/w on the View Report tabpage.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		01/06/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	iu_query.Event	ue_tabpage_view_unique_count(ics_patsrvc)
+End If
+
+end event
+
+on m_patientalwdsrvc0.destroy
+call super::destroy
+end on
+
+type m_statistics from menu within m_menu
+m_sum m_sum
+m_avg m_avg
+m_med m_med
+m_mode m_mode
+m_min m_min
+m_max m_max
+m_std m_std
+m_var m_var
+m_0 m_0
+m_all m_all
+end type
+
+on m_statistics.create
+call super::create
+this.text = "St&atistics"
+this.microhelp = "Statistics for all money and unit columns."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_sum=create m_sum
+this.m_avg=create m_avg
+this.m_med=create m_med
+this.m_mode=create m_mode
+this.m_min=create m_min
+this.m_max=create m_max
+this.m_std=create m_std
+this.m_var=create m_var
+this.m_0=create m_0
+this.m_all=create m_all
+this.Item[UpperBound(this.Item)+1]=this.m_sum
+this.Item[UpperBound(this.Item)+1]=this.m_avg
+this.Item[UpperBound(this.Item)+1]=this.m_med
+this.Item[UpperBound(this.Item)+1]=this.m_mode
+this.Item[UpperBound(this.Item)+1]=this.m_min
+this.Item[UpperBound(this.Item)+1]=this.m_max
+this.Item[UpperBound(this.Item)+1]=this.m_std
+this.Item[UpperBound(this.Item)+1]=this.m_var
+this.Item[UpperBound(this.Item)+1]=this.m_0
+this.Item[UpperBound(this.Item)+1]=this.m_all
+end on
+
+on m_statistics.destroy
+call super::destroy
+destroy(this.m_sum)
+destroy(this.m_avg)
+destroy(this.m_med)
+destroy(this.m_mode)
+destroy(this.m_min)
+destroy(this.m_max)
+destroy(this.m_std)
+destroy(this.m_var)
+destroy(this.m_0)
+destroy(this.m_all)
+end on
+
+type m_sum from menu within m_statistics
+end type
+
+on m_sum.create
+call super::create
+this.text = "&Summation (Sum)"
+this.microhelp = "Compute the total of the values."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_sum.destroy
+call super::destroy
+end on
+
+event clicked;//*********************************************************************************
+// Script Name:	m_menu.m_statistics.m_sum.clicked
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:	This script performs housekeeping of the statistics menu items
+//						and calls the script that executes the statistics logic
+//
+//*********************************************************************************
+//
+//	09/10/09	GaryR	QEN.650.5229.005	Add statisitics to QE report
+//
+//*********************************************************************************
+
+IF This.checked THEN
+	This.Uncheck()
+	IF m_menu.m_statistics.m_all.checked THEN m_menu.m_statistics.m_all.Uncheck()
+ELSE
+	This.Check()
+END IF
+
+of_stats()
+end event
+
+type m_avg from menu within m_statistics
+end type
+
+on m_avg.create
+call super::create
+this.text = "&Average (Avg)"
+this.microhelp = "Compute the average (arithmetic mean) for all of the values."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_avg.destroy
+call super::destroy
+end on
+
+event clicked;//*********************************************************************************
+// Script Name:	m_menu.m_statistics.m_sum.clicked
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:	This script performs housekeeping of the statistics menu items
+//						and calls the script that executes the statistics logic
+//
+//*********************************************************************************
+//
+//	09/10/09	GaryR	QEN.650.5229.005	Add statisitics to QE report
+//
+//*********************************************************************************
+
+IF This.checked THEN
+	This.Uncheck()
+	IF m_menu.m_statistics.m_all.checked THEN m_menu.m_statistics.m_all.Uncheck()
+ELSE
+	This.Check()
+END IF
+
+of_stats()
+end event
+
+type m_med from menu within m_statistics
+end type
+
+on m_med.create
+call super::create
+this.text = "&Median (Med)"
+this.microhelp = "Compute the median or the middle value in the set of values."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_med.destroy
+call super::destroy
+end on
+
+event clicked;//*********************************************************************************
+// Script Name:	m_menu.m_statistics.m_sum.clicked
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:	This script performs housekeeping of the statistics menu items
+//						and calls the script that executes the statistics logic
+//
+//*********************************************************************************
+//
+//	09/10/09	GaryR	QEN.650.5229.005	Add statisitics to QE report
+//
+//*********************************************************************************
+
+IF This.checked THEN
+	This.Uncheck()
+	IF m_menu.m_statistics.m_all.checked THEN m_menu.m_statistics.m_all.Uncheck()
+ELSE
+	This.Check()
+END IF
+
+of_stats()
+end event
+
+type m_mode from menu within m_statistics
+end type
+
+on m_mode.create
+call super::create
+this.text = "Most &Frequent (Mode)"
+this.microhelp = "Compute the mode or the most frequently occurring value."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_mode.destroy
+call super::destroy
+end on
+
+event clicked;//*********************************************************************************
+// Script Name:	m_menu.m_statistics.m_sum.clicked
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:	This script performs housekeeping of the statistics menu items
+//						and calls the script that executes the statistics logic
+//
+//*********************************************************************************
+//
+//	09/10/09	GaryR	QEN.650.5229.005	Add statisitics to QE report
+//
+//*********************************************************************************
+
+IF This.checked THEN
+	This.Uncheck()
+	IF m_menu.m_statistics.m_all.checked THEN m_menu.m_statistics.m_all.Uncheck()
+ELSE
+	This.Check()
+END IF
+
+of_stats()
+end event
+
+type m_min from menu within m_statistics
+end type
+
+on m_min.create
+call super::create
+this.text = "Mi&n Value (Min)"
+this.microhelp = "Compute the minimum value."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_min.destroy
+call super::destroy
+end on
+
+event clicked;//*********************************************************************************
+// Script Name:	m_menu.m_statistics.m_sum.clicked
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:	This script performs housekeeping of the statistics menu items
+//						and calls the script that executes the statistics logic
+//
+//*********************************************************************************
+//
+//	09/10/09	GaryR	QEN.650.5229.005	Add statisitics to QE report
+//
+//*********************************************************************************
+
+IF This.checked THEN
+	This.Uncheck()
+	IF m_menu.m_statistics.m_all.checked THEN m_menu.m_statistics.m_all.Uncheck()
+ELSE
+	This.Check()
+END IF
+
+of_stats()
+end event
+
+type m_max from menu within m_statistics
+end type
+
+on m_max.create
+call super::create
+this.text = "Ma&x Value (Max)"
+this.microhelp = "Compute the maximum value."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_max.destroy
+call super::destroy
+end on
+
+event clicked;//*********************************************************************************
+// Script Name:	m_menu.m_statistics.m_sum.clicked
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:	This script performs housekeeping of the statistics menu items
+//						and calls the script that executes the statistics logic
+//
+//*********************************************************************************
+//
+//	09/10/09	GaryR	QEN.650.5229.005	Add statisitics to QE report
+//
+//*********************************************************************************
+
+IF This.checked THEN
+	This.Uncheck()
+	IF m_menu.m_statistics.m_all.checked THEN m_menu.m_statistics.m_all.Uncheck()
+ELSE
+	This.Check()
+END IF
+
+of_stats()
+end event
+
+type m_std from menu within m_statistics
+end type
+
+on m_std.create
+call super::create
+this.text = "Standard &Deviation (Std)"
+this.microhelp = "Compute an estimate of how widely values vary from average."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_std.destroy
+call super::destroy
+end on
+
+event clicked;//*********************************************************************************
+// Script Name:	m_menu.m_statistics.m_sum.clicked
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:	This script performs housekeeping of the statistics menu items
+//						and calls the script that executes the statistics logic
+//
+//*********************************************************************************
+//
+//	09/10/09	GaryR	QEN.650.5229.005	Add statisitics to QE report
+//
+//*********************************************************************************
+
+IF This.checked THEN
+	This.Uncheck()
+	IF m_menu.m_statistics.m_all.checked THEN m_menu.m_statistics.m_all.Uncheck()
+ELSE
+	This.Check()
+END IF
+
+of_stats()
+end event
+
+type m_var from menu within m_statistics
+end type
+
+on m_var.create
+call super::create
+this.text = "&Variance (Var)"
+this.microhelp = "Compute an estimate of the variance. The variance is the square of the standard deviation."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_var.destroy
+call super::destroy
+end on
+
+event clicked;//*********************************************************************************
+// Script Name:	m_menu.m_statistics.m_sum.clicked
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:	This script performs housekeeping of the statistics menu items
+//						and calls the script that executes the statistics logic
+//
+//*********************************************************************************
+//
+//	09/10/09	GaryR	QEN.650.5229.005	Add statisitics to QE report
+//
+//*********************************************************************************
+
+IF This.checked THEN
+	This.Uncheck()
+	IF m_menu.m_statistics.m_all.checked THEN m_menu.m_statistics.m_all.Uncheck()
+ELSE
+	This.Check()
+END IF
+
+of_stats()
+end event
+
+type m_0 from menu within m_statistics
+end type
+
+on m_0.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_0.destroy
+call super::destroy
+end on
+
+type m_all from menu within m_statistics
+end type
+
+on m_all.create
+call super::create
+this.text = "Sho&w All"
+this.microhelp = "Display all of the statistical functions on the report."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_all.destroy
+call super::destroy
+end on
+
+event clicked;//*********************************************************************************
+// Script Name:	m_menu.m_statistics.m_sum.clicked
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:	This script performs housekeeping of the statistics menu items
+//						and calls the script that executes the statistics logic
+//
+//*********************************************************************************
+//
+//	09/10/09	GaryR	QEN.650.5229.005	Add statisitics to QE report
+//
+//*********************************************************************************
+
+IF This.checked THEN
+	of_reset_stats()
+ELSE
+	This.Check()
+	m_menu.m_statistics.m_sum.Check()
+	m_menu.m_statistics.m_avg.Check()
+	m_menu.m_statistics.m_med.Check()
+	m_menu.m_statistics.m_mode.Check()
+	m_menu.m_statistics.m_min.Check()
+	m_menu.m_statistics.m_max.Check()
+	m_menu.m_statistics.m_std.Check()
+	m_menu.m_statistics.m_var.Check()
+END IF
+
+of_stats()
+end event
+
+type m_-7 from menu within m_menu
+end type
+
+on m_-7.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-7.destroy
+call super::destroy
+end on
+
+type m_removelevel from menu within m_menu
+end type
+
+on m_removelevel.create
+call super::create
+this.text = "Remove Le&vel"
+this.microhelp = "Remove this level of a multi-level query."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_view.m_removelevel
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger w_query_engine.ue_remove_level event to 
+//		remove the current level.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		03/26/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iw_query_engine.Event	ue_remove_level()
+End If
+
+end event
+
+on m_removelevel.destroy
+call super::destroy
+end on
+
+type m_-1 from menu within m_menu
+end type
+
+on m_-1.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-1.destroy
+call super::destroy
+end on
+
+type m_help from menu within m_menu
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_view						m_help
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// This will display help for this tabpage.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		05/06/98		Created.
+//	GaryR		04/29/03		Track 3541d	Add PDR tab-sensitive help
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine = this.parentwindow
+
+If IsValid(iw_query_engine) Then
+	IF iw_query_engine.of_is_pdr_mode() THEN
+		iw_query_engine.of_help ('','TABPAGE_PDRVIEW')
+	ELSE
+		iw_query_engine.of_help ('','TABPAGE_VIEW')
+	END IF
+End If
+
+
+end event
+
+on m_help.create
+call super::create
+this.text = "&Help"
+this.microhelp = "Display help for this tab."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_help.destroy
+call super::destroy
+end on
+

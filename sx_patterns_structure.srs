@@ -1,0 +1,15 @@
+HA$PBExportHeader$sx_patterns_structure.srs
+global type sx_patterns_structure from structure
+	string		come_from
+	string		sub_src_type
+	string		subset_table_type
+	string		case_id
+	string		subset_id
+	string		table_type[]
+	integer		total_steps
+	string		job_id
+	string		pattern_sql
+	string		pattern_id
+	string		invoice_type
+end type
+

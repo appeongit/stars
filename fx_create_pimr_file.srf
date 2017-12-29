@@ -1,0 +1,444 @@
+HA$PBExportHeader$fx_create_pimr_file.srf
+$PBExportComments$Function to create the PIMR file.
+global type fx_create_pimr_file from function_object
+end type
+
+forward prototypes
+global function integer fx_create_pimr_file ()
+end prototypes
+
+global function integer fx_create_pimr_file ();////////////////////////////////////////////////////////////////////////////////////////
+// 01/16/01 Jim-S Read datastore for rows ready for PIMR, format and write PIMR file
+//	10/15/01	FDG	Stars 4.8.1	Add case_log
+// 05/16/02 SAH 	Stars 5.0.1	Track 3064 Update the Log with pmr_created values
+//	03/25/03	GaryR	Track 3494d	Add note_desc to note insert statement
+// 10/19/04 MikeF	Track 3650d	Replaced local n_cst_dict with global
+//	05/02/05	GaryR	Track 4357d	Update PIMR file layout per CMS specifications
+//	08/30/05	GaryR	Track 4494d	Round amounts to nearest dollar and remove +/- signs
+////////////////////////////////////////////////////////////////////////////////////////
+
+Long ll_new_row, ll_case_row
+DateTime ldtm_created_date
+
+n_ds lds_case_log
+n_ds lds_case
+n_ds lds_pimr
+
+string 	ls_cttr_num, ls_year_month, ls_prov_type, ls_bill_type, ls_act_type, ls_rev_id,&
+			ls_reason_cd, ls_other_ref_reas, ls_updated_by, ls_review_dt, ls_claim_cnt,&
+			ls_line_item_cnt, ls_billed_amt, ls_allowed_amt, ls_denied_lines, ls_elig_amt,&
+			ls_reverse_clms, ls_rev_lines, ls_rev_amt, ls_fraud_ref_cnt, ls_accept_cnt,&
+			ls_fraud_ref_amt, ls_other_ref_cnt, ls_other_ref_amt, ls_accept_amt,&
+			ls_next_file_id, ls_path_file, ls_path, ls_file_name, ls_record, ls_denied_amt,&
+			ls_overpay_assess, ls_overpay_collect, ls_cont_case_num, ls_case_id, ls_case_spl, &
+			ls_case_ver, ls_invoice_type, ls_user_id,	ls_dept_id,	ls_note_rel_type,	&
+			ls_note_sub_type,	ls_note_rel_id, ls_note_text,	ls_note_id,	ls_rte_ind, ls_column_1,&
+			ls_column_2, ls_column_3, ls_column_4, ls_column_5, ls_column_6, ls_column_7, &
+			ls_column_8, ls_column_9, ls_column_10, ls_column_11, ls_column_12, ls_column_13, &
+			ls_column_14, ls_column_15, ls_column_16, ls_column_17, ls_column_18, ls_column_19,&
+			ls_column_20, ls_column_21, ls_column_22, ls_column_23, ls_column_24, ls_column_25, &
+			ls_column_26, ls_column_27, ls_column_28, ls_column_29, ls_hold_month, ls_hold_year, &
+			ls_denied_claims
+				
+int 		li_rc, li_filenumber, li_cntl_no, li_hold_month, li_hold_year
+
+long 		ll_row, ll_row_count, ll_convert_amt
+
+date		ld_hold_date
+
+boolean 	lb_found_file
+
+n_cst_string	lnv_string    //Autoinstantiated
+
+// FDG 10/15/01 begin
+String		ls_message
+n_cst_case	lnv_case
+
+lnv_case		=	CREATE	n_cst_case
+// FDG 10/15/01 end
+
+lds_pimr = create n_ds
+lds_pimr.DataObject = 'ds_pimr'
+lds_pimr.SetTransObject (Stars2ca)
+
+lds_pimr.Retrieve()
+
+ll_row_count = lds_pimr.RowCount()
+
+IF ll_row_count > 0 THEN
+	//Create file name
+	ls_next_file_id	=  fx_get_next_key_id ('PIMRFILE')
+	ls_next_file_id	=  lnv_string.of_padnumber (ls_next_file_id, 5)
+	ls_path_file		=  'PMR'  +  ls_next_file_id  +  '.PMR'
+	ls_path				=	ProfileString (gv_ini_path + 'STARS.INI', 'Carrier','UserINIPath', '')
+	ls_path_file		=	ls_path	+	ls_path_file
+
+	DO
+		li_rc	=	GetFileSaveName ('Export PIMR File Save Window', ls_path_file,		+	&
+											ls_file_name, 'PMR', 'PIMR Files (*.PMR),*.PMR')
+		CHOOSE CASE	li_rc
+			CASE	0
+				// User cancelled
+				lb_found_file	=	TRUE
+				Return 1
+			CASE	IS <	0
+				MessageBox ('Error', 'Error retrieving file name')
+				lb_found_file	=	TRUE
+				Return 0
+		END CHOOSE 
+		IF	FileExists (ls_path_file)		THEN
+			li_rc	=	MessageBox ('WARNING', 'Save file exists.  Do you want to save over the existing file?',Question!,YesNo!)
+			IF	li_rc	=	1		THEN
+				// Overlaying existing file.  Get out of the loop.
+				lb_found_file	=	TRUE
+			END IF
+		ELSE
+			// New file.  Get out of the loop.
+			lb_found_file		=	TRUE
+		END IF
+	LOOP WHILE lb_found_file	=	FALSE
+
+	li_filenumber  =  FileOpen (ls_file_name, Linemode!, Write!, Lockwrite!, Replace!)
+
+	IF	li_filenumber	<	0		THEN
+		MessageBox ('Error', 'Error opening file.  Export cancelled.')
+		Return 0
+	END IF
+
+	// Determine the month the fiscal year starts
+	select cntl_no
+	into :li_cntl_no
+	from sys_cntl
+	where cntl_id = 'FISCYEAR'
+	using Stars2ca ;
+
+	// Populate fields and write record
+	FOR ll_row = 1 TO ll_row_count
+		ldtm_created_date = gnv_app.of_get_server_date_time()	
+		ls_cttr_num = Mid(lds_pimr.object.pmr_contractor_id [ll_row],1,5)
+		ls_cttr_num = lnv_string.of_padright (ls_cttr_num, 5)
+		ld_hold_date = Date(ldtm_created_date)
+		// Determine if this is a fiscal year
+		ls_hold_month = String(ld_hold_date,"mm")
+		ls_hold_year = String(ld_hold_date,"yyyy")
+		li_hold_month = Integer(ls_hold_month)
+		li_hold_year = Integer(ls_hold_year)
+		IF li_cntl_no < 2 THEN
+			// Fiscal year starts in January
+			ls_year_month = String(ld_hold_date,"yyyymm")
+		ELSEIF li_cntl_no > li_hold_month THEN
+			// Month is in the current fiscal year
+			li_hold_month = li_hold_month + 13
+			li_hold_month = li_hold_month - li_cntl_no
+			ls_hold_month = String(li_hold_month)
+			ls_hold_month = lnv_string.of_padnumber (ls_hold_month, 2)
+			ls_year_month = String(li_hold_year) + ls_hold_month
+			ELSE
+				// Month is in the next fiscal year
+				li_hold_month = li_hold_month - li_cntl_no
+				li_hold_month = li_hold_month + 1
+				li_hold_year  = li_hold_year + 1
+				ls_hold_month = String(li_hold_month)
+				ls_hold_month = lnv_string.of_padnumber (ls_hold_month, 2)
+				ls_year_month = String(li_hold_year) + ls_hold_month
+		END IF
+		ls_prov_type = lds_pimr.object.pmr_prov_type_cd [ll_row]
+		ls_prov_type = lnv_string.of_padleft (ls_prov_type, 6)
+		ls_bill_type = String(lds_pimr.object.pmr_case_custom7_cnt [ll_row])
+		ls_bill_type = lnv_string.of_padright (ls_bill_type, 6)
+		ls_act_type = lds_pimr.object.pmr_custom1_cd [ll_row]
+		ls_act_type = lnv_string.of_padright (ls_act_type, 6)
+		ls_rev_id = lnv_string.of_padright (ls_rev_id, 6)
+		ls_claim_cnt = String(lds_pimr.object.pmr_case_custom1_cnt [ll_row])
+		ls_claim_cnt = lnv_string.of_padnumber (ls_claim_cnt, 10)
+		ls_line_item_cnt = String(lds_pimr.object.pmr_case_custom2_cnt [ll_row])
+		ls_line_item_cnt = lnv_string.of_padnumber (ls_line_item_cnt, 10)
+		ll_convert_amt = lds_pimr.object.pmr_case_custom4_amt [ll_row]
+		ls_billed_amt = String(ll_convert_amt)
+		ls_billed_amt = lnv_string.of_padnumber (ls_billed_amt, 13)
+		ll_convert_amt = lds_pimr.object.pmr_case_custom5_amt [ll_row]
+		ls_allowed_amt = String(ll_convert_amt)
+		ls_allowed_amt = lnv_string.of_padnumber (ls_allowed_amt, 13)
+		ls_denied_claims = String(lds_pimr.object.pmr_case_custom8_cnt [ll_row])
+		ls_denied_claims = lnv_string.of_padnumber (ls_denied_claims, 10)
+		ls_denied_lines = String(lds_pimr.object.pmr_case_custom3_cnt [ll_row])
+		ls_denied_lines = lnv_string.of_padnumber (ls_denied_lines, 10)
+		ll_convert_amt = lds_pimr.object.pmr_case_custom8_amt [ll_row]
+		ll_convert_amt = ABS(ll_convert_amt)
+		ls_denied_amt = String(ll_convert_amt)
+		ls_denied_amt = lnv_string.of_padnumber (ls_denied_amt, 13)
+		ll_convert_amt = lds_pimr.object.custom5_amt [ll_row]
+		ls_elig_amt = String(ll_convert_amt)
+		ls_elig_amt = lnv_string.of_padnumber (ls_elig_amt, 13)
+		ls_reverse_clms = String(lds_pimr.object.pmr_case_custom4_cnt [ll_row])
+		ls_reverse_clms = lnv_string.of_padnumber (ls_reverse_clms, 10)
+		ls_rev_lines = String(lds_pimr.object.pmr_case_custom5_cnt [ll_row])
+		ls_rev_lines = lnv_string.of_padnumber (ls_rev_lines, 10)
+		ll_convert_amt = lds_pimr.object.pmr_case_custom7_amt [ll_row]
+		ls_rev_amt = String(ll_convert_amt)
+		ls_rev_amt = lnv_string.of_padnumber (ls_rev_amt, 13)
+		ll_convert_amt = lds_pimr.object.op_amt [ll_row]
+		ls_overpay_assess = String(ll_convert_amt)
+		ls_overpay_assess = lnv_string.of_padnumber (ls_overpay_assess, 13)
+		ll_convert_amt = lds_pimr.object.amt_recv [ll_row]
+		ls_overpay_collect = String(ll_convert_amt)
+		ls_overpay_collect = lnv_string.of_padnumber (ls_overpay_collect, 13)
+		ld_hold_date = Date(lds_pimr.object.pmr_custom1_date [ll_row])
+		ls_review_dt = String(ld_hold_date,"yyyy-mm-dd")
+		ls_reason_cd = String(lds_pimr.object.pmr_custom2_cd [ll_row])
+		ls_reason_cd = lnv_string.of_padright (ls_reason_cd, 6)
+		ls_other_ref_reas = String(lds_pimr.object.pmr_custom3_cd [ll_row])
+		ls_other_ref_reas = lnv_string.of_padright (ls_other_ref_reas, 6)
+		ls_fraud_ref_cnt = lds_pimr.object.pmr_frd_rfrl_cd [ll_row]
+		ls_fraud_ref_cnt = lnv_string.of_padnumber (ls_fraud_ref_cnt, 10)
+		ll_convert_amt = lds_pimr.object.referred_amt [ll_row]
+		ls_fraud_ref_amt = String(ll_convert_amt)
+		ls_fraud_ref_amt = lnv_string.of_padnumber (ls_fraud_ref_amt, 13)
+		ls_other_ref_cnt = String(lds_pimr.object.pmr_case_custom6_cnt [ll_row])
+		ls_other_ref_cnt = lnv_string.of_padnumber (ls_other_ref_cnt, 10)
+		ll_convert_amt = lds_pimr.object.custom3_amt [ll_row]
+		ls_other_ref_amt = String(ll_convert_amt)
+		ls_other_ref_amt = lnv_string.of_padnumber (ls_other_ref_amt, 13)
+		ls_accept_cnt = lds_pimr.object.pmr_acpt_cd [ll_row]
+		ls_accept_cnt = lnv_string.of_padnumber (ls_accept_cnt, 10)
+		ll_convert_amt = lds_pimr.object.custom4_amt [ll_row]
+		ls_accept_amt = String(ll_convert_amt)
+		ls_accept_amt = lnv_string.of_padnumber (ls_accept_amt, 13)
+		ls_updated_by = String(lds_pimr.object.case_updt_user [ll_row])
+		ls_updated_by = lnv_string.of_padright (ls_updated_by, 8)
+		ls_case_id = lds_pimr.object.case_id [ll_row]
+		ls_case_spl = lds_pimr.object.case_spl [ll_row]
+		ls_case_ver = lds_pimr.object.case_ver [ll_row]
+		ls_cont_case_num = ls_case_id + ls_case_spl + ls_case_ver
+	
+		// Assemble output record
+		ls_record = ls_cttr_num + ls_year_month + ls_prov_type + ls_bill_type + ls_act_type +&
+						ls_rev_id + ls_claim_cnt + ls_line_item_cnt + ls_billed_amt + &
+						ls_allowed_amt + ls_denied_claims + ls_denied_lines + ls_denied_amt + ls_elig_amt + &
+						ls_reverse_clms + ls_rev_lines + ls_rev_amt + ls_overpay_assess + &
+						ls_overpay_collect + ls_review_dt + ls_reason_cd + ls_other_ref_reas + &
+						ls_fraud_ref_cnt + ls_fraud_ref_amt + ls_other_ref_cnt + ls_other_ref_amt + &
+						ls_accept_cnt + ls_accept_amt + ls_updated_by + ls_cont_case_num
+
+		// Write record to file 
+		li_rc = FileWrite (li_filenumber, ls_record)
+		IF	li_rc	<	0		THEN
+			MessageBox ('Export Error', 'Error writing the pattern header for the export file.  Export is cancelled.')
+			Return	0
+		END IF
+
+		// SAH 05/16/02 Track 0364 -Begin
+		// Update row to for PIMR record created
+		lds_pimr.object.pmr_created_cd [ll_row] = 'Y'
+		lds_pimr.object.pmr_created_date[ll_row] = ldtm_created_date
+		lds_pimr.object.pmr_created_user[ll_row] = gc_user_id			// SAH 05/18/02 Added for Track 3064
+				
+		// Get the case data
+		lds_case = CREATE n_ds
+		lds_case.Dataobject = 'd_case_general'
+		lds_case.SetTransObject(Stars2ca)
+		
+		// DataStore for updating CASE_LOG
+		lds_case_log = CREATE n_ds
+		lds_case_log.DataObject = 'd_case_log'
+		lds_case_log.SetTransObject(Stars2ca)
+		
+		// Get the case data
+		lds_case.Reset()
+		ll_case_row	=	lds_case.Retrieve (ls_case_id, ls_case_spl, ls_case_ver)
+
+		// Insert new row in CASE_LOG 
+		ll_new_row	=	lds_case_log.InsertRow(0)
+
+	   // These columns must be set for every row added 
+		lds_case_log.object.case_id [ll_new_row]					=	lds_case.object.case_id [ll_case_row]
+		lds_case_log.object.case_spl [ll_new_row]					=	lds_case.object.case_spl [ll_case_row]
+		lds_case_log.object.case_ver [ll_new_row]					=	lds_case.object.case_ver [ll_case_row]
+		lds_case_log.object.case_updt_user[ll_new_row]			=	gc_user_id
+		lds_case_log.object.sys_datetime [ll_new_row]			=	ldtm_created_date
+		lds_case_log.object.status [ll_new_row]					=	lds_case.object.case_status [ll_case_row]
+		lds_case_log.object.status_datetime [ll_new_row]		=	lds_case.object.case_status_date [ll_case_row]
+		lds_case_log.object.disp [ll_new_row]						=	lds_case.object.case_disp [ll_case_row]
+		lds_case_log.object.case_custom1_amt [ll_new_row]		=	lds_case.object.case_custom1_amt [ll_case_row]
+		lds_case_log.object.case_custom2_amt [ll_new_row]		=	lds_case.object.case_custom2_amt [ll_case_row]
+		lds_case_log.object.case_custom3_amt [ll_new_row]		=	lds_case.object.case_custom3_amt [ll_case_row]
+		lds_case_log.object.identified_amt [ll_new_row]			=	lds_case.object.identified_amt [ll_case_row]
+		lds_case_log.object.future_savings_amt [ll_new_row]	=	lds_case.object.future_savings_amt [ll_case_row]
+		lds_case_log.object.pmr_case_custom1_cnt [ll_new_row]	=	lds_case.object.pmr_case_custom1_cnt [ll_case_row]
+		lds_case_log.object.pmr_case_custom2_cnt [ll_new_row]	=	lds_case.object.pmr_case_custom2_cnt [ll_case_row]
+		lds_case_log.object.pmr_case_custom4_amt [ll_new_row]	=	lds_case.object.pmr_case_custom4_amt [ll_case_row]
+		lds_case_log.object.pmr_case_custom5_amt [ll_new_row]	=	lds_case.object.pmr_case_custom5_amt [ll_case_row]
+		lds_case_log.object.pmr_case_custom6_amt [ll_new_row]	=	lds_case.object.pmr_case_custom6_amt [ll_case_row]
+		lds_case_log.object.pmr_case_custom3_cnt [ll_new_row]	=	lds_case.object.pmr_case_custom3_cnt [ll_case_row]
+		lds_case_log.object.pmr_case_custom4_cnt [ll_new_row]	=	lds_case.object.pmr_case_custom4_cnt [ll_case_row]
+		lds_case_log.object.pmr_case_custom5_cnt [ll_new_row]	=	lds_case.object.pmr_case_custom5_cnt [ll_case_row]
+		lds_case_log.object.pmr_case_custom7_amt [ll_new_row]	=	lds_case.object.pmr_case_custom7_amt [ll_case_row]
+		lds_case_log.object.pmr_case_custom8_amt [ll_new_row]	=	lds_case.object.pmr_case_custom8_amt [ll_case_row]
+		lds_case_log.object.pmr_case_custom9_amt [ll_new_row]	=	lds_case.object.pmr_case_custom9_amt [ll_case_row]
+		lds_case_log.object.pmr_case_custom6_cnt [ll_new_row]	=	lds_case.object.pmr_case_custom6_cnt [ll_case_row]
+		lds_case_log.object.pmr_case_custom7_cnt [ll_new_row]	=	lds_case.object.pmr_case_custom7_cnt [ll_case_row]
+		lds_case_log.object.pmr_case_custom8_cnt [ll_new_row]	=	lds_case.object.pmr_case_custom8_cnt [ll_case_row]
+
+		// Post status_desc message in the Log
+		ls_message = 'Case was added to PIMR File ' + ls_file_name + '.'
+
+		// Update pmr_created_ columns in CASE_LOG
+		lds_case_log.object.pmr_created_cd [ll_new_row]			=	'Y'
+		lds_case_log.object.pmr_created_date[ll_new_row]		= 	ldtm_created_date
+		lds_case_log.object.pmr_created_user[ll_new_row]		= gc_user_id
+		lds_case_log.object.status_desc[ll_new_row] 				= ls_message
+		
+		// Save the changes to CASE_LOG
+		li_rc	=	lds_case_log.Event	ue_update( TRUE, TRUE )	
+
+		IF	li_rc	<	0		THEN
+			Stars2ca.of_rollback()
+			MessageBox ('Database Error', ls_case_id	+	ls_case_spl	+	ls_case_ver	+	'could not be added to the PIMR File.' + &
+							'Script: fx_create_pimr_file().  Create PIMR File process canelled.')
+			Return	-1
+		END IF
+
+		IF	IsValid (w_case_maint)		THEN
+			// Post this event to insure the updates get committed
+			w_case_maint.Post	Event	ue_retrieve()
+		END IF		
+		// SAH 05/17/02 Track 3064 -End
+		
+		// Get Invoice Type
+		ls_invoice_type = gnv_dict.event ue_get_inv_type('CASE_CNTL')
+		
+		// get column descriptions
+		ls_column_1 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_contractor_id')
+		ls_column_2 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_created_date')
+		ls_column_3 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_prov_type_cd')
+		ls_column_4 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_custom1_cd')
+		ls_column_5 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_custom1_char')
+		ls_column_6 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_case_custom1_cnt')
+		ls_column_7 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_case_custom2_cnt')
+		ls_column_8 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_case_custom4_amt')
+		ls_column_9 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_case_custom5_amt')
+		ls_column_10 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_case_custom3_cnt')
+		ls_column_11 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_case_custom4_cnt')
+		ls_column_12 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_case_custom5_cnt')
+		ls_column_13 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_custom1_date')
+		ls_column_14 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_custom2_cd')
+		ls_column_15 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_custom3_cd')
+		ls_column_16 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_frd_rfrl_cd')
+		ls_column_17 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_acpt_cd')
+		ls_column_18 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'case_updt_user')
+		ls_column_19 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'op_amt')
+		ls_column_20 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'amt_recv')
+		ls_column_21 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_case_custom7_cnt')
+		ls_column_22 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'custom5_amt')
+		ls_column_23 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_case_custom7_amt')
+		ls_column_24 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_case_custom8_cnt')
+		ls_column_25 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_case_custom8_amt')
+		ls_column_26 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'referred_amt')
+		ls_column_27 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'pmr_case_custom6_cnt')
+		ls_column_28 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'custom3_amt')
+		ls_column_29 = gnv_dict.event ue_get_col_desc(ls_invoice_type, 'custom4_amt')
+		
+		// Create Note text
+		ls_note_text = "Case was added to PIMR file " + ls_file_name + ' on ' + &
+							String( ldtm_created_date, "mm/dd/yyyy hh:mm:ss am/pm" ) + '.' + &
+							"~r~n" + ls_column_1 + ' = ' + ls_cttr_num + &
+							"~r~n" + ls_column_2	+ ' = ' + ls_year_month + &
+							"~r~n" + ls_column_3 + ' = ' + ls_prov_type +&
+							"~r~n" + ls_column_21 + ' = ' + ls_bill_type + &
+							"~r~n" + ls_column_4 + ' = ' + ls_act_type + &
+							"~r~n" + ls_column_5 + ' = ' + ls_rev_id + &
+							"~r~n" + ls_column_6 + ' = ' + ls_claim_cnt + &
+							"~r~n" + ls_column_7 + ' = ' + ls_line_item_cnt + &
+							"~r~n" + ls_column_8 + ' = ' + ls_billed_amt + &
+							"~r~n" + ls_column_9 + ' = ' + ls_allowed_amt +&
+							"~r~n" + ls_column_24 + ' = ' + ls_denied_claims +&
+							"~r~n" + ls_column_10 + ' = ' + ls_denied_lines + &
+							"~r~n" + ls_column_25 + ' = ' + ls_denied_amt + &
+							"~r~n" + ls_column_22 + ' = ' + ls_elig_amt + &
+							"~r~n" + ls_column_11 + ' = ' + ls_reverse_clms + &
+							"~r~n" + ls_column_12 + ' = ' + ls_rev_lines +&
+							"~r~n" + ls_column_23 + ' = ' + ls_rev_amt + &
+							"~r~n" + ls_column_19 + ' = ' + ls_overpay_assess + &
+							"~r~n" + ls_column_20 + ' = ' + ls_overpay_collect + &
+							"~r~n" + ls_column_13 + ' = ' + ls_review_dt + &
+							"~r~n" + ls_column_14 + ' = ' + ls_reason_cd + &
+							"~r~n" + ls_column_15 + ' = ' + ls_other_ref_reas +&
+							"~r~n" + ls_column_16 + ' = ' + ls_fraud_ref_cnt + &
+							"~r~n" + ls_column_26 + ' = ' + ls_fraud_ref_amt + &	
+							"~r~n" + ls_column_27 + ' = ' + ls_other_ref_cnt + &
+							"~r~n" + ls_column_28 + ' = ' + ls_other_ref_amt + &
+							"~r~n" + ls_column_17 + ' = ' + ls_accept_cnt + &
+							"~r~n" + ls_column_29 + ' = ' + ls_accept_amt + &
+							"~r~n" + ls_column_18 + ' = ' + ls_updated_by + &
+							"~r~nCase ID"			 + ' = ' + ls_cont_case_num
+		// Insert record to NOTES table for case
+		ls_dept_id			=	gc_user_dept
+		ls_user_id			=	gc_user_id
+		ls_note_rel_type	=	'CA'
+		ls_note_sub_type	=	'PM'
+		ls_note_rel_id		=	ls_cont_case_num
+		ls_note_id			=	fx_get_next_key_id ('NOTE')
+		ls_rte_ind			=	'N'
+		Insert into notes
+				(dept_id, 
+				user_id,
+	 			note_rel_type,
+				note_sub_type,
+				note_rel_id,
+				note_id,
+				note_datetime,
+				note_text,
+				rte_ind,
+				note_desc)
+		Values (:ls_dept_id,
+				:ls_user_id,
+	 			:ls_note_rel_type,
+				:ls_note_sub_type,
+				:ls_note_rel_id,
+				:ls_note_id,
+				:ldtm_created_date,
+				:ls_note_text,
+				:ls_rte_ind,
+				'PIMR File Created')
+		Using stars2ca;
+		IF	Stars2ca.of_check_status()	<	0		THEN
+			Return	-1
+		END IF		
+	NEXT
+
+	li_rc	=	lds_pimr.Update()
+	
+	IF	li_rc	<	0		THEN
+		Stars2ca.of_rollback()
+		MessageBox ('Error', 'Error creating PIMR file in fx_create_pimr_file()')
+		Return	-1
+	END IF
+
+	// Close the file
+	FileClose (li_filenumber)
+
+	MessageBox ('PIMR Creation', 'The PIMR records were successfully exported to file '	+	ls_path_file	+	'.')
+ELSE
+	//No rows were retrieved
+	MessageBox('Not PIMR Ready','PIMR file not created.  No rows were ready for PIMR.',&
+					Information!)
+END IF
+
+Destroy lds_pimr    //End of script
+Destroy	lnv_case		// FDG 10/15/01
+Destroy lds_case_log // SAH 05/16/02 Track 3064
+Destroy lds_case		// SAH 05/17/02 Track 3064
+
+li_rc	=	Stars2ca.of_commit()
+
+IF	li_rc	<	0		THEN
+	Rollback Using Stars2ca ;
+	MessageBox ('Error', 'Error creating PIMR file in fx_create_pimr_file()')
+	Return	-1
+END IF
+
+w_main.SetMicroHelp ('Ready')
+
+return 1
+end function
+

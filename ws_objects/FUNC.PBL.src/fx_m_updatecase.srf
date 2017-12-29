@@ -1,0 +1,36 @@
+﻿$PBExportHeader$fx_m_updatecase.srf
+$PBExportComments$Case|MaintainCase|UpdateCase
+global type fx_m_updatecase from function_object
+end type
+
+forward prototypes
+global subroutine fx_m_updatecase ()
+end prototypes
+
+global subroutine fx_m_updatecase ();//03-04-98 ajs 4.0 TS145-Globals
+//NLG 8-31-99	ts2363c - pass parm to open w_case_maint
+///////////////////////////////////////////////////////////////
+setpointer(hourglass!)
+int rc
+
+//gv_from = 'M'	NLG 8-31-99
+
+rc = fx_active_case_edit()
+If rc <> 0 Then
+	COMMIT using Stars2ca;
+	if Stars2ca.of_check_status() <> 0 then
+		errorbox(stars2ca,'Error performing commit in fx_m_updatecase.')
+	end if
+	RETURN
+End If
+
+COMMIT using Stars2ca;
+if Stars2ca.of_check_status() <> 0 then
+	errorbox(stars2ca,'Error performing commit in fx_m_updatecase.')
+end if
+
+//OpenSheet(w_case_maint,mdi_main_frame,help_menu_position,Layered!)
+OpenSheetWithParm(w_case_maint,'M',mdi_main_frame,help_menu_position,Layered!)
+//setfocus(w_case_maint.sle_case_desc)
+end subroutine
+

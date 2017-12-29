@@ -1,0 +1,14 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "NOTES.PBL" "";
+@end;
+@begin Objects
+ "w_notes_list_response.srw" "NOTES.PBL";
+ "d_export_notes_list.srd" "NOTES.PBL";
+ "w_notes_maint.srw" "NOTES.PBL";
+ "d_notes_list.srd" "NOTES.PBL";
+ "n_cst_wspell.sru" "NOTES.PBL";
+ "n_cst_notes.sru" "NOTES.PBL";
+ "w_notes_list.srw" "NOTES.PBL";
+ "m_notes.srm" "NOTES.PBL";
+@end;

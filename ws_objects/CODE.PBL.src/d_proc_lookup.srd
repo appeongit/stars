@@ -1,0 +1,31 @@
+﻿$PBExportHeader$d_proc_lookup.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=1 timer_interval=0 color=1073741824 processing=1 print.documentname=""  print.orientation=0 print.margin.left=24 print.margin.right=24 print.margin.top=24 print.margin.bottom=24 print.paper.size=0 print.paper.source=0 grid.lines=1 selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=18 color="536870912" )
+summary(height=1 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=18 color="536870912" )
+table(column=(type=char(5) key=yes update=yes updatewhereclause=yes initial=" " name=code_type dbname="code.code_type"  )
+column=(type=char(15) key=yes update=yes updatewhereclause=yes initial=" " name=code_code dbname="code.code_code"  )
+column=(type=char(255) update=yes updatewhereclause=yes initial=" " name=code_desc dbname="code.code_desc"  )
+ retrieve="SELECT CODE.CODE_TYPE, CODE.CODE_CODE, CODE.CODE_DESC FROM CODE WHERE ( CODE.CODE_TYPE = 'ID' OR 	 CODE.CODE_TYPE = 'PH' OR 	 CODE.CODE_TYPE = 'DN' OR CODE.CODE_TYPE = 'PC' ) AND ( CODE.CODE_CODE like Upper(:code_id) ) AND ( Upper(CODE.CODE_DESC) like Upper(:description) ) ORDER BY CODE.CODE_TYPE ASC, CODE.CODE_CODE ASC "
+  update="CODE" updatewhere=2 updatekeyinplace=no
+  arguments=(("code_id", string), ("description", string))
+)
+text(name=code_type_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="4" x="2" y="0" height="16" width="75" text="Code Type" accessibledescription="~"Code Type~"	~"Code Type~"" accessiblename="~"Code Type~"	~"Code Type~"" accessiblerole=42 )
+text(name=code_code_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="4" x="79" y="0" height="16" width="112" text="Code" accessibledescription="~"Code~"	~"Code~"" accessiblename="~"Code~"	~"Code~"" accessiblerole=42 )
+text(name=code_desc_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="4" x="193" y="0" height="16" width="479" text="   Desc" accessibledescription="~"   Desc~"	~"   Desc~"" accessiblename="~"Description~"	~"Description~"" accessiblerole=42 )
+column(name=code_type band=detail id=1 x="2" y="1" height="16" width="75" color="33554432" border="0" alignment="0" format="[general]" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=5 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Code Type~"	~"Code Type~"" accessiblename="~"Code Type~"	~"Code Type~"" )
+column(name=code_code band=detail id=2 x="79" y="1" height="16" width="112" color="33554432" border="0" alignment="0" format="[general]" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=15 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Code~"	~"Code~"" accessiblename="~"Code~"	~"Code~"" )
+column(name=code_desc tag="" band=detail id=3 x="193" y="1" height="16" width="479" color="33554432" border="0" alignment="0" format="[general]" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=255 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"   Desc~"	~"   Desc~"" accessiblename="~"Description~"	~"Description~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" generateJavaScript="1" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

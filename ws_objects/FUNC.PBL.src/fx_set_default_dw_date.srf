@@ -1,0 +1,107 @@
+﻿$PBExportHeader$fx_set_default_dw_date.srf
+global type fx_set_default_dw_date from function_object
+end type
+
+forward prototypes
+global function integer fx_set_default_dw_date (ref datawindow adw)
+end prototypes
+
+global function integer fx_set_default_dw_date (ref datawindow adw);////////////////////////////////////////////////////////////////////////////////
+//	Script:		fx_set_default_dw_date()
+//
+//	Arguments:	adw - datawindow
+//
+//	Returns:		Integer.		1=success, -1=error
+//
+//	Description:
+//		This function is loop through every row in any dw.  If each column's
+//		numeric/date value is an initial value, make it look like it's empty.
+//
+////////////////////////////////////////////////////////////////////////////////
+//	History:
+//
+//	07/24/02	JasonS	Stars 5.1.0  Created
+// JasonS 09/19/02 Track 3174d Performance Enhancement
+////////////////////////////////////////////////////////////////////////////////
+
+Datetime		ldtm_null,		&
+				ldtm_init,		&
+				ldtm_value
+
+Date			ldt_init
+
+Long			ll_null,			&
+				ll_row,			&
+				ll_rowcount,	&
+				ll_value
+
+Integer		li_col,			&
+				li_colcount
+				
+Integer	li_datecol[], li_datecol_cnt	// JasonS 09/19/02 Track 3174d				
+
+String		ls_coltype[],	&
+				ls_colname[],	&
+				ls_describe
+
+ldtm_init	=	DateTime ( Date('1/1/1900') )
+ldt_init = Date('1/1/1900')
+
+SetNull(ldtm_null)
+
+li_colcount	=	Integer ( adw.object.DataWindow.Column.Count )	
+
+IF	li_colcount	<	1		THEN
+	Return	0
+END IF
+
+FOR li_col = 1 TO li_colcount
+	// Get the column name
+	ls_describe	=	"#"	+	String(li_col)	+	".Name"
+	ls_colname [li_col]	=	adw.Describe (ls_describe)	
+	// Get the column's data type (1st 4 bytes) for this column
+	ls_describe	=	ls_colname [li_col]	+	".ColType"
+	ls_coltype [li_col]	=	Upper ( adw.Describe (ls_describe) )
+	ls_coltype [li_col]	=	Left (ls_coltype [li_col], 4)
+	// JasonS 09/19/02 Begin - Track 3174d
+	if gnv_sql.of_is_date_data_type(ls_coltype[li_col]) then
+		li_datecol[upperbound(li_datecol) + 1] = li_col
+	end if
+	// JasonS 09/19/02 End - Track 3174d
+NEXT
+
+li_datecol_cnt = upperbound(li_datecol)	// JasonS 09/19/02 Track 3174d
+
+// Loop through each row
+ll_rowcount	=	adw.RowCount()
+
+adw.setredraw(false)
+
+FOR ll_row	=	1 TO ll_rowcount
+	// JasonS 09/19/02 Begin - Track 3174d
+	FOR li_col = 1 TO li_datecol_cnt
+		ldtm_value	=	adw.GetItemDateTime (ll_row, li_datecol[li_col])
+		IF	date(ldtm_value) = ldt_init	THEN
+			adw.SetItem (ll_row, li_datecol[li_col], ldtm_null)		
+			adw.SetItemStatus (ll_row, li_datecol[li_col], Primary!, NotModified!)				
+		END IF
+	NEXT
+	//FOR li_col = 1 TO li_colcount
+	//	if (gnv_sql.of_is_date_data_type(ls_coltype[li_col]))  then
+	//			ldtm_value	=	adw.GetItemDateTime (ll_row, li_col)
+	//			IF	ldtm_value	=	ldtm_init OR date(ldtm_value) = ldt_init	THEN
+	//				adw.SetItem (ll_row, li_col, ldtm_null)		
+	//			END IF
+	//	end if
+	//	adw.SetItemStatus (ll_row, 0, Primary!, NotModified!)	
+	//NEXT
+	// JasonS 09/19/02 End - Track 3174d
+NEXT
+
+adw.setredraw(true)
+
+Return 1
+
+
+end function
+

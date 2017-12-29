@@ -1,0 +1,12 @@
+HA$PBExportHeader$sx_subsetting_info.srs
+$PBExportComments$contains data needed by subset options window
+global type sx_subsetting_info from structure
+	sx_step_info		subset_step[]
+	sx_criteria		criteria[]
+	string		source_subset_id
+	string		temp_table_name
+	sx_filter_create		filter_create[]
+	string		filter_copy[]
+	integer		run_frequency
+end type
+

@@ -1,0 +1,30 @@
+HA$PBExportHeader$d_import_pdq_status.srd
+$PBExportComments$Displays the status of each level when importing a PDQ <gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=1 print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 grid.lines=0 selected.mouse=yes hidegrayline=no showbackcoloronxp=no)
+header(height=136 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=number updatewhereclause=no name=level_num dbname="level_num"  )
+column=(type=char(1) updatewhereclause=no name=criteria_errors dbname="criteria_errors" 
+ values="No Errors	N/** Errors **	Y/"  )
+column=(type=char(1) updatewhereclause=no name=column_errors dbname="column_errors" 
+ values="No Errors	N/** Errors **	Y/"  )
+)
+text(name=level_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="4" x="9" y="8" height="120" width="174" text="Level" accessibledescription="~"Level~"	~"Level~"" accessiblename="~"Level~"	~"Level~"" accessiblerole=42 )
+text(name=criteria_errors_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="4" x="192" y="8" height="120" width="489" text="Search Criteria" accessibledescription="~"Search Criteria~"	~"Search Criteria~"" accessiblename="~"Search Criteria~"	~"Search Criteria~"" accessiblerole=42 )
+text(name=column_errors_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="4" x="690" y="8" height="120" width="507" text="Report Columns" accessibledescription="~"Report Columns~"	~"Report Columns~"" accessiblename="~"Report Columns~"	~"Report Columns~"" accessiblerole=42 )
+column(name=level_num band=detail id=1 x="9" y="8" height="76" width="174" color="33554432" border="0" alignment="2" format="[general]" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=no edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Level Number~"	~"Level Number~"" accessiblename="~"Level Number~"	~"Level Number~"" )
+column(name=criteria_errors band=detail id=2 x="192" y="8" height="76" width="489" color="33554432" border="0" alignment="2" format="[general]" ddlb.allowedit=no ddlb.autohscroll=no ddlb.imemode=0 ddlb.limit=0 ddlb.showlist=no ddlb.sorted=no ddlb.useasborder=no ddlb.vscrollbar=no ddlb.nilisnull=no ddlb.required=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Search Criteria~"	~"Search Criteria~"" accessiblename="~"Search Criteria~"	~"Search Criteria~"" )
+column(name=column_errors band=detail id=3 x="690" y="8" height="76" width="507" color="33554432" border="0" alignment="2" format="[general]" ddlb.allowedit=no ddlb.autohscroll=no ddlb.imemode=0 ddlb.limit=0 ddlb.showlist=no ddlb.sorted=no ddlb.useasborder=no ddlb.vscrollbar=no ddlb.nilisnull=no ddlb.required=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Report Columns~"	~"Report Columns~"" accessiblename="~"Report Columns~"	~"Report Columns~"" )
+htmltable(border="1" cellPadding="0" cellSpacing="0" generateCSS="no" noWrap="yes" )
+htmlgen(pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

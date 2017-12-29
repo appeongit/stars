@@ -1,0 +1,8 @@
+﻿$PBExportHeader$sx_break_info.srs
+$PBExportComments$For compile of u_nvo_report.
+global type sx_break_info from structure
+	boolean		counts
+	string		totals
+	sx_break_cols		cols[]
+end type
+

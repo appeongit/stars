@@ -1,0 +1,21 @@
+HA$PBExportHeader$sx_calendar_options.srs
+global type sx_calendar_options from structure
+	integer		dw_col[]
+	string		dw_col_name[]
+	string		dw_col_type[]
+	string		dw_format[]
+	string		dw_label[]
+	string		dw_color[]
+	string		dw_weight[]
+	boolean		sun_sat
+	boolean		mark_holidays
+	date		min_date
+	date		max_date
+	boolean		cancelled
+	date		report_date
+	string		report_title
+	string		report_desc
+	boolean		mark_filter_dates
+	string		filter_id
+end type
+

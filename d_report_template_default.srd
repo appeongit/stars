@@ -1,0 +1,30 @@
+HA$PBExportHeader$d_report_template_default.srd
+$PBExportComments$<logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=144 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(2) updatewhereclause=yes name=pdq_cntl_query_type dbname="PDQ_CNTL.QUERY_TYPE" initial=" " )
+ column=(type=char(10) updatewhereclause=yes key=yes name=pdq_cntl_query_id dbname="PDQ_CNTL.QUERY_ID" initial=" " )
+ column=(type=char(2) updatewhereclause=yes name=pdq_cntl_addl_query_type dbname="PDQ_CNTL.ADDL_QUERY_TYPE" initial=" " )
+ column=(type=char(1) update=yes updatewhereclause=yes name=pdq_cntl_default_template dbname="PDQ_CNTL.DEFAULT_TEMPLATE" initial="spaces" )
+ column=(type=char(8) updatewhereclause=yes key=yes name=user_id dbname="PDQ_CNTL.USER_ID" initial=" " )
+ column=(type=char(1) updatewhereclause=yes key=yes name=pdq_type dbname="PDQ_CNTL.PDQ_TYPE" initial="spaces" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"PDQ_CNTL~" ) COLUMN(NAME=~"PDQ_CNTL.QUERY_TYPE~") COLUMN(NAME=~"PDQ_CNTL.QUERY_ID~") COLUMN(NAME=~"PDQ_CNTL.ADDL_QUERY_TYPE~") COLUMN(NAME=~"PDQ_CNTL.DEFAULT_TEMPLATE~") COLUMN(NAME=~"PDQ_CNTL.USER_ID~") COLUMN(NAME=~"PDQ_CNTL.PDQ_TYPE~")WHERE(    EXP1 =~"( PDQ_CNTL.PDQ_TYPE~"   OP =~"=~"    EXP2 =~"'T' )~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( PDQ_CNTL.USER_ID~"   OP =~"<>~"    EXP2 =~"'SYSTEM')~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( PDQ_CNTL.USER_ID~"   OP =~"=~"    EXP2 =~"Upper(:as_user_id))~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( PDQ_CNTL.QUERY_TYPE~"   OP =~"=~"    EXP2 =~"Upper(:as_query_type))~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( PDQ_CNTL.ADDL_QUERY_TYPE~"   OP =~"=~"    EXP2 =~"Upper(:as_query_addl_type))~" ) ) ARG(NAME = ~"as_user_id~" TYPE = string)  ARG(NAME = ~"as_query_type~" TYPE = string)  ARG(NAME = ~"as_query_addl_type~" TYPE = string) " update="PDQ_CNTL" updatewhere=0 updatekeyinplace=no arguments=(("as_user_id", string),("as_query_type", string),("as_query_addl_type", string)) )
+text(band=header alignment="2" text="Data
+Source" border="4" color="0" x="9" y="8" height="128" width="279"  name=pdq_cntl_query_type_t  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Addl Query
+ Type" border="4" color="0" x="297" y="8" height="128" width="357"  name=addl_query_type_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Default
+Template" border="4" color="0" x="663" y="8" height="128" width="329"  name=default_template_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="User Id" border="4" color="0" x="1001" y="8" height="128" width="352"  name=t_1  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Pdq Type" border="4" color="0" x="1362" y="8" height="128" width="375"  name=t_2  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="4" height="72" width="279" format="[general]"  name=pdq_cntl_query_type edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="297" y="4" height="72" width="357" format="[general]"  name=pdq_cntl_addl_query_type edit.limit=0 edit.case=any edit.autoselect=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="663" y="4" height="72" width="329" format="[general]"  name=pdq_cntl_default_template edit.limit=0 edit.case=any edit.autoselect=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1001" y="4" height="72" width="352" format="[general]"  name=user_id edit.limit=0 edit.case=any edit.autoselect=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1362" y="4" height="72" width="375" format="[general]"  name=pdq_type edit.limit=0 edit.case=any edit.autoselect=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

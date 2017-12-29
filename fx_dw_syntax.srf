@@ -1,0 +1,364 @@
+HA$PBExportHeader$fx_dw_syntax.srf
+global type fx_dw_syntax from function_object
+end type
+
+forward prototypes
+global function integer fx_dw_syntax (string arg_window_name, ref u_dw arg_dw, ref sx_decode_structure asx_decode, n_tr arg_trans)
+end prototypes
+
+global function integer fx_dw_syntax (string arg_window_name, ref u_dw arg_dw, ref sx_decode_structure asx_decode, n_tr arg_trans);//************************************************************************
+//		Object Type:	Global function
+//		Object Name:	fx_dw_syntax
+//		Event Name:		N/A
+//
+//Created 05-01-95 PLB
+//Arguments are as follows: arg_window - the window being opened
+//                          arg_dw - the datawindow for which the
+//												 syntax must be modified.
+//									 asx_decode - Structure to be fulled
+//															with all column names,
+//															column char length 
+//															table name(s)
+//															table_type(s)
+//															decode_col array (set to false)
+//									  arg_trans - transaction sent in fromm data window
+//
+//This function is very sensitive to the syntax.  Since pattern windows also send in the 
+//column labels in the syntax you cannot search on the word 'FROM' special logic has been
+//placed to search for the string 'FROM SUB_'.  This looks for one space only, if your
+//syntax has more than that a syntax error will be produced during runtime. 
+//
+//************************************************************************
+//
+//	09/28/95	FDG	Removed UpperBound from the loops and placed the
+// 					UpperBound value into li_max
+//	11/17/95	FDG	Remove 'SUB_' & '_USED' by fx_truncate_medc_table
+// 11/28/95	FDG	Access dictionary (elem_type = 'TB') thru
+//						w_main.dw_stars_rel_dict
+// 12/18/95	DKG	Reversed 11/28/95 change.
+// 03/05/96	DKG	Changed create statement to avoid the 60,000 
+//                character limit imposed on a single string
+//                variable. Metrahealth problem - get Hilary to
+//                fill out prob and get number. 
+// 05/02/96	FNC	Change so that 38 is always added to the width when
+//                column is decoded.
+// 02/27/98	VAV	Replaced fx_truncate_medc_table() with
+//                fx_get_claims_table_name() which find if 
+//                table name begins with 'SUB_' and returns claims table name.
+//	03/23/98	FDG	Track 950 (4.0).  Remove the database name from the
+//						table name.
+// 01-14-99	AJS	FS2034c 4.1 Correct display of date from mm/dd/yy to mm/dd/yyyy
+//	12/14/00	FDG	Stars 4.7.  Make data type checking DBMS-independent.
+// 02/20/01	FDG	Stars 4.7.  Use of_connect() in case an alter session command is needed
+//						Set arg_trans data type n_tr (instead of type transaction).
+//	03/27/01	FDG	Stars 4.7.	Subset names may not necessarily have 'SUB_' as its
+//						prefix.  Account for new table naming conventions and
+//						new data types.
+//	03/19/02	GaryR	Track 2868d	Column aliases now use double quotes.
+// 11/21/02	Jason	Track 3774d Case performance
+//	04/04/03	GaryR	Track 3507d	Remove previous filters from hidden dw
+//	08/22/03	GaryR	Track 3651d	Add ability to code\decode on Stored Procedure PDRs
+//	09/11/03	GaryR	Convert SP col name to upper case
+//	09/15/03	MikeF	Track 5891c Decode for Left Outer Join not finding additional table
+//	10/29/03	GaryR	Track 2710	Account for Oracle's row limit logic
+//	11/25/03	GaryR	Track 3715d	Revamp the logic that parses thru columns
+// 10/14/03 MikeF	Track 3650d Computed columns. Rewrote.
+//	11/16/04	GaryR	Track	4115d	STARS Reporting - Claims PDRs
+// 06/10/05 MikeF	Track 4319d	Added cleanup for FROM clause and look for match with a lookup
+//	07/29/05	GaryR	Track 4432d	Allow multi-column decode in background
+//	03/22/07	Katie	SPR 4955 Added ability to handle UNIONS in sql statement.
+//	01/02/08	GaryR	SPR 5248	Get parent window of passed in dw to identify the active window
+//	05/04/09	Katie	GNL.500.5633	Table type in decode structure not getting set when based on a stored procedure.
+//	08/05/09	GaryR	WIN.650.5721.006	Intepret temporary tables used in QE drilldowns
+//  09/25/09 RickB LKP.650.5678.001 Added a space after first quote in FROM search criteria to eliminate
+//  columns with "FROM" in the name from being parsed as the FROM clause.  Also added search and replace
+//  strings to find RIGHT OUTER JOIN and FULL INNER JOIN.
+//  11/3/09 RickB LKP.650.5678.001 Added FULL OUTER JOIN to Joins section
+//
+//************************************************************************
+
+int 				lv_comma_pos, lv_new_len
+int				li_rc, li_len, li_pos, li_max
+int				li_index, li_index2, li_columns, li_tables, li_index3
+string 			lv_syntax, lv_syntax2, lv_char_len
+string 			lv_syntax_string[] 
+String 			lv_syntax1,lv_part1,lv_part2, lv_sel
+String			ls_subset_prefix			// FDG 03/27/01
+string			ls_format
+string 			ls_col_type, ls_data_type
+string			ls_dw_sql, ls_from_sql
+string			ls_tbl_type, ls_table_name, ls_col_name
+string			ls_columns[]
+string			ls_tables[]
+string			ls_selects[]
+Boolean			lb_claims_pdr, lb_tbltypefound
+w_query_engine	lw_active_qe
+uo_query			luo_query
+n_cst_string 	lnv_string
+n_cst_sqlattrib lnv_sqlattrib
+sx_pdr_parms	lsx_pdr_parms
+int				li_selects
+long ll_tblcnt, ll_tbltotal
+
+setpointer(hourglass!)
+
+li_columns = long(arg_dw.Describe('datawindow.column.count'))
+
+for li_index = 1 to li_columns
+	ls_col_type = arg_dw.Describe('#'+string(li_index)+'.coltype')
+	IF	gnv_sql.of_is_date_data_type (ls_col_type)	THEN
+		ls_format = trim(arg_dw.Describe('#'+string(li_index)+'.format'))
+		IF ls_format = '[GENERAL]' &
+		OR ls_format = '' THEN
+			Setformat(arg_dw,li_index,'mm/dd/yyyy')		//AJS 01-14-99
+		END IF
+	END IF
+next
+
+ls_dw_sql = Upper(arg_dw.GetSqlSelect())
+
+IF len(ls_dw_sql) > 0 Then
+
+	li_selects = lnv_string.of_ParseToArray(ls_dw_sql, "UNION", ls_selects)
+FOR li_index3 = 1 TO li_selects
+	// Find position of FROM clause	
+	If asx_decode.pattern THEN
+		ls_subset_prefix	=	gnv_sql.of_get_subset_prefix()
+		li_pos =	pos(ls_selects[li_index3], ' FROM '	+	ls_subset_prefix)
+	Else
+		li_pos = pos(ls_selects[li_index3],' FROM ')
+	End If
+		
+	IF li_pos > 0 Then
+		ls_from_sql 	= mid (ls_selects[li_index3],li_pos + 6)
+	END IF
+	
+	// Strip off the WHERE and GROUP BY statements
+	li_pos = pos(ls_from_sql,'WHERE ')
+	IF li_pos > 0 THEN
+		ls_from_sql = left(ls_from_sql,li_pos - 1)
+	ELSE 
+		li_pos = pos(ls_from_sql,'GROUP BY ') //VAV 4.0 2/28/98
+		IF li_pos > 0 Then
+			ls_from_sql = left(ls_from_sql,li_pos - 1)
+		END IF
+	END IF
+	
+	// Remove JOINs
+	ls_from_sql = lnv_string.of_globalreplace( ls_from_sql, "LEFT OUTER JOIN", ',')
+	ls_from_sql = lnv_string.of_globalreplace( ls_from_sql, "RIGHT OUTER JOIN", ',')
+	ls_from_sql = lnv_string.of_globalreplace( ls_from_sql, "FULL INNER JOIN", ',')
+	ls_from_sql = lnv_string.of_globalreplace( ls_from_sql, "FULL OUTER JOIN", ',')
+	
+	ls_from_sql = lnv_string.of_clean_string( ls_from_sql )
+	
+	// Set Tables in structure
+	li_tables = UPPERBOUND(asx_decode.table_type)
+	
+	IF li_tables = 0 THEN
+		ls_tables   = lnv_string.of_stringtoarray( ls_from_sql, ",")
+		li_tables   = UpperBound(ls_tables)
+		
+		FOR li_index = 1 TO li_tables
+			ls_table_name = trim(ls_tables[li_index])
+			
+			// Strip off database name (exists for Sybase_only)
+			li_pos = pos(ls_table_name,'..')
+			
+			IF li_pos > 0 THEN
+				ls_table_name = mid(ls_table_name,li_pos + 2)
+			END IF
+						
+			// Get rid of table alias
+			li_pos = pos(ls_table_name,' ')
+			
+			IF li_pos > 0 THEN
+				ls_table_name = left(ls_table_name,li_pos - 1)
+			END IF
+			
+			//	Check for TMP table in drilldown
+			IF Left( Trim( ls_table_name ), 3 ) = "TT_" THEN
+				IF Lower( arg_window_name ) = "w_query_engine" THEN
+					IF arg_dw.ClassName() = "dw_report" THEN
+						arg_dw.of_GetParentWindow( lw_active_qe )
+						IF IsValid( lw_active_qe ) THEN
+							luo_query = lw_active_qe.wf_GetActiveQuery()
+							IF IsValid( luo_query ) THEN
+								IF luo_query.ib_drilldown THEN
+									//	If in drilldown mode, get the main invoice type and it's table name
+									ls_table_name = gnv_dict.event ue_get_table_name( luo_query.istr_drilldown.main_inv_type )
+								END IF
+							END IF
+						END IF
+					END IF
+				END IF
+			END IF
+								
+			// Returns MEDC table if subset, else returns same
+			ls_table_name = fx_get_claims_table_name(ls_table_name)
+			
+			// Strip off YYMM (exists for Sybase Only)
+			IF IsNumber(right(ls_table_name,4)) THEN
+				li_pos 			= len(ls_table_name) - 4
+				ls_table_name 	= left(ls_table_name,li_pos)
+			END IF
+			
+			asx_decode.table_name[li_index] = ls_table_name
+			asx_decode.table_type[li_index] = gnv_dict.event ue_get_table_type(ls_table_name)
+		NEXT
+	END IF
+
+	FOR li_index = 1 TO li_columns
+		// Get the name of the database column from the datawindow 
+		ls_col_name =	Upper( arg_dw.Describe( '#' + String( li_index )  + '.dbname' ) )
+		
+		// Remove the table name prefix
+		li_pos =	Pos( ls_col_name, '.' )
+		IF li_pos > 0 THEN 
+			ls_col_name = Upper( Mid( ls_col_name, li_pos + 1 ) ) 
+		END IF
+
+		asx_decode.col_name			[li_index] = ls_col_name
+
+		// Search through tables for column match
+		FOR li_index2 = 1 TO li_tables
+			IF gnv_dict.event ue_get_col_exists( asx_decode.table_type[li_index2], ls_col_name) THEN
+				ls_tbl_type = asx_decode.table_type[li_index2]
+				asx_decode.col_lookup_type	[li_index] = gnv_dict.event ue_get_lookup_type		(ls_tbl_type, ls_col_name)
+				asx_decode.data_type			[li_index] = gnv_dict.event ue_get_elem_data_type	(ls_tbl_type, ls_col_name)
+				asx_decode.col_len			[li_index] = string(gnv_dict.event ue_get_data_len	(ls_tbl_type, ls_col_name))
+				IF len(asx_decode.col_lookup_type [li_index]) > 0 THEN
+					EXIT
+				END IF
+			END IF
+		NEXT
+	NEXT
+
+	// Parse through datawindow syntax	
+	lv_syntax = arg_dw.describe("Datawindow.syntax")
+	li_pos = pos(lv_syntax,'column')
+	lv_syntax1 = left(lv_syntax,li_pos + 5)     //This is the first part of the dwsyntax
+	lv_syntax = mid(lv_syntax,li_pos + 6)
+	li_pos = pos(lv_syntax,'retrieve')
+	lv_syntax2 = mid(lv_syntax,li_pos)          //This is the end of the dwsyntax
+	lv_syntax = left(lv_syntax,li_pos - 1)      //This is the column info only
+	For li_index = 1 to li_columns										//KMM 10/5/95
+		If lv_syntax <> '' Then
+			li_pos = pos(lv_syntax,'column')
+			If li_pos > 0 Then
+				lv_syntax_string[li_index] = left(lv_syntax,li_pos + 5)
+				lv_syntax = mid(lv_syntax,li_pos + 6)
+			Else
+				lv_syntax_string[li_index] = lv_syntax
+				lv_syntax = ''
+			End If		
+		End If
+	Next
+
+	li_max	=	UpperBound(asx_decode.col_lookup_type)
+	For li_index = 1 to li_max
+		If li_index <= upperbound(lv_syntax_string) Then
+			If asx_decode.col_lookup_type[li_index] <> '' Then
+				// FDG 03/27/01 - Account for new data types
+				ls_data_type	=	asx_decode.data_type[li_index]
+				If gnv_sql.of_is_character_data_type (ls_data_type)	=	TRUE Then
+				// FDG 03/27/01 - end	
+					// Character data type for a decodable column.  Add 38 to it's length for code/decode.
+					li_pos = pos(lv_syntax_string[li_index],'char(')
+					lv_part1 = left(lv_syntax_string[li_index],li_pos + 4)
+					lv_syntax_string[li_index] = mid(lv_syntax_string[li_index],li_pos + 5)
+					li_pos = pos(lv_syntax_string[li_index],')')
+					lv_char_len = left(lv_syntax_string[li_index],li_pos - 1)
+					lv_part2 = mid(lv_syntax_string[li_index],li_pos)
+					lv_new_len = integer(lv_char_len) + 38
+					lv_char_len = string(lv_new_len)
+					lv_syntax_string[li_index] = lv_part1 + lv_char_len + lv_part2
+				End If
+			End If
+			lv_syntax = lv_syntax + lv_syntax_string[li_index]
+		End If		
+	Next
+
+	STRING errors
+	li_rc = arg_dw.create(lv_syntax1 + lv_syntax + lv_syntax2, errors)
+NEXT
+ELSE	
+	// Stored Procedure	
+	//	Check if claims PDR mode
+	IF Lower( arg_window_name ) = "w_query_engine" THEN
+		IF arg_dw.ClassName() = "dw_report" THEN
+			arg_dw.of_GetParentWindow( lw_active_qe )
+			IF IsValid( lw_active_qe ) THEN
+				IF lw_active_qe.of_is_pdr_mode() THEN
+					lw_active_qe.of_get_pdr_parm( lsx_pdr_parms )
+					luo_query = lw_active_qe.wf_GetActiveQuery()
+					IF IsValid( luo_query ) THEN
+						IF IsValid( luo_query.tabpage_source.dw_source ) THEN
+							lb_claims_pdr = lsx_pdr_parms.pdr_source > 0
+						END IF
+					END IF
+				END IF
+			END IF
+		END IF
+	END IF
+		
+	FOR li_index = 1 TO li_columns
+		// Get the name of the database column from the datawindow 
+		ls_col_name =	Upper( arg_dw.Describe( '#' + String( li_index )  + '.dbname' ) )
+		
+		// Split up table and name
+		li_pos =	Pos( ls_col_name, '.' )
+		
+		IF lb_claims_pdr THEN
+			IF li_pos > 0 THEN
+				ls_table_name	= Upper(Trim(Left(ls_col_name, li_pos - 1 ) ) )
+				ls_col_name 	= Upper(Trim(Mid (ls_col_name, li_pos + 1 ) ) )
+			ELSE
+				ls_table_name 	= ""
+			END IF
+			
+			// Get descriptive information for this database column from dw_source
+			ls_tbl_type = luo_query.tabpage_source.dw_source.event ue_get_inv_type( ls_table_name )
+	
+			IF ls_tbl_type = gnv_dict.ics_error THEN
+				MessageBox( "Error", "Error getting Table type in fx_dw_syntax for table " + ls_table_name)
+				Return -1
+			END IF
+		ELSE
+			IF li_pos > 0 THEN
+				ls_table_name	= Upper(Trim(Left(ls_col_name, li_pos - 1 ) ) )
+				ls_col_name 	= Upper(Trim(Mid (ls_col_name, li_pos + 1 ) ) )
+			ELSE
+				ls_table_name 	= "CASE_CNTL"
+			END IF
+
+			// Get descriptive information for this database column from the dictionary
+			ls_tbl_type = gnv_dict.event ue_get_table_type( ls_table_name )
+	
+			IF ls_tbl_type = gnv_dict.ics_error THEN
+				MessageBox( "Error", "Error getting Table type in fx_dw_syntax for table " + ls_table_name)
+				Return -1
+			END IF
+		END IF
+		
+		asx_decode.col_name			[li_index] = ls_col_name
+		asx_decode.col_lookup_type	[li_index] = gnv_dict.event ue_get_lookup_type		(ls_tbl_type, ls_col_name)
+		asx_decode.col_len				[li_index] = string(gnv_dict.event ue_get_data_len	(ls_tbl_type, ls_col_name))
+		asx_decode.data_type			[li_index] = gnv_dict.event ue_get_elem_data_type	(ls_tbl_type, ls_col_name)
+		
+		lb_tbltypefound = false
+		ll_tbltotal = UPPERBOUND(asx_decode.table_type)
+		for ll_tblcnt = 1 to ll_tbltotal
+			if ls_tbl_type = asx_decode.table_type[ll_tblcnt] then
+				lb_tbltypefound = true
+			end if
+		next
+		if not lb_tbltypefound then
+			asx_decode.table_type [ll_tbltotal + 1] = ls_tbl_type
+		end if 
+	NEXT	
+END IF
+
+Return 0
+end function
+

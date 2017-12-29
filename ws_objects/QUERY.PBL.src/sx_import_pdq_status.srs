@@ -1,0 +1,7 @@
+﻿$PBExportHeader$sx_import_pdq_status.srs
+global type sx_import_pdq_status from structure
+	string		comments
+	n_ds		ds_import_pdq_status
+	n_ds		ds_import_errors
+end type
+

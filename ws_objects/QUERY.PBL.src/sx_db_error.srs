@@ -1,0 +1,12 @@
+﻿$PBExportHeader$sx_db_error.srs
+global type sx_db_error from structure
+	n_tr		trans
+	string		message
+	long		row_num
+	long		sqldbcode
+	string		sqlerrtext
+	string		sqlsyntax
+	string		sqlreturndata
+	string		window_name
+end type
+

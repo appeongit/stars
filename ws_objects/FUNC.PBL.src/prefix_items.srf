@@ -1,0 +1,66 @@
+﻿$PBExportHeader$prefix_items.srf
+$PBExportComments$Prefix a list of delimited items
+global type prefix_items from function_object
+end type
+
+forward prototypes
+global function string prefix_items (string prefix, string items, string delimiter)
+end prototypes
+
+global function string prefix_items (string prefix, string items, string delimiter);//***********************************************************************
+// This function adds the specified prefix, to each item in the list
+// of items that are delimited by the specified delimiter and returns
+// the new item list.
+//
+// Usage: 
+//   Answer = prefix_items(prefix,items,delimiter)
+//
+// Where:
+//   prefix    = (String) Prefix to put on the beginning of each item
+//   items     = (String) List of delimited items to prefix
+//   delimiter = (String) Delimiter separating list of items
+//
+// Usage Notes:
+//   The prefix is placed at the beginning of each item in the list
+//     and no separater is placed between the prefix and the item.
+//   If you need a separater between the prefix and the item you
+//     should specify the separater as the last character of the 
+//     prefix.
+//   The delimiter can be one or more characters in length.
+//   The returned string contains each item in the original string
+//     prefixed by the prefix specified and delimited by the original
+//     delimiter.
+//***********************************************************************
+//   Date   Init               Description of Changes Made                
+// -------- ---- -------------------------------------------------------- 
+// 01/10/94 JMS  Created
+//***********************************************************************
+
+String prefixed_items
+Long   delimiter_pos
+
+if (prefix = '') or (items = '') then return items
+
+do 
+   if (Len(prefixed_items) = 0) then
+      prefixed_items = prefix
+   else
+      prefixed_items = prefixed_items + delimiter + prefix
+   end if
+   delimiter_pos = Pos(items,delimiter)
+   if (delimiter_pos > 1) then
+      prefixed_items = prefixed_items + Mid(items,1,delimiter_pos - 1)
+      items          = Mid(items,delimiter_pos + Len(delimiter))
+      if (items = '') then prefixed_items = prefixed_items + delimiter
+   elseif (delimiter_pos = 0) then
+      prefixed_items = prefixed_items + items
+      items          = ''
+   else /* delimiter_pos = 1 */
+      items          = Mid(items,delimiter_pos + Len(delimiter)) 
+      if (items = '') then prefixed_items = prefixed_items + delimiter
+   end if   
+loop until (items = '')
+
+return prefixed_items
+end function
+

@@ -1,0 +1,6 @@
+﻿$PBExportHeader$sx_map_struct.srs
+global type sx_map_struct from structure
+    datawindow dw
+    string table_type
+end type
+

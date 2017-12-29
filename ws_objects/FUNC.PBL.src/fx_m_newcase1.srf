@@ -1,0 +1,14 @@
+﻿$PBExportHeader$fx_m_newcase1.srf
+$PBExportComments$Case|MaintainCase|NewCase
+global type fx_m_newcase1 from function_object
+end type
+
+forward prototypes
+global subroutine fx_m_newcase1 ()
+end prototypes
+
+global subroutine fx_m_newcase1 ();setpointer(hourglass!)
+gv_from = "A"
+OpenSheet(w_case_maint,mdi_main_frame,help_menu_position,Layered!)
+end subroutine
+

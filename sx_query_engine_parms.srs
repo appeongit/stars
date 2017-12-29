@@ -1,0 +1,22 @@
+HA$PBExportHeader$sx_query_engine_parms.srs
+global type sx_query_engine_parms from structure
+	string		query_id
+	string		subset_id
+	string		subset_name
+	string		authorization_id
+	sx_pdq_tables		tables[]
+	sx_pdq_criteria		criteria[]
+	string		case_id
+	string		case_ver
+	string		case_spl
+	integer		period_key
+	string		period_function
+	string		query_engine_mode
+	boolean		sumbyrev
+	boolean		pdq_subset
+	integer		prefilter_rows[]
+	string		prefilter_bool[]
+	string		sub_inv_type
+	string		ft_main_inv_type
+end type
+

@@ -1,0 +1,60 @@
+﻿$PBExportHeader$fx_parse_table.srf
+global type fx_parse_table from function_object
+end type
+
+forward prototypes
+global function integer fx_parse_table (string as_table, ref string as_table_type, ref string as_subset_id)
+end prototypes
+
+global function integer fx_parse_table (string as_table, ref string as_table_type, ref string as_subset_id);//************************************************************************
+//		Object Type:	Global Function
+//		Object Name:	fx_parse_table
+//		Event Name:		N/A
+//
+//		This function takes a table and parses it out to table type and subset id.
+//
+//		Input parms:
+//		1.	as_table (string)
+//		2. as_table_type (string)
+//		3. as_subset_id (string)
+//
+//		Returns:
+//		integer:  1 - success
+//					-1 - error
+//
+//************************************************************************
+//
+//	03/12/01	FDG	Stars 4.7.  Dynamically get the subset prefix (instead of 'SUB_MEDC_')
+//
+//************************************************************************
+String		ls_table,			&
+				ls_prefix
+Long			ll_pos
+Int			li_rc,				&
+				li_len
+
+ls_prefix	=	gnv_sql.of_get_subset_prefix()	// FDG 03/12/01
+li_len		=	Len (ls_prefix)	+	1				// FDG 03/12/01
+
+as_table		=	Upper(as_table)
+//ll_pos		=	Pos (as_table, 'SUB_MEDC_')
+ll_pos		=	Pos (as_table, ls_prefix)			// FDG 03/12/01
+
+IF	 ll_pos	= 1		THEN
+	//ls_table = mid(as_table,10)
+	//as_table_type	=	Mid(as_table,10,2)
+	ls_table = mid(as_table,li_len)					// FDG 03/12/01
+	as_table_type	=	Mid(as_table,li_len,2)		// FDG 03/12/01
+	ll_pos = pos(ls_table, '_')
+	if ll_pos = 3 then
+		as_subset_id = mid(ls_table,4,10)
+		return 1
+	else
+		return -1
+	end if
+ELSE
+	return -1
+END IF
+
+end function
+

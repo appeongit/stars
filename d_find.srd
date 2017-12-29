@@ -1,0 +1,31 @@
+HA$PBExportHeader$d_find.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=67108864 processing=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=97 print.margin.bottom=97 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=4 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=300 color="536870912" )
+table(column=(type=char(50) updatewhereclause=no name=col_name dbname="col_name" 
+ values=""  )
+column=(type=char(50) updatewhereclause=no name=value dbname="value"  )
+column=(type=number updatewhereclause=no name=rb_direction dbname="direction" 
+ values="Forward	1/Backward	0/"  )
+)
+rectangle(name=r_1 visible="1" band=detail pen.style="0" pen.width="5" pen.color="8421504" brush.hatch="7" brush.color="553648127" background.mode="2" background.color="8388608" x="1408" y="40" height="240" width="485" )
+text(name=direction_t visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="2" background.color="67108864" color="134217741" alignment="1" border="0" x="1458" y="8" height="64" width="265" text="Direction" html.valueishtml="0" accessibledescription="~"Direction~"	~"Direction~"" accessiblename="~"Direction~"	~"Direction~"" accessiblerole=42 )
+column(name=rb_direction visible="1" band=detail id=3 x="1449" y="76" height="176" width="379" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" radiobuttons.columns=1 radiobuttons.lefttext=no radiobuttons.scale=no radiobuttons.threed=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=30 accessibledescription="~"Direction~"	~"Direction~"" accessiblename="~"Direction~"	~"Direction~"" )
+column(name=col_name visible="1" band=detail id=1 x="613" y="48" height="76" width="741" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" dddw.allowedit=no dddw.autohscroll=no dddw.autoretrieve=no dddw.useasborder=yes dddw.datacolumn=col_name dddw.displaycolumn=col_name dddw.hscrollbar=no dddw.hsplitscroll=no dddw.imemode=0 dddw.limit=0 dddw.name=d_dddw_uo_columns dddw.nilisnull=no dddw.percentwidth=0 dddw.required=no dddw.showlist=no dddw.vscrollbar=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=10 accessibledescription="~"Column to Search~"	~"Column to Search~"" accessiblename="~"Column to Search~"	~"Column to Search~"" )
+column(name=value visible="1" band=detail id=2 x="613" y="192" height="76" width="741" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=20 accessibledescription="~"Search Value~"	~"Search Value~"" accessiblename="~"Search Value~"	~"Search Value~"" )
+text(name=value_t visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="174" y="192" height="68" width="407" text="Search Value:" html.valueishtml="0" accessibledescription="~"Search Value~"	~"Search Value~"" accessiblename="~"Search Value~"	~"Search Value~"" accessiblerole=42 )
+text(name=col_name_t visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="41" y="52" height="68" width="539" text="Column to Search:" html.valueishtml="0" accessibledescription="~"Column to Search~"	~"Column to Search~"" accessiblename="~"Column to Search~"	~"Column to Search~"" accessiblerole=42 )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateDDDWFrames="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen(sessionSpecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

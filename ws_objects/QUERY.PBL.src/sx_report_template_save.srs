@@ -1,0 +1,11 @@
+﻿$PBExportHeader$sx_report_template_save.srs
+global type sx_report_template_save from structure
+	character		path
+	string		report_template_id
+	string		report_template_name
+	string		report_template_type
+	string		report_template_desc
+	string		report_template_addl_type
+	string		report_template_default
+end type
+

@@ -1,0 +1,44 @@
+HA$PBExportHeader$d_case_filter_display.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=1 print.documentname="FILTER VALUES"  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=97 print.margin.bottom=97 print.paper.size=0 print.paper.source=0 grid.lines=0 selected.mouse=yes hidegrayline=no showbackcoloronxp=no)
+header(height=220 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(10) updatewhereclause=yes name=filter_id dbname="SUB_FILTER_VALS.FILTER_ID"  )
+column=(type=char(32) updatewhereclause=yes name=filter_string dbname="SUB_FILTER_VALS.FILTER_STRING"  )
+column=(type=long updatewhereclause=yes name=filter_num dbname="SUB_FILTER_VALS.FILTER_NUM"  )
+column=(type=datetime updatewhereclause=yes name=filter_date dbname="SUB_FILTER_VALS.FILTER_DATE"  )
+column=(type=decimal(4) updatewhereclause=yes name=filter_money dbname="SUB_FILTER_VALS.FILTER_MONEY"  )
+ retrieve="  SELECT SUB_FILTER_VALS.FILTER_ID ,           
+			SUB_FILTER_VALS.FILTER_STRING ,           
+			SUB_FILTER_VALS.FILTER_NUM ,           
+			SUB_FILTER_VALS.FILTER_DATE ,           
+			SUB_FILTER_VALS.FILTER_MONEY     
+    FROM SUB_FILTER_VALS   
+           "
+ )
+text(name=t_1 band=background font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="814" y="16" height="64" width="741" text="FILTER VALUES" accessibledescription="~"FILTER VALUES~"	~"FILTER VALUES~"" accessiblename="~"FILTER VALUES~"	~"FILTER VALUES~"" accessiblerole=42 )
+text(name=st_report_date band=background font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="2" background.color="1073741824" color="33554432" alignment="0" border="0" x="2651" y="8" height="64" width="667" text="" accessibledescription="~"Report Date~"	~"Report Date~"" accessiblename="~"Report Date~"	~"Report Date~"" accessiblerole=42 )
+text(name=t_2 band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="9" y="152" height="64" width="485" text="Filter Id" accessibledescription="~"Filter Id~"	~"Filter Id~"" accessiblename="~"Filter Id~"	~"Filter Id~"" accessiblerole=42 )
+text(name=t_3 band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="503" y="152" height="64" width="1047" text="String" accessibledescription="~"String~"	~"String~"" accessiblename="~"String~"	~"String~"" accessiblerole=42 )
+text(name=t_4 band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="1559" y="152" height="64" width="155" text="Num" accessibledescription="~"Num~"	~"Num~"" accessiblename="~"Num~"	~"Num~"" accessiblerole=42 )
+text(name=t_5 band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="1723" y="152" height="64" width="608" text="Date" accessibledescription="~"Date~"	~"Date~"" accessiblename="~"Date~"	~"Date~"" accessiblerole=42 )
+text(name=t_6 band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="2341" y="152" height="64" width="1399" text="Money" accessibledescription="~"Money~"	~"Money~"" accessiblename="~"Money~"	~"Money~"" accessiblerole=42 )
+column(name=filter_id band=detail id=1 x="9" y="4" height="64" width="485" color="33554432" border="0" alignment="0" format="[general]" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Filter ID ~"	~"Filter ID ~"" accessiblename="~"Filter ID~"	~"Filter ID~"" )
+column(name=filter_string band=detail id=2 x="503" y="4" height="64" width="1047" color="33554432" border="0" alignment="0" format="[general]" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"String~"	~"String~"" accessiblename="~"String~"	~"String~"" )
+column(name=filter_num band=detail id=3 x="1559" y="4" height="64" width="155" color="33554432" border="0" alignment="0" format="[general]" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Number~"	~"Number~"" accessiblename="~"Number~"	~"Number~"" )
+column(name=filter_date visible="1	if (filter_date = date('06/06/2079'), 0,1)" band=detail id=4 x="1723" y="4" height="64" width="608" color="33554432" border="0" alignment="0" format="[shortdate] [time]" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Date~"	~"Date~"" accessiblename="~"Date~"	~"Date~"" )
+column(name=filter_money band=detail id=5 x="2341" y="4" height="64" width="1399" color="33554432" border="0" alignment="0" format="[general]" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Money~"	~"Money~"" accessiblename="~"Money~"	~"Money~"" )
+sparse(names="filter_id")
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" generateJavaScript="1" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

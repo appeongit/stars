@@ -1,0 +1,44 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "BASE.PBL" "";
+@end;
+@begin Objects
+ "d_rpt_top_100_provs_upin_spec.srd" "BASE.PBL";
+ "d_rpt_diagcat_cat.srd" "BASE.PBL";
+ "d_rpt_fiscal_year_by_spec_2000.srd" "BASE.PBL";
+ "d_250_pats_by_billchg.srd" "BASE.PBL";
+ "d_rpt_top_250_prov_upins.srd" "BASE.PBL";
+ "d_rpt_fiscal_year_by_proc_2000.srd" "BASE.PBL";
+ "d_rpt_top_40_proc_top_100_diag.srd" "BASE.PBL";
+ "u_nvo_proc_code.sru" "BASE.PBL";
+ "d_40_provs_util_25_hcpcs_wn_tob.srd" "BASE.PBL";
+ "d_rpt_diagcat_rank.srd" "BASE.PBL";
+ "d_provider_ub92.srd" "BASE.PBL";
+ "d_rpt_top_250_proc.srd" "BASE.PBL";
+ "d_rpt_top_100_upins.srd" "BASE.PBL";
+ "d_patient_ub92.srd" "BASE.PBL";
+ "d_revenue_ub92.srd" "BASE.PBL";
+ "w_rpt_selection.srw" "BASE.PBL";
+ "d_100_hcpcs_wn_tob_by_billchg.srd" "BASE.PBL";
+ "d_250_pats_by_billchg2.srd" "BASE.PBL";
+ "d_250_provs_wn_tob_by_billchg.srd" "BASE.PBL";
+ "sx_baseln_rpt_ub92.srs" "BASE.PBL";
+ "d_rpt_top_200_diag_by_proc_code.srd" "BASE.PBL";
+ "d_100_revcodes_wn_tob_by_billchg.srd" "BASE.PBL";
+ "d_250_pats_by_billchg_ora.srd" "BASE.PBL";
+ "w_stand_analysis_select_ub92.srw" "BASE.PBL";
+ "w_rpt_display_baseline_ub92.srw" "BASE.PBL";
+ "d_rpt_fiscal_year_by_spec.srd" "BASE.PBL";
+ "d_rpt_top_100_proc_spec.srd" "BASE.PBL";
+ "d_rpt_top_100_upins_specialty.srd" "BASE.PBL";
+ "w_rpt_select_baseline_rpt_comp.srw" "BASE.PBL";
+ "w_rpt_select_baseline_rpt_diag.srw" "BASE.PBL";
+ "d_rpt_fiscal_year_by_proc.srd" "BASE.PBL";
+ "w_rpt_display_baseline_report.srw" "BASE.PBL";
+ "w_rpt_select_baseline_rpt_proc.srw" "BASE.PBL";
+ "w_rpt_select_baseline_rpt_prov.srw" "BASE.PBL";
+ "w_rpt_select_baseline_report_parent.srw" "BASE.PBL";
+ "d_rpt_top_40_prov_top_25_proc.srd" "BASE.PBL";
+ "w_rpt_display_baseline_report_comp.srw" "BASE.PBL";
+ "d_rpt_diag_top_100_diagcat.srd" "BASE.PBL";
+@end;

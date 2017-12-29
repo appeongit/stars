@@ -1,0 +1,11 @@
+HA$PBExportHeader$sx_prov_fields.srs
+global type sx_prov_fields from structure
+    string prov_col_name
+    boolean join_field
+    string table_type
+    boolean enterable_field
+    boolean selected
+    string label
+    string table_name
+end type
+

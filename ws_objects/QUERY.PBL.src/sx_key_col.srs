@@ -1,0 +1,10 @@
+﻿$PBExportHeader$sx_key_col.srs
+$PBExportComments$In tabpage_view, key columns.
+global type sx_key_col from structure
+	string		col_name
+	integer		col_number
+	string		col_value
+	boolean		visible
+	string		data_type
+end type
+

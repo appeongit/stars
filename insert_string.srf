@@ -1,0 +1,52 @@
+HA$PBExportHeader$insert_string.srf
+global type insert_string from function_object
+end type
+
+forward prototypes
+global function string insert_string (string orig_str, string str_to_insert, long pos_to_insert)
+end prototypes
+
+global function string insert_string (string orig_str, string str_to_insert, long pos_to_insert);//***********************************************************************
+// This function inserts the string to insert into the original string
+// at the specified position and returns the new string.
+//
+// Usage:
+//   Answer = insert_string(orig_str,str_to_insert,pos_to_insert)
+//
+// Where:
+//   orig_str      = (String) Specifies the original string that 
+//                            str_to_insert will be inserted into.
+//   str_to_insert = (String) Specifies the string to insert into the
+//                            original string.
+//   pos_to_insert = (Long)   Specifies the position to insert the
+//                            the string to insert into the original
+//                            string.  After the insertion this position
+//                            will contain the first char of str_to_insert.
+//
+// Usage Notes:
+//   If pos_to_insert < 1 then str_to_insert is inserted at position 1 of 
+//      original string.
+//   If pos_to_insert is > the length of the original string then the
+//      original string is padded with blanks as required.
+//***********************************************************************
+//   Date   Init               Description of Changes Made
+// -------- ---- --------------------------------------------------------
+// 03/15/94 JMS  Created
+//***********************************************************************
+
+String first_str
+String last_str
+String answer
+
+if (pos_to_insert < 1)             then pos_to_insert = 1
+if (pos_to_insert > Len(orig_str)) then orig_str = Left(orig_str + Space(pos_to_insert - 1),pos_to_insert - 1)
+
+first_str = Mid(orig_str,1,pos_to_insert - 1)
+last_str  = Mid(orig_str,pos_to_insert)
+
+answer    = first_str + str_to_insert + last_str
+
+return answer
+
+end function
+

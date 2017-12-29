@@ -1,0 +1,14 @@
+HA$PBExportHeader$d_period_list_max_period.srd
+$PBExportComments$w_period_list cb_add - to determine if patient sum gb should be visible <logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=period dbname="period_cntl.PERIOD" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"period_cntl~" ) COLUMN(NAME=~"period_cntl.PERIOD~")WHERE(    EXP1 =~"period_cntl.MODEL~"   OP =~"=~"    EXP2 =~"Upper(:arg_model)~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"period_cntl.INVOICE_TYPE~"   OP =~"=~"    EXP2 =~"Upper(:arg_invoice_type)~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"period_cntl.FUNCTION_NAME~"   OP =~"=~"    EXP2 =~"'SUM'~" ) ) ORDER(NAME=~"period_cntl.PERIOD~" ASC=no) ARG(NAME = ~"arg_model~" TYPE = string)  ARG(NAME = ~"arg_invoice_type~" TYPE = string) " arguments=(("arg_model", string),("arg_invoice_type", string)) )
+text(band=header alignment="2" text="Period" border="0" color="0" x="9" y="8" height="64" width="439"  name=period_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="439" format="[general]"  name=period edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

@@ -1,0 +1,9 @@
+HA$PBExportHeader$sx_drilldown_parms.srs
+$PBExportComments$Container object to pass array of sx_drilldown to uo_Query.
+global type sx_drilldown_parms from structure
+	sx_drilldown		sx_drilldown_parm
+	sx_criteria		sx_drilldown_criteria[]
+	string		is_inv_type
+	boolean		ib_drilldown
+end type
+

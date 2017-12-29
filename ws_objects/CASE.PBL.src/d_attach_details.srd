@@ -1,0 +1,52 @@
+﻿$PBExportHeader$d_attach_details.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=67108864 processing=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=692 color="536870912" )
+table(column=(type=char(80) updatewhereclause=yes name=file_name dbname="FILE_CNTL.file_name"  )
+column=(type=char(10) updatewhereclause=yes name=file_type dbname="FILE_CNTL.file_type"  )
+column=(type=long updatewhereclause=yes name=file_size dbname="FILE_CNTL.file_size"  )
+column=(type=char(8) updatewhereclause=yes name=attach_user_id dbname="FILE_CNTL.attach_user_id" 
+ values=""  )
+column=(type=datetime updatewhereclause=yes name=attach_date dbname="FILE_CNTL.attach_date"  )
+column=(type=char(8) updatewhereclause=yes name=case_link_user_id dbname="CASE_LINK.user_id"  )
+column=(type=datetime updatewhereclause=yes name=case_link_link_date dbname="CASE_LINK.link_date"  )
+ retrieve="SELECT  file_cntl.file_name ,           
+			file_cntl.file_type ,           
+			file_cntl.file_size ,           
+			file_cntl.attach_user_id ,           
+			file_cntl.attach_date,
+			case_link.user_id,
+			case_link.link_date   
+FROM file_cntl, case_link
+WHERE ( FILE_CNTL.FILE_ID = :as_fileid )
+AND	file_cntl.file_id = case_link.link_key
+AND CASE_LINK.CASE_ID = :as_case_id
+AND CASE_LINK.CASE_SPL = :as_case_spl
+AND CASE_LINK.CASE_VER = :as_case_ver
+AND case_link.link_type = 'ATT' "
+  arguments=(("as_fileid", string), ("as_case_id", string), ("as_case_spl", string), ("as_case_ver", string))
+)
+text(name=file_name_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="2" background.color="67108864" color="134217741" alignment="1" border="0" x="37" y="64" height="64" width="512" text="File Name:" html.valueishtml="0" accessibledescription="~"File Name~"	~"File Name~"" accessiblename="~"File Name~"	~"File Name~"" accessiblerole=42 )
+text(name=file_type_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="2" background.color="67108864" color="134217741" alignment="1" border="0" x="37" y="200" height="52" width="512" text="File Extension:" html.valueishtml="0" accessibledescription="~"File Extension~"	~"File Extension~"" accessiblename="~"File Extension~"	~"File Extension~"" accessiblerole=42 )
+column(name=file_name visible="1" band=detail id=1 x="567" y="64" height="76" width="1303" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=80 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"File Name~"	~"File Name~"" accessiblename="~"File Name~"	~"File Name~"" )
+column(name=file_type visible="1" band=detail id=2 x="567" y="200" height="76" width="402" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=10 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"File Extension~"	~"File Extension~"" accessiblename="~"File Extension~"	~"File Extension~"" )
+compute(name=compute_1 visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" x="567" y="336" height="76" width="1202" format="[GENERAL]" expression="String( file_size, ~"###,###,###,###,##0~") + ~" Bytes~"" alignment="0" border="0" html.valueishtml="0" crosstab.repeat=no accessibledescription="~"File Size~"	~"File Size~"" accessiblename="~"File Size~"	~"File Size~"" )
+text(name=file_size_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="2" background.color="67108864" color="134217741" alignment="1" border="0" x="37" y="336" height="64" width="512" text="File Size:" html.valueishtml="0" accessibledescription="~"File Size~"	~"File Size~"" accessiblename="~"File Size~"	~"File Size~"" accessiblerole=42 )
+text(name=attach_user_id_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="2" background.color="67108864" color="134217741" alignment="1" border="0" x="37" y="472" height="64" width="512" text="Attach User Id:" html.valueishtml="0" accessibledescription="~"Attach User Id~"	~"Attach User Id~"" accessiblename="~"Attach User Id~"	~"Attach User Id~"" accessiblerole=42 )
+text(name=attach_date_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="2" background.color="67108864" color="134217741" alignment="1" border="0" x="37" y="608" height="64" width="512" text="Attach Date:" html.valueishtml="0" accessibledescription="~"Attach Date~"	~"Attach Date~"" accessiblename="~"Attach Date~"	~"Attach Date~"" accessiblerole=42 )
+column(name=attach_date visible="1" band=detail id=5 x="567" y="608" height="76" width="553" color="33554432" border="0" alignment="0" format="mm/dd/yyyy hh:mm:ss" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"Attach Date~"	~"Attach Date~"" accessiblename="~"Attach Date~"	~"Attach Date~"" )
+column(name=attach_user_id visible="1" band=detail id=4 x="567" y="472" height="76" width="1298" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" dddw.allowedit=no dddw.autohscroll=no dddw.autoretrieve=yes dddw.useasborder=no dddw.datacolumn=user_id dddw.displaycolumn=cf_name dddw.hscrollbar=no dddw.hsplitscroll=no dddw.imemode=0 dddw.limit=0 dddw.name=d_dddw_user_id dddw.nilisnull=no dddw.percentwidth=0 dddw.required=no dddw.showlist=no dddw.vscrollbar=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"Attach User Id~"	~"Attach User Id~"" accessiblename="~"Attach User Id~"	~"Attach User Id~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen(sessionSpecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

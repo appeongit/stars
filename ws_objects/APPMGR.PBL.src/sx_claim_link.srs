@@ -1,0 +1,29 @@
+﻿$PBExportHeader$sx_claim_link.srs
+global type sx_claim_link from structure
+    string invoice_type[]
+    string tbl_directory[25, 36]
+    string level_src_type[]
+    string crit_left_paren[25, 50]
+    string crit_exp1[25, 50]
+    string crit_op[25, 50]
+    string crit_exp2[25, 50]
+    string crit_logic[25, 50]
+    string crit_right_paren[25, 50]
+    string select_stmt[]
+    string from_stmt[]
+    string where_stmt[]
+    string table_type[25, 3]
+    string src_type
+    string subset_id
+    string case_id
+    string filter_by[25, 25]
+    string filter_id[25, 25]
+    string filter_type[25, 25]
+    string period
+    string crit_sub_type[]
+    datetime from_paid_date[]
+    datetime thru_paid_date[]
+    integer num_filters_applied[25]
+    string output_dest
+end type
+

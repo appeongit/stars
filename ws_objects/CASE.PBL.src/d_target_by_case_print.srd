@@ -1,0 +1,43 @@
+﻿$PBExportHeader$d_target_by_case_print.srd
+$PBExportComments$<logic>
+release 8;
+datawindow(units=1 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="CASE TARGETS" print.orientation = 0 print.margin.left = 24 print.margin.right = 24 print.margin.top = 24 print.margin.bottom = 24 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=74 color="536870912" )
+summary(height=1 color="536870912" )
+footer(height=5 color="536870912" )
+detail(height=21 color="536870912" )
+table(column=(type=char(10) update=yes updatewhereclause=yes key=yes name=case_id dbname="TARGET.CASE_ID" initial=" " )
+ column=(type=char(2) update=yes updatewhereclause=yes key=yes name=case_spl dbname="TARGET.CASE_SPL" initial=" " )
+ column=(type=char(2) update=yes updatewhereclause=yes key=yes name=case_ver dbname="TARGET.CASE_VER" initial=" " )
+ column=(type=char(10) update=yes updatewhereclause=yes key=yes name=trgt_id dbname="TARGET.TRGT_ID" initial=" " )
+ column=(type=char(50) update=yes updatewhereclause=yes key=yes name=trgt_key dbname="TARGET.TRGT_KEY" initial=" " )
+ column=(type=char(2) update=yes updatewhereclause=yes name=trgt_status dbname="TARGET.TRGT_STATUS" initial=" " )
+ column=(type=char(32) update=yes updatewhereclause=yes name=trgt_name dbname="TARGET.TRGT_NAME" initial=" " )
+ retrieve="SELECT TARGET.CASE_ID, 
+		 TARGET.CASE_SPL, 
+		 TARGET.CASE_VER, 
+		 TARGET.TRGT_ID, 
+		 TARGET.TRGT_KEY, 
+		 TARGET.TRGT_STATUS, 
+		 TARGET.TRGT_NAME 
+FROM TARGET 
+WHERE ( TARGET.CASE_ID =  Upper(:CASE_ID) ) AND 
+		( TARGET.CASE_SPL = Upper(:CASE_SPL) ) AND 
+		( TARGET.CASE_VER = Upper(:CASE_VER) ) " update="TARGET" updatewhere=2 updatekeyinplace=no arguments=(("CASE_ID", string),("CASE_SPL", string),("CASE_VER", string)) )
+text(band=header alignment="0" text="CASE ID:" border="0" color="0" x="0" y="0" height="16" width="60" html.valueishtml="0"  name=case_id_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="0" expression="string( case_id  +  case_spl  +  case_ver )"border="0" color="0" x="64" y="0" height="16" width="136" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="CASE TARGETS" border="0" color="0" x="327" y="0" height="16" width="101" html.valueishtml="0"  name=t_1 visible="1"  font.face="System" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Target Id" border="4" color="0" x="0" y="41" height="31" width="81" html.valueishtml="0"  name=trgt_id_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Target Key" border="4" color="0" x="102" y="41" height="31" width="101" html.valueishtml="0"  name=trgt_key_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Status" border="4" color="0" x="231" y="41" height="31" width="41" html.valueishtml="0"  name=trgt_status_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Target Name" border="4" color="0" x="287" y="41" height="31" width="240" html.valueishtml="0"  name=trgt_name_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="1" expression="'Page ' + page()"border="0" color="0" x="667" y="2" height="18" width="95" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Date Requested:" border="0" color="0" x="539" y="24" height="16" width="108" html.valueishtml="0"  name=t_2 visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="1" text="" border="0" color="0" x="666" y="24" height="16" width="97" html.valueishtml="0"  name=st_report_date visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="0" color="0" x="0" y="1" height="19" width="96" format="[general]" html.valueishtml="0"  name=trgt_id visible="1" edit.limit=10 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="0" color="0" x="104" y="1" height="19" width="128" format="[general]" html.valueishtml="0"  name=trgt_key visible="1" edit.limit=14 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="0" color="0" x="240" y="1" height="19" width="21" format="[general]" html.valueishtml="0"  name=trgt_status visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=70 border="0" color="0" x="288" y="1" height="19" width="271" format="[general]" html.valueishtml="0"  name=trgt_name visible="1" edit.limit=32 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )
+ 

@@ -1,0 +1,15 @@
+﻿$PBExportHeader$sx_track_settings.srs
+global type sx_track_settings from structure
+    string track_key
+    string track_type
+    string track_name
+    boolean cb_track_enabled
+    boolean cb_track_visible
+    boolean track_key_enabled
+    boolean track_key_visible
+    boolean track_type_enabled
+    boolean track_type_visible
+    boolean track_name_enabled
+    boolean track_name_visible
+end type
+

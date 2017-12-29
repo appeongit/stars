@@ -1,0 +1,69 @@
+HA$PBExportHeader$fx_m_maintaintarget.srf
+$PBExportComments$Case|Target|MaintainTarget
+global type fx_m_maintaintarget from function_object
+end type
+
+forward prototypes
+global subroutine fx_m_maintaintarget ()
+end prototypes
+
+global subroutine fx_m_maintaintarget ();//Modifications:
+// 08-31-98 NLG FS362 convert case to case_cntl
+//03-04-98 ajs 4.0 TS145-Globals
+//------------------------------------------------------------------
+Int lv_count,lv_rc
+String lv_case_id,lv_case_spl,lv_case_ver
+String lv_cat
+
+setpointer(hourglass!)
+setmicrohelp(w_main,'')
+
+lv_rc = fx_active_case_edit()
+If lv_rc <> 0 then
+	COMMIT using Stars2ca;
+	if Stars2ca.of_check_status() <> 0 then
+		errorbox(stars2ca,'Error performing commit in fx_m_maintaintarget.')
+	end if
+	RETURN
+End If
+//gv_case_active = gv_active_case		//ajs 4.0 03-04-98
+lv_case_id = left(gv_active_case,10)
+lv_case_spl = mid(gv_active_case,11,2)
+lv_case_ver = mid(gv_active_case,13,2)
+
+// 08-31-98 NLG FS362 convert case to case_cntl
+Select case_cat into :lv_cat 
+	from Case_cntl
+		where case_id = Upper( :lv_case_id ) and
+				case_spl = Upper( :lv_case_spl ) and
+				case_ver = Upper( :lv_case_ver )
+Using Stars2ca;
+If stars2ca.of_check_status() <> 0 then
+	Errorbox(Stars2ca,'Unable to Read Case Table to determine Category of Case')
+	RETURN
+End If
+
+If lv_cat = 'CA?' or lv_cat = 'REF' then
+	Messagebox('EDIT','Cannot Create Tracks for Potential/Referred Cases')
+	COMMIT using Stars2ca;
+	if Stars2ca.of_check_status() <> 0 then
+		errorbox(stars2ca,'Error performing commit in fx_m_maintaintarget.')
+	end if
+	RETURN
+End If
+
+//gv_case_subset =  ''	//ajs 4.0 03-04-98
+gv_target_subset_id = ''
+gv_case_target =  fx_get_next_key_id('TARGET')
+
+COMMIT using Stars2ca;
+if Stars2ca.sqlcode <> 0 then
+	errorbox(stars2ca,'Error performing commit in fx_m_maintaintarget.')
+end if
+
+gv_from = 'MENU'
+openSheet(w_target_maintain,MDI_Main_Frame,Help_Menu_Position,Layered!)
+
+
+end subroutine
+

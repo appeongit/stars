@@ -1,0 +1,21 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "DICT.PBL" "";
+@end;
+@begin Objects
+ "d_dictionary_search.srd" "DICT.PBL";
+ "d_plan_elig_list.srd" "DICT.PBL";
+ "d_dddw_disp_format.srd" "DICT.PBL";
+ "d_dddw_tbl_type.srd" "DICT.PBL";
+ "d_dictionary_list.srd" "DICT.PBL";
+ "d_dictionary_maint.srd" "DICT.PBL";
+ "d_dictionary_tbl_types.srd" "DICT.PBL";
+ "d_dddw_elem_type.srd" "DICT.PBL";
+ "w_plan_elig_list.srw" "DICT.PBL";
+ "d_sql_formula.srd" "DICT.PBL";
+ "w_dictionary_list.srw" "DICT.PBL";
+ "d_dddw_lookup_type.srd" "DICT.PBL";
+ "sx_plan_elig.srs" "DICT.PBL";
+ "w_plan_elig.srw" "DICT.PBL";
+ "d_check_for_system_templates.srd" "DICT.PBL";
+@end;

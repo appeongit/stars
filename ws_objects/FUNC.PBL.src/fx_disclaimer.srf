@@ -1,0 +1,15 @@
+﻿$PBExportHeader$fx_disclaimer.srf
+global type fx_disclaimer from function_object
+end type
+
+forward prototypes
+global function integer fx_disclaimer ()
+end prototypes
+
+global function integer fx_disclaimer ();// GaryR	10/27/2000	2315d	Conforming STARS to the HIPAA Act
+
+Return MessageBox( "HIPAA Disclaimer", "This data may contain confidential information subject to the HIPAA~n~r" + &
+						 							"Standards for Privacy of Individually Identifiable Health Information." + &
+													"~n~r~n~rWould you like to proceed?", Exclamation!, YesNo! )
+end function
+

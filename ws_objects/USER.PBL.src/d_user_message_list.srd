@@ -1,0 +1,56 @@
+﻿$PBExportHeader$d_user_message_list.srd
+$PBExportComments$Lists all user_message rows for a user <gui>
+release 11;
+datawindow ( units=0 timer_interval=60000 color=1073741824 processing=1 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes grid.lines=0 selected.mouse=yes hidegrayline=no showbackcoloronxp=no)
+header(height=168 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(0) key=yes update=yes updatewhereclause=yes initial="0" name=user_message_id dbname="user_message.user_message_id"  )
+column=(type=char(8) update=yes updatewhereclause=yes initial="empty" name=user_id dbname="user_message.user_id"  )
+column=(type=char(32) update=yes updatewhereclause=yes initial="empty" name=message_source dbname="user_message.message_source"  )
+column=(type=char(1) update=yes updatewhereclause=yes initial="N" name=rte_ind dbname="user_message.rte_ind"  )
+column=(type=datetime update=yes updatewhereclause=yes initial="today()" name=message_datetime dbname="user_message.message_datetime"  )
+column=(type=char(255) update=yes updatewhereclause=yes initial="empty" name=message_short_desc dbname="user_message.message_short_desc"  )
+column=(type=char(1) update=yes updatewhereclause=yes initial="A" name=message_status dbname="user_message.message_status" 
+ values="Added	A/Displayed	D/Admin Deleted	X/"  )
+column=(type=decimal(0) update=yes updatewhereclause=yes initial="0" name=row_num dbname="user_message.row_num"  )
+column=(type=decimal(0) update=yes updatewhereclause=yes initial="0" name=sqldbcode dbname="user_message.sqldbcode"  )
+column=(type=char(255) update=yes updatewhereclause=yes initial="empty" name=sqlerrtext dbname="user_message.sqlerrtext"  )
+column=(type=char(255) update=yes updatewhereclause=yes initial="empty" name=sqlsyntax dbname="user_message.sqlsyntax"  )
+column=(type=char(255) update=yes updatewhereclause=yes initial="empty" name=sqlreturndata dbname="user_message.sqlreturndata"  )
+column=(type=char(60) update=yes updatewhereclause=yes initial="empty" name=windowname dbname="user_message.windowname"  )
+column=(type=char(60) update=yes updatewhereclause=yes initial="empty" name=dataobject dbname="user_message.dataobject"  )
+column=(type=datetime update=yes updatewhereclause=yes initial="today()" name=message_status_datetime dbname="user_message.message_status_datetime"  )
+ retrieve="  SELECT  user_message.user_message_id ,           user_message.user_id ,           user_message.message_source ,           user_message.rte_ind ,           user_message.message_datetime ,           user_message.message_short_desc ,            user_message.message_status ,           user_message.row_num ,           user_message.sqldbcode ,           user_message.sqlerrtext ,           user_message.sqlsyntax ,           user_message.sqlreturndata ,           user_message.windowname ,           user_message.dataobject ,           user_message.message_status_datetime     
+    FROM user_message    
+	WHERE user_message.message_status <> 'X'
+	  AND user_message.user_id like Upper( :as_user_id )"
+  update="user_message" updatewhere=0 updatekeyinplace=no
+  arguments=(("as_user_id", string))
+ sort="user_id A, message_source A, user_message_id A"
+)
+text(name=t_1 visible="1" band=background font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="704" y="12" height="64" width="608" text="Message List" html.valueishtml="0" accessibledescription="~"Message List~"	~"Message List~"" accessiblename="~"Message List~"	~"Message List~"" accessiblerole=42 )
+compute(name=compute_2 visible="1" band=background font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" x="2030" y="12" height="64" width="905" format="[general]" expression="'Page ' + page() " alignment="2" border="0" html.valueishtml="0" crosstab.repeat=no accessibledescription="~"Page~"	~"Page~"" accessiblename="~"Page~"	~"Page~"" )
+text(name=st_report_date visible="1" band=background font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="2" background.color="1073741824" color="33554432" alignment="0" border="0" x="1358" y="12" height="64" width="613" text="" html.valueishtml="0" accessibledescription="~"Date~"	~"Date~"" accessiblename="~"Date~"	~"Date~"" accessiblerole=42 )
+text(name=message_short_desc_t visible="1" band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="1710" y="100" height="64" width="2990" text="Message" html.valueishtml="0" accessibledescription="~"Message~"	~"Message~"" accessiblename="~"Message~"	~"Message~"" accessiblerole=42 )
+text(name=message_status_t visible="1" band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="4709" y="100" height="64" width="471" text="Status" html.valueishtml="0" accessibledescription="~"Status~"	~"Status~"" accessiblename="~"Status~"	~"Status~"" accessiblerole=42 )
+text(name=message_source_t visible="1" band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="2" background.color="1073741824" color="33554432" alignment="0" border="0" x="375" y="100" height="64" width="709" text="Source" html.valueishtml="0" accessibledescription="~"Source~"	~"Source~"" accessiblename="~"Source~"	~"Source~"" accessiblerole=42 )
+text(name=message_datetime_t visible="1" band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="1093" y="100" height="64" width="608" text="Date" html.valueishtml="0" accessibledescription="~"Date~"	~"Date~"" accessiblename="~"Date~"	~"Date~"" accessiblerole=42 )
+text(name=user_id_t visible="1" band=header font.charset="0" font.face="System" font.family="2" font.height="-12" font.pitch="2" font.weight="700" background.mode="2" background.color="1073741824" color="33554432" alignment="0" border="0" x="9" y="100" height="64" width="357" text="User Id" html.valueishtml="0" accessibledescription="~"User Id~"	~"User Id~"" accessiblename="~"User Id~"	~"User Id~"" accessiblerole=42 )
+column(name=message_short_desc visible="1" band=detail id=6 x="1710" y="8" height="64" width="2990" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=255 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Arial" font.family="2" font.height="-10" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"Message~"	~"Message~"" accessiblename="~"Message~"	~"Message~"" )
+column(name=message_status visible="1" band=detail id=7 x="4709" y="8" height="64" width="471" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" ddlb.allowedit=no ddlb.autohscroll=no ddlb.imemode=0 ddlb.limit=0 ddlb.showlist=no ddlb.sorted=no ddlb.useasborder=no ddlb.vscrollbar=no ddlb.nilisnull=no ddlb.required=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Arial" font.family="2" font.height="-10" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"Status~"	~"Status~"" accessiblename="~"Status~"	~"Status~"" )
+column(name=message_source visible="1" band=detail id=3 x="375" y="8" height="64" width="709" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="Arial" font.family="2" font.height="-10" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"Source~"	~"Source~"" accessiblename="~"Source~"	~"Source~"" )
+column(name=message_datetime visible="1" band=detail id=5 x="1093" y="12" height="64" width="608" color="33554432" border="0" alignment="0" format="[shortdate] [time]" html.valueishtml="0" editmask.focusrectangle=no editmask.autoskip=no editmask.required=no editmask.readonly=no editmask.codetable=no editmask.ddcalendar=no editmask.spin=no editmask.useformat=no editmask.mask="mm/dd/yyyy hh:mm:ss" editmask.imemode=0 editmask.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Arial" font.family="2" font.height="-10" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"Date~"	~"Date~"" accessiblename="~"Date~"	~"Date~"" )
+column(name=user_id visible="1" band=detail id=2 x="9" y="8" height="64" width="357" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="Arial" font.family="2" font.height="-10" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"User Id~"	~"User Id~"" accessiblename="~"User Id~"	~"User Id~"" )
+sparse(names="user_id	message_source")
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen(sessionSpecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

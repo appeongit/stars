@@ -1,0 +1,981 @@
+﻿$PBExportHeader$m_report.srm
+$PBExportComments$Right-mouse menu for tabpage_report
+forward
+global type m_report from menu
+end type
+type m_menu from menu within m_report
+end type
+type m_redirectresultstoaccess from menu within m_menu
+end type
+type m_99 from menu within m_menu
+end type
+type m_reporttemplatelibrary from menu within m_menu
+end type
+type m_reporttemplatesave from menu within m_menu
+end type
+type m_reporttemplatesaveas from menu within m_menu
+end type
+type m_-4 from menu within m_menu
+end type
+type m_save from menu within m_menu
+end type
+type m_createsubset from menu within m_save
+end type
+type m_criteriasave from menu within m_save
+end type
+type m_querysave from menu within m_save
+end type
+type m_querysaveas from menu within m_save
+end type
+type m_save from menu within m_menu
+m_createsubset m_createsubset
+m_criteriasave m_criteriasave
+m_querysave m_querysave
+m_querysaveas m_querysaveas
+end type
+type m_exportpdq from menu within m_menu
+end type
+type m_-11 from menu within m_menu
+end type
+type m_breakwithtotals from menu within m_menu
+end type
+type m_-3 from menu within m_menu
+end type
+type m_clear from menu within m_menu
+end type
+type m_- from menu within m_menu
+end type
+type m_undodrilldown from menu within m_menu
+end type
+type m_removelevel from menu within m_menu
+end type
+type m_-1 from menu within m_menu
+end type
+type m_help from menu within m_menu
+end type
+type m_menu from menu within m_report
+m_redirectresultstoaccess m_redirectresultstoaccess
+m_99 m_99
+m_reporttemplatelibrary m_reporttemplatelibrary
+m_reporttemplatesave m_reporttemplatesave
+m_reporttemplatesaveas m_reporttemplatesaveas
+m_-4 m_-4
+m_save m_save
+m_exportpdq m_exportpdq
+m_-11 m_-11
+m_breakwithtotals m_breakwithtotals
+m_-3 m_-3
+m_clear m_clear
+m_- m_-
+m_undodrilldown m_undodrilldown
+m_removelevel m_removelevel
+m_-1 m_-1
+m_help m_help
+end type
+global type m_report from menu
+m_menu m_menu
+end type
+end forward
+
+global type m_report from menu
+m_menu m_menu
+end type
+global m_report m_report
+
+type variables
+w_query_engine	iw_query_engine
+uo_query		iu_query
+
+Constant	String	ics_ReportFxParm = 'REPORT',  &
+		ics_save = 'S',  &
+		ics_saveas = 'A'
+
+end variables
+
+on m_report.create
+m_report=this
+call super::create
+this.m_menu=create m_menu
+this.Item[UpperBound(this.Item)+1]=this.m_menu
+end on
+
+on m_report.destroy
+call super::destroy
+destroy(this.m_menu)
+end on
+
+type m_menu from menu within m_report
+m_redirectresultstoaccess m_redirectresultstoaccess
+m_99 m_99
+m_reporttemplatelibrary m_reporttemplatelibrary
+m_reporttemplatesave m_reporttemplatesave
+m_reporttemplatesaveas m_reporttemplatesaveas
+m_-4 m_-4
+m_save m_save
+m_exportpdq m_exportpdq
+m_-11 m_-11
+m_breakwithtotals m_breakwithtotals
+m_-3 m_-3
+m_clear m_clear
+m_- m_-
+m_undodrilldown m_undodrilldown
+m_removelevel m_removelevel
+m_-1 m_-1
+m_help m_help
+end type
+
+on m_menu.create
+call super::create
+this.text = "m_report"
+this.m_redirectresultstoaccess=create m_redirectresultstoaccess
+this.m_99=create m_99
+this.m_reporttemplatelibrary=create m_reporttemplatelibrary
+this.m_reporttemplatesave=create m_reporttemplatesave
+this.m_reporttemplatesaveas=create m_reporttemplatesaveas
+this.m_-4=create m_-4
+this.m_save=create m_save
+this.m_exportpdq=create m_exportpdq
+this.m_-11=create m_-11
+this.m_breakwithtotals=create m_breakwithtotals
+this.m_-3=create m_-3
+this.m_clear=create m_clear
+this.m_-=create m_-
+this.m_undodrilldown=create m_undodrilldown
+this.m_removelevel=create m_removelevel
+this.m_-1=create m_-1
+this.m_help=create m_help
+this.Item[UpperBound(this.Item)+1]=this.m_redirectresultstoaccess
+this.Item[UpperBound(this.Item)+1]=this.m_99
+this.Item[UpperBound(this.Item)+1]=this.m_reporttemplatelibrary
+this.Item[UpperBound(this.Item)+1]=this.m_reporttemplatesave
+this.Item[UpperBound(this.Item)+1]=this.m_reporttemplatesaveas
+this.Item[UpperBound(this.Item)+1]=this.m_-4
+this.Item[UpperBound(this.Item)+1]=this.m_save
+this.Item[UpperBound(this.Item)+1]=this.m_exportpdq
+this.Item[UpperBound(this.Item)+1]=this.m_-11
+this.Item[UpperBound(this.Item)+1]=this.m_breakwithtotals
+this.Item[UpperBound(this.Item)+1]=this.m_-3
+this.Item[UpperBound(this.Item)+1]=this.m_clear
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_undodrilldown
+this.Item[UpperBound(this.Item)+1]=this.m_removelevel
+this.Item[UpperBound(this.Item)+1]=this.m_-1
+this.Item[UpperBound(this.Item)+1]=this.m_help
+end on
+
+on m_menu.destroy
+call super::destroy
+destroy(this.m_redirectresultstoaccess)
+destroy(this.m_99)
+destroy(this.m_reporttemplatelibrary)
+destroy(this.m_reporttemplatesave)
+destroy(this.m_reporttemplatesaveas)
+destroy(this.m_-4)
+destroy(this.m_save)
+destroy(this.m_exportpdq)
+destroy(this.m_-11)
+destroy(this.m_breakwithtotals)
+destroy(this.m_-3)
+destroy(this.m_clear)
+destroy(this.m_-)
+destroy(this.m_undodrilldown)
+destroy(this.m_removelevel)
+destroy(this.m_-1)
+destroy(this.m_help)
+end on
+
+type m_redirectresultstoaccess from menu within m_menu
+end type
+
+on m_redirectresultstoaccess.create
+call super::create
+this.text = "Redirect Results to Access"
+this.microhelp = "Redirects the results of the query to a Microsoft Access database"
+end on
+
+on m_redirectresultstoaccess.destroy
+call super::destroy
+end on
+
+event clicked;//----------------------------------------------------------------------//
+// Script:		m_report.m_exportquery
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger ue_export_query event to create an export job.
+//
+//----------------------------------------------------------------------//
+// Maintenance
+// -----	--------	--------	--------
+//	MikeF	06/01/04	SPR4268c	Created.
+//----------------------------------------------------------------------//
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_getactivequery( )
+End If
+
+If IsValid(iu_Query) Then
+	iu_Query.Event	ue_pipe_data()
+End If
+end event
+
+type m_99 from menu within m_menu
+end type
+
+on m_99.create
+call super::create
+this.text = "-"
+end on
+
+on m_99.destroy
+call super::destroy
+end on
+
+type m_reporttemplatelibrary from menu within m_menu
+end type
+
+on m_reporttemplatelibrary.create
+call super::create
+this.text = "&Report Template Library..."
+this.microhelp = "Select a report template from a list."
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_reporttemplatelibary	clicked
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// Will open the Report Template Libray window and allow the user to 
+// select a pre defined template from a list of saved templates.  
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	J.Wobbeking		01/15/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine = this.parentwindow
+
+If IsValid(iw_query_engine) Then
+	iw_query_engine.event ue_list_report_template()
+End If
+end event
+
+on m_reporttemplatelibrary.destroy
+call super::destroy
+end on
+
+type m_reporttemplatesave from menu within m_menu
+end type
+
+on m_reporttemplatesave.create
+call super::create
+this.text = "Report &Template Save"
+this.microhelp = "Save the selected data into the report template."
+end on
+
+event clicked;///////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_reporttemplatesave		clicked
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// Will open the Report Template Save window and allow the user 
+// to update an existing report template.  Unless this is the 
+// first save of a newly created template.  Then it will create a 
+// new template.  Note: initially invisible
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	J.Wobbeking		01/22/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+String s_Path = 'A'
+
+boolean lb_new_flag
+
+iw_query_engine = this.parentwindow
+
+If IsValid(iw_query_engine) Then
+	
+	iu_query = iw_query_engine.wf_GetActiveQuery()
+
+	If IsValid(iu_query) Then
+		If Not(iu_query.event ue_tabpage_report_get_new_flag()) then s_Path = 'S'
+	End If
+	
+	iw_query_engine.event ue_save_report_template(s_Path)
+
+End If
+
+
+end event
+
+on m_reporttemplatesave.destroy
+call super::destroy
+end on
+
+type m_reporttemplatesaveas from menu within m_menu
+end type
+
+on m_reporttemplatesaveas.create
+call super::create
+this.text = "Report Template Save &As..."
+this.microhelp = "Save the selected data into a new report template."
+end on
+
+event clicked;///////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_reporttemplatesaveas		clicked
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// Will open the Report Template Save window and allow the user 
+// to update an existing report template.  Unless this is the 
+// first save of a newly created template.  Then it will create a 
+// new template.  Note: initially invisible
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	J.Wobbeking		01/22/98		Created.
+// F.Chernak		04/22/98		Track 1109 Always set s_path to A for save as
+//	F.Chernak		04/30/98		Track 1048 Uncomment code that was mistakenly 
+//										commented for track 1109.
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+String s_Path = 'A'
+
+boolean lb_new_flag
+
+iw_query_engine = this.parentwindow		//FNC 04/30/98
+//
+//If IsValid(iw_query_engine) Then
+//	
+//	iu_query = iw_query_engine.wf_GetActiveQuery()
+//
+//	If IsValid(iu_query) Then
+//		If Not(iu_query.event ue_tabpage_report_get_new_flag()) then s_Path = 'S'
+//	End If
+	
+	iw_query_engine.event ue_save_report_template(s_Path)
+
+//End If
+
+
+end event
+
+on m_reporttemplatesaveas.destroy
+call super::destroy
+end on
+
+type m_-4 from menu within m_menu
+end type
+
+on m_-4.create
+call super::create
+this.text = "-"
+end on
+
+on m_-4.destroy
+call super::destroy
+end on
+
+type m_save from menu within m_menu
+m_createsubset m_createsubset
+m_criteriasave m_criteriasave
+m_querysave m_querysave
+m_querysaveas m_querysaveas
+end type
+
+on m_save.create
+call super::create
+this.text = "&Save"
+this.m_createsubset=create m_createsubset
+this.m_criteriasave=create m_criteriasave
+this.m_querysave=create m_querysave
+this.m_querysaveas=create m_querysaveas
+this.Item[UpperBound(this.Item)+1]=this.m_createsubset
+this.Item[UpperBound(this.Item)+1]=this.m_criteriasave
+this.Item[UpperBound(this.Item)+1]=this.m_querysave
+this.Item[UpperBound(this.Item)+1]=this.m_querysaveas
+end on
+
+on m_save.destroy
+call super::destroy
+destroy(this.m_createsubset)
+destroy(this.m_criteriasave)
+destroy(this.m_querysave)
+destroy(this.m_querysaveas)
+end on
+
+type m_createsubset from menu within m_save
+end type
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_report.m_createsubset
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger ue_create_subset event to create a subset.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		07/22/98		Track 1527.  Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iw_query_engine.Event	ue_create_subset()
+End If
+
+end event
+
+on m_createsubset.create
+call super::create
+this.text = "&Create Subset"
+end on
+
+on m_createsubset.destroy
+call super::destroy
+end on
+
+type m_criteriasave from menu within m_save
+end type
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_report.m_criteriasave
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger the event to save the criteria to the
+//		active case.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		07/22/98		Track 1527.  Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+End If
+
+If IsValid(iu_Query) Then
+	iu_query.Event	ue_criteriasave()
+End If
+
+end event
+
+on m_criteriasave.create
+call super::create
+this.text = "C&riteria Save"
+end on
+
+on m_criteriasave.destroy
+call super::destroy
+end on
+
+type m_querysave from menu within m_save
+end type
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_report.m_querysave
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger ue_save_query event to either update an
+//		existing query or create a new query.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		07/22/98		Track 1527.  Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query	=	iw_query_engine.wf_GetActiveQuery()
+	If IsValid(iu_Query) Then
+		If	iu_query.Event	ue_get_new_flag()	then
+			iw_query_engine.Event	ue_save_query(ics_saveas)
+		Else
+			iw_query_engine.Event	ue_save_query(ics_save)
+		End If
+	End If
+End If
+
+end event
+
+on m_querysave.create
+call super::create
+this.text = "Query &Save"
+end on
+
+on m_querysave.destroy
+call super::destroy
+end on
+
+type m_querysaveas from menu within m_save
+end type
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_report.m_querysaveas
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger ue_save_query event to create a new query.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		07/22/98		Track 1527.  Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iw_query_engine.Event	ue_save_query(ics_saveas)
+End If
+
+end event
+
+on m_querysaveas.create
+call super::create
+this.text = "Query Save &As..."
+end on
+
+on m_querysaveas.destroy
+call super::destroy
+end on
+
+type m_exportpdq from menu within m_menu
+end type
+
+on m_exportpdq.create
+call super::create
+this.text = "Export &PDQ"
+this.microhelp = "Export the query to a file"
+end on
+
+on m_exportpdq.destroy
+call super::destroy
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_List						m_exportpdq
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// Will export a pdq to a flat file 
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	FNC				10/27/99		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+w_query_engine	lw_parent
+
+SetPointer(HourGlass!)
+
+
+lw_Parent = this.parentwindow
+
+If IsValid(lw_Parent) Then
+	lw_parent.event ue_export_pdq('REPORT')
+End If
+
+
+end event
+
+type m_-11 from menu within m_menu
+end type
+
+on m_-11.create
+call super::create
+this.text = "-"
+end on
+
+on m_-11.destroy
+call super::destroy
+end on
+
+type m_breakwithtotals from menu within m_menu
+end type
+
+on m_breakwithtotals.create
+call super::create
+this.text = "&Break with Totals..."
+this.enabled = false
+this.microhelp = "Display totals and break by a selected sort field."
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Script:	m_report.m_breakwithtotals
+//	
+//	Arguments:	None
+//
+//	Returns:		None
+//
+//	Description:	
+// This option allows the user to get totals of the money and unit fields which are
+// displayed in the data window, breaking by a selected sort field. A grand total is 
+// displayed at the end of the report.  
+//	Note:  Able to Check this menu item. Note: initially invisible
+//
+/////////////////////////////////////////////////////////////////////////////
+//	HISTORY
+//
+// FNC	05/26/98	Track 1252. Remove the check mark. It is not appropriate since
+//						this option opens another window and does not just turn something
+//						off and on. Move call to ue_tabpage_report_clear_break_info and
+//						ue_set_menus_break_with_totals to W_Query_Engine.ue_break_with_totals
+//
+/////////////////////////////////////////////////////////////////////////////
+iw_query_engine = this.Parentwindow
+
+If IsValid(iw_query_engine) Then
+	iu_query = iw_query_engine.wf_GetActiveQuery()
+	
+	If IsValid(iu_query) Then
+// FNC 05/27/98 Start
+//		if this.checked then
+//			iu_query.event ue_tabpage_report_clear_break_info() 
+//			this.checked = FALSE
+//			iw_query_engine.event ue_set_menus_break_with_totals(TRUE)
+//		else
+//			this.checked = TRUE
+//			
+//			if iw_query_engine.event ue_break_with_totals() = 0 then
+//				iw_query_engine.event ue_set_menus_break_with_totals(FALSE)
+//			else
+//				this.checked = FALSE
+//			end if
+//		end if
+		iw_query_engine.event ue_break_with_totals()
+// FNC 05/27/98 End
+	End If
+
+End If
+end event
+
+on m_breakwithtotals.destroy
+call super::destroy
+end on
+
+type m_-3 from menu within m_menu
+end type
+
+on m_-3.create
+call super::create
+this.text = "-"
+end on
+
+on m_-3.destroy
+call super::destroy
+end on
+
+type m_clear from menu within m_menu
+end type
+
+on m_clear.create
+call super::create
+this.text = "C&lear"
+this.microhelp = "Clear the selected columns on this tab."
+end on
+
+on m_clear.destroy
+call super::destroy
+end on
+
+event clicked;// This option will clear out any selected columns, clear out any title and disable
+// View tab.
+//
+//	11-17-98	NLG	Track #1805. Added arg to ue_tabpage_report_clear to determine if
+//						keep title or not
+
+boolean lb_keep_title=false
+
+iw_query_engine = this.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iu_query = iw_query_engine.wf_GetActiveQuery()
+	If IsValid(iu_query) Then
+		iu_query.event ue_tabpage_report_clear(lb_keep_title)
+	End If
+End If
+
+end event
+
+type m_- from menu within m_menu
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_undodrilldown from menu within m_menu
+end type
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_report.m_undodrilldown
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger ue_parent_undo_drilldown event to 
+//		return to the previous query.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		02/25/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iw_query_engine.Event	ue_parent_undo_drilldown()
+End If
+
+end event
+
+on m_undodrilldown.create
+call super::create
+this.text = "&Undo Drilldown"
+this.enabled = false
+this.microhelp = "Undo the in-process drilldown."
+end on
+
+on m_undodrilldown.destroy
+call super::destroy
+end on
+
+type m_removelevel from menu within m_menu
+end type
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_report.m_removelevel
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger w_query_engine.ue_remove_level event to 
+//		remove the current level.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		03/26/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine	=	This.ParentWindow
+
+If IsValid(iw_query_engine) Then
+	iw_query_engine.Event	ue_remove_level()
+End If
+
+end event
+
+on m_removelevel.create
+call super::create
+this.text = "Remove Le&vel"
+this.microhelp = "Remove this level of a multi-level query."
+end on
+
+on m_removelevel.destroy
+call super::destroy
+end on
+
+type m_-1 from menu within m_menu
+end type
+
+on m_-1.create
+call super::create
+this.text = "-"
+end on
+
+on m_-1.destroy
+call super::destroy
+end on
+
+type m_help from menu within m_menu
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_report						m_help
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// This will display help for this tabpage.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		05/06/98		Created.
+//	GaryR		04/29/03		Track 3541d	Add PDR tab-sensitive help
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_query_engine = this.parentwindow
+
+If IsValid(iw_query_engine) Then
+	IF iw_query_engine.of_is_pdr_mode() THEN
+		iw_query_engine.of_help ('','TABPAGE_PDRREPORT')
+	ELSE
+		iw_query_engine.of_help ('','TABPAGE_REPORT')
+	END IF
+End If
+
+
+end event
+
+on m_help.create
+call super::create
+this.text = "&Help"
+this.microhelp = "Display help for this tab."
+end on
+
+on m_help.destroy
+call super::destroy
+end on
+

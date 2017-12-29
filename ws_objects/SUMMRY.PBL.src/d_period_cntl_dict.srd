@@ -1,0 +1,22 @@
+﻿$PBExportHeader$d_period_cntl_dict.srd
+$PBExportComments$sum analysis - sort dddw dataobject when patient profile <gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=67108864 processing=0 print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=104 color="536870912" )
+table(column=(type=char(30) updatewhereclause=yes name=sort_col dbname="sort_col" 
+ values=""  )
+)
+column(name=sort_col band=detail id=1 x="9" y="0" height="96" width="773" color="33554432" border="0" alignment="0" format="[general]" dddw.allowedit=no dddw.autohscroll=no dddw.autoretrieve=yes dddw.useasborder=yes dddw.datacolumn=elem_name dddw.displaycolumn=elem_desc dddw.hscrollbar=no dddw.hsplitscroll=no dddw.imemode=0 dddw.limit=0 dddw.name=d_dddw_pat_profile_sort_col dddw.nilisnull=no dddw.percentwidth=100 dddw.required=no dddw.showlist=no dddw.vscrollbar=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=10 accessibledescription="~"Sort Column~"	~"Sort Column~"" accessiblename="~"Sort Column~"	~"Sort Column~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" generateJavaScript="1" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

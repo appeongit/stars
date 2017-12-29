@@ -1,0 +1,32 @@
+HA$PBExportHeader$d_code_case_cat.srd
+$PBExportComments$<logic>
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(5) updatewhereclause=yes name=code_type dbname="CODE.CODE_TYPE" )
+ column=(type=char(15) updatewhereclause=yes name=code_code dbname="CODE.CODE_CODE" )
+ column=(type=char(255) updatewhereclause=yes name=code_desc dbname="CODE.CODE_DESC" )
+ column=(type=char(32) updatewhereclause=yes name=code_value_a dbname="CODE.CODE_VALUE_A" )
+ column=(type=long updatewhereclause=yes name=code_value_n dbname="CODE.CODE_VALUE_N" )
+ retrieve="  SELECT CODE.CODE_TYPE,   
+         CODE.CODE_CODE,   
+         CODE.CODE_DESC,   
+         CODE.CODE_VALUE_A,   
+         CODE.CODE_VALUE_N  
+    FROM CODE  
+   WHERE CODE.CODE_TYPE = 'CA'    
+" )
+text(band=header alignment="2" text="Code Type"border="0" color="0" x="9" y="8" height="64" width="370"  name=code_type_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Code Code"border="0" color="0" x="389" y="8" height="64" width="370"  name=code_code_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Code Desc"border="0" color="0" x="768" y="8" height="64" width="1134"  name=code_desc_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Code Value A"border="0" color="0" x="1911" y="8" height="64" width="466"  name=code_value_a_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Code Value N"border="0" color="0" x="2386" y="8" height="64" width="471"  name=code_value_n_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="9" y="8" height="76" width="370" format="[general]"  name=code_type edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="389" y="8" height="76" width="370" format="[general]"  name=code_code edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="768" y="8" height="76" width="1134" format="[general]"  name=code_desc edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="0" color="0" x="1911" y="8" height="76" width="466" format="[general]"  name=code_value_a edit.limit=32 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=50 border="0" color="0" x="2386" y="8" height="76" width="471" format="[general]"  name=code_value_n edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

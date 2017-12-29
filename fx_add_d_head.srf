@@ -1,0 +1,99 @@
+HA$PBExportHeader$fx_add_d_head.srf
+global type fx_add_d_head from function_object
+end type
+
+forward prototypes
+global subroutine fx_add_d_head (string title, ref datawindow dw, ref string col_name[], string head_height, string col_y_pos, string title_x_pos, string title_align, string title_width)
+end prototypes
+
+global subroutine fx_add_d_head (string title, ref datawindow dw, ref string col_name[], string head_height, string col_y_pos, string title_x_pos, string title_align, string title_width);//*****************************************************************
+//08/04/94 Youxiong Pang
+//09-19-94 FNC Added return codes to dwmodifies
+//GaryR	11/01/2000	2920c	Standardize windows colors
+//	04/29/09	GaryR	GNL.600.5633	Accommodate Section 508 Compliancy
+//
+//*****************************************************************
+//
+//This global function is to add a title, date and page for a datawindow.
+//It has 7 parms:
+//  title:   It is a title string for setting title of the data window. 
+//           .     
+//  dw:      It is data window control name, pass in by reference.
+//  col_name []:  It is the name of columns, pass in by reference
+//  string head_height
+//  string col_y_pos
+//  string title_align: "0" for left alignment, "1" for right, "2" for center. 
+//  string title_width  
+  
+string describe_str, mod_string, cname
+int font_weight = 700, col_num, i   
+string date_x_pos
+string page_x_pos
+int date_x_int
+string lv_string_rc
+int lv_int_rc
+
+setpointer(hourglass!)
+
+date_x_int = integer(title_x_pos) + integer (title_width) + 50
+date_x_pos = string (date_x_int)        
+page_x_pos = string (date_x_int + 130)
+
+mod_string = "datawindow.header.height = " + head_height
+lv_string_rc = dw.Modify(mod_string)
+
+mod_string = "create text(band=foreground color='" + String( stars_colors.window_text ) + &
+	"' alignment='" +title_align+"' border='0'" + &
+	"  x='"+title_x_pos+"' y='2' height='36' width= '"+title_width+"' text=~'" + title + "~' " + &
+	" name=header_t font.face='System' font.height= '-10' font.weight=~'" + string(font_weight) + &
+	"~' font.family='2' font.pitch='2' font.charset='0' font.italic='0' " + &
+	" font.strikethrough='0' font.underline='0' background.mode='1' background.color='" + String( stars_colors.window_background ) + "' " + &
+	' accessibledescription="~~"Report Title~~"~~t~~"Report Title~~"" accessiblename="~~"Report Title~~"~~t~~"Report Title~~"" accessiblerole=42 ) '
+lv_string_rc = dw.Modify(mod_string)
+
+// MikeFl - 4/3/02 - Track 2947 - BEGIN
+string	ls_date
+
+ls_date = String(today()) + ' ' + left(string(now()),5)
+
+mod_string = " create text(band=Foreground color='" + String( stars_colors.window_text ) + &
+	"' alignment='0' border='0' x='"+date_x_pos+"' y='2' height='36' width='114' " + &
+	" text=~'" + ls_date + "~'  font.face='System' font.height='-10' "+ &
+	" font.face='System' font.weight=~'" + string(font_weight) + "~' font.family='2'" + &
+	" font.pitch='2' font.charset='1' font.italic='0' font.strikethrough='0' font.underline='0' " + &
+	" background.mode='1' background.color='" + String( stars_colors.window_background ) + "' " + &
+	'accessibledescription="~~"Current Date and time~~"~~t~~"Current Date and time~~"" accessiblename="~~"Current Date and time~~"~~t~~"Current Date and time~~"" accessiblerole=42 ) '
+lv_string_rc = dw.Modify(mod_string)
+// MikeFl - 4/3/02 - Track 2947 - END
+
+mod_string = " create compute(band=foreground color='" + String( stars_colors.window_text ) + &
+	"' alignment='0' border='0' x='"+page_x_pos+"' y='2' height='36' width='95' format='[GENERAL]' " + &
+	" expression=~'~~~'    Page ~~~' + page()~' font.face='System' font.height='-10' " + &
+	" font.weight=~'" + string(font_weight) + "~' font.family='2' font.pitch='2' font.charset='1' font.italic='0' font.strikethrough='0' font.underline='0' " + &
+	" background.mode='1' background.color='" + String( stars_colors.window_background ) + "' " + &
+	'accessibledescription="~~"Page Count~~"~~t~~"Page Count~~"" accessiblename="~~"Page Count~~"~~t~~"Page Count~~"" accessiblerole=42 ) '
+lv_string_rc = dw.Modify(mod_string)
+
+If upperbound(col_name) >= 1 Then
+	col_num = integer(dw.Describe ("datawindow.column.count") )
+	for i = 1 to col_num	
+		 mod_string = col_name[i] + "_t.y = " + col_y_pos
+		 lv_string_rc = dw.Modify (mod_string)
+	next 
+else
+	col_num = integer(dw.Describe ("datawindow.column.count") )
+	for i = 1 to col_num	
+		cname = 	dw.Describe('#'+string(i)+'.name')
+		 mod_string = cname + "_t.y = " + col_y_pos
+		 lv_string_rc = dw.Modify (mod_string)
+	next 
+end if
+
+describe_str = dw.Describe ("datawindow.syntax")
+lv_int_rc = dw.Create (describe_str)
+if lv_int_rc = -1 Then
+	messagebox("ERROR","Error creating datawinow")
+	return
+end if
+end subroutine
+

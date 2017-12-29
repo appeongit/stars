@@ -1,0 +1,19 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "CODE.PBL" "";
+@end;
+@begin Objects
+ "w_code_type_maint.srw" "CODE.PBL";
+ "d_code_type_list.srd" "CODE.PBL";
+ "d_proc_lookup_inv.srd" "CODE.PBL";
+ "d_select_codes.srd" "CODE.PBL";
+ "w_dwlabel_definition.srw" "CODE.PBL";
+ "w_code_type_list.srw" "CODE.PBL";
+ "d_code_lookup.srd" "CODE.PBL";
+ "d_proc_lookup.srd" "CODE.PBL";
+ "w_select_box.srw" "CODE.PBL";
+ "w_code_maint.srw" "CODE.PBL";
+ "w_code_lookup.srw" "CODE.PBL";
+ "w_definition.srw" "CODE.PBL";
+ "w_code_list.srw" "CODE.PBL";
+@end;

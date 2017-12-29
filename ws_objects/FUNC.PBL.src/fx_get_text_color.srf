@@ -1,0 +1,43 @@
+﻿$PBExportHeader$fx_get_text_color.srf
+global type fx_get_text_color from function_object
+end type
+
+forward prototypes
+global function long fx_get_text_color (string as_type)
+end prototypes
+
+global function long fx_get_text_color (string as_type);///////////////////////////////////////////////////////////////////////////
+//
+//	Script:		fx_get_text_color
+//
+//	Arguments:	String	as_type - Lookup code
+//
+//	Returns:		Long - the text color value
+//
+//	Description:
+//		This global function is triggered by various datawindows
+//		requesting the text color property based on the passed in type.
+//		The following types are accepted: Lookup, Index, Protected and Input.
+//
+///////////////////////////////////////////////////////////////////////////
+//
+//	ACC.650.5786
+//
+///////////////////////////////////////////////////////////////////////////
+
+Long		ll_textcolor
+
+CHOOSE CASE Trim( as_type )
+	CASE "#INDEX"						// Index text color
+		ll_textcolor = stars_colors.index_text
+	CASE "#PROTECT"					// Protected text color
+		ll_textcolor = stars_colors.protected_text
+	CASE IS > " "						// Lookup text color
+		ll_textcolor = stars_colors.lookup_text
+	CASE ELSE							// Input text color
+		ll_textcolor	=	stars_colors.input_text
+END CHOOSE
+
+Return ll_textcolor
+end function
+

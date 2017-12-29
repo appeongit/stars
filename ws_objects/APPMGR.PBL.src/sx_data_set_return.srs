@@ -1,0 +1,10 @@
+﻿$PBExportHeader$sx_data_set_return.srs
+global type sx_data_set_return from structure
+	sx_dictionary_data		column_info[]
+	string		data_source
+	boolean		preview_ck
+	string		join_tables[]
+	string		main_tables[]
+	string		dependent_tables[]
+end type
+

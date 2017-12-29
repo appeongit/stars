@@ -1,0 +1,42 @@
+﻿$PBExportHeader$sx_analysis_structure.srs
+global type sx_analysis_structure from structure
+	boolean		prev_clm_rpt_exists
+	string		subset_tbl_type
+	string		subset_source_tables[]
+	boolean		next_invoice_flag
+	integer		invoice_level
+	sx_claim_link		criteria_multi_level
+	boolean		elig_report
+	string		elig_from_date
+	string		elig_thru_date
+	string		elig_temp_table_type
+	string		table_type[]
+	string		table_name[]
+	long		period
+	string		src_type
+	string		src_name
+	string		case_name
+	string		rank_type
+	string		rank_num
+	string		where_statement
+	string		tbl_directory[]
+	boolean		coming_from_eligibility_analysis
+	datetime		eligibility_key_datetime
+	boolean		eligibility_full_claim_rpt
+	boolean		can_undo
+	sx_criteria_data		criteria_structure
+	string		temp_table_type
+	string		invoice_type
+	string		drilldown_sub_src_type
+	string		drilldown_sub_src_name
+	integer		num_filters_applied
+	sx_prov_query_structure		prov_query_structure
+	long		period_key
+	integer		period_index
+	boolean		from_next_invoice
+	string		title_add
+	string		paid_date
+	string		from_date
+	string		crit_id
+end type
+

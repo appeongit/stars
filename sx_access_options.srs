@@ -1,0 +1,9 @@
+HA$PBExportHeader$sx_access_options.srs
+global type sx_access_options from structure
+	string		table_name
+	boolean		save_sql
+	boolean		save_criteria
+	boolean		cancelled
+	boolean		create_query
+end type
+

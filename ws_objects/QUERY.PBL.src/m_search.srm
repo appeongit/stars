@@ -1,0 +1,1127 @@
+﻿$PBExportHeader$m_search.srm
+$PBExportComments$Right-mouse menu for tabpage_search
+forward
+global type m_search from menu
+end type
+type m_menu from menu within m_search
+end type
+type m_count from menu within m_menu
+end type
+type m_filters from menu within m_menu
+end type
+type m_-1 from menu within m_menu
+end type
+type m_save from menu within m_menu
+end type
+type m_createsubset from menu within m_save
+end type
+type m_criteriasave from menu within m_save
+end type
+type m_querysave from menu within m_save
+end type
+type m_querysaveas from menu within m_save
+end type
+type m_save from menu within m_menu
+m_createsubset m_createsubset
+m_criteriasave m_criteriasave
+m_querysave m_querysave
+m_querysaveas m_querysaveas
+end type
+type m_exportpdq from menu within m_menu
+end type
+type m_nextlevel from menu within m_menu
+end type
+type m_link from menu within m_menu
+end type
+type m_note from menu within m_menu
+end type
+type m_-2 from menu within m_menu
+end type
+type m_row from menu within m_menu
+end type
+type m_insert from menu within m_row
+end type
+type m_delete from menu within m_row
+end type
+type m_row from menu within m_menu
+m_insert m_insert
+m_delete m_delete
+end type
+type m_clear from menu within m_menu
+end type
+type m_- from menu within m_menu
+end type
+type m_undodrilldown from menu within m_menu
+end type
+type m_removelevel from menu within m_menu
+end type
+type m_-3 from menu within m_menu
+end type
+type m_help from menu within m_menu
+end type
+type m_menu from menu within m_search
+m_count m_count
+m_filters m_filters
+m_-1 m_-1
+m_save m_save
+m_exportpdq m_exportpdq
+m_nextlevel m_nextlevel
+m_link m_link
+m_note m_note
+m_-2 m_-2
+m_row m_row
+m_clear m_clear
+m_- m_-
+m_undodrilldown m_undodrilldown
+m_removelevel m_removelevel
+m_-3 m_-3
+m_help m_help
+end type
+global type m_search from menu
+m_menu m_menu
+end type
+end forward
+
+global type m_search from menu
+m_menu m_menu
+end type
+global m_search m_search
+
+type variables
+datawindow idw_main
+w_query_engine iw_Parent
+uo_query            iuo_Query
+end variables
+
+on m_search.create
+m_search=this
+call super::create
+this.m_menu=create m_menu
+this.Item[UpperBound(this.Item)+1]=this.m_menu
+end on
+
+on m_search.destroy
+call super::destroy
+destroy(this.m_menu)
+end on
+
+type m_menu from menu within m_search
+m_count m_count
+m_filters m_filters
+m_-1 m_-1
+m_save m_save
+m_exportpdq m_exportpdq
+m_nextlevel m_nextlevel
+m_link m_link
+m_note m_note
+m_-2 m_-2
+m_row m_row
+m_clear m_clear
+m_- m_-
+m_undodrilldown m_undodrilldown
+m_removelevel m_removelevel
+m_-3 m_-3
+m_help m_help
+end type
+
+on m_menu.create
+call super::create
+this.text = "m_search"
+this.m_count=create m_count
+this.m_filters=create m_filters
+this.m_-1=create m_-1
+this.m_save=create m_save
+this.m_exportpdq=create m_exportpdq
+this.m_nextlevel=create m_nextlevel
+this.m_link=create m_link
+this.m_note=create m_note
+this.m_-2=create m_-2
+this.m_row=create m_row
+this.m_clear=create m_clear
+this.m_-=create m_-
+this.m_undodrilldown=create m_undodrilldown
+this.m_removelevel=create m_removelevel
+this.m_-3=create m_-3
+this.m_help=create m_help
+this.Item[UpperBound(this.Item)+1]=this.m_count
+this.Item[UpperBound(this.Item)+1]=this.m_filters
+this.Item[UpperBound(this.Item)+1]=this.m_-1
+this.Item[UpperBound(this.Item)+1]=this.m_save
+this.Item[UpperBound(this.Item)+1]=this.m_exportpdq
+this.Item[UpperBound(this.Item)+1]=this.m_nextlevel
+this.Item[UpperBound(this.Item)+1]=this.m_link
+this.Item[UpperBound(this.Item)+1]=this.m_note
+this.Item[UpperBound(this.Item)+1]=this.m_-2
+this.Item[UpperBound(this.Item)+1]=this.m_row
+this.Item[UpperBound(this.Item)+1]=this.m_clear
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_undodrilldown
+this.Item[UpperBound(this.Item)+1]=this.m_removelevel
+this.Item[UpperBound(this.Item)+1]=this.m_-3
+this.Item[UpperBound(this.Item)+1]=this.m_help
+end on
+
+on m_menu.destroy
+call super::destroy
+destroy(this.m_count)
+destroy(this.m_filters)
+destroy(this.m_-1)
+destroy(this.m_save)
+destroy(this.m_exportpdq)
+destroy(this.m_nextlevel)
+destroy(this.m_link)
+destroy(this.m_note)
+destroy(this.m_-2)
+destroy(this.m_row)
+destroy(this.m_clear)
+destroy(this.m_-)
+destroy(this.m_undodrilldown)
+destroy(this.m_removelevel)
+destroy(this.m_-3)
+destroy(this.m_help)
+end on
+
+type m_count from menu within m_menu
+end type
+
+on m_count.create
+call super::create
+this.text = "&Count"
+this.microhelp = "Count the number of rows matching the criteria entered."
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_Search						m_Count
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// Produce count from criteria selected by the user.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	J.Mattis	01/06/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_Parent		=	This.ParentWindow
+
+If IsValid(iw_Parent) Then
+	iuo_Query	=	iw_Parent.wf_GetActiveQuery()
+End If
+
+If IsValid(iuo_Query) Then
+	iuo_Query.Event	ue_count()
+End If
+
+end event
+
+on m_count.destroy
+call super::destroy
+end on
+
+type m_filters from menu within m_menu
+end type
+
+on m_filters.create
+call super::create
+this.text = "&Filters..."
+this.microhelp = "Create a filter for this query when creating a subset."
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_Search						m_filters
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// This will open a window to display a list of columns related to the data source and
+// additional data source selected.  The user will be able to select the filter(s) and 
+// when return, the filters will be loaded into a structure on the window and the subset 
+// structure on the uo_query.  The code will be in a user event on the window since it
+// affects both the window and its child (uo_query).
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	J.Mattis			01/06/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iw_Parent.Event ue_open_filter_window()
+End If
+end event
+
+on m_filters.destroy
+call super::destroy
+end on
+
+type m_-1 from menu within m_menu
+end type
+
+on m_-1.create
+call super::create
+this.text = "-"
+end on
+
+on m_-1.destroy
+call super::destroy
+end on
+
+type m_save from menu within m_menu
+m_createsubset m_createsubset
+m_criteriasave m_criteriasave
+m_querysave m_querysave
+m_querysaveas m_querysaveas
+end type
+
+on m_save.create
+call super::create
+this.text = "&Save"
+this.m_createsubset=create m_createsubset
+this.m_criteriasave=create m_criteriasave
+this.m_querysave=create m_querysave
+this.m_querysaveas=create m_querysaveas
+this.Item[UpperBound(this.Item)+1]=this.m_createsubset
+this.Item[UpperBound(this.Item)+1]=this.m_criteriasave
+this.Item[UpperBound(this.Item)+1]=this.m_querysave
+this.Item[UpperBound(this.Item)+1]=this.m_querysaveas
+end on
+
+on m_save.destroy
+call super::destroy
+destroy(this.m_createsubset)
+destroy(this.m_criteriasave)
+destroy(this.m_querysave)
+destroy(this.m_querysaveas)
+end on
+
+type m_createsubset from menu within m_save
+end type
+
+on m_createsubset.create
+call super::create
+this.text = "&Create Subset..."
+this.microhelp = "Create a subset based on this query."
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_Search						m_Createsubset
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// For each visible level, will load a structure and pass to the Subset Option window.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	J.Mattis			01/06/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iw_Parent.Event ue_create_subset()
+End If
+end event
+
+on m_createsubset.destroy
+call super::destroy
+end on
+
+type m_criteriasave from menu within m_save
+end type
+
+on m_criteriasave.create
+call super::create
+this.text = "C&riteria Save"
+this.microhelp = "Save the criteria for this query to the active case."
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_Search						m_Criteriasave
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// Will save the criteria to the active case.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	J.Mattis			01/06/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iuo_Query = iw_Parent.wf_GetActiveQuery()
+End If
+
+If IsValid(iuo_Query) Then
+	iuo_Query.event ue_criteriasave()
+End If
+
+end event
+
+on m_criteriasave.destroy
+call super::destroy
+end on
+
+type m_querysave from menu within m_save
+end type
+
+on m_querysave.create
+call super::create
+this.text = "Query &Save"
+this.microhelp = "Save this query."
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_Search						m_querysave
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// Will open the Query Save window and allow the user to update an exisiting query. 
+// Unless this is the first save of a newly created query.  Then it will create a new query.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	J.Mattis			01/06/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+String s_Path = 'A'
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iuo_Query = iw_Parent.wf_GetActiveQuery()
+	If IsValid(iuo_Query) Then
+		if Not(iuo_Query.event ue_get_new_flag()) then s_Path = 'S'
+	End If
+	iw_Parent.Event ue_save_query(s_Path)
+End If
+end event
+
+on m_querysave.destroy
+call super::destroy
+end on
+
+type m_querysaveas from menu within m_save
+end type
+
+on m_querysaveas.create
+call super::create
+this.text = "Query Save &As..."
+this.microhelp = "Use this query to create another query."
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_Search						m_querysaveas
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// Will open the Query Save window and allow the user to save the query as a new query.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	J.Mattis			01/06/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+String s_Path = 'A'
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iw_Parent.Event ue_save_query(s_Path)
+End If
+end event
+
+on m_querysaveas.destroy
+call super::destroy
+end on
+
+type m_exportpdq from menu within m_menu
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_List						m_exportpdq
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// Will export a pdq to a flat file 
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	FNC				10/27/99		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+w_query_engine	lw_parent
+
+SetPointer(HourGlass!)
+
+
+lw_Parent = this.parentwindow
+
+If IsValid(lw_Parent) Then
+	lw_parent.event ue_export_pdq('SEARCH')
+End If
+
+
+end event
+
+on m_exportpdq.create
+call super::create
+this.text = "&Export PDQ"
+this.microhelp = "Export the query to a file."
+end on
+
+on m_exportpdq.destroy
+call super::destroy
+end on
+
+type m_nextlevel from menu within m_menu
+end type
+
+on m_nextlevel.create
+call super::create
+this.text = "&Next Level"
+this.microhelp = "Create a new level for a multi-level query."
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_Search						m_Nextlevel
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// When this item is selected from the menu will open a new level (a new level tabpage
+// and a new uo_query).  The uo_query will have the PDQ list tabpage disabled and the 
+// Source tabpage selected.  The datasource dddw will only contain claim invoice types 
+// (no MC or Patient/Provider).  This will only be visible on the menu if the data source
+// selected is a single claim type.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	J.Mattis			01/06/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iw_Parent.Event ue_new_level()
+End If
+end event
+
+on m_nextlevel.destroy
+call super::destroy
+end on
+
+type m_link from menu within m_menu
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_Search						m_link
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// Will open the Query Save window and allow the user to link the
+//	query to a case.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		04/22/98		Track 1104.  Moved from m_list.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_Parent		=	This.ParentWindow
+
+If IsValid(iw_parent) Then
+	iw_parent.Event	ue_save_query('L')
+End If
+
+end event
+
+on m_link.create
+call super::create
+this.text = "Lin&k Query..."
+this.microhelp = "Link this query to a case."
+end on
+
+on m_link.destroy
+call super::destroy
+end on
+
+type m_note from menu within m_menu
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_Search						m_note
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// Will open the Notes List window so the user can enter notes.
+//
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		04/22/98		Track 1104.  Moved from m_list.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_Parent		=	This.ParentWindow
+
+If IsValid(iw_Parent) Then
+	iuo_Query	=	iw_Parent.wf_GetActiveQuery()
+End If
+
+If IsValid(iuo_Query) Then
+	iuo_Query.Event	ue_tabpage_list_notes()
+End If
+
+end event
+
+on m_note.create
+call super::create
+this.text = "N&ote..."
+this.microhelp = "Create a note for this query."
+end on
+
+on m_note.destroy
+call super::destroy
+end on
+
+type m_-2 from menu within m_menu
+end type
+
+on m_-2.create
+call super::create
+this.text = "-"
+end on
+
+on m_-2.destroy
+call super::destroy
+end on
+
+type m_row from menu within m_menu
+m_insert m_insert
+m_delete m_delete
+end type
+
+on m_row.create
+call super::create
+this.text = "&Row"
+this.m_insert=create m_insert
+this.m_delete=create m_delete
+this.Item[UpperBound(this.Item)+1]=this.m_insert
+this.Item[UpperBound(this.Item)+1]=this.m_delete
+end on
+
+on m_row.destroy
+call super::destroy
+destroy(this.m_insert)
+destroy(this.m_delete)
+end on
+
+type m_insert from menu within m_row
+end type
+
+on m_insert.create
+call super::create
+this.text = "&Insert"
+this.microhelp = "Insert a new line of criteria."
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_Search						m_Insert
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+//Will insert new row into tabpage_search.dw_search above the selected row.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	J.Mattis			01/06/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iuo_Query = iw_Parent.wf_GetActiveQuery()
+End If
+
+If IsValid(iuo_Query) Then
+	iuo_Query.event ue_tabpage_search_insert_row()
+End If
+
+
+end event
+
+on m_insert.destroy
+call super::destroy
+end on
+
+type m_delete from menu within m_row
+end type
+
+on m_delete.create
+call super::create
+this.text = "&Delete"
+this.microhelp = "Delete the selected line of criteria."
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_Search						m_Delete
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// Will delete selected row on tabpage_search.dw_search.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	J.Mattis			01/06/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iuo_Query = iw_Parent.wf_GetActiveQuery()
+End If
+
+If IsValid(iuo_Query) Then
+	iuo_Query.event ue_tabpage_search_delete_row()
+End If
+
+
+end event
+
+on m_delete.destroy
+call super::destroy
+end on
+
+type m_clear from menu within m_menu
+end type
+
+on m_clear.create
+call super::create
+this.text = "C&lear"
+this.microhelp = "Clear the entered criteria on this tab."
+end on
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_Search						m_Clear
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// When this item is selected from the menu will clear out dw_search and set the period 
+// back to the default (max period).
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author			Date			Description
+// ------			----			-----------
+//	J.Mattis			01/06/98		Created.
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iuo_Query = iw_Parent.wf_GetActiveQuery()
+End If
+
+If IsValid(iuo_Query) Then
+	iuo_Query.event ue_tabpage_search_clear()
+End If
+
+
+end event
+
+on m_clear.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_menu
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_undodrilldown from menu within m_menu
+end type
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_search.m_undodrilldown
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger ue_parent_undo_drilldown event to 
+//		return to the previous query.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		02/25/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_parent	=	This.ParentWindow
+
+If IsValid(iw_parent) Then
+	iw_parent.Event	ue_parent_undo_drilldown()
+End If
+
+end event
+
+on m_undodrilldown.create
+call super::create
+this.text = "&Undo Drilldown"
+this.enabled = false
+this.microhelp = "Undo the in-process drilldown."
+end on
+
+on m_undodrilldown.destroy
+call super::destroy
+end on
+
+type m_removelevel from menu within m_menu
+end type
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_search.m_removelevel
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger w_query_engine.ue_remove_level event to 
+//		remove the current level.
+//
+//////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		03/26/98		Created.
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_parent	=	This.ParentWindow
+
+If IsValid(iw_parent) Then
+	iw_parent.Event	ue_remove_level()
+End If
+
+end event
+
+on m_removelevel.create
+call super::create
+this.text = "Remove Le&vel"
+this.microhelp = "Remove this level of a multi-level query."
+end on
+
+on m_removelevel.destroy
+call super::destroy
+end on
+
+type m_-3 from menu within m_menu
+end type
+
+on m_-3.create
+call super::create
+this.text = "-"
+end on
+
+on m_-3.destroy
+call super::destroy
+end on
+
+type m_help from menu within m_menu
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_search						m_help
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// This will display help for this tabpage.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+// HISTORY
+//
+//	Author	Date			Description
+// ------	----			-----------
+//	FDG		05/06/98		Created.
+//	GaryR		04/29/03		Track 3541d	Add PDR tab-sensitive help
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	IF iw_parent.of_is_pdr_mode() THEN
+		iw_parent.of_help ('','TABPAGE_PDRSEARCH')
+	ELSE
+		iw_parent.of_help ('','TABPAGE_SEARCH')
+	END IF
+End If
+
+
+end event
+
+on m_help.create
+call super::create
+this.text = "&Help"
+this.microhelp = "Display help for this tab."
+end on
+
+on m_help.destroy
+call super::destroy
+end on
+

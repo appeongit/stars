@@ -1,0 +1,17 @@
+HA$PBExportHeader$d_purge_cntl.srd
+$PBExportComments$<logic>
+release 4;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no )
+header(height=77 color="536870912" )
+summary(height=1 color="536870912" )
+footer(height=1 color="536870912" )
+detail(height=89 color="536870912" )
+table(column=(type=char(3) name=invoice_type dbname="PURGE_CNTL.INVOICE_TYPE" )
+ column=(type=char(4) name=base_type dbname="PURGE_CNTL.BASE_TYPE" )
+ column=(type=number name=maximum_months dbname="compute_0003" )
+ retrieve="SELECT purge_cntl.INVOICE_TYPE , purge_cntl.BASE_TYPE , max(maximum_months) FROM purge_cntl GROUP BY purge_cntl.INVOICE_TYPE , purge_cntl.BASE_TYPE " )
+text(band=header alignment="2" text="Invoice Type"border="0" color="0" x="5" y="4" height="65" width="380"  name=invoice_type_t  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Base Type"border="0" color="0" x="389" y="4" height="65" width="321"  name=base_type_t  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="77" width="129" format="[general]"  name=invoice_type edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="389" y="4" height="77" width="161" format="[general]"  name=base_type edit.limit=4 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="0" x="714" y="4" height="77" width="385" format="[general]"  name=maximum_months edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )

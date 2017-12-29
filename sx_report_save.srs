@@ -1,0 +1,12 @@
+HA$PBExportHeader$sx_report_save.srs
+global type sx_report_save from structure
+	character		path
+	character		common_flg
+	string		report_id
+	string		report_name
+	string		report_type
+	string		report_desc
+	string		link
+	string		case_id
+end type
+

@@ -1,0 +1,38 @@
+HA$PBExportHeader$fx_m_stopquery.srf
+$PBExportComments$File|StopQuery
+global type fx_m_stopquery from function_object
+end type
+
+forward prototypes
+global subroutine fx_m_stopquery ()
+end prototypes
+
+global subroutine fx_m_stopquery ();//***************************************************************
+//10-02-95 FNC take upperbound out of loop
+//***************************************************************
+gv_cancel_but_clicked = True
+
+Window     active_sheet
+DataWindow dw_control
+Long       current_control
+Boolean    has_dw          = False
+int        lv_upperbound
+
+active_sheet = MDI_main_frame.GetActiveSheet()
+if (Not IsValid(active_sheet)) then return
+
+lv_upperbound = UpperBound(active_sheet.control[]) //10-02-95 FNC
+for current_control = 1 to lv_upperBound           //10-02-95 FNC
+  if (active_sheet.control[current_control].TypeOf() = DataWindow!) then 
+     dw_control = active_sheet.control[current_control]
+     MDI_main_frame.SetMicroHelp('Stopping Query')
+	  dw_control.dbcancel()
+  end if
+next
+
+
+  
+
+
+end subroutine
+

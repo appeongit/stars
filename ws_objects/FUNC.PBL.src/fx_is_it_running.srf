@@ -1,0 +1,54 @@
+﻿$PBExportHeader$fx_is_it_running.srf
+$PBExportComments$Generic function to determine if a windows module is running.  Uses windows SDK.
+global type fx_is_it_running from function_object
+end type
+
+forward prototypes
+global function boolean fx_is_it_running (string arg_module_string)
+end prototypes
+
+global function boolean fx_is_it_running (string arg_module_string);// FX_IS_IT_RUNNING
+//  This function will determine if a specific EXE module is running	
+//  in windows.  It requires one input parameter.  This argument is
+//  a string that contains the name of the module in question.
+//  If the string has a path, it is stripped off.  The string must 
+//  contain ".EXE" since this is used to locate the module name.
+//
+//
+// USUAGE Example: FX_IS_IT_RUNNING("P:\WPWIN\WPWIN6.EXE test.wpd")
+//
+//************************************************************************
+//	FDG	07/18/96	Replace global external functions with NVO GAPI.
+//						NOTE: GetModuleUsage does not exist in the 32-bit
+//								environment.
+//************************************************************************
+
+uint ModuleHandle
+string lv_test_this = ".EXE"
+int lv_exe_loc
+
+lv_exe_loc = pos(upper(arg_module_string),".EXE",1)
+if lv_exe_loc <= 1 then
+	return(FALSE)
+end if
+
+lv_exe_loc --
+DO UNTIL lv_exe_loc = 0 											&
+		or mid(arg_module_string,lv_exe_loc,1) = "\"			&
+		or mid(arg_module_string,lv_exe_loc,1) = ":"			&
+		or mid(arg_module_string,lv_exe_loc,1) = " "
+	lv_test_this = mid(arg_module_string,lv_exe_loc,1) + lv_test_this
+	lv_exe_loc --
+LOOP
+
+lv_test_this = upper(lv_test_this)
+
+ModuleHandle = gapi.of_GetModuleHandle(lv_test_this)		//FDG 07/18/96
+
+if (gapi.of_GetModuleUsage(ModuleHandle) > 0) then
+	return(TRUE)
+else
+	return(FALSE)
+end if
+end function
+

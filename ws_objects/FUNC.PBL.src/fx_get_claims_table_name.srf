@@ -1,0 +1,94 @@
+﻿$PBExportHeader$fx_get_claims_table_name.srf
+global type fx_get_claims_table_name from function_object
+end type
+
+forward prototypes
+global function string fx_get_claims_table_name (string as_table)
+end prototypes
+
+global function string fx_get_claims_table_name (string as_table);//************************************************************************
+//		Object Type:	Global Function
+//		Object Name:	fx_get_claims_table_name
+//		Event Name:		N/A
+//
+//		This function takes a table and reassigns a new table name..
+//
+//		Input parms:
+//		1.	as_table (string)
+//
+//		Returns:
+//		String - The new table name.
+//
+//************************************************************************
+//	History
+//	???	????????	Created.
+//	FDG	04/16/98	Stars 4.0 (Track 1016).  If there are no rows, re-filter 
+//						trying to get the dependent table (i.e. CR, CO)
+//	FNC	11/12/01 Track 3759 Starcare. Determine if table is a subset
+//						table by checking for "SUB_MEDC" not just "SUB" becasue
+//						sub_filter_Vals_xxxxxxxx table starts with SUB but it is 
+//						not a subset table.
+//	FDG	04/03/02	Stars 5.1.  Must now account for ancillary subsets.
+//
+//************************************************************************
+
+
+string ls_table_type, ls_table, ls_filter
+long ll_row
+long ll_pos
+Integer	li_rc
+
+ls_table = Upper(as_table)
+
+// Find if table name begins with 'SUB_'. If not, don not continue.
+ll_pos = Pos(ls_table, 'SUB_MEDC')		// FNC 11/12/01
+
+IF	ll_pos	<>	1		THEN
+	RETURN(as_table)
+END IF
+
+// ll_pos = 1.  Get the table name from Dictionary/Stars_rel.
+
+ls_table_type = Mid(ls_table,10,2)
+
+// FDG 04/03/02 - Account for ancillary subsets
+//ll_row = fx_filter_stars_rel_1('QT', 'MC', ls_table_type)
+ls_filter = "(rel_type = 'GP' or rel_type = 'AN') and id_2 = '" + ls_table_type + "'"
+
+li_rc	=	w_main.dw_stars_rel_dict.SetFilter("")  // clear out 
+li_rc	=	w_main.dw_stars_rel_dict.Filter()
+li_rc	=	w_main.dw_stars_rel_dict.SetFilter(ls_filter)
+li_rc	=	w_main.dw_stars_rel_dict.Filter()
+
+ll_row	=	w_main.dw_stars_rel_dict.RowCount()
+// FDG 04/03/02 end
+
+IF	ll_row	>=	1		THEN
+	// FDG 04/03/02 - 'GP' stars_rel rows get table name from dictionary
+	ls_table = w_main.dw_stars_rel_dict.GetItemString( 1, "dictionary_elem_name")
+	IF	Trim( ls_table )	< ' '		THEN
+		ls_table = w_main.dw_stars_rel_dict.GetItemString( 1, "value_a")
+	END IF
+	// FDG 04/03/02 end
+ELSE
+	// Not found.  Try to find its dependent table
+	ll_row = fx_filter_stars_rel_1('DP', '', ls_table_type)
+	IF ll_row < 1 THEN
+		MessageBox("ERROR","Error retrieving table name for table type - " + ls_table_type,StopSign!)
+		RETURN('')
+	END IF
+	ls_table = w_main.dw_stars_rel_dict.GetItemString(1,"dictionary_elem_name")
+END IF
+
+IF Trim(ls_table) = '' THEN
+	MessageBox("ERROR","Error retrieving table name for table type - " + ls_table_type,StopSign!)
+	RETURN('')
+END IF
+
+RETURN(ls_table)
+
+
+
+
+end function
+

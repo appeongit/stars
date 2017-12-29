@@ -1,0 +1,11 @@
+﻿$PBExportHeader$sx_rand_samp_prov_count.srs
+global type sx_rand_samp_prov_count from structure
+	string		ls_provider_id[]
+	string		ls_provider_name[]
+	long		ll_provider_count[]
+	long		ll_provider_samplesize[]
+	string		ls_sample_selection
+	string		ls_pin_ind
+	string		ls_pit_label
+end type
+

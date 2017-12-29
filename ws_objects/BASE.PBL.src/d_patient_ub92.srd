@@ -1,0 +1,31 @@
+﻿$PBExportHeader$d_patient_ub92.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=67108864 processing=0 print.documentname="Patients By Billed Charges"  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=97 print.margin.bottom=97 print.paper.size=0 print.paper.source=0 selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1092 color="536870912" )
+table(column=(type=char(10) updatewhereclause=yes name=rb_1 dbname="Providers1_rb" 
+ values="Top 	HCPCS/"  )
+column=(type=char(10) updatewhereclause=yes name=rb_2 dbname="Providers2_rb" 
+ values="Top	Revenue/"  )
+column=(type=char(10) updatewhereclause=yes name=patients dbname="HCPCS_sle"  )
+column=(type=char(10) updatewhereclause=yes validation="integer(  revenue_rb  ) <= 100" name=providers2_sle dbname="Revenue_sle"  )
+column=(type=char(10) updatewhereclause=yes name=hcpcs_sle dbname="HCPCS_TOB_sle"  )
+column=(type=char(10) updatewhereclause=yes name=tob2 dbname="Revenue_TOB_sle"  )
+column=(type=char(10) updatewhereclause=yes name=tob1 dbname="Revenue_ExclRev_sle"  )
+)
+text(name=t_1 visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="0" border="0" x="169" y="56" height="76" width="110" text="Top" html.valueishtml="0" accessibledescription="~"Top~"	~"Top~"" accessiblename="~"Top~"	~"Top~"" accessiblerole=42 )
+column(name=patients visible="1" band=detail id=3 x="320" y="56" height="76" width="178" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=20 accessibledescription="~"Patients~"	~"Patients~"" accessiblename="~"Patients~"	~"Patients~"" )
+text(name=t_2 visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="0" border="0" x="549" y="56" height="76" width="800" text="Patients By Billed Charges" html.valueishtml="0" accessibledescription="~"Patients By Billed Charges~"	~"Patients By Billed Charges~"" accessiblename="~"Patients By Billed Charges~"	~"Patients By Billed Charges~"" accessiblerole=42 )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

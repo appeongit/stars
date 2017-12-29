@@ -1,0 +1,15 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "PROVPAT.PBL" "";
+@end;
+@begin Objects
+ "d_provider_detail.srd" "PROVPAT.PBL";
+ "d_provider_search.srd" "PROVPAT.PBL";
+ "w_prov_enroll_maint.srw" "PROVPAT.PBL";
+ "d_enr_id_xref.srd" "PROVPAT.PBL";
+ "w_enrollee_list.srw" "PROVPAT.PBL";
+ "w_enroll_id.srw" "PROVPAT.PBL";
+ "w_enr_id_xref.srw" "PROVPAT.PBL";
+ "w_provider_list.srw" "PROVPAT.PBL";
+ "n_cst_provpat.sru" "PROVPAT.PBL";
+@end;

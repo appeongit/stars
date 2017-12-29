@@ -1,0 +1,9 @@
+HA$PBExportHeader$sx_patient_list.srs
+global type sx_patient_list from structure
+	string		open_from
+	datetime		date_key
+	boolean		xref_join
+	string		sql_stmt
+	n_tr		transaction
+end type
+

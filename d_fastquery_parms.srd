@@ -1,0 +1,26 @@
+HA$PBExportHeader$d_fastquery_parms.srd
+$PBExportComments$Used on the Customize Report tab to specify a "Fast Query".  External Source d/w. <gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=67108864 processing=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=4 color="536870912" )
+detail(height=196 color="536870912" )
+table(column=(type=char(1) updatewhereclause=yes initial="N" name=fastquery_ind dbname="fastquery_ind" 
+ values="	Y/	N"  )
+column=(type=long updatewhereclause=yes initial="0" name=fastquery_rows dbname="fastquery_rows"  )
+)
+text(name=t_1 visible="1	0" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="9" y="140" height="52" width="375" text="(Per Month Paid)" html.valueishtml="0" accessibledescription="~"(Per Month Paid)~"	~"(Per Month Paid)~"" accessiblename="~"Paid Per Month~"	~"Paid Per Month~"" accessiblerole=42 )
+text(name=fastquery_rows_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="9" y="76" height="56" width="366" text="Max # Rows:" html.valueishtml="0" accessibledescription="~"Max # Rows~"	~"Max # Rows~"" accessiblename="~"Max # Rows~"	~"Max # Rows~"" accessiblerole=42 )
+text(name=fastquery_ind_t visible="1" band=detail font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="9" y="4" height="52" width="366" text="FastQuery?" html.valueishtml="0" accessibledescription="~"FastQuery?~"	~"FastQuery?~"" accessiblename="~"Fast Query?~"	~"Fast Query?~"" accessiblerole=42 )
+column(name=fastquery_rows visible="1" band=detail id=2 x="402" y="76" height="60" width="283" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" editmask.focusrectangle=no editmask.autoskip=no editmask.required=no editmask.readonly=no editmask.codetable=no editmask.ddcalendar=no editmask.spin=no editmask.useformat=no editmask.mask="######" editmask.imemode=0 editmask.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="536870912" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" tabsequence=20 accessibledescription="~"Max # Rows~"	~"Max # Rows~"" accessiblename="~"Max # Rows~"	~"Max # Rows~"" )
+column(name=fastquery_ind visible="1" tag="" band=detail id=1 x="398" y="4" height="60" width="293" color="33554432" border="0" alignment="1" format="[general]" html.valueishtml="0" checkbox.lefttext=no checkbox.scale=yes checkbox.threed=yes checkbox.text="" checkbox.on="Y" checkbox.off="N" criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=10 accessibledescription="~"FastQuery?~"	~"FastQuery?~"" accessiblename="~"Fast Query?~"	~"Fast Query?~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )

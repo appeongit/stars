@@ -1,0 +1,8 @@
+HA$PBExportHeader$sx_cols.srs
+$PBExportComments$List of columns used in n_cst_temp_table_attrib
+global type sx_cols from structure
+	string		is_col_name
+	string		is_data_type
+	integer		ii_col_number
+end type
+

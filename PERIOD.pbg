@@ -1,0 +1,29 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "PERIOD.PBL" "";
+@end;
+@begin Objects
+ "d_sum_rel_table_name.srd" "PERIOD.PBL";
+ "d_pat_rank_col_name.srd" "PERIOD.PBL";
+ "d_period_cntl_detail.srd" "PERIOD.PBL";
+ "w_period_cntl_detail.srw" "PERIOD.PBL";
+ "d_dddw_rank_col.srd" "PERIOD.PBL";
+ "d_create_file.srd" "PERIOD.PBL";
+ "d_copy_summ_rel.srd" "PERIOD.PBL";
+ "d_sumrel_dict.srd" "PERIOD.PBL";
+ "d_basetype_list.srd" "PERIOD.PBL";
+ "d_display_period.srd" "PERIOD.PBL";
+ "d_function_list.srd" "PERIOD.PBL";
+ "d_model_dates.srd" "PERIOD.PBL";
+ "d_invoice_descriptions.srd" "PERIOD.PBL";
+ "d_table_name.srd" "PERIOD.PBL";
+ "d_invoice_list.srd" "PERIOD.PBL";
+ "d_period_list.srd" "PERIOD.PBL";
+ "u_display_period.sru" "PERIOD.PBL";
+ "d_period_cntl_list.srd" "PERIOD.PBL";
+ "w_period_cntl_list.srw" "PERIOD.PBL";
+ "d_purge_cntl.srd" "PERIOD.PBL";
+ "d_period_list_max_period.srd" "PERIOD.PBL";
+ "d_model.srd" "PERIOD.PBL";
+ "d_count.srd" "PERIOD.PBL";
+@end;

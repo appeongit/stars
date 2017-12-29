@@ -1,0 +1,21 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "FILTER.PBL" "";
+@end;
+@begin Objects
+ "n_cst_prefilter_attrib.sru" "FILTER.PBL";
+ "d_filter_search.srd" "FILTER.PBL";
+ "d_filter_vals_date.srd" "FILTER.PBL";
+ "w_filter_maintain.srw" "FILTER.PBL";
+ "d_items_tied_to_filter.srd" "FILTER.PBL";
+ "sx_filter_data.srs" "FILTER.PBL";
+ "d_filter_vals_number.srd" "FILTER.PBL";
+ "w_filter_list_response.srw" "FILTER.PBL";
+ "d_prefilter_ub92.srd" "FILTER.PBL";
+ "d_filter_vals_money.srd" "FILTER.PBL";
+ "d_filter_vals_string.srd" "FILTER.PBL";
+ "d_filter_list.srd" "FILTER.PBL";
+ "w_prefilter_ub92.srw" "FILTER.PBL";
+ "w_filter_list.srw" "FILTER.PBL";
+ "n_cst_filter.sru" "FILTER.PBL";
+@end;

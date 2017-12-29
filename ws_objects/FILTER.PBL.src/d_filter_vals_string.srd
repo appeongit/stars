@@ -1,0 +1,28 @@
+﻿$PBExportHeader$d_filter_vals_string.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=1 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes grid.lines=0 selected.mouse=yes hidegrayline=no showbackcoloronxp=no)
+header(height=96 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(255) key=yes update=yes updatewhereclause=yes name=filter_data dbname="FV_SAMPLE_STRING.FILTER_DATA"  )
+column=(type=char(255) updatewhereclause=yes name=filter_desc dbname="filter_desc"  )
+ retrieve="SELECT  FV_SAMPLE_STRING.FILTER_DATA, ' ' as  FILTER_DESC     
+        FROM FV_SAMPLE_STRING    "
+  update="FV_SAMPLE_STRING" updatewhere=1 updatekeyinplace=no
+ )
+text(name=filter_data_t visible="1" band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="2" background.color="1073741824" color="33554432" alignment="0" border="0" x="9" y="12" height="68" width="1125" text="Values" html.valueishtml="0" accessibledescription="~"Values~"	~"Values~"" accessiblename="~"Values~"	~"Values~"" accessiblerole=42 )
+text(name=filter_desc_t visible="1" band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="2" background.color="1073741824" color="33554432" alignment="0" border="0" x="1143" y="12" height="68" width="2569" text="Description" html.valueishtml="0" accessibledescription="~"Description~"	~"Description~"" accessiblename="~"Description~"	~"Description~"" accessiblerole=42 )
+column(name=filter_data visible="1" tag=" " band=detail id=1 x="9" y="8" height="64" width="1125" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~" Values~"	~" Values~"" accessiblename="~"Values~"	~"Values~"" )
+column(name=filter_desc visible="0" band=detail id=2 x="1143" y="8" height="64" width="2569" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Description~"	~"Description~"" accessiblename="~"Description~"	~"Description~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen(sessionSpecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

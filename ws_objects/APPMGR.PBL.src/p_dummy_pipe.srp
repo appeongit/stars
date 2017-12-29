@@ -1,0 +1,5 @@
+﻿$PBExportHeader$p_dummy_pipe.srp
+PIPELINE(source_connect=DEV2 - STARSXL2,destination_connect=MS Access,type=create,commit=100,errors=100)
+SOURCE(name="PERIOD_CNTL",COLUMN(type=real,name="PERIOD",dbtype="real",nulls_allowed=no))
+RETRIEVE(statement="PBSELECT(TABLE(NAME=~"PERIOD_CNTL~") COLUMN(NAME=~"PERIOD_CNTL.PERIOD~"))")
+DESTINATION(name="PERIOD_CNTL",COLUMN(type=real,name="PERIOD",dbtype="REAL",nulls_allowed=no,initial_value="0"))

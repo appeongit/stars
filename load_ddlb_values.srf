@@ -1,0 +1,145 @@
+HA$PBExportHeader$load_ddlb_values.srf
+global type load_ddlb_values from function_object
+end type
+
+forward prototypes
+global function integer load_ddlb_values (ref dropdownlistbox ddlb_to_load, string code_type_to_load, character item_type_to_load, integer arg_max_length)
+end prototypes
+
+global function integer load_ddlb_values (ref dropdownlistbox ddlb_to_load, string code_type_to_load, character item_type_to_load, integer arg_max_length);//***********************************************************************
+// This function loads all codes and/or descriptions from the code 
+// table for the specified code_type into the dropdownlistbox 
+// specified.
+//
+// Usage: 
+//   load_ddlb_values(ddlb_to_load, code_type_to_load, item_type_to_load)
+//
+// Where:
+//   ddlb_to_load			= (DropDownListBox) ddlb to load with the items.
+//   code_type_to_load	= (String)          code_type of items to load into ddlb.
+//   item_type_to_load	= (Char) 			  specifies what to load in ddlb.
+//                                          'C' loads Codes ONLY.
+//                                          'D' loads Descriptions ONLY.
+//                                          'B' loads BOTH Codes AND Descriptions.
+//		arg_max_length    = (Integer)			  maximum length of code type
+//
+// Usage Notes:
+//   Returns 1 if successful, -1 if a problem occurs.
+//   When item_type_to_load is 'B' the items are loaded into the ddlb
+//     in the following format:  Code - Description.  Items are 
+//     automatically aligned so the dashes line up.  Codes are padded
+//     (on the right) with spaces in the ddlb to accomplish this.
+//   Items are added to the END of the items that are currently in 
+//      the ddlb.  This allows you to make multiple calls to the
+//      function to load multiple code types.
+//***********************************************************************
+//   Date   Init               Description of Changes Made                
+// -------- ---- 	-------------------------------------------------------- 
+// 03/01/94 JMS  	Created
+// 12/06/99 FNC	Use padright function to line up hyphen when code and
+//						descriptions are displayed.
+// 02/20/01	FDG	Stars 4.7.  Use of_connect() in case an alter session command is needed
+//***********************************************************************
+
+n_tr			CodeCA
+n_cst_string lnv_string
+String 		ls_code
+String 		ls_desc
+String      ls_items[]
+Integer     ls_item_number
+Integer     li_cntr
+// FNC 12/06/99
+//Integer     ls_code_length_from_code_table // This MUST be set to the size of the CODE_CODE column of the CODE Table.
+//Integer     lv_max_code_length			
+
+setpointer(hourglass!)
+
+//ls_code_length_from_code_table = arg_max_length + 1		// FNC 12/06/99
+code_type_to_load = Upper(Left(code_type_to_load,5))
+item_type_to_load = Upper(item_type_to_load)
+
+if (Not IsValid(ddlb_to_load)) then
+   MessageBox('Load Code Values','DropDownListBox to load "' + code_type_to_load + '" codes into does NOT exist.',StopSign!)
+   return -1
+end if
+
+CodeCA 				= Create n_tr
+CodeCA.DBMS       = Stars2CA.DBMS
+CodeCA.Database   = Stars2CA.Database
+CodeCA.LogID      = Stars2CA.LogID
+CodeCA.LogPass    = Stars2CA.LogPass
+CodeCA.ServerName = Stars2CA.ServerName
+CodeCA.UserID     = Stars2CA.UserID
+CodeCA.DBPass     = Stars2CA.DBPass
+CodeCA.Lock       = Stars2CA.Lock
+CodeCA.DbParm     = Stars2CA.DbParm
+
+//SqlCmd('CONNECT',CodeCA,'',1)				// FDG 02/20/01
+CodeCA.of_connect()								// FDG 02/20/01
+
+DECLARE code_cursor CURSOR FOR
+  SELECT CODE_CODE, 
+         CODE_DESC
+    FROM CODE
+    WHERE CODE_TYPE = Upper( :code_type_to_load )
+  USING CodeCA;
+
+OPEN code_cursor;
+if (CodeCA.of_check_status() <> 0) then
+   ErrorBox(CodeCA,'Could NOT open DataBase to load "' + code_type_to_load + '" codes.')
+	Destroy codeca;		//pat-d 6/19/95
+   return -1
+end if
+
+do while (CodeCA.SqlCode = 0)
+	FETCH code_cursor INTO :ls_code,:ls_desc;
+	if (CodeCA.of_check_status() =  100) then Exit
+   if (CodeCA.SqlCode <>   0) then
+		Errorbox(CodeCA,'Could NOT read DataBase to load "' + code_type_to_load + '" codes.')
+		Destroy codeca;		//pat-d 6/19/95
+		return -1
+   end if
+   ls_item_number = ls_item_number + 1
+   choose case item_type_to_load
+     case 'C'
+       ls_items[ls_item_number] = ls_code       
+     case 'D'
+		 ls_items[ls_item_number] = ls_desc
+     case else 		// Load BOTH Code and Desc into ddlb
+		//FNC 12/06/99 Start
+		//if (Len(ls_code) > lv_max_code_length) then lv_max_code_length = Len(ls_code)
+		//ls_items[ls_item_number] = Left(ls_code + Space(ls_code_length_from_code_table),ls_code_length_from_code_table) + ' - ' + ls_desc
+		ls_code = lnv_string.of_padright(ls_code,3)
+		ls_items[ls_item_number] = ls_code + ' - ' + ls_desc
+   end choose
+loop
+
+CLOSE code_cursor;
+if (CodeCA.of_check_status() <> 0) then 
+	Errorbox(CodeCA,'Could NOT close DataBase after reading "' + code_type_to_load + '" codes.')
+	Destroy codeca;		//pat-d 6/19/95
+   return -1
+end if
+CodeCA.of_commit()							// FDG 02/20/01
+
+//SqlCmd('DISCONNECT',CodeCA,'',1)		// FDG 02/20/01
+CodeCA.of_disconnect()						// FDG 02/20/01
+Destroy codeca;		//pat-d 6/19/95
+
+
+IF (code_type_to_load = 'SA' and item_type_to_load = 'B') THEN
+   ddlb_to_load.AddItem('                                ')
+END IF
+
+for li_cntr = 1 to ls_item_number
+  if (ddlb_to_load.AddItem(ls_items[li_cntr]) = -1) then
+     MessageBox('Load Code Values','Could NOT load "' + code_type_to_load + '" codes into DropDownListBox.',StopSign!)
+     return -1
+  end if
+next
+
+
+return 1
+
+end function
+

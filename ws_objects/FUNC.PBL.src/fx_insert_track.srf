@@ -1,0 +1,259 @@
+﻿$PBExportHeader$fx_insert_track.srf
+global type fx_insert_track from function_object
+end type
+
+forward prototypes
+global function integer fx_insert_track (ref sx_track_data in_track_data, string target_status, string lv_target_id, string alert_ind)
+end prototypes
+
+global function integer fx_insert_track (ref sx_track_data in_track_data, string target_status, string lv_target_id, string alert_ind);//This function inserts into target table and tracking table(s)
+//*******************************************************************
+// 08/01/94 MSD	Updated to handle CPR (Part B AL) by using gv_result
+//				   	of -999 
+//
+// 02/07/96 DKG	Initialized reveived_date to 1/1/1900 Per PROB 63
+//             	Stars 3.1 Release disk.
+// 03/11/98 AJS	4.0 TS145-fix globals
+// 11/01/99 AJS	4.5 Case Money; add new money amounts with 0 value.
+//	12/05/00	FDG	Stars 4.7.  Make error checking DBMS-independent.
+// 01/04/01	GaryR	Stars 4.7 DataBase Port - Date Conversion
+// 01/11/01	GaryR	Stars 4.7 DataBase Port - Empty String in SQL
+//	04/16/01	FDG	Stars 4.7.	Properly trim the data.
+//	08/01/01	GaryR	Track 2387d	Empty string in SQL
+//	08/02/01	GaryR	Track 2386d	Trim the TRGT_NAME string
+//	10/11/01	FDG	Stars 4.8.1.	Insert case_log
+//	12/13/01	FDG	Track 2564d.  Avoid inserting nulls for Oracle.
+// 12/26/01 SAH   Stars 5.0   Add track_type to log
+// 1/11/02 	Lahu 	Track # 2564 check if target name is null 
+// 10/15/04 MikeF	Track 3650d	Use dictionary methods
+// 11/01/04 Katie Track 3741 Added Target_id to insert for track changed code
+//						that captures duplicate add to throw an error rather than ignore
+//	11/10/06 Katie Track 4763 Added logic to clear 'DESCRIPTION NOT FOUND' from track_name.  Add logic
+//						to handle prov_id_type.
+//*******************************************************************
+
+String lv_case_id,lv_case_spl,lv_case_ver
+double lv_next_target
+int    lv_pos,	li_rc
+//string lv_track_name,lv_upin
+String lv_status = 'OP',lv_disp = 'SYSADD'
+String lv_subc_id
+Datetime lv_date_time,lv_init_date
+String  lv_status_desc
+String	ls_target_name, ls_track_number, ls_empty // 01/11/01	GaryR	Stars 4.7 DataBase Port
+Boolean lv_doing_cpr
+Integer	li_len						//	08/02/01	GaryR	Track 2386d
+String	ls_tbl_type
+
+// FDG 04/16/01 - Empty string = ' ' in Oracle
+li_rc	=	gnv_sql.of_TrimData (ls_empty)
+
+setpointer(hourglass!)
+
+// fudge code for CPR
+if gv_result = -999 then
+	lv_doing_cpr = TRUE
+	gv_result = 999
+else
+	lv_doing_cpr = FALSE
+end if
+
+lv_init_date = datetime(date(1900,01,01))
+lv_date_time = gnv_app.of_get_server_date_time()//ts2020c use server date, not pc date
+lv_case_id  = Trim(left(gv_active_case,10) )	//ajs 4.0 03-11-98 			// FDG 04/16/01
+lv_case_spl = mid(gv_active_case,11,2)	//ajs 4.0 03-11-98 TS145-fix globals
+lv_case_ver = mid(gv_active_case,13,2)	//ajs 4.0 03-11-98 TS145-fix globals
+
+//At this point track exists but we may not have its UPIN
+If Trim( in_track_data.track_number ) = '' then
+	fx_track_exists(in_track_data)
+End If
+
+if (trim(in_track_data.track_name) = 'DESCRIPTION NOT FOUND') then
+	in_track_data.track_name = ' '
+end if
+
+// FDG 04/16/01 - Empty string in Oracle is null
+li_rc	=	gnv_sql.of_TrimData (lv_case_spl)
+li_rc	=	gnv_sql.of_TrimData (lv_case_ver)
+li_rc	=	gnv_sql.of_TrimData (in_track_data.track_type)
+li_rc	=	gnv_sql.of_TrimData (in_track_data.track_key)
+// FDG 04/16/01 end
+
+// 01/11/01	GaryR	Stars 4.7 DataBase Port		// FDG 04/16/01
+ls_target_name = in_track_data.track_name
+//	08/02/01	GaryR	Track 2386d - Begin
+// 1/11/02 Lahu S. Track # 2564 Begin
+//check if target name is null 
+IF Trim( ls_target_name ) = "" OR isnull(ls_target_name) THEN
+// 1/11/02 Lahu S. Track # 2564 End	
+	ls_target_name = ls_empty
+ELSE
+	ls_tbl_type = gnv_dict.event ue_get_table_type	("TARGET")
+	li_len	   = gnv_dict.event ue_get_data_len		(ls_tbl_type, "TRGT_NAME")
+	
+	IF li_len = -1 THEN 
+		li_len = 32
+	END IF
+	
+	ls_target_name = Left( ls_target_name, li_len )
+END IF
+//	08/02/01	GaryR	Track 2386d - End
+
+Insert into Target
+	(case_id,case_spl,case_ver,
+	 trgt_id,trgt_key,trgt_status,trgt_name)
+	Values
+	 (:lv_case_id,:lv_case_spl,:lv_case_ver,
+	  :lv_target_id,:in_track_data.track_key,:target_status,:ls_target_name)	// 01/11/01	GaryR	Stars 4.7 DataBase Port
+Using Stars2ca;
+
+If stars2ca.of_check_status() <> 0 then
+	Errorbox(stars2ca,'Error Inserting into Target Table')
+	RETURN -1
+End If
+
+If Target_status <> 'A' then
+	RETURN 0
+End IF
+
+//Set the Status and Disposition of Track to Close as User has
+//pushed the SAVE button on the Dupe Check Screen
+If gv_result = 999  or gv_result = 900 then
+	if lv_doing_cpr then
+		lv_status = 'CL'
+		lv_disp = 'CPR'
+		lv_status_desc = 'CPR Letter Generated'
+	else
+		lv_status = 'CL'
+		lv_disp = 'SYSORCLS'
+		lv_status_desc = 'Track Closed from Dupe Check'
+	End If
+End If
+
+// 01/11/01	GaryR	Stars 4.7 DataBase Port		// FDG 04/16/01
+ls_track_number = in_track_data.track_number
+IF Trim( ls_track_number ) = "" THEN ls_track_number = ls_empty
+gnv_sql.of_TrimData( lv_status_desc )	//	08/01/01	GaryR	Track 2387d
+
+Insert into track
+	(CASE_ID,CASE_SPL,case_ver,
+	 trk_type,trk_key,
+	 trk_key_alt,trk_rel_type,trk_rel_key,
+	 trk_name,alert_ind,create_datetime,
+	 status,disp,status_datetime,
+	 From_period,to_period,
+	 OP_type,OP_amt,
+	 AMT_recv,amt_writeoff,
+	 date_req,date_rev,
+	 trk_desc,status_desc, recovered_addtl_amt, referred_amt,
+	 custom1_amt, custom2_amt,
+	 custom3_amt, custom4_amt,
+	 custom5_amt, custom6_amt,
+	 balance_remaining_amt, target_id,prov_id_type)
+	Values
+	 (:lv_case_id,:lv_case_spl,:lv_case_ver,
+	  :in_track_data.track_type,:in_track_data.track_key,
+	  :ls_track_number,' ',' ',
+	  :ls_target_name,:alert_ind,:lv_date_time,
+	  :lv_status,:lv_disp,:LV_DATE_TIME,
+		0,0,
+		:ls_empty,0,											// 01/11/01	GaryR	Stars 4.7 DataBase Port		// FDG 04/16/01
+		0,0,
+		:lv_init_date,:lv_init_date,						// 01/04/01	GaryR	Stars 4.7 DataBase Port
+		:ls_empty,:lv_status_desc,0,0,0,0,0,0,0,0,0, :lv_target_id, :in_track_data.prov_id_type)	
+		//11/01/04 Katie Track 3741 Added Target_id to insert for track
+		// 01/11/01	GaryR	Stars 4.7 DataBase Port		// FDG 04/16/01
+		
+Using Stars2ca;
+//DKG 02/07/96 END
+
+If stars2ca.sqlcode <> 0 then
+	//when dupes exist if already being tracked by the same case its okay to proceed
+	// FDG 12/05/00 - Make error checking DBMS-independent
+	//If stars2ca.sqldbcode = gv_sql_dup or stars2ca.sqldbcode = gv_sql_dup2 then
+	IF	gnv_sql.of_is_duplicate_insert (Stars2ca.sqldbcode)	=	TRUE		THEN
+		Errorbox(stars2ca,'Error Inserting duplicate target to TRACK')
+		RETURN -1
+	Else
+		Errorbox(stars2ca,'Error Inserting target to TRACK')
+		RETURN -1
+	End IF
+End If
+
+// FDG 10/11/01 begin
+String		ls_message
+n_cst_case	lnv_case
+
+lnv_case		=	CREATE	n_cst_case
+
+// SAH 12/26/01 begin
+//ls_message	=	"Track "	+	in_track_data.track_key	+	" added to case."
+ls_message	=	"Track "	+	in_track_data.track_key	+	" " + "(" + in_track_data.track_type + ")" + " added to case."
+
+// SAH 12/26/01 end
+
+li_rc			=	lnv_case.uf_audit_log ( lv_case_id, lv_case_spl, lv_Case_ver, ls_message )
+
+IF	li_rc		<	0		THEN
+	Stars2ca.of_rollback()
+	MessageBox ('Database Error', 'Could not insert case log for track '	+	in_track_data.track_key	+	&
+					'.  Case: ' + lv_case_id + lv_case_spl + lv_Case_ver + '. Script: '		+	&
+					'fx_insert_track()')
+	Destroy	lnv_case
+	Return	-1
+END IF
+
+Destroy	lnv_case
+// FDG 10/11/01 end
+
+Insert into track_log
+	(CASE_ID,CASE_SPL,case_ver,
+	 trk_type,trk_key,user_id,
+	 status,disp,status_datetime,
+	 status_desc, op_amt, amt_recv,
+	 amt_writeoff, recovered_addtl_amt, referred_amt,
+	 custom1_amt, custom2_amt,
+	 custom3_amt, custom4_amt,
+	 custom5_amt, custom6_amt,
+	 balance_remaining_amt, target_id)
+	Values
+	 (:lv_case_id,:lv_case_spl,:lv_case_ver,
+	  :in_track_data.track_type,:in_track_data.track_key,:gc_user_id,
+	  'OP','SYSADD',:LV_DATE_TIME,
+		'Original Add',0,0,0,0,0,0,0,0,0,0,0,0,  :lv_target_id)
+Using Stars2ca;
+
+If stars2ca.of_check_status() <> 0 then
+	Errorbox(stars2ca,'Error Inserting target to track log')
+	RETURN -1
+End If
+	
+//Dupes Exists and tracks are being written and closed
+If gv_result = 999 or gv_result = 900 then
+	Insert into track_log
+		(CASE_ID,CASE_SPL,case_ver,
+		 trk_type,trk_key,user_id,
+		 status,disp,status_datetime, status_desc, op_amt,
+	 	 amt_recv,amt_writeoff,
+		 recovered_addtl_amt, referred_amt,
+	 	 custom1_amt, custom2_amt,
+	 	 custom3_amt, custom4_amt,
+	 	 custom5_amt, custom6_amt,
+	 	 balance_remaining_amt)
+		Values
+		 (:lv_case_id,:lv_case_spl,:lv_case_ver,
+		  :in_track_data.track_type,:in_track_data.track_key,:gc_user_id,
+		  :lv_status,:lv_disp,:LV_DATE_TIME,
+		  :lv_status_desc,0,0,0,0,0,0,0,0,0,0,0,0)
+	Using Stars2ca;
+
+	If stars2ca.of_check_status() <> 0 then
+		Errorbox(stars2ca,'Error Inserting target to track log')
+		RETURN -1
+	End If
+End If
+
+Return 0
+end function
+

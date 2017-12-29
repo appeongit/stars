@@ -1,0 +1,236 @@
+﻿$PBExportHeader$m_pdr.srm
+$PBExportComments$Right-mouse menu for tabpage_pdr
+forward
+global type m_pdr from menu
+end type
+type m_menu from menu within m_pdr
+end type
+type m_reset from menu within m_menu
+end type
+type m_- from menu within m_menu
+end type
+type m_undodrilldown from menu within m_menu
+end type
+type m_-1 from menu within m_menu
+end type
+type m_help from menu within m_menu
+end type
+type m_menu from menu within m_pdr
+m_reset m_reset
+m_- m_-
+m_undodrilldown m_undodrilldown
+m_-1 m_-1
+m_help m_help
+end type
+global type m_pdr from menu
+m_menu m_menu
+end type
+end forward
+
+global type m_pdr from menu
+m_menu m_menu
+end type
+global m_pdr m_pdr
+
+type variables
+datawindow idw_main
+w_query_engine iw_Parent
+uo_query            iuo_Query
+end variables
+
+on m_pdr.create
+m_pdr=this
+call super::create
+this.m_menu=create m_menu
+this.Item[UpperBound(this.Item)+1]=this.m_menu
+end on
+
+on m_pdr.destroy
+call super::destroy
+destroy(this.m_menu)
+end on
+
+type m_menu from menu within m_pdr
+m_reset m_reset
+m_- m_-
+m_undodrilldown m_undodrilldown
+m_-1 m_-1
+m_help m_help
+end type
+
+on m_menu.create
+call super::create
+this.text = "m_pdr"
+this.m_reset=create m_reset
+this.m_-=create m_-
+this.m_undodrilldown=create m_undodrilldown
+this.m_-1=create m_-1
+this.m_help=create m_help
+this.Item[UpperBound(this.Item)+1]=this.m_reset
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_undodrilldown
+this.Item[UpperBound(this.Item)+1]=this.m_-1
+this.Item[UpperBound(this.Item)+1]=this.m_help
+end on
+
+on m_menu.destroy
+call super::destroy
+destroy(this.m_reset)
+destroy(this.m_-)
+destroy(this.m_undodrilldown)
+destroy(this.m_-1)
+destroy(this.m_help)
+end on
+
+type m_reset from menu within m_menu
+end type
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_pdr.m_reset
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger ue_reset_current_pdq event to undo any
+//		changes made to the previously selected query.
+//
+//////////////////////////////////////////////////////////////////
+//
+//	04/17/02	GaryR	Track 2552d	Predefined Reports (PDR)
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_parent	=	This.ParentWindow
+
+If IsValid(iw_parent) Then
+	iw_parent.Event	ue_reset_current_pdq()
+End If
+
+end event
+
+on m_reset.create
+call super::create
+this.text = "&Reset"
+this.microhelp = "Reset the selection back to its original state."
+end on
+
+on m_reset.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_menu
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_undodrilldown from menu within m_menu
+end type
+
+on m_undodrilldown.create
+call super::create
+this.text = "&Undo Drilldown"
+this.enabled = false
+this.microhelp = "Undo the in-process drilldown."
+end on
+
+on m_undodrilldown.destroy
+call super::destroy
+end on
+
+event clicked;//////////////////////////////////////////////////////////////////
+// Script:		m_pdr.m_undodrilldown
+//
+// Arguments:	None
+//
+// Returns:		None
+//
+// Description:
+// 	This will trigger ue_parent_undo_drilldown event to 
+//		return to the previous query.
+//
+//////////////////////////////////////////////////////////////////
+//
+//	04/17/02	GaryR	Track 2552d	Predefined Reports (PDR)
+//
+//////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_parent	=	This.ParentWindow
+
+If IsValid(iw_parent) Then
+	iw_parent.Event	ue_parent_undo_drilldown()
+End If
+
+end event
+
+type m_-1 from menu within m_menu
+end type
+
+on m_-1.create
+call super::create
+this.text = "-"
+end on
+
+on m_-1.destroy
+call super::destroy
+end on
+
+type m_help from menu within m_menu
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////////
+// Object						Event/Function				
+// ------						--------------				
+//	m_pdr							m_help
+/////////////////////////////////////////////////////////////////////////////
+// Description
+// -----------
+// This will display help for this tabpage.
+/////////////////////////////////////////////////////////////////////////////
+// PARAMETERS
+//	Passed by	Argument	Datatype	Description
+//	---------	--------	--------	-----------
+//	NONE.
+/////////////////////////////////////////////////////////////////////////////
+// RETURNS
+//	Datatype		Value			Description
+//	--------		-----			-----------
+// NONE.
+/////////////////////////////////////////////////////////////////////////////
+//
+//	04/17/02	GaryR	Track 2552d	Predefined Reports (PDR)
+//	04/29/03	GaryR	Track 3541d	Add PDR tab-sensitive help
+//
+/////////////////////////////////////////////////////////////////////////////
+
+SetPointer(HourGlass!)
+
+iw_Parent = this.parentwindow
+
+If IsValid(iw_Parent) Then
+	iw_parent.of_help ('','TABPAGE_PDRSOURCE')
+End If
+end event
+
+on m_help.create
+call super::create
+this.text = "&Help"
+this.microhelp = "Display help for this tab."
+end on
+
+on m_help.destroy
+call super::destroy
+end on
+

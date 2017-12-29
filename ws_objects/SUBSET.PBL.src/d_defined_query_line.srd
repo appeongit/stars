@@ -1,0 +1,21 @@
+﻿$PBExportHeader$d_defined_query_line.srd
+$PBExportComments$<logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(255) updatewhereclause=yes name=line_text dbname="DEFINED_QUERY_LINE.LINE_TEXT" )
+ retrieve="  SELECT  LINE_TEXT
+    FROM DEFINED_QUERY_LINE
+    WHERE WIN_ID = 'W_SUBSET_SUMMARY'
+	 AND   QUERY_TYPE = 'SUM'
+	 AND   BASE_TYPE = Upper(:arg_base_type)
+	 AND   SYS_ID = Upper(:arg_gv_sys_dflt)
+    AND   REPT_ID = Upper(:arg_rept_id)
+	 ORDER BY LINE_SEQ" arguments=(("arg_base_type", string),("arg_gv_sys_dflt", string),("arg_rept_id", string)) )
+text(band=header alignment="2" text="Line Text" border="0" color="0" x="9" y="8" height="64" width="2743"  name=line_text_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="2743" format="[general]"  name=line_text edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

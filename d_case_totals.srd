@@ -1,0 +1,22 @@
+HA$PBExportHeader$d_case_totals.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=67108864 processing=0 print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=97 print.margin.bottom=97 print.paper.size=0 print.paper.source=0 selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=648 color="536870912" )
+table(column=(type=char(15) updatewhereclause=no initial="Case Type" name=total_by dbname="TotalBy" 
+ values="Case Type	Case Type/Category	Category/Dept Id	Dept Id/Assign Id	Assign Id/Receipt Date	Date Received/Status	Status/Disposition	Disposition/"  )
+)
+column(name=total_by band=detail id=1 x="37" y="4" height="640" width="549" color="33554432" border="0" alignment="1" format="[general]" radiobuttons.columns=1 radiobuttons.lefttext=no radiobuttons.scale=no radiobuttons.threed=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=10 accessibledescription="~"Totals By~"	~"Totals By~"" accessiblename="~"Totals By ~"	~"Totals By ~"" )
+htmltable(border="0" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" generateJavaScript="1" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

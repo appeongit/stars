@@ -1,0 +1,30 @@
+HA$PBExportHeader$d_patt_cntl.srd
+$PBExportComments$Patt_cntl d/w for user-defined patterns <gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=67108864 processing=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=360 color="536870912" )
+table(column=(type=char(10) key=yes update=yes updatewhereclause=yes initial=" " name=patt_id dbname="PATT_CNTL.PATT_ID"  )
+column=(type=char(2) key=yes update=yes updatewhereclause=yes initial=" " name=patt_inv_type dbname="PATT_CNTL.PATT_INV_TYPE"  )
+column=(type=char(255) update=yes updatewhereclause=yes initial=" " name=patt_desc dbname="PATT_CNTL.PATT_DESC"  )
+column=(type=char(1) update=yes updatewhereclause=yes initial="spaces" name=base_plus dbname="PATT_CNTL.BASE_PLUS"  )
+column=(type=char(1) update=yes updatewhereclause=yes initial="spaces" name=exe_ind dbname="PATT_CNTL.EXE_IND"  )
+column=(type=char(255) update=yes updatewhereclause=yes initial=" " name=patt_cond dbname="PATT_CNTL.PATT_COND"  )
+column=(type=char(1) update=yes updatewhereclause=yes initial="spaces" name=patt_type dbname="PATT_CNTL.PATT_TYPE"  )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"PATT_CNTL~" ) COLUMN(NAME=~"PATT_CNTL.PATT_ID~") COLUMN(NAME=~"PATT_CNTL.PATT_INV_TYPE~") COLUMN(NAME=~"PATT_CNTL.PATT_DESC~") COLUMN(NAME=~"PATT_CNTL.BASE_PLUS~") COLUMN(NAME=~"PATT_CNTL.EXE_IND~") COLUMN(NAME=~"PATT_CNTL.PATT_COND~") COLUMN(NAME=~"PATT_CNTL.PATT_TYPE~")WHERE(    EXP1 =~"PATT_CNTL.PATT_ID~"   OP =~"=~"    EXP2 =~"Upper(:patt_id)~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"PATT_CNTL.PATT_INV_TYPE~"   OP =~"=~"    EXP2 =~"Upper(:patt_inv_type)~" ) ) ARG(NAME = ~"patt_id~" TYPE = string)  ARG(NAME = ~"patt_inv_type~" TYPE = string) "
+  update="PATT_CNTL" updatewhere=0 updatekeyinplace=no
+  arguments=(("patt_id", string), ("patt_inv_type", string))
+)
+column(name=patt_desc visible="1" band=detail id=3 x="18" y="16" height="312" width="2350" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=no edit.autoselect=yes edit.autovscroll=yes edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=255 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=30 accessibledescription="~"Pattern Description~"	~"Pattern Description~"" accessiblename="~"Pattern Description~"	~"Pattern Description~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateDDDWFrames="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen(sessionSpecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

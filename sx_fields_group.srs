@@ -1,0 +1,12 @@
+HA$PBExportHeader$sx_fields_group.srs
+$PBExportComments$fields and where clauses
+global type sx_fields_group from structure
+	string		label
+	string		where_clause
+	string		tbl_type
+	string		col_name
+	string		tbl_rel
+	string		main_tbl
+	boolean		multiple_likes
+end type
+

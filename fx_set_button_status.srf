@@ -1,0 +1,58 @@
+HA$PBExportHeader$fx_set_button_status.srf
+$PBExportComments$Includes modifications
+global type fx_set_button_status from function_object
+end type
+
+forward prototypes
+global subroutine fx_set_button_status (boolean arg_enabled, commandbutton button_not_modified[], window arg_window)
+end prototypes
+
+global subroutine fx_set_button_status (boolean arg_enabled, commandbutton button_not_modified[], window arg_window);window lv_active_sheet
+commandbutton lv_cb
+radiobutton lv_radio
+checkbox lv_chk_box
+int lv_upperbound,  lv_current_control
+int lv_upperbound_button, lv_button_to_bypass
+
+setpointer(hourglass!)
+
+boolean modify_button = true
+if NOT isvalid(arg_window) then
+	return 
+end if
+
+lv_upperbound        = UpperBound(arg_window.control[])
+lv_upperbound_button = UpperBound(button_not_modified[])
+
+for lv_current_control = 1 to lv_UpperBound
+  if (arg_window.control[lv_current_control].TypeOf() = CommandButton!) and &
+     (arg_window.control[lv_current_control].visible  = TRUE)           &
+  then
+     for lv_button_to_bypass = 1 to lv_upperbound_button
+        modify_button = true
+        if arg_window.control[lv_current_control] = button_not_modified[lv_button_to_bypass] then
+           modify_button = false
+           exit
+        end if
+     next
+     If modify_button then 
+	     lv_cb = arg_window.control[lv_current_control]
+        lv_cb.enabled  = arg_enabled
+   End if
+  end if
+ if (arg_window.control[lv_current_control].TypeOf() = RadioButton!) and &
+     (arg_window.control[lv_current_control].visible  = TRUE) then	
+    lv_radio = arg_window.control[lv_current_control]
+    lv_radio.enabled  = arg_enabled
+end if
+
+if (arg_window.control[lv_current_control].TypeOf() = CHECKBOX!) and &
+     (arg_window.control[lv_current_control].visible  = TRUE) then	
+    lv_chk_box = arg_window.control[lv_current_control]
+    lv_chk_box.enabled  = arg_enabled
+end if
+next
+
+
+end subroutine
+

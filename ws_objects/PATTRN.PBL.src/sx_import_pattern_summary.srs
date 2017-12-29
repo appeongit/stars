@@ -1,0 +1,9 @@
+﻿$PBExportHeader$sx_import_pattern_summary.srs
+$PBExportComments$Structure passed to w_import_pattern_summary
+global type sx_import_pattern_summary from structure
+	n_ds		ds_import
+	string		s_comment
+	string		s_subset_id
+	string		s_subset_name
+end type
+

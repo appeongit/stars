@@ -1,0 +1,24 @@
+﻿$PBExportHeader$d_dddw_case_status.srd
+$PBExportComments$DDDW for case status. <gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(15) updatewhereclause=yes name=code_code dbname="CODE.CODE_CODE"  )
+column=(type=char(255) updatewhereclause=yes name=code_desc dbname="CODE.CODE_DESC"  )
+column=(type=long updatewhereclause=yes name=code_value_n dbname="CODE.CODE_VALUE_N"  )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"CODE~" ) COLUMN(NAME=~"CODE.CODE_CODE~") COLUMN(NAME=~"CODE.CODE_DESC~") COLUMN(NAME=~"CODE.CODE_VALUE_N~")WHERE(    EXP1 =~"CODE.CODE_TYPE~"   OP =~"=~"    EXP2 =~"'SA'~" ) ) ORDER(NAME=~"CODE.CODE_CODE~" ASC=yes ) "
+ )
+compute(name=code_description visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" background.mode="1" background.color="536870912" color="33554432" x="5" y="8" height="64" width="2629" format="[general]" expression=" code_code + ' - ' +  code_desc " alignment="0" border="0" html.valueishtml="0" crosstab.repeat=no accessibledescription="~"Status~"	~"Status~"" accessiblename="~"Status~"	~"Status~"" )
+column(name=code_value_n visible="1	0" band=detail id=3 x="2651" y="8" height="64" width="320" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="Arial" font.family="2" font.height="-12" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"Status~"	~"Status~"" accessiblename="~"Status~"	~"Status~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )

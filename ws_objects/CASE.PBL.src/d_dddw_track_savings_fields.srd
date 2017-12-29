@@ -1,0 +1,35 @@
+﻿$PBExportHeader$d_dddw_track_savings_fields.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(15) updatewhereclause=yes name=elem_elem_label dbname="DICTIONARY.ELEM_ELEM_LABEL"  )
+column=(type=char(32) updatewhereclause=yes name=elem_name dbname="DICTIONARY.ELEM_NAME"  )
+ retrieve="  SELECT DICTIONARY_a.ELEM_ELEM_LABEL,   
+         DICTIONARY_a.ELEM_NAME  
+    FROM DICTIONARY DICTIONARY_a,   
+         DICTIONARY DICTIONARY_b  
+   WHERE ( DICTIONARY_a.ELEM_TYPE = 'CL' ) AND  
+			( DICTIONARY_a.ELEM_NAME in ( 'AMT_RECV', 'AMT_WRITEOFF', 'RECOVERED_ADDTL_AMT', 'REFERRED_AMT', 
+				'CUSTOM1_AMT', 'CUSTOM2_AMT', 'CUSTOM3_AMT', 'CUSTOM4_AMT', 'CUSTOM5_AMT', 'CUSTOM6_AMT' ) ) AND  
+         ( DICTIONARY_a.CRIT_SEQ <> 0) AND 
+			( DICTIONARY_b.ELEM_TYPE = 'TB' ) AND 
+         ( DICTIONARY_b.ELEM_NAME = 'TRACK' )   AND
+			(DICTIONARY_a.ELEM_TBL_TYPE = DICTIONARY_b.ELEM_TBL_TYPE)
+            
+"
+ )
+column(name=elem_elem_label visible="1" band=detail id=1 x="0" y="0" height="76" width="585" color="33554432" border="0" alignment="0" format="[General]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=22 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"Element Label~"	~"Element Label~"" accessiblename="~"Element Label~"	~"Element Label~"" )
+column(name=elem_name visible="0" band=detail id=2 x="585" y="0" height="64" width="1184" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=no edit.autoselect=no edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=22 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"Element Name~"	~"Element Name~"" accessiblename="~"Element Name~"	~"Element Name~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )

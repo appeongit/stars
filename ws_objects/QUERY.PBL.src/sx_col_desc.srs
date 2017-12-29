@@ -1,0 +1,9 @@
+﻿$PBExportHeader$sx_col_desc.srs
+$PBExportComments$Used in Break with Totals.
+global type sx_col_desc from structure
+	string		col_desc
+	string		data_type
+	string		col_name
+	string		col_number
+end type
+

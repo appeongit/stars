@@ -1,0 +1,120 @@
+HA$PBExportHeader$fx_track_exists.srf
+global type fx_track_exists from function_object
+end type
+
+forward prototypes
+global subroutine fx_track_exists (ref sx_track_data in_track_data)
+end prototypes
+
+global subroutine fx_track_exists (ref sx_track_data in_track_data);//*******************************************************************
+//This function checks if the track exists on the tables
+//*******************************************************************
+//10-31-96 FNC Prob #197 STARS35If track type is PV and don't find 
+//					provider name with prov id. Check to see if it is a 
+//					UPIN.
+//08-08-95 FNC Change Enrollee to Patient in messagebox
+//06-20-95 FNC Change to look at structure for code type for PC tracking
+//06-13-95 FNC change en_name to patient_name
+//01-06-95 FNC Change RC to RV for revenue tracking
+//09-14-94 FNC Retrieve LOB from prov_sys instead of prov_type
+// 12/06/2000	GaryR	Stars 4.7 DataBase Port - ASE set statement
+//02/28/02 FDG	Track 2847d. Remove selection of prov_sys since some
+//					clients may not have this column and the retrieved value
+//					is not used.
+// 11/10/06 Katie SPR 4763  Cleaned up logic for assigning Track name to call functions in n_cst_sql.
+//					Removed logic creating provider not found dialog box and replaced blank track_name
+//					with DESCRIPTION NOT FOUND.
+//	08/06/08	GaryR	SPR 5407	Add a class to support MSS variations
+//
+//*******************************************************************
+
+setpointer(hourglass!)
+
+In_track_data.track_name = ''
+In_track_data.track_number = ''
+In_track_data.track_lob = ''
+
+If in_track_data.track_key = '' then
+	Messagebox('EDIT','Error Retrieving Target Key')
+	RETURN 
+End If
+If in_track_data.track_type = 'PC' then
+	SELECT code_desc into :in_track_data.track_name
+	FROM code
+	WHERE code_type = Upper( :in_track_data.proc_track_code ) and   //06-20-95 FNC
+		code_code = Upper( :in_track_data.track_key )
+	Using stars2ca;
+	If stars2ca.of_check_status() < 0 then	
+	   Messagebox('ERROR','Error Reading Code Table')
+		Return 
+	Elseif stars2ca.sqlcode = 100 then 
+		in_track_data.track_name = 'DESCRIPTION NOT FOUND'
+		RETURN 
+	End IF
+Elseif in_track_data.track_type = 'RV' then   //01-06-95 FNC
+	SELECT code_desc into :in_track_data.track_name
+	FROM code
+	WHERE code_type = 'RV' and     //01-06-95 FNC
+		code_code = Upper( :in_track_data.track_key )
+	Using stars2ca;
+	If stars2ca.of_check_status() < 0 then	
+	   Messagebox('ERROR','Error Reading Code Table')
+		Return 
+	Elseif stars2ca.sqlcode = 100 then 
+		 in_track_data.track_name = 'DESCRIPTION NOT FOUND'
+		 RETURN 
+	End IF
+Elseif in_track_data.track_type = 'PV' then
+	if (in_track_data.prov_id_type = 'PROV_ID') then 
+		SELECT prov_name, prov_upin
+			into :in_track_data.track_name,:in_track_data.track_number
+		FROM providers
+		WHERE Prov_id = Upper( :in_track_data.track_key )
+		Using stars2ca;
+		If stars2ca.of_check_status() < 0 then	
+		   Messagebox('ERROR','Error Reading Provider Table')
+			Return 
+		end if
+	elseif (in_track_data.prov_id_type = 'PROV_UPIN') then
+		SELECT max(prov_name), prov_upin
+			into :in_track_data.track_name,:in_track_data.track_number
+		FROM providers
+		WHERE Prov_Upin = Upper( :in_track_data.track_key )
+		GROUP BY Prov_Upin
+		Using stars2ca;
+
+		If stars2ca.of_check_status() < 0 then	
+			Messagebox('ERROR','Error Reading Provider Table with UPIN')
+		End if
+	elseif (in_track_data.prov_id_type = 'PROV_NPI' and gv_npi_cntl > 0) then
+		SELECT max(prov_npi_name)
+			into :in_track_data.track_name
+		FROM prov_npi_xref
+		WHERE Prov_Npi = Upper( :in_track_data.track_key )
+		GROUP BY Prov_Npi
+		Using stars2ca;
+
+		If stars2ca.of_check_status() < 0 then	
+			Messagebox('ERROR','Error Reading Prov_Npi_Xref Table with NPI')
+		End if
+	End IF
+	if trim(in_track_data.track_name) = '' then 
+		in_track_data.track_name = 'DESCRIPTION NOT FOUND'
+	end if
+Elseif in_track_data.track_type = 'BE' then 
+	SELECT patient_name into :in_track_data.track_name  //06-13-95 FNC
+	FROM enrollee
+   WHERE Recip_Id = Upper( :in_track_data.track_key )
+	Using stars2ca;
+	If stars2ca.of_check_status() < 0 then	
+	   Messagebox('ERROR','Error Reading Patient Table')  //08-08-95 FNC
+		Return 
+	Elseif stars2ca.sqlcode = 100 then 
+		in_track_data.track_name = 'DESCRIPTION NOT FOUND'
+		RETURN 
+	End IF
+End If
+	
+RETURN 
+end subroutine
+

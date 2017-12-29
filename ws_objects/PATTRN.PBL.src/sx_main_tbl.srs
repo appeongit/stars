@@ -1,0 +1,9 @@
+﻿$PBExportHeader$sx_main_tbl.srs
+$PBExportComments$Gets is_main_tbl[], ib_multiple_likes[], is_tbl_rel[], and is_where_clause[] from u_nvo_pattern_sql
+global type sx_main_tbl from structure
+	string		s_main_tbl[]
+	string		s_tbl_rel[]
+	boolean		b_multiple_likes[]
+	string		s_where_clause[]
+end type
+

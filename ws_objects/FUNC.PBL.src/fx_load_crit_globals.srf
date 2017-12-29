@@ -1,0 +1,75 @@
+﻿$PBExportHeader$fx_load_crit_globals.srf
+global type fx_load_crit_globals from function_object
+end type
+
+forward prototypes
+global subroutine fx_load_crit_globals (string arg_left_parenth, string arg_variable, string arg_operator, string arg_value, string arg_right_parenth, string arg_connect, ref integer index)
+end prototypes
+
+global subroutine fx_load_crit_globals (string arg_left_parenth, string arg_variable, string arg_operator, string arg_value, string arg_right_parenth, string arg_connect, ref integer index);//  fx_load_crit_globals
+//  Loads global variables with criteria to use to build a "WHERE" clause.
+//*******************************************************************
+//
+//  DKG 1/23/96  Commented out code that removed the %. PROB 49 
+//               Release 3.1 Disk.
+//
+//*******************************************************************
+
+string single_entry
+int position
+boolean crit_loaded = FAlSE, lv_first_time = TRUE
+
+setpointer(hourglass!)
+
+if arg_operator = 'LIKE' or arg_operator = 'NOT LIKE' then
+//  Strip off the % from 'LIKE' operations, because the 'WHERE' function puts it on later.
+if match(arg_value,',') = FALSE then
+else
+	do while match(arg_value,',') OR arg_value <> ''
+		position = pos(arg_value,',')
+		if position = 0 and arg_value <> '' Then
+			single_entry = arg_value
+		
+			arg_value = ''
+		else
+			single_entry = left(arg_value,position - 1)
+			if right(single_entry,1) = '%' then
+				single_entry = mid(single_entry,1,len(single_entry) -1)
+			end if
+			arg_value = mid(arg_value,position + 1)
+		end if
+		if lv_first_time = TRUE then
+			gv_exp2[index] = upper(single_entry)
+			lv_first_time = FALSE
+		else
+			gv_exp2[index] = gv_exp2[index] + ',' + upper(single_entry)
+		end if
+
+	LOOP
+arg_value = gv_exp2[index]
+end if
+
+end if
+
+//if crit_loaded = FALSE then
+// VANM ADDED UPPER() FOR GOOD COMPARES  04-19-94 TPB
+gv_left_paren[index] = arg_left_parenth
+gv_exp1[index] = upper(arg_variable)
+gv_op[index]   = upper(arg_operator)
+gv_exp2[index] = upper(arg_value)
+gv_right_paren[index] = arg_right_parenth
+
+//  Do Not add connector operator to prior clause if 1st clause of the where.
+if arg_connect <> '' and (index - 1) > 0 Then
+// VANM ADDED UPPER() FOR GOOD COMPARES  04-19-94 TPB
+	gv_logic[index - 1] = upper(arg_connect)
+end if 
+
+gv_logic[index] = ''
+
+//  local variable in the calling script is updated by adding 1. (by reference)
+index++
+//end if
+
+end subroutine
+

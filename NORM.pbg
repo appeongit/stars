@@ -1,0 +1,15 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "NORM.PBL" "";
+@end;
+@begin Objects
+ "w_norm_rpt.srw" "NORM.PBL";
+ "d_norm_provider_list.srd" "NORM.PBL";
+ "w_norm_provider_list.srw" "NORM.PBL";
+ "sx_norm_analysis_parms.srs" "NORM.PBL";
+ "sx_norm_rpt_parms.srs" "NORM.PBL";
+ "d_norm_analysis.srd" "NORM.PBL";
+ "d_norm_rpt_work.srd" "NORM.PBL";
+ "w_norm_analysis.srw" "NORM.PBL";
+ "w_norm_graph.srw" "NORM.PBL";
+@end;

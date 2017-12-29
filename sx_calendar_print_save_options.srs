@@ -1,0 +1,9 @@
+HA$PBExportHeader$sx_calendar_print_save_options.srs
+global type sx_calendar_print_save_options from structure
+	integer		month_selection
+	date		begin_date
+	date		end_date
+	boolean		cancelled
+	boolean		print_blank
+end type
+

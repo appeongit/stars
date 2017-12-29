@@ -1,0 +1,14 @@
+﻿$PBExportHeader$str_db_error.srs
+$PBExportComments$Database error structure (used by w_db_error)
+global type str_db_error from structure
+	n_tr		trans
+	string		message
+	long		row_num
+	long		sqldbcode
+	string		sqlerrtext
+	string		sqlsyntax
+	string		sqlreturndata
+	string		window_name
+	string		dataobject
+end type
+

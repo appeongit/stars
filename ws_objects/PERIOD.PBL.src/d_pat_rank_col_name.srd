@@ -1,0 +1,20 @@
+﻿$PBExportHeader$d_pat_rank_col_name.srd
+$PBExportComments$uses dict to get elem_desc corresponding to period_cntl pat_rank_col_num in period_cntl_list <logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(2) updatewhereclause=yes name=elem_tbl_type dbname="dictionary.ELEM_TBL_TYPE" )
+ column=(type=long updatewhereclause=yes name=value_n dbname="dictionary.VALUE_N" )
+ column=(type=char(15) updatewhereclause=yes name=pat_rank_col_name dbname="compute_0003" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"dictionary~" ) COLUMN(NAME=~"dictionary.ELEM_TBL_TYPE~") COLUMN(NAME=~"dictionary.VALUE_N~") COMPUTE(NAME=~"substring(dictionary.ELEM_DESC,1,15)~")WHERE(    EXP1 =~"( dictionary.VALUE_A~"   OP =~"=~"    EXP2 =~"'RANK' )~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( dictionary.ELEM_TYPE~"   OP =~"=~"    EXP2 =~"'CL' )~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( dictionary.ELEM_TBL_TYPE~"   OP =~"in~"    EXP2 =~"(:as_elem_tbl_types ) )~" ) ) ORDER(NAME=~"dictionary.ELEM_TBL_TYPE~" ASC=yes )  ORDER(NAME=~"dictionary.VALUE_N~" ASC=yes ) ARG(NAME = ~"as_elem_tbl_types~" TYPE = stringlist) " arguments=(("as_elem_tbl_types", stringlist)) )
+text(band=header alignment="2" text="Elem Tbl Type" border="0" color="0" x="9" y="8" height="64" width="526"  name=elem_tbl_type_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Value N" border="0" color="0" x="544" y="8" height="64" width="439"  name=value_n_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Pat Rank Col Name" border="0" color="0" x="992" y="8" height="64" width="544"  name=pat_rank_col_name_t  font.face="System" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="526" format="[general]"  name=elem_tbl_type edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="544" y="8" height="76" width="439" format="[general]"  name=value_n edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="992" y="8" height="76" width="544" format="[general]"  name=pat_rank_col_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

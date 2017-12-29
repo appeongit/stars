@@ -1,0 +1,8 @@
+HA$PBExportHeader$sx_filter_create.srs
+$PBExportComments$part of sx_subsetting_info structure
+global type sx_filter_create from structure
+	string		tbl_type
+	string		col_name
+	string		filter_id
+end type
+

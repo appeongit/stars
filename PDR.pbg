@@ -1,0 +1,26 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "PDR.PBL" "";
+@end;
+@begin Objects
+ "d_pdr.srd" "PDR.PBL";
+ "m_pdr.srm" "PDR.PBL";
+ "d_dddw_pdr_cats.srd" "PDR.PBL";
+ "n_ds_titlepage.sru" "PDR.PBL";
+ "d_pdr_criteria.srd" "PDR.PBL";
+ "d_title_page.srd" "PDR.PBL";
+ "sx_pdr_tables.srs" "PDR.PBL";
+ "d_pdr_search.srd" "PDR.PBL";
+ "d_dddw_pdr_types.srd" "PDR.PBL";
+ "n_cst_pdr_drilldown.sru" "PDR.PBL";
+ "d_pdr_sources.srd" "PDR.PBL";
+ "d_report_options.srd" "PDR.PBL";
+ "d_pdr_source.srd" "PDR.PBL";
+ "u_report_options.sru" "PDR.PBL";
+ "w_report_options.srw" "PDR.PBL";
+ "sx_pdr_parms.srs" "PDR.PBL";
+ "d_dddw_client_name_custom_stmt.srd" "PDR.PBL";
+ "d_dddw_predefined_reports.srd" "PDR.PBL";
+ "d_pdr_list.srd" "PDR.PBL";
+ "u_nvo_pdr.sru" "PDR.PBL";
+@end;

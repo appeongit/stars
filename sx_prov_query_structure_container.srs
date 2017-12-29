@@ -1,0 +1,6 @@
+HA$PBExportHeader$sx_prov_query_structure_container.srs
+global type sx_prov_query_structure_container from structure
+	sx_prov_query_structure		lstr_prov_query
+	integer		li_level_num
+end type
+

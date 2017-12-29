@@ -1,0 +1,7 @@
+HA$PBExportHeader$sx_col_desc_parm.srs
+$PBExportComments$Container to message array of sx_col_desc.(w_subset_sort)
+global type sx_col_desc_parm from structure
+	sx_col_desc		columns[]
+	sx_break_info		break_info
+end type
+

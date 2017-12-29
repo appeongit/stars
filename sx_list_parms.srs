@@ -1,0 +1,7 @@
+HA$PBExportHeader$sx_list_parms.srs
+$PBExportComments$Used to pass parms from QE to list window.  Use in provider and patient list.
+global type sx_list_parms from structure
+	string		parm_type
+	string		tmp_table
+end type
+

@@ -1,0 +1,132 @@
+﻿$PBExportHeader$d_col_desc.srd
+$PBExportComments$<logic>
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(255) updatewhereclause=yes name=elem_desc dbname="DICTIONARY.ELEM_DESC" )
+ column=(type=long updatewhereclause=yes name=elem_col_number dbname="DICTIONARY.ELEM_COL_NUMBER" )
+ column=(type=char(15) updatewhereclause=yes name=elem_elem_label dbname="DICTIONARY.ELEM_ELEM_LABEL" )
+ column=(type=char(15) updatewhereclause=yes name=elem_data_type dbname="DICTIONARY.ELEM_DATA_TYPE" )
+ column=(type=long updatewhereclause=yes name=elem_data_len dbname="DICTIONARY.ELEM_DATA_LEN" )
+ column=(type=char(1) updatewhereclause=yes name=elem_indx_ind dbname="DICTIONARY.ELEM_INDX_IND" )
+ column=(type=char(5) updatewhereclause=yes name=elem_lookup_type dbname="DICTIONARY.ELEM_LOOKUP_TYPE" )
+ column=(type=char(2) updatewhereclause=yes name=elem_target_type dbname="DICTIONARY.ELEM_TARGET_TYPE" )
+ column=(type=long updatewhereclause=yes name=min_len dbname="DICTIONARY.MIN_LEN" )
+ column=(type=long updatewhereclause=yes name=lead_alpha dbname="DICTIONARY.LEAD_ALPHA" )
+ column=(type=long updatewhereclause=yes name=disp_seq dbname="DICTIONARY.DISP_SEQ" )
+ column=(type=long updatewhereclause=yes name=crit_seq dbname="DICTIONARY.CRIT_SEQ" )
+ column=(type=char(1) updatewhereclause=yes name=multi_ind dbname="DICTIONARY.MULTI_IND" )
+ column=(type=char(32) updatewhereclause=yes name=value_a dbname="DICTIONARY.VALUE_A" )
+ column=(type=long updatewhereclause=yes name=value_n dbname="DICTIONARY.VALUE_N" )
+ column=(type=char(32) updatewhereclause=yes name=disp_format dbname="DICTIONARY.DISP_FORMAT" )
+ column=(type=char(8) updatewhereclause=yes name=null_attr dbname="DICTIONARY.NULL_ATTR" )
+ column=(type=char(1) updatewhereclause=yes name=base_plus dbname="DICTIONARY.BASE_PLUS" )
+ column=(type=char(1) updatewhereclause=yes name=required_attr dbname="DICTIONARY.REQUIRED_ATTR" )
+ column=(type=char(255) updatewhereclause=yes name=edit_mask dbname="DICTIONARY.EDIT_MASK" )
+ column=(type=long updatewhereclause=yes name=unique_key_seq dbname="DICTIONARY.UNIQUE_KEY_SEQ" )
+ column=(type=char(32) updatewhereclause=yes name=default_value dbname="DICTIONARY.DEFAULT_VALUE" )
+ column=(type=long updatewhereclause=yes name=src_len dbname="DICTIONARY.SRC_LEN" )
+ column=(type=char(64) updatewhereclause=yes name=disp_desc dbname="DICTIONARY.DISP_DESC" )
+ column=(type=char(32) updatewhereclause=yes key=yes name=elem_name dbname="DICTIONARY.ELEM_NAME" )
+ column=(type=long updatewhereclause=yes name=elem_data_scale dbname="DICTIONARY.ELEM_DATA_SCALE" )
+ column=(type=char(2) updatewhereclause=yes key=yes name=elem_type dbname="DICTIONARY.ELEM_TYPE" )
+ column=(type=char(2) updatewhereclause=yes key=yes name=elem_tbl_type dbname="DICTIONARY.ELEM_TBL_TYPE" )
+ retrieve="  SELECT dictionary.ELEM_DESC,   
+         dictionary.ELEM_COL_NUMBER,   
+         dictionary.ELEM_ELEM_LABEL,   
+         dictionary.ELEM_DATA_TYPE,   
+         dictionary.ELEM_DATA_LEN,   
+         dictionary.ELEM_INDX_IND,   
+         dictionary.ELEM_LOOKUP_TYPE,   
+         dictionary.ELEM_TARGET_TYPE,   
+         dictionary.MIN_LEN,   
+         dictionary.LEAD_ALPHA,   
+         dictionary.DISP_SEQ,   
+         dictionary.CRIT_SEQ,   
+         dictionary.MULTI_IND,   
+         dictionary.VALUE_A,   
+         dictionary.VALUE_N,   
+         dictionary.DISP_FORMAT,   
+         dictionary.NULL_ATTR,   
+         dictionary.BASE_PLUS,   
+         dictionary.REQUIRED_ATTR,   
+         dictionary.EDIT_MASK,   
+         dictionary.UNIQUE_KEY_SEQ,   
+         dictionary.DEFAULT_VALUE,   
+         dictionary.SRC_LEN,   
+         dictionary.DISP_DESC,   
+         dictionary.ELEM_NAME,   
+         dictionary.ELEM_DATA_SCALE,   
+         dictionary.ELEM_TYPE,   
+         dictionary.ELEM_TBL_TYPE  
+    FROM dictionary  
+   WHERE ( dictionary.ELEM_TYPE in ( 'CL','CC' ) ) AND  
+         ( dictionary.ELEM_TBL_TYPE = Upper(:arg_inv_type) ) AND  
+         ( dictionary.ELEM_NAME = Upper(:arg_elem_name) )    
+" update="dictionary" updatewhere=0 updatekeyinplace=no arguments=(("arg_inv_type", string),("arg_elem_name", string)) )
+text(band=header alignment="2" text="Elem Desc" border="0" color="0" x="9" y="8" height="64" width="1307" html.valueishtml="0"  name=elem_desc_t visible="1"  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Elem Col Number" border="0" color="0" x="1326" y="8" height="64" width="443" html.valueishtml="0"  name=t_1 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Elem Elem Label" border="0" color="0" x="1778" y="8" height="64" width="544" html.valueishtml="0"  name=t_2 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Elem Data Type" border="0" color="0" x="2331" y="8" height="64" width="544" html.valueishtml="0"  name=t_3 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Elem Indx Ind" border="0" color="0" x="3406" y="8" height="64" width="457" html.valueishtml="0"  name=t_4 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Elem Indx Ind" border="0" color="0" x="3406" y="8" height="64" width="457" html.valueishtml="0"  name=t_5 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Elem Lookup Type" border="0" color="0" x="3872" y="8" height="64" width="375" html.valueishtml="0"  name=t_6 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Elem Target Type" border="0" color="0" x="4256" y="8" height="64" width="128" html.valueishtml="0"  name=t_7 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Min Len" border="0" color="0" x="4393" y="8" height="64" width="270" html.valueishtml="0"  name=t_8 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Lead Alpha" border="0" color="0" x="4672" y="8" height="64" width="261" html.valueishtml="0"  name=t_9 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Disp Seq" border="0" color="0" x="4942" y="8" height="64" width="169" html.valueishtml="0"  name=t_10 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Crit Seq" border="0" color="0" x="5120" y="8" height="64" width="27" html.valueishtml="0"  name=t_11 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Multi Ind" border="0" color="0" x="5157" y="8" height="64" width="27" html.valueishtml="0"  name=t_12 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Value A" border="0" color="0" x="5193" y="8" height="64" width="1175" html.valueishtml="0"  name=t_13 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Value N" border="0" color="0" x="6377" y="8" height="64" width="101" html.valueishtml="0"  name=t_14 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Disp Format" border="0" color="0" x="6487" y="8" height="64" width="1175" html.valueishtml="0"  name=t_15 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Null Attr" border="0" color="0" x="7671" y="8" height="64" width="288" html.valueishtml="0"  name=t_16 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Base Plus" border="0" color="0" x="7968" y="8" height="64" width="27" html.valueishtml="0"  name=t_17 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Required Attr" border="0" color="0" x="8005" y="8" height="64" width="27" html.valueishtml="0"  name=t_18 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Edit Mask" border="0" color="0" x="8041" y="8" height="64" width="3502" html.valueishtml="0"  name=t_19 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Unique Key Seq" border="0" color="0" x="11552" y="8" height="64" width="27" html.valueishtml="0"  name=t_20 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Default Value" border="0" color="0" x="11589" y="8" height="64" width="1175" html.valueishtml="0"  name=t_21 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Src Len" border="0" color="0" x="12773" y="8" height="64" width="27" html.valueishtml="0"  name=t_22 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Disp Desc" border="0" color="0" x="12809" y="8" height="64" width="2359" html.valueishtml="0"  name=t_23 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Elem Data Len" border="0" color="0" x="2885" y="8" height="64" width="512" html.valueishtml="0"  name=t_24 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Elem Name" border="0" color="0" x="15177" y="8" height="64" width="1175" html.valueishtml="0"  name=t_25 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Elem Data Scale" border="0" color="0" x="16361" y="4" height="76" width="466" html.valueishtml="0"  name=t_26 visible="1"  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Elem Type" border="0" color="0" x="16837" y="4" height="76" width="64" html.valueishtml="0"  name=elem_type_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Elem Tbl Type" border="0" color="0" x="16910" y="4" height="76" width="64" html.valueishtml="0"  name=elem_tbl_type_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="1307" format="[general]" html.valueishtml="0"  name=elem_desc visible="1" edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1326" y="8" height="76" width="443" format="[general]" html.valueishtml="0"  name=elem_col_number visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1778" y="8" height="76" width="544" format="[general]" html.valueishtml="0"  name=elem_elem_label visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="2331" y="8" height="76" width="544" format="[general]" html.valueishtml="0"  name=elem_data_type visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2885" y="8" height="76" width="512" format="[general]" html.valueishtml="0"  name=elem_data_len visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="3406" y="8" height="76" width="457" format="[general]" html.valueishtml="0"  name=elem_indx_ind visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="3872" y="8" height="76" width="375" format="[general]" html.valueishtml="0"  name=elem_lookup_type visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="4256" y="8" height="76" width="128" format="[general]" html.valueishtml="0"  name=elem_target_type visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="4393" y="8" height="76" width="270" format="[general]" html.valueishtml="0"  name=min_len visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="4672" y="8" height="76" width="261" format="[general]" html.valueishtml="0"  name=lead_alpha visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="4942" y="8" height="76" width="169" format="[general]" html.valueishtml="0"  name=disp_seq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="5120" y="8" height="76" width="27" format="[general]" html.valueishtml="0"  name=crit_seq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="5157" y="8" height="76" width="27" format="[general]" html.valueishtml="0"  name=multi_ind visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="5193" y="8" height="76" width="1175" format="[general]" html.valueishtml="0"  name=value_a visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="6377" y="8" height="76" width="101" format="[general]" html.valueishtml="0"  name=value_n visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="6487" y="8" height="76" width="1175" format="[general]" html.valueishtml="0"  name=disp_format visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="0" x="7671" y="8" height="76" width="288" format="[general]" html.valueishtml="0"  name=null_attr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="0" x="7968" y="8" height="76" width="27" format="[general]" html.valueishtml="0"  name=base_plus visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="0" x="8005" y="8" height="76" width="27" format="[general]" html.valueishtml="0"  name=required_attr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="0" x="8041" y="8" height="76" width="3502" format="[general]" html.valueishtml="0"  name=edit_mask visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="0" x="11552" y="8" height="76" width="27" format="[general]" html.valueishtml="0"  name=unique_key_seq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="0" x="11589" y="8" height="76" width="1175" format="[general]" html.valueishtml="0"  name=default_value visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="0" x="12773" y="8" height="76" width="27" format="[general]" html.valueishtml="0"  name=src_len visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="0" x="12809" y="8" height="76" width="2359" format="[general]" html.valueishtml="0"  name=disp_desc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=25 alignment="0" tabsequence=32766 border="0" color="0" x="15177" y="8" height="76" width="1175" format="[general]" html.valueishtml="0"  name=elem_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="0" tabsequence=32766 border="0" color="0" x="16361" y="12" height="64" width="466" format="[general]" html.valueishtml="0"  name=elem_data_scale visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=27 alignment="0" tabsequence=32766 border="0" color="0" x="16837" y="0" height="64" width="64" format="[general]" html.valueishtml="0"  name=elem_type visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=28 alignment="0" tabsequence=32766 border="0" color="0" x="16910" y="0" height="64" width="64" format="[general]" html.valueishtml="0"  name=elem_tbl_type visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

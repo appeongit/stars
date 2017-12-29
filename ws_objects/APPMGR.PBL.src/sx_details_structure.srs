@@ -1,0 +1,41 @@
+﻿$PBExportHeader$sx_details_structure.srs
+global type sx_details_structure from structure
+	string		title
+	string		title2
+	integer		table_no
+	string		tbl_type
+	string		tbl_type2
+	string		key1_name
+	string		key1_value
+	string		key1_data_type
+	string		key2_name
+	string		key2_value
+	string		key2_data_type
+	string		key3_name
+	string		key3_value
+	string		key3_data_type
+	string		key4_name
+	string		key4_value
+	string		key4_data_type
+	string		key5_name
+	string		key5_value
+	string		key5_data_type
+	string		key6_name
+	string		key6_value
+	string		key6_data_type
+	integer		x
+	integer		y
+	string		where
+	string		where2
+	string		src_type
+	integer		window_count
+	string		subset_id
+	string		case_id
+	string		side_displayed
+	string		invoice_type
+	integer		line_no
+	string		table_name
+	string		paid_date
+	string		paid_date_col
+end type
+

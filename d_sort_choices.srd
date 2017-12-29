@@ -1,0 +1,32 @@
+HA$PBExportHeader$d_sort_choices.srd
+$PBExportComments$Dw for w_subset_popup. <gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=67108864 processing=0 print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=97 print.margin.bottom=97 print.paper.size=0 print.paper.source=0 selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=420 color="536870912" )
+table(column=(type=char(100) updatewhereclause=yes name=sort_field dbname="sort_field"  )
+column=(type=char(1) updatewhereclause=yes initial="S" name=rb_options dbname="rb_options" 
+ values="Sort Only	S/Break with Totals	B/"  )
+column=(type=char(4) updatewhereclause=yes initial="ASC" name=rb_sort dbname="rb_sort" 
+ values="Ascending	ASC/Descending	DESC/"  )
+)
+rectangle(name=r_1 band=detail pen.style="0" pen.width="5" pen.color="0" brush.hatch="7" brush.color="553648127" background.mode="2" background.color="0" x="14" y="148" height="268" width="777" )
+rectangle(name=r_2 band=detail pen.style="0" pen.width="5" pen.color="0" brush.hatch="7" brush.color="553648127" background.mode="2" background.color="0" x="823" y="148" height="268" width="777" )
+column(name=sort_field band=detail id=1 x="361" y="8" height="76" width="1234" color="33554432" border="6" alignment="0" format="[general]" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Sort Field~"	~"Sort Field~"" accessiblename="~"Sort Field~"	~"Sort Field~"" )
+text(name=sort_field_t band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="23" y="8" height="64" width="302" text="Sort Field:" accessibledescription="~"Sort Field~"	~"Sort Field~"" accessiblename="~"Sort Field~"	~"Sort Field~"" accessiblerole=42 )
+column(name=rb_sort band=detail id=3 x="887" y="216" height="152" width="521" color="33554432" border="0" alignment="0" format="[general]" radiobuttons.columns=1 radiobuttons.lefttext=no radiobuttons.scale=no radiobuttons.threed=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=20 accessibledescription="~"Sort Break Options~"	~"Sort Break Options~"" accessiblename="~"Sort Break Options~"	~"Sort Break Options~"" )
+column(name=rb_options band=detail id=2 x="73" y="216" height="152" width="677" color="33554432" border="0" alignment="0" format="[general]" radiobuttons.columns=1 radiobuttons.lefttext=no radiobuttons.scale=no radiobuttons.threed=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=10 accessibledescription="~"Sort Sequence~"	~"Sort Sequence~"" accessiblename="~"Sort Sequence~"	~"Sort Sequence~"" )
+text(name=rb_sort_t band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="2" background.color="67108864" color="134217741" alignment="1" border="0" x="73" y="120" height="64" width="558" text="Sort/Break Options" accessibledescription="~"Sort/Break Options~"	~"Sort/Break Options~"" accessiblename="~"Sort/Break Options~"	~"Sort/Break Options~"" accessiblerole=42 )
+text(name=rb_options_t band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="2" background.color="67108864" color="134217741" alignment="1" border="0" x="887" y="120" height="64" width="430" text="Sort Sequence" accessibledescription="~"Sort Sequence~"	~"Sort Sequence~"" accessiblename="~"Sort Sequence~"	~"Sort Sequence~"" accessiblerole=42 )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" generateJavaScript="1" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

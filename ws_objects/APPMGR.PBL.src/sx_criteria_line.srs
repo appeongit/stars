@@ -1,0 +1,11 @@
+﻿$PBExportHeader$sx_criteria_line.srs
+global type sx_criteria_line from structure
+    character crit_lp
+    string crit_exp1
+    string crit_data_type
+    string crit_op
+    string crit_exp2
+    character crit_rp
+    string crit_logic
+end type
+

@@ -1,0 +1,18 @@
+﻿$PBExportHeader$sx_pattern_info.srs
+$PBExportComments$info needed to create SQL
+global type sx_pattern_info from structure
+	sx_subset		subset_info
+	sx_set		set
+	character		claim_btn
+	character		day_btn
+	character		enrollee_btn
+	character		combo_btn
+	sx_timeframe		timeframe
+	sx_fields_group		fields_group[]
+	sx_occurrences		occurrences
+	boolean		not_flag
+	boolean		union_flag
+	boolean		background_flag
+	character		allwd_srvc_btn
+end type
+

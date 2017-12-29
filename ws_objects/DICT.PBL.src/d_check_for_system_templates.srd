@@ -1,0 +1,55 @@
+﻿$PBExportHeader$d_check_for_system_templates.srd
+$PBExportComments$used w_dictionary_maint when disp_seq is updated <logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(8) update=yes updatewhereclause=yes key=yes name=user_id dbname="PDQ_CNTL.USER_ID" initial=" " )
+ column=(type=char(10) update=yes updatewhereclause=yes key=yes name=query_id dbname="PDQ_CNTL.QUERY_ID" initial=" " )
+ column=(type=char(2) update=yes updatewhereclause=yes name=query_type dbname="PDQ_CNTL.QUERY_TYPE" initial=" " )
+ column=(type=datetime update=yes updatewhereclause=yes name=create_date dbname="PDQ_CNTL.CREATE_DATE" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=common_ind dbname="PDQ_CNTL.COMMON_IND" initial=" " )
+ column=(type=char(1) update=yes updatewhereclause=yes key=yes name=pdq_type dbname="PDQ_CNTL.PDQ_TYPE" initial=" " )
+ column=(type=char(160) update=yes updatewhereclause=yes name=rpt_template_title dbname="PDQ_CNTL.RPT_TEMPLATE_TITLE" initial=" " )
+ column=(type=char(1) update=yes updatewhereclause=yes name=delete_ind dbname="PDQ_CNTL.DELETE_IND" initial=" " )
+ column=(type=char(2) update=yes updatewhereclause=yes name=addl_query_type dbname="PDQ_CNTL.ADDL_QUERY_TYPE" initial=" " )
+ column=(type=char(1) update=yes updatewhereclause=yes name=default_template dbname="PDQ_CNTL.DEFAULT_TEMPLATE" initial=" " )
+ retrieve="  SELECT PDQ_CNTL.USER_ID,   
+         PDQ_CNTL.QUERY_ID,   
+         PDQ_CNTL.QUERY_TYPE,   
+         PDQ_CNTL.CREATE_DATE,   
+         PDQ_CNTL.COMMON_IND,   
+         PDQ_CNTL.PDQ_TYPE,   
+         PDQ_CNTL.RPT_TEMPLATE_TITLE,   
+         PDQ_CNTL.DELETE_IND,   
+         PDQ_CNTL.ADDL_QUERY_TYPE,   
+         PDQ_CNTL.DEFAULT_TEMPLATE  
+    FROM PDQ_CNTL  
+   WHERE (( PDQ_CNTL.QUERY_TYPE = Upper(:as_elem_tbl_type) ) OR  
+         ( PDQ_CNTL.ADDL_QUERY_TYPE = Upper(:as_elem_tbl_type) )) AND  
+         ( PDQ_CNTL.USER_ID = 'SYSTEM' )    
+" update="PDQ_CNTL" updatewhere=2 updatekeyinplace=no arguments=(("as_elem_tbl_type", string)) )
+text(band=header alignment="2" text="User Id" border="0" color="0" x="9" y="8" height="64" width="329"  name=user_id_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Query Id" border="0" color="0" x="347" y="8" height="64" width="402"  name=query_id_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Query Type" border="0" color="0" x="759" y="8" height="64" width="416"  name=query_type_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Create Date" border="0" color="0" x="1797" y="8" height="64" width="805"  name=create_date_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Common Ind" border="0" color="0" x="2610" y="8" height="64" width="434"  name=common_ind_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pdq Type" border="0" color="0" x="3054" y="8" height="64" width="347"  name=pdq_type_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Rpt Template Title" border="0" color="0" x="3410" y="8" height="64" width="2231"  name=rpt_template_title_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Delete Ind" border="0" color="0" x="5650" y="8" height="64" width="370"  name=delete_ind_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Addl Query Type" border="0" color="0" x="1184" y="8" height="64" width="603"  name=addl_query_type_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Default Template" border="0" color="0" x="6030" y="8" height="64" width="617"  name=default_template_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="9" y="8" height="76" width="329" format="[general]"  name=user_id edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="347" y="8" height="76" width="402" format="[general]"  name=query_id edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="759" y="8" height="76" width="416" format="[general]"  name=query_type edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=50 border="0" color="0" x="1797" y="8" height="76" width="805" format="[shortdate] [time]"  name=create_date edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=60 border="0" color="0" x="2610" y="8" height="76" width="434" format="[general]"  name=common_ind edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=70 border="0" color="0" x="3054" y="8" height="76" width="347" format="[general]"  name=pdq_type edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=80 border="0" color="0" x="3410" y="8" height="76" width="2231" format="[general]"  name=rpt_template_title edit.limit=160 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=90 border="0" color="0" x="5650" y="8" height="76" width="370" format="[general]"  name=delete_ind edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=40 border="0" color="0" x="1184" y="8" height="76" width="603" format="[general]"  name=addl_query_type edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=100 border="0" color="0" x="6030" y="8" height="76" width="617" format="[general]"  name=default_template edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

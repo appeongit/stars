@@ -1,0 +1,58 @@
+﻿$PBExportHeader$fx_fasttrack_invoice_type.srf
+$PBExportComments$COPIED INTO M ALREADY
+global type fx_fasttrack_invoice_type from function_object
+end type
+
+forward prototypes
+global function string fx_fasttrack_invoice_type (ref string arg_fasttrack_type)
+end prototypes
+
+global function string fx_fasttrack_invoice_type (ref string arg_fasttrack_type);//HRB 11/27/95 - FastTrack 
+
+// Function filters dw_stars_rel_dict to get the 'real' main table type for
+// the fasttrack type.
+//
+// rel_type = 'DP'
+// rel_id = arg_fasttrack_type
+// id_3 <> ''
+//
+// returns id_3 (string containing main table type)
+// OR
+// returns 'ERROR' if unable to filter dw or if more than one row in filter
+
+//	FDG 02/15/02	Track 2882c.  Computed incorrectly.  Use 'GP' for 'Q'
+//						and 'DP' for 'O'.  The old way, 'Q1' was returning 'CH'
+//						(should have returned 'CR').
+
+
+int li_rc
+string ls_filter
+
+li_rc	=	w_main.dw_stars_rel_dict.SetFilter("")
+li_rc	=	w_main.dw_stars_rel_dict.Filter()
+
+//ls_filter =	"rel_type = 'DP' and rel_id = '"	+	arg_fasttrack_type +	"'"&
+//		   + " and id_3 <> '' and id_3 <> '*'"
+
+
+IF	Upper (Left (arg_fasttrack_type, 1) )	=	'Q'	THEN
+	ls_filter =	"rel_type = 'GP' and id_2 = '"	+	arg_fasttrack_type +	"'" &
+			   + " and id_3 <> '' and id_3 <> ' ' and id_3 <> '*'"
+ELSE
+	ls_filter =	"rel_type = 'DP' and id_2 = '"	+	arg_fasttrack_type +	"'" &
+			   + " and id_3 <> '' and id_3 <> ' ' and id_3 <> '*'"
+END IF
+				
+li_rc	=	w_main.dw_stars_rel_dict.SetFilter(ls_filter)
+li_rc	=	w_main.dw_stars_rel_dict.Filter()
+
+if w_main.dw_stars_rel_dict.RowCount() <> 1 then
+	messagebox('ERROR','Error reading Stars_Rel for FastTrack Type (fx_fasttrack_invoice_type).')
+	return 'ERROR'
+else
+	return w_main.dw_stars_rel_dict.GetItemString(1,'id_3')
+end if
+
+
+end function
+

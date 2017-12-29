@@ -1,0 +1,22 @@
+﻿$PBExportHeader$d_select_functions.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=97 print.margin.bottom=97 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(32) updatewhereclause=yes name=function_name dbname="STARS_WIN_PARM.COL_NAME"  )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"STARS_WIN_PARM~" ) COLUMN(NAME=~"STARS_WIN_PARM.COL_NAME~")WHERE(    EXP1 =~"STARS_WIN_PARM.WIN_ID~"   OP =~"=~"    EXP2 =~"'W_SUMMARY_FINANCIAL'~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"STARS_WIN_PARM.CNTL_TYPE~"   OP =~"=~"    EXP2 =~"'F'~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"STARS_WIN_PARM.TBL_TYPE~"   OP =~"=~"    EXP2 =~"Upper(:AS_INVOICE_TYPE)~" ) ) ARG(NAME = ~"AS_INVOICE_TYPE~" TYPE = string) "
+  arguments=(("AS_INVOICE_TYPE", string))
+)
+column(name=function_name visible="1" band=detail id=1 x="0" y="4" height="64" width="1056" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=no edit.autoselect=no edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=yes edit.hscrollbar=no edit.imemode=0 edit.limit=32 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Function~"	~"Function~"" accessiblename="~"Function~"	~"Function~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )

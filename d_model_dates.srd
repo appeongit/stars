@@ -1,0 +1,20 @@
+HA$PBExportHeader$d_model_dates.srd
+$PBExportComments$<logic>
+release 7;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=period dbname="period_cntl.PERIOD" )
+ column=(type=datetime updatewhereclause=yes name=payment_from_date dbname="period_cntl.PAYMENT_FROM_DATE" )
+ column=(type=char(2) updatewhereclause=yes name=invoice_type dbname="period_cntl.INVOICE_TYPE" )
+ column=(type=char(6) updatewhereclause=yes name=FUNCTION_NAME dbname="period_cntl.FUNCTION_NAME" )
+ retrieve="SELECT PERIOD_CNTL.PERIOD, PERIOD_CNTL.PAYMENT_FROM_DATE, PERIOD_CNTL.INVOICE_TYPE, PERIOD_CNTL.FUNCTION_NAME FROM PERIOD_CNTL WHERE ( PERIOD_CNTL.MODEL = Upper(:arg_model) ) AND ( PERIOD_CNTL.FUNCTION_NAME <> 'NONE' )" arguments=(("arg_model", string)) )
+text(band=header alignment="2" text="Period" border="0" color="0" x="5" y="4" height="68" width="384"  name=period_t  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Payment From Date" border="0" color="0" x="393" y="4" height="68" width="704"  name=payment_from_date_t  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="5" y="4" height="76" width="384" format="[general]"  name=period edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="393" y="4" height="76" width="704" format="[shortdate] [time]"  name=payment_from_date edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="System" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1102" y="4" height="76" width="704" format="[general]"  name=invoice_type edit.limit=0 edit.case=any edit.autoselect=yes  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1810" y="4" height="76" width="704" format="[general]"  name=FUNCTION_NAME edit.limit=0 edit.case=any edit.autoselect=yes  font.face="System" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

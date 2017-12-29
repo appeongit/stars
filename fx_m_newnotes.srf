@@ -1,0 +1,34 @@
+HA$PBExportHeader$fx_m_newnotes.srf
+global type fx_m_newnotes from function_object
+end type
+
+forward prototypes
+global subroutine fx_m_newnotes ()
+end prototypes
+
+global subroutine fx_m_newnotes ();//===================================================================================
+//fx_m_newnotes
+//Modifications:
+//05-12-98	NLG	1. Replace notes globals with notes nvo
+// JasonS 10/17/02 Track 2883d  set note_desc = ''
+//===================================================================================
+
+setpointer(hourglass!)
+GV_FROM = 'A'
+
+
+//GV_NOTES_FROM = 'MM'
+//gv_notes_rel_type = ''
+//gv_notes_rel_name = gv_active_case
+//gv_notes_sub_type=''
+//OpenSheet(w_notes_maint,mdi_main_frame,help_menu_position,Layered!)
+n_cst_notes lnv_notes
+
+lnv_notes.is_notes_from = 'MM'
+lnv_notes.is_notes_rel_type = ''
+lnv_notes.is_notes_rel_id = gv_active_case
+lnv_notes.is_notes_sub_type =''
+lnv_notes.is_notes_desc = '' 	//JasonS 10/17/02 Track 2883d
+OpenSheetWithParm(w_notes_maint,lnv_notes,mdi_main_frame,help_menu_position,Layered!)
+end subroutine
+

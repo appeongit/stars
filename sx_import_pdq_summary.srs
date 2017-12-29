@@ -1,0 +1,7 @@
+HA$PBExportHeader$sx_import_pdq_summary.srs
+global type sx_import_pdq_summary from structure
+	string		message
+	string		comments
+	n_ds		ds_import_pdq_summary
+end type
+

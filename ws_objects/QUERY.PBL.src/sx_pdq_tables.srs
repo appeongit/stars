@@ -1,0 +1,17 @@
+﻿$PBExportHeader$sx_pdq_tables.srs
+global type sx_pdq_tables from structure
+	string		query_id
+	integer		level_num
+	string		tbl_type
+	string		tbl_rel
+	string		src_type
+	string		src_case_id
+	string		src_case_spl
+	string		src_case_ver
+	string		src_subset_name
+	string		rpt_title
+	string		fastquery_ind
+	long		fastquery_rows
+	string		payment_date_options
+end type
+

@@ -1,0 +1,9 @@
+﻿$PBExportHeader$sx_pdr_tables.srs
+$PBExportComments$This structure will hold all table attributes of the PDR FROM clause - GR.
+global type sx_pdr_tables from structure
+	string		s_db_name
+	string		s_table
+	string		s_alias
+	string		s_elem_tbl_type
+end type
+

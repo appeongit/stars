@@ -1,0 +1,15 @@
+HA$PBExportHeader$sx_step_info.srs
+$PBExportComments$part of sx_subsetting_info structure
+global type sx_step_info from structure
+	datetime		paid_from_date
+	datetime		paid_thru_date
+	string		inv_type
+	string		subset_type
+	string		subc_sub_src_type
+	string		input_type
+	string		input_id
+	string		subc_sub_src_case_id
+	string		sql_statement
+	string		addtl_data_source
+end type
+

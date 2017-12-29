@@ -1,0 +1,11 @@
+﻿$PBExportHeader$sx_subset.srs
+$PBExportComments$subset info
+global type sx_subset from structure
+	string		subset_tbl_types[]
+	string		sub_src_type
+	string		subc_id
+	string		case_id
+	string		case_spl
+	string		case_ver
+end type
+

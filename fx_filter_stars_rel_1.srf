@@ -1,0 +1,65 @@
+HA$PBExportHeader$fx_filter_stars_rel_1.srf
+$PBExportComments$Filters stars_rel based on rel_type, rel_id, & id_2
+global type fx_filter_stars_rel_1 from function_object
+end type
+
+forward prototypes
+global function long fx_filter_stars_rel_1 (string as_rel_type, string as_rel_id, string as_id_2)
+end prototypes
+
+global function long fx_filter_stars_rel_1 (string as_rel_type, string as_rel_id, string as_id_2);//*************************************************************************
+//		Object Type:	Global function
+//		Object Name:	fx_filter_stars_rel_1
+//		Event Name:		N/A
+//
+//		This function filters table stars_rel based on rel_type, 
+//		rel_id, and id_2.  This table has already been read into hidden
+//		datawindow w_main.dw_stars_rel_dict.
+//
+//		Arguments passed to this function:
+//
+//		1.	as_rel_type	-	The type of relationship (i.e. 'JN', 'QT', 'GP')
+//		2.	as_rel_id	-	stars_rel.rel_id
+//		3.	as_id_2		-	stars_rel.id_2
+//
+//		Returns: long - The number of rows after being filtered.
+//
+//*************************************************************************
+//	
+
+string	ls_filter
+int		li_rc
+long		ll_max_rows
+
+
+	//	Make sure that nothing has been previously filtered
+li_rc			=	w_main.dw_stars_rel_dict.SetFilter("")
+li_rc			=	w_main.dw_stars_rel_dict.Filter()
+
+IF Trim (as_rel_id) > ' '		THEN
+	ls_filter	=	"rel_type = '"			+	as_rel_type	+	&
+						"' and id_2 = '"		+	as_id_2		+	&
+						"' and rel_id = '"	+	as_rel_id	+	"'"
+ELSE
+	ls_filter	=	"rel_type = '"			+	as_rel_type	+	&
+						"' and id_2 = '"		+	as_id_2		+	"'"
+END IF
+
+li_rc			=	w_main.dw_stars_rel_dict.SetFilter(ls_filter)
+li_rc			=	w_main.dw_stars_rel_dict.Filter()
+
+If	li_rc		<>	1	Then
+	MessageBox ("ERROR","Unable to set the filter on stars_rel in "	+	&
+					"fx_filter_stars_rel_1().")
+	Return -1
+End If
+
+	//	Determine the maximum row count 
+
+ll_max_rows		=	w_main.dw_stars_rel_dict.RowCount()
+
+
+Return ll_max_rows
+
+end function
+

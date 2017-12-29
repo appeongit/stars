@@ -1,0 +1,25 @@
+HA$PBExportHeader$fx_m_listnotes.srf
+$PBExportComments$Notes|ListNotes
+global type fx_m_listnotes from function_object
+end type
+
+forward prototypes
+global subroutine fx_m_listnotes ()
+end prototypes
+
+global subroutine fx_m_listnotes ();//====================================================================================
+//fx_m_listnotes
+//Modifications:
+//05-12-98	NLG	1. Replace notes globals with notes nvo
+//====================================================================================
+
+setpointer(hourglass!)
+GV_FROM = "L"
+
+//GV_NOTES_FROM = "MM"
+//OpenSheet(w_notes_list,mdi_main_frame,help_menu_position,Layered!)
+n_cst_notes lnv_notes
+LNV_NOTES.IS_NOTES_FROM = "MM"
+OpenSheetWithParm(w_notes_list,lnv_notes,mdi_main_frame,help_menu_position,Layered!)
+end subroutine
+

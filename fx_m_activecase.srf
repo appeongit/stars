@@ -1,0 +1,13 @@
+HA$PBExportHeader$fx_m_activecase.srf
+$PBExportComments$Case|ActiveCase
+global type fx_m_activecase from function_object
+end type
+
+forward prototypes
+global subroutine fx_m_activecase ()
+end prototypes
+
+global subroutine fx_m_activecase ();setpointer(hourglass!)
+OpenSheet(w_case_active,mdi_main_frame,help_menu_position,Original!)		
+end subroutine
+

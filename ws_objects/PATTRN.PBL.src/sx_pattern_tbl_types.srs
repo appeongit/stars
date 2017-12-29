@@ -1,0 +1,6 @@
+﻿$PBExportHeader$sx_pattern_tbl_types.srs
+$PBExportComments$Used to get the table types used in the SQL from u_nvo_pattern_sql.
+global type sx_pattern_tbl_types from structure
+	string		tbl_type[]
+end type
+

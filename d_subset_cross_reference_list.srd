@@ -1,0 +1,57 @@
+HA$PBExportHeader$d_subset_cross_reference_list.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=97 print.margin.bottom=97 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(8) updatewhereclause=yes name=user_id dbname="CASE_LINK.USER_ID"  )
+column=(type=char(20) updatewhereclause=yes name=link_name dbname="CASE_LINK.LINK_NAME"  )
+column=(type=char(10) updatewhereclause=yes name=case_link_case_id dbname="CASE_LINK.CASE_ID"  )
+column=(type=char(2) updatewhereclause=yes name=case_link_case_spl dbname="CASE_LINK.CASE_SPL"  )
+column=(type=char(2) updatewhereclause=yes name=case_link_case_ver dbname="CASE_LINK.CASE_VER"  )
+column=(type=char(80) updatewhereclause=yes name=link_desc dbname="CASE_LINK.LINK_DESC"  )
+column=(type=datetime updatewhereclause=yes name=link_date dbname="CASE_LINK.LINK_DATE"  )
+column=(type=char(10) updatewhereclause=yes name=link_key dbname="CASE_LINK.LINK_KEY"  )
+column=(type=long updatewhereclause=yes name=sub_cntl_subc_no_rows dbname="SUB_CNTL.SUBC_NO_ROWS"  )
+ retrieve="  SELECT CASE_LINK.USER_ID,   
+         CASE_LINK.LINK_NAME,   
+         CASE_LINK.CASE_ID,
+			CASE_LINK.CASE_SPL,
+			CASE_LINK.CASE_VER,   
+         CASE_LINK.LINK_DESC,   
+         CASE_LINK.LINK_DATE,   
+         CASE_LINK.LINK_KEY,   
+         SUB_CNTL.SUBC_NO_ROWS  
+    FROM CASE_LINK,   
+         SUB_CNTL  
+   WHERE ( CASE_LINK.LINK_KEY = SUB_CNTL.SUBC_ID ) and  
+         ( ( CASE_LINK.LINK_NAME = Upper(:arg_link_name) ) ) and
+			( CASE_LINK.LINK_TYPE = 'SUB' ) 
+"
+  arguments=(("arg_link_name", string))
+)
+text(name=link_desc_t visible="1" band=header font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="1883" y="4" height="64" width="411" text="Description" html.valueishtml="0" accessibledescription="~"Description~"	~"Description~"" accessiblename="~"Description~"	~"Description~"" accessiblerole=42 )
+text(name=link_name_t visible="1" band=header font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="462" y="4" height="64" width="347" text="Subset ID" html.valueishtml="0" accessibledescription="~"Subset ID~"	~"Subset ID~"" accessiblename="~"Subset ID~"	~"Subset ID~"" accessiblerole=42 )
+text(name=user_id_t visible="1" band=header font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="37" y="4" height="64" width="270" text="User ID" html.valueishtml="0" accessibledescription="~"User ID~"	~"User ID~"" accessiblename="~"User ID~"	~"User ID~"" accessiblerole=42 )
+text(name=link_date_t visible="1" band=header font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="4942" y="4" height="64" width="494" text="Date Created" html.valueishtml="0" accessibledescription="~"Date Created~"	~"Date Created~"" accessiblename="~"Date Created~"	~"Date Created~"" accessiblerole=42 )
+text(name=t_1 visible="1" band=header font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="5650" y="4" height="64" width="192" text="Rows" html.valueishtml="0" accessibledescription="~"Rows~"	~"Rows~"" accessiblename="~"Rows~"	~"Rows~"" accessiblerole=42 )
+text(name=case_id_t visible="1" band=header font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="0" border="0" x="1125" y="4" height="64" width="283" text="Case ID" html.valueishtml="0" accessibledescription="~"Case ID~"	~"Case ID~"" accessiblename="~"Case ID~"	~"Case ID~"" accessiblerole=42 )
+column(name=user_id visible="1" band=detail id=1 x="5" y="4" height="64" width="421" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=8 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"User ID~"	~"User ID~"" accessiblename="~"User ID~"	~"User ID~"" )
+column(name=link_desc visible="1" band=detail id=6 x="1883" y="4" height="64" width="2962" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=80 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Description~"	~"Description~"" accessiblename="~"Description~"	~"Description~"" )
+column(name=link_date visible="1" band=detail id=7 x="4942" y="4" height="64" width="823" color="33554432" border="0" alignment="0" format="[shortdate] [time]" html.valueishtml="0" edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Date Created~"	~"Date Created~"" accessiblename="~"Date Created~"	~"Date Created~"" )
+column(name=link_key visible="1" band=detail id=8 x="5641" y="8" height="52" width="5" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Link Key~"	~"Link Key~"" accessiblename="~"Link Key~"	~"Link Key~"" )
+column(name=sub_cntl_subc_no_rows visible="1" band=detail id=9 x="5650" y="4" height="64" width="279" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Number of Rows~"	~"Number of Rows~"" accessiblename="~"Number of Rows~"	~"Number of Rows~"" )
+column(name=link_name visible="1" band=detail id=2 x="448" y="4" height="64" width="663" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=20 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Subset ID~"	~"Subset ID~"" accessiblename="~"Subset ID~"	~"Subset ID~"" )
+compute(name=case_id visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="2" background.color="1073741824" color="33554432" x="1125" y="4" height="64" width="736" format="[GENERAL]" expression=" case_link_case_id + case_link_case_spl + case_link_case_ver" alignment="0" border="0" html.valueishtml="0" crosstab.repeat=no accessibledescription="~"Case ID~"	~"Case ID~"" accessiblename="~"Case ID~"	~"Case ID~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen(sessionSpecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

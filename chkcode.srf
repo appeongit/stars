@@ -1,0 +1,58 @@
+HA$PBExportHeader$chkcode.srf
+$PBExportComments$check code_type/code_code
+global type chkcode from function_object
+end type
+
+forward prototypes
+global function integer chkcode (string arg_code_type, string arg_code_code, ref string arg_code_desc)
+end prototypes
+
+global function integer chkcode (string arg_code_type, string arg_code_code, ref string arg_code_desc);//********************************************************************
+//	FDG	02/20/01	Stars 4.7 - remove SQLCMD
+//06-28-95 FNC Read the code table directly rather than reading in the 
+//             global variables. Now returning the description in a
+//             new argument. Old code is commented at the bottom of the
+//             function.
+// Return Codes:
+//  0   Successful 
+// -1   Code Not Found
+// -2   Bad read on code table
+//********************************************************************
+
+int lv_rc
+
+setpointer(hourglass!)
+
+  SELECT CODE.CODE_DESC  
+    INTO :arg_code_desc  
+    FROM CODE  
+   WHERE ( CODE.CODE_TYPE = Upper( :arg_code_type ) ) AND  
+         ( CODE.CODE_CODE = Upper( :arg_code_code ) )   
+   USING stars2ca;
+
+   if stars2ca.of_check_status() <> 0 then
+      if stars2ca.sqlcode = 100 then
+         lv_rc = -1
+         //sqlcmd('rollback',stars2ca,'Error rolling back the database',1)   	// FDG 02/20/01
+			STARS2CA.of_rollback()																// FDG 02/20/01
+      else
+         lv_rc = -2
+         //sqlcmd('rollback',stars2ca,'Error rolling back the database',1) 	// FDG 02/20/01
+			STARS2CA.of_rollback()																// FDG 02/20/01
+      end if
+   else
+      lv_rc = 0
+      //sqlcmd('commit',stars2ca,'Error commiting to the database',1)			// FDG 02/20/01
+   end if
+
+
+COMMIT using Stars2ca;
+if Stars2ca.of_check_status() <> 0 then
+	errorbox(stars2ca,'Error performing commit in chkcode.')
+end if
+
+return lv_rc
+
+
+end function
+

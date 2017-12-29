@@ -1,0 +1,257 @@
+HA$PBExportHeader$d_case_general.srd
+$PBExportComments$Case_cntl for the General tab <gui>
+release 11;
+datawindow ( units=1 timer_interval=0 color=67108864 processing=0 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=24 print.margin.right=24 print.margin.top=24 print.margin.bottom=24 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes selected.mouse=no hidegrayline=no showbackcoloronxp=no)
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=318 color="536870912" )
+table(column=(type=char(3) update=yes updatewhereclause=yes initial="spaces" name=dept_id dbname="CASE_CNTL.DEPT_ID" 
+ values=""  )
+column=(type=char(8) update=yes updatewhereclause=yes initial="spaces" name=user_id dbname="CASE_CNTL.USER_ID"  )
+column=(type=char(10) key=yes update=yes updatewhereclause=yes initial="spaces" name=case_id dbname="CASE_CNTL.CASE_ID"  )
+column=(type=char(2) key=yes update=yes updatewhereclause=yes initial="00" name=case_spl dbname="CASE_CNTL.CASE_SPL"  )
+column=(type=char(2) key=yes update=yes updatewhereclause=yes initial="00" name=case_ver dbname="CASE_CNTL.CASE_VER"  )
+column=(type=char(8) update=yes updatewhereclause=yes initial="spaces" name=case_asgn_id dbname="CASE_CNTL.CASE_ASGN_ID" 
+ values=""  )
+column=(type=char(1) update=yes updatewhereclause=yes initial="spaces" name=case_asgn_prio dbname="CASE_CNTL.CASE_ASGN_PRIO"  )
+column=(type=datetime update=yes updatewhereclause=yes initial="today" name=case_asgn_date dbname="CASE_CNTL.CASE_ASGN_DATE"  )
+column=(type=char(3) update=yes updatewhereclause=yes initial="spaces" name=refer_from_dept dbname="CASE_CNTL.REFER_FROM_DEPT"  )
+column=(type=char(3) update=yes updatewhereclause=yes initial="spaces" name=refer_to_dept dbname="CASE_CNTL.REFER_TO_DEPT"  )
+column=(type=char(8) update=yes updatewhereclause=yes initial="spaces" name=refer_by_rep dbname="CASE_CNTL.REFER_BY_REP"  )
+column=(type=datetime update=yes updatewhereclause=yes initial="today" name=refer_date dbname="CASE_CNTL.REFER_DATE"  )
+column=(type=datetime update=yes updatewhereclause=yes initial="today" name=case_datetime dbname="CASE_CNTL.CASE_DATETIME"  )
+column=(type=char(2) update=yes updatewhereclause=yes initial="spaces" name=case_type dbname="CASE_CNTL.CASE_TYPE" 
+ values=""  )
+column=(type=char(3) update=yes updatewhereclause=yes initial="spaces" name=case_cat dbname="CASE_CNTL.CASE_CAT" 
+ values=""  )
+column=(type=char(2) update=yes updatewhereclause=yes initial="spaces" name=case_business dbname="CASE_CNTL.CASE_BUSINESS" 
+ values=""  )
+column=(type=char(3) update=yes updatewhereclause=yes initial="spaces" name=case_line_b dbname="CASE_CNTL.CASE_LINE_B"  )
+column=(type=char(4) update=yes updatewhereclause=yes initial="spaces" name=case_plan dbname="CASE_CNTL.CASE_PLAN"  )
+column=(type=char(2) update=yes updatewhereclause=yes initial="spaces" name=case_trk_type dbname="CASE_CNTL.CASE_TRK_TYPE"  )
+column=(type=char(10) update=yes updatewhereclause=yes initial="spaces" name=case_edit dbname="CASE_CNTL.CASE_EDIT"  )
+column=(type=char(8) update=yes updatewhereclause=yes initial="spaces" name=case_disp_hold dbname="CASE_CNTL.CASE_DISP_HOLD"  )
+column=(type=datetime update=yes updatewhereclause=yes initial="0" name=case_from_period dbname="CASE_CNTL.CASE_FROM_PERIOD"  )
+column=(type=datetime update=yes updatewhereclause=yes initial="0" name=case_to_period dbname="CASE_CNTL.CASE_TO_PERIOD"  )
+column=(type=char(2) update=yes updatewhereclause=yes initial="spaces" name=case_status dbname="CASE_CNTL.CASE_STATUS"  )
+column=(type=char(8) update=yes updatewhereclause=yes initial="spaces" name=case_disp dbname="CASE_CNTL.CASE_DISP"  )
+column=(type=char(8) update=yes updatewhereclause=yes initial="spaces" name=case_updt_user dbname="CASE_CNTL.CASE_UPDT_USER"  )
+column=(type=datetime update=yes updatewhereclause=yes initial="today" name=case_status_date dbname="CASE_CNTL.CASE_STATUS_DATE"  )
+column=(type=char(60) update=yes updatewhereclause=yes initial="empty" name=case_desc dbname="CASE_CNTL.CASE_DESC"  )
+column=(type=char(60) update=yes updatewhereclause=yes initial="empty" name=case_status_desc dbname="CASE_CNTL.CASE_STATUS_DESC"  )
+column=(type=datetime update=yes updatewhereclause=yes initial="today" name=case_date_recv dbname="CASE_CNTL.CASE_DATE_RECV"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=identified_amt dbname="CASE_CNTL.IDENTIFIED_AMT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=op_amt dbname="CASE_CNTL.OP_AMT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=amt_recv dbname="CASE_CNTL.AMT_RECV"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=recovered_addtl_amt dbname="CASE_CNTL.RECOVERED_ADDTL_AMT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=future_savings_amt dbname="CASE_CNTL.FUTURE_SAVINGS_AMT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=custom1_amt dbname="CASE_CNTL.CUSTOM1_AMT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=custom2_amt dbname="CASE_CNTL.CUSTOM2_AMT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=custom3_amt dbname="CASE_CNTL.CUSTOM3_AMT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=custom4_amt dbname="CASE_CNTL.CUSTOM4_AMT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=custom5_amt dbname="CASE_CNTL.CUSTOM5_AMT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=custom6_amt dbname="CASE_CNTL.CUSTOM6_AMT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=referred_amt dbname="CASE_CNTL.REFERRED_AMT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=balance_remaining_amt dbname="CASE_CNTL.BALANCE_REMAINING_AMT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=amt_writeoff dbname="CASE_CNTL.AMT_WRITEOFF"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=case_custom1_amt dbname="CASE_CNTL.CASE_CUSTOM1_AMT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=case_custom2_amt dbname="CASE_CNTL.CASE_CUSTOM2_AMT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=case_custom3_amt dbname="CASE_CNTL.CASE_CUSTOM3_AMT"  )
+column=(type=char(32) update=yes updatewhereclause=yes initial="spaces" name=pmr_contractor_id dbname="CASE_CNTL.PMR_CONTRACTOR_ID" 
+ values=""  )
+column=(type=char(1) update=yes updatewhereclause=yes initial="N" name=pmr_ready_cd dbname="CASE_CNTL.PMR_READY_CD"  )
+column=(type=datetime update=yes updatewhereclause=yes initial="0" name=pmr_ready_date dbname="CASE_CNTL.PMR_READY_DATE"  )
+column=(type=char(1) update=yes updatewhereclause=yes initial="N" name=pmr_created_cd dbname="CASE_CNTL.PMR_CREATED_CD"  )
+column=(type=datetime update=yes updatewhereclause=yes initial="0" name=pmr_created_date dbname="CASE_CNTL.PMR_CREATED_DATE"  )
+column=(type=char(1) update=yes updatewhereclause=yes initial="spaces" name=pmr_prov_type_cd dbname="CASE_CNTL.PMR_PROV_TYPE_CD" 
+ values="	 /Physician	1/Non-Physician	2/"  )
+column=(type=char(6) update=yes updatewhereclause=yes initial="spaces" name=pmr_custom1_cd dbname="CASE_CNTL.PMR_CUSTOM1_CD"  )
+column=(type=char(32) update=yes updatewhereclause=yes initial="spaces" name=pmr_custom1_char dbname="CASE_CNTL.PMR_CUSTOM1_CHAR"  )
+column=(type=long update=yes updatewhereclause=yes initial="0" name=pmr_case_custom1_cnt dbname="CASE_CNTL.PMR_CASE_CUSTOM1_CNT"  )
+column=(type=long update=yes updatewhereclause=yes initial="0" name=pmr_case_custom2_cnt dbname="CASE_CNTL.PMR_CASE_CUSTOM2_CNT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=pmr_case_custom4_amt dbname="CASE_CNTL.PMR_CASE_CUSTOM4_AMT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=pmr_case_custom5_amt dbname="CASE_CNTL.PMR_CASE_CUSTOM5_AMT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=pmr_case_custom6_amt dbname="CASE_CNTL.PMR_CASE_CUSTOM6_AMT"  )
+column=(type=long update=yes updatewhereclause=yes initial="0" name=pmr_case_custom3_cnt dbname="CASE_CNTL.PMR_CASE_CUSTOM3_CNT"  )
+column=(type=long update=yes updatewhereclause=yes initial="0" name=pmr_case_custom4_cnt dbname="CASE_CNTL.PMR_CASE_CUSTOM4_CNT"  )
+column=(type=long update=yes updatewhereclause=yes initial="0" name=pmr_case_custom5_cnt dbname="CASE_CNTL.PMR_CASE_CUSTOM5_CNT"  )
+column=(type=datetime update=yes updatewhereclause=yes initial="today" name=pmr_custom1_date dbname="CASE_CNTL.PMR_CUSTOM1_DATE"  )
+column=(type=char(6) update=yes updatewhereclause=yes initial="spaces" name=pmr_custom2_cd dbname="CASE_CNTL.PMR_CUSTOM2_CD"  )
+column=(type=char(6) update=yes updatewhereclause=yes initial="spaces" name=pmr_custom3_cd dbname="CASE_CNTL.PMR_CUSTOM3_CD"  )
+column=(type=char(1) update=yes updatewhereclause=yes initial="spaces" name=pmr_frd_rfrl_cd dbname="CASE_CNTL.PMR_FRD_RFRL_CD"  )
+column=(type=char(1) update=yes updatewhereclause=yes initial="spaces" name=pmr_acpt_cd dbname="CASE_CNTL.PMR_ACPT_CD"  )
+column=(type=char(8) update=yes updatewhereclause=yes initial="spaces" name=pmr_ready_user dbname="CASE_CNTL.PMR_READY_USER"  )
+column=(type=char(8) update=yes updatewhereclause=yes initial="spaces" name=pmr_created_user dbname="CASE_CNTL.PMR_CREATED_USER"  )
+column=(type=char(5) update=yes updatewhereclause=yes initial="spaces" name=case_prov_spec dbname="CASE_CNTL.CASE_PROV_SPEC" 
+ values=""  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=pmr_case_custom7_amt dbname="CASE_CNTL.PMR_CASE_CUSTOM7_AMT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=pmr_case_custom8_amt dbname="CASE_CNTL.PMR_CASE_CUSTOM8_AMT"  )
+column=(type=decimal(4) update=yes updatewhereclause=yes initial="0" name=pmr_case_custom9_amt dbname="CASE_CNTL.PMR_CASE_CUSTOM9_AMT"  )
+column=(type=long update=yes updatewhereclause=yes initial="0" name=pmr_case_custom6_cnt dbname="CASE_CNTL.PMR_CASE_CUSTOM6_CNT"  )
+column=(type=long update=yes updatewhereclause=yes initial="0" name=pmr_case_custom7_cnt dbname="CASE_CNTL.PMR_CASE_CUSTOM7_CNT"  )
+column=(type=long update=yes updatewhereclause=yes initial="0" name=pmr_case_custom8_cnt dbname="CASE_CNTL.PMR_CASE_CUSTOM8_CNT"  )
+column=(type=char(255) update=yes updatewhereclause=yes initial="spaces" name=pmr_custom2_char dbname="CASE_CNTL.PMR_CUSTOM2_CHAR"  )
+column=(type=char(15) update=yes updatewhereclause=yes initial="spaces" name=pmr_custom4_cd dbname="CASE_CNTL.PMR_CUSTOM4_CD"  )
+column=(type=char(15) update=yes updatewhereclause=yes initial="spaces" name=pmr_custom5_cd dbname="CASE_CNTL.PMR_CUSTOM5_CD"  )
+column=(type=datetime update=yes updatewhereclause=yes initial="today" name=pmr_custom2_date dbname="CASE_CNTL.PMR_CUSTOM2_DATE"  )
+column=(type=datetime update=yes updatewhereclause=yes initial="today" name=pmr_custom3_date dbname="CASE_CNTL.PMR_CUSTOM3_DATE"  )
+column=(type=char(15) update=yes updatewhereclause=yes initial="spaces" name=pmr_subject_id dbname="CASE_CNTL.PMR_SUBJECT_ID"  )
+ retrieve="  SELECT case_cntl.DEPT_ID,   
+         case_cntl.USER_ID,   
+         case_cntl.CASE_ID,   
+         case_cntl.CASE_SPL,   
+         case_cntl.CASE_VER,   
+         case_cntl.CASE_ASGN_ID,   
+         case_cntl.CASE_ASGN_PRIO,   
+         case_cntl.CASE_ASGN_DATE,   
+         case_cntl.REFER_FROM_DEPT,   
+         case_cntl.REFER_TO_DEPT,   
+         case_cntl.REFER_BY_REP,   
+         case_cntl.REFER_DATE,   
+         case_cntl.CASE_DATETIME,   
+         case_cntl.CASE_TYPE,   
+         case_cntl.CASE_CAT,   
+         case_cntl.CASE_BUSINESS,   
+         case_cntl.CASE_LINE_B,   
+         case_cntl.CASE_PLAN,   
+         case_cntl.CASE_TRK_TYPE,   
+         case_cntl.CASE_EDIT,   
+         case_cntl.CASE_DISP_HOLD,   
+         case_cntl.CASE_FROM_PERIOD,   
+         case_cntl.CASE_TO_PERIOD,   
+         case_cntl.CASE_STATUS,   
+         case_cntl.CASE_DISP,   
+         case_cntl.CASE_UPDT_USER,   
+         case_cntl.CASE_STATUS_DATE,   
+         case_cntl.CASE_DESC,   
+         case_cntl.CASE_STATUS_DESC,   
+         case_cntl.CASE_DATE_RECV,   
+         case_cntl.IDENTIFIED_AMT,   
+         case_cntl.OP_AMT,   
+         case_cntl.AMT_RECV,   
+         case_cntl.RECOVERED_ADDTL_AMT,   
+         case_cntl.FUTURE_SAVINGS_AMT,   
+         case_cntl.CUSTOM1_AMT,   
+         case_cntl.CUSTOM2_AMT,   
+         case_cntl.CUSTOM3_AMT,   
+         case_cntl.CUSTOM4_AMT,   
+         case_cntl.CUSTOM5_AMT,   
+         case_cntl.CUSTOM6_AMT,   
+         case_cntl.REFERRED_AMT,   
+         case_cntl.BALANCE_REMAINING_AMT,   
+         case_cntl.AMT_WRITEOFF,   
+         case_cntl.CASE_CUSTOM1_AMT,   
+         case_cntl.CASE_CUSTOM2_AMT,   
+         case_cntl.CASE_CUSTOM3_AMT,   
+         case_cntl.PMR_CONTRACTOR_ID,   
+         case_cntl.PMR_READY_CD,   
+         case_cntl.PMR_READY_DATE,   
+         case_cntl.PMR_CREATED_CD,   
+         case_cntl.PMR_CREATED_DATE,   
+         case_cntl.PMR_PROV_TYPE_CD,   
+         case_cntl.PMR_CUSTOM1_CD,   
+         case_cntl.PMR_CUSTOM1_CHAR,   
+         case_cntl.PMR_CASE_CUSTOM1_CNT,   
+         case_cntl.PMR_CASE_CUSTOM2_CNT,   
+         case_cntl.PMR_CASE_CUSTOM4_AMT,   
+         case_cntl.PMR_CASE_CUSTOM5_AMT,   
+         case_cntl.PMR_CASE_CUSTOM6_AMT,   
+         case_cntl.PMR_CASE_CUSTOM3_CNT,   
+         case_cntl.PMR_CASE_CUSTOM4_CNT,   
+         case_cntl.PMR_CASE_CUSTOM5_CNT,   
+         case_cntl.PMR_CUSTOM1_DATE,   
+         case_cntl.PMR_CUSTOM2_CD,   
+         case_cntl.PMR_CUSTOM3_CD,   
+         case_cntl.PMR_FRD_RFRL_CD,   
+         case_cntl.PMR_ACPT_CD,   
+         case_cntl.PMR_READY_USER,   
+         case_cntl.PMR_CREATED_USER,   
+         case_cntl.CASE_PROV_SPEC,   
+         case_cntl.PMR_CASE_CUSTOM7_AMT,   
+         case_cntl.PMR_CASE_CUSTOM8_AMT,   
+         case_cntl.PMR_CASE_CUSTOM9_AMT,   
+         case_cntl.PMR_CASE_CUSTOM6_CNT,   
+         case_cntl.PMR_CASE_CUSTOM7_CNT,   
+         case_cntl.PMR_CASE_CUSTOM8_CNT,   
+         case_cntl.PMR_CUSTOM2_CHAR,   
+         case_cntl.PMR_CUSTOM4_CD,   
+         case_cntl.PMR_CUSTOM5_CD,   
+         case_cntl.PMR_CUSTOM2_DATE,   
+         case_cntl.PMR_CUSTOM3_DATE,   
+         case_cntl.PMR_SUBJECT_ID  
+    FROM case_cntl  
+   WHERE ( case_cntl.CASE_ID = :case_id ) AND  
+         ( case_cntl.CASE_SPL = :case_spl ) AND  
+         ( case_cntl.CASE_VER = :case_ver )    
+"
+  update="case_cntl" updatewhere=0 updatekeyinplace=no
+  arguments=(("case_id", string), ("case_spl", string), ("case_ver", string))
+)
+button(name=cb_case_id visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" background.mode="2" background.color="67108864" filename="" action="0" vtextalign="0" htextalign="0" x="366" y="1" height="19" width="14" color="33554432" text="?"  defaultpicture=no suppresseventprocessing=no enabled=yes accessibledescription="~"Help~"	~"Help~"" accessiblename="~"Help~"	~"Help~"" accessiblerole=43 )
+button(name=cb_pmr_custom1_char visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" background.mode="2" background.color="67108864" filename="" action="0" vtextalign="0" htextalign="0" x="604" y="1" height="19" width="14" color="33554432" text="?"  defaultpicture=no suppresseventprocessing=no enabled=yes accessibledescription="~"Help~"	~"Help~"" accessiblename="~"Help~"	~"Help~"" accessiblerole=43 )
+button(name=cb_case_desc visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" background.mode="2" background.color="67108864" filename="" action="0" vtextalign="0" htextalign="0" x="605" y="28" height="19" width="14" color="33554432" text="?"  defaultpicture=no suppresseventprocessing=no enabled=yes accessibledescription="~"Help~"	~"Help~"" accessiblename="~"Help~"	~"Help~"" accessiblerole=43 )
+button(name=cb_pmr_subject_id visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" background.mode="2" background.color="67108864" filename="" action="0" vtextalign="0" htextalign="0" x="276" y="54" height="19" width="14" color="33554432" text="?"  defaultpicture=no suppresseventprocessing=no enabled=yes accessibledescription="~"Help~"	~"Help~"" accessiblename="~"Help~"	~"Help~"" accessiblerole=43 )
+button(name=cb_pmr_contractor_id visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" background.mode="2" background.color="67108864" filename="" action="0" vtextalign="0" htextalign="0" x="605" y="54" height="19" width="14" color="33554432" text="?"  defaultpicture=no suppresseventprocessing=no enabled=yes accessibledescription="~"Help~"	~"Help~"" accessiblename="~"Help~"	~"Help~"" accessiblerole=43 )
+button(name=cb_case_type visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" background.mode="2" background.color="67108864" filename="" action="0" vtextalign="0" htextalign="0" x="276" y="80" height="19" width="14" color="33554432" text="?"  defaultpicture=no suppresseventprocessing=no enabled=yes accessibledescription="~"Help~"	~"Help~"" accessiblename="~"Help~"	~"Help~"" accessiblerole=43 )
+button(name=cb_case_cat visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" background.mode="2" background.color="67108864" filename="" action="0" vtextalign="0" htextalign="0" x="605" y="80" height="19" width="14" color="33554432" text="?"  defaultpicture=no suppresseventprocessing=no enabled=yes accessibledescription="~"Help~"	~"Help~"" accessiblename="~"Help~"	~"Help~"" accessiblerole=43 )
+button(name=cb_dept_id visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" background.mode="2" background.color="67108864" filename="" action="0" vtextalign="0" htextalign="0" x="276" y="108" height="19" width="14" color="33554432" text="?"  defaultpicture=no suppresseventprocessing=no enabled=yes accessibledescription="~"Help~"	~"Help~"" accessiblename="~"Help~"	~"Help~"" accessiblerole=43 )
+button(name=cb_case_business visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" background.mode="2" background.color="67108864" filename="" action="0" vtextalign="0" htextalign="0" x="605" y="107" height="19" width="14" color="33554432" text="?"  defaultpicture=no suppresseventprocessing=no enabled=yes accessibledescription="~"Help~"	~"Help~"" accessiblename="~"Help~"	~"Help~"" accessiblerole=43 )
+button(name=cb_case_date_recv visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" background.mode="2" background.color="67108864" filename="" action="0" vtextalign="0" htextalign="0" x="249" y="135" height="19" width="14" color="33554432" text="?"  defaultpicture=no suppresseventprocessing=no enabled=yes accessibledescription="~"Help~"	~"Help~"" accessiblename="~"Help~"	~"Help~"" accessiblerole=43 )
+button(name=cb_case_asgn_id visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" background.mode="2" background.color="67108864" filename="" action="0" vtextalign="0" htextalign="0" x="605" y="135" height="19" width="14" color="33554432" text="?"  defaultpicture=no suppresseventprocessing=no enabled=yes accessibledescription="~"Help~"	~"Help~"" accessiblename="~"Help~"	~"Help~"" accessiblerole=43 )
+button(name=cb_case_edit visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" background.mode="2" background.color="67108864" filename="" action="0" vtextalign="0" htextalign="0" x="220" y="162" height="19" width="14" color="33554432" text="?"  defaultpicture=no suppresseventprocessing=no enabled=yes accessibledescription="~"Help~"	~"Help~"" accessiblename="~"Help~"	~"Help~"" accessiblerole=43 )
+button(name=cb_case_from_period visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" background.mode="2" background.color="67108864" filename="" action="0" vtextalign="0" htextalign="0" x="356" y="188" height="19" width="14" color="33554432" text="?"  defaultpicture=no suppresseventprocessing=no enabled=yes accessibledescription="~"Help~"	~"Help~"" accessiblename="~"Help~"	~"Help~"" accessiblerole=43 )
+button(name=cb_case_prov_spec visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" background.mode="2" background.color="67108864" filename="" action="0" vtextalign="0" htextalign="0" x="303" y="213" height="19" width="14" color="33554432" text="?"  defaultpicture=no suppresseventprocessing=no enabled=yes accessibledescription="~"Help~"	~"Help~"" accessiblename="~"Help~"	~"Help~"" accessiblerole=43 )
+button(name=cb_pmr_prov_type_cd visible="1" band=detail font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="400" background.mode="2" background.color="67108864" filename="" action="0" vtextalign="0" htextalign="0" x="605" y="213" height="19" width="14" color="33554432" text="?"  defaultpicture=no suppresseventprocessing=no enabled=yes accessibledescription="~"Help~"	~"Help~"" accessiblename="~"Help~"	~"Help~"" accessiblerole=43 )
+text(name=case_id_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="2" y="2" height="13" width="113" text="Case Id:" html.valueishtml="0" accessibledescription="~"Case Id~"	~"Case Id~"" accessiblename="~"Case Id~"	~"Case Id~"" accessiblerole=42 )
+text(name=case_desc_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="2" y="29" height="13" width="113" text="Description:" html.valueishtml="0" accessibledescription="~"Description~"	~"Description~"" accessiblename="~"Description~"	~"Description~"" accessiblerole=42 )
+text(name=pmr_subject_id_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="2" y="55" height="13" width="113" text="Subject ID:" html.valueishtml="0" accessibledescription="~"Subject ID~"	~"Subject ID~"" accessiblename="~"Subject ID~"	~"Subject ID~"" accessiblerole=42 )
+text(name=case_type_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="2" y="82" height="13" width="113" text="Type:" html.valueishtml="0" accessibledescription="~"Type~"	~"Type~"" accessiblename="~"Type~"	~"Type~"" accessiblerole=42 )
+text(name=dept_id_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="2" y="109" height="13" width="113" text="Dept:" html.valueishtml="0" accessibledescription="~"Dept~"	~"Dept~"" accessiblename="~"Dept~"	~"Dept~"" accessiblerole=42 )
+text(name=case_date_recv_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="2" y="136" height="13" width="113" text="Receipt Date:" html.valueishtml="0" accessibledescription="~"Receipt Date~"	~"Receipt Date~"" accessiblename="~"Receipt Date~"	~"Receipt Date~"" accessiblerole=42 )
+text(name=case_edit_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="2" y="163" height="13" width="113" text="Edit:" html.valueishtml="0" accessibledescription="~"Edit~"	~"Edit~"" accessiblename="~"Edit~"	~"Edit~"" accessiblerole=42 )
+text(name=case_from_period_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="2" y="189" height="13" width="113" text="Period From:" html.valueishtml="0" accessibledescription="~"Period From~"	~"Period From~"" accessiblename="~"Period From~"	~"Period From~"" accessiblerole=42 )
+text(name=case_prov_spec_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="2" y="215" height="13" width="113" text="Specialty:" html.valueishtml="0" accessibledescription="~"Specialty~"	~"Specialty~"" accessiblename="~"Specialty~"	~"Specialty~"" accessiblerole=42 )
+text(name=case_to_period_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="0" border="0" x="224" y="189" height="13" width="26" text="To:" html.valueishtml="0" accessibledescription="~"To~"	~"To~"" accessiblename="~"To~"	~"To~"" accessiblerole=42 )
+text(name=pmr_prov_type_cd_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="322" y="216" height="13" width="106" text="Prov Type:" html.valueishtml="0" accessibledescription="~"Prov Type~"	~"Prov Type~"" accessiblename="~"Prov Type~"	~"Prov Type~"" accessiblerole=42 )
+text(name=user_id_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="388" y="189" height="13" width="113" text="By:" html.valueishtml="0" accessibledescription="~"By~"	~"By~"" accessiblename="~"By~"	~"By~"" accessiblerole=42 )
+text(name=case_datetime_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="388" y="163" height="13" width="113" text="Created:" html.valueishtml="0" accessibledescription="~"Created~"	~"Created~"" accessiblename="~"Created~"	~"Created~"" accessiblerole=42 )
+text(name=case_asgn_id_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="266" y="136" height="13" width="110" text="Assigned To:" html.valueishtml="0" accessibledescription="~"Assigned To~"	~"Assigned To~"" accessiblename="~"Assigned To~"	~"Assigned To~"" accessiblerole=42 )
+text(name=case_asgn_date_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="478" y="136" height="13" width="26" text="On:" html.valueishtml="0" accessibledescription="~"On~"	~"On~"" accessiblename="~"On~"	~"On~"" accessiblerole=42 )
+text(name=case_business_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="293" y="109" height="13" width="109" text="Business:" html.valueishtml="0" accessibledescription="~"Business~"	~"Business~"" accessiblename="~"Business~"	~"Business~"" accessiblerole=42 )
+text(name=case_cat_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="293" y="82" height="13" width="109" text="Category:" html.valueishtml="0" accessibledescription="~"Category~"	~"Category~"" accessiblename="~"Category~"	~"Category~"" accessiblerole=42 )
+text(name=pmr_contractor_id_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="292" y="55" height="13" width="111" text="Contract ID:" html.valueishtml="0" accessibledescription="~"Contract ID~"	~"Contract ID~"" accessiblename="~"Contract ID~"	~"Contract ID~"" accessiblerole=42 )
+text(name=pmr_custom1_char_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="390" y="2" height="13" width="103" text="Review ID:" html.valueishtml="0" accessibledescription="~"Review ID~"	~"Review ID~"" accessiblename="~"Review ID~"	~"Review ID~"" accessiblerole=42 )
+text(name=case_ver_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="297" y="2" height="13" width="32" text="Ver:" html.valueishtml="0" accessibledescription="~"Ver~"	~"Ver~"" accessiblename="~"Ver~"	~"Ver~"" accessiblerole=42 )
+text(name=case_spl_t visible="1" band=detail font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="134217741" alignment="1" border="0" x="237" y="2" height="13" width="31" text="Spl:" html.valueishtml="0" accessibledescription="~"Spl~"	~"Spl~"" accessiblename="~"Spl~"	~"Spl~"" accessiblerole=42 )
+column(name=case_id visible="1" band=detail id=3 x="119" y="2" height="16" width="118" color="33554432" border="5" alignment="0" format="[general]" protect="0	if( isRowNew(), 0, 1 )" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=upper edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=10 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=10 accessibledescription="~"Case Id~"	~"Case Id~"" accessiblename="~"Case Id~"	~"Case Id~"" )
+column(name=case_desc visible="1" band=detail id=28 x="120" y="29" height="16" width="480" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=60 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=30 accessibledescription="~"Description~"	~"Description~"" accessiblename="~"Description~"	~"Description~"" )
+column(name=pmr_subject_id visible="1" band=detail id=83 x="119" y="55" height="16" width="153" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=40 accessibledescription="~"Subject ID~"	~"Subject ID~"" accessiblename="~"Subject ID~"	~"Subject ID~"" )
+column(name=case_type visible="1" band=detail id=14 x="119" y="82" height="16" width="154" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" dddw.allowedit=no dddw.autohscroll=no dddw.autoretrieve=yes dddw.useasborder=yes dddw.datacolumn=code_code dddw.displaycolumn=code_description dddw.hscrollbar=no dddw.hsplitscroll=no dddw.imemode=0 dddw.limit=0 dddw.name=d_dddw_case_type dddw.nilisnull=no dddw.percentwidth=150 dddw.required=no dddw.showlist=no dddw.vscrollbar=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=60 accessibledescription="~"Type~"	~"Type~"" accessiblename="~"Type~"	~"Type~"" )
+column(name=dept_id visible="1" band=detail id=1 x="119" y="109" height="16" width="154" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" dddw.allowedit=no dddw.autohscroll=no dddw.autoretrieve=yes dddw.useasborder=yes dddw.datacolumn=code_code dddw.displaycolumn=code_description dddw.hscrollbar=no dddw.hsplitscroll=no dddw.imemode=0 dddw.limit=0 dddw.name=d_dddw_case_dept_2 dddw.nilisnull=no dddw.percentwidth=150 dddw.required=no dddw.showlist=no dddw.vscrollbar=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=80 accessibledescription="~"Dept~"	~"Dept~"" accessiblename="~"Dept~"	~"Dept~"" )
+column(name=case_date_recv visible="1" band=detail id=30 x="119" y="136" height="16" width="126" color="33554432" border="5" alignment="0" format="[shortdate] [time]" html.valueishtml="0" editmask.focusrectangle=no editmask.autoskip=no editmask.required=no editmask.readonly=no editmask.codetable=no editmask.ddcalendar=no editmask.spin=no editmask.useformat=no editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=100 accessibledescription="~"Receipt Date~"	~"Receipt Date~"" accessiblename="~"Receipt Date~"	~"Receipt Date~"" )
+column(name=case_edit visible="1" band=detail id=20 x="119" y="163" height="16" width="96" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=10 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=130 accessibledescription="~"Edit~"	~"Edit~"" accessiblename="~"Edit~"	~"Edit~"" )
+column(name=case_from_period visible="1" band=detail id=22 x="119" y="189" height="16" width="97" color="33554432" border="5" alignment="0" format="[shortdate] [time]" html.valueishtml="0" editmask.focusrectangle=no editmask.autoskip=no editmask.required=no editmask.readonly=no editmask.codetable=no editmask.ddcalendar=no editmask.spin=no editmask.useformat=no editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=140 accessibledescription="~"Period From~"	~"Period From~"" accessiblename="~"Period From~"	~"Period From~"" )
+column(name=case_prov_spec visible="1" band=detail id=71 x="119" y="215" height="16" width="179" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" dddw.allowedit=no dddw.autohscroll=no dddw.autoretrieve=yes dddw.useasborder=yes dddw.datacolumn=code_code dddw.displaycolumn=code_description dddw.hscrollbar=no dddw.hsplitscroll=no dddw.imemode=0 dddw.limit=0 dddw.name=d_dddw_prov_spec dddw.nilisnull=no dddw.percentwidth=200 dddw.required=no dddw.showlist=no dddw.vscrollbar=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=160 accessibledescription="~"Specialty~"	~"Specialty~"" accessiblename="~"Specialty~"	~"Specialty~"" )
+column(name=case_to_period visible="1" band=detail id=23 x="254" y="189" height="16" width="97" color="33554432" border="5" alignment="0" format="[shortdate] [time]" html.valueishtml="0" editmask.focusrectangle=no editmask.autoskip=no editmask.required=no editmask.readonly=no editmask.codetable=no editmask.ddcalendar=no editmask.spin=no editmask.useformat=no editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=150 accessibledescription="~"To~"	~"To~"" accessiblename="~"To~"	~"To~"" )
+column(name=pmr_prov_type_cd visible="1" band=detail id=53 x="432" y="215" height="16" width="169" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" ddlb.allowedit=no ddlb.autohscroll=no ddlb.imemode=0 ddlb.limit=0 ddlb.showlist=no ddlb.sorted=no ddlb.useasborder=yes ddlb.vscrollbar=no ddlb.nilisnull=no ddlb.required=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=170 accessibledescription="~"Prov Type~"	~"Prov Type~"" accessiblename="~"Prov Type~"	~"Prov Type~"" )
+column(name=case_asgn_id visible="1" band=detail id=6 x="380" y="136" height="16" width="95" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" dddw.allowedit=no dddw.autohscroll=no dddw.autoretrieve=yes dddw.useasborder=yes dddw.case=upper dddw.datacolumn=user_id dddw.displaycolumn=user_id dddw.hscrollbar=yes dddw.hsplitscroll=no dddw.imemode=0 dddw.limit=8 dddw.name=d_dddw_user_id dddw.nilisnull=no dddw.percentwidth=300 dddw.required=no dddw.showlist=no dddw.vscrollbar=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=110 accessibledescription="~"Assigned To ~"	~"Assigned To ~"" accessiblename="~"Assigned To~"	~"Assigned To~"" )
+column(name=case_asgn_date visible="1" band=detail id=8 x="508" y="136" height="16" width="92" color="33554432" border="5" alignment="0" format="[shortdate] [time]" html.valueishtml="0" editmask.focusrectangle=no editmask.autoskip=no editmask.required=no editmask.readonly=no editmask.codetable=no editmask.ddcalendar=no editmask.spin=no editmask.useformat=no editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=120 accessibledescription="~"On~"	~"On~"" accessiblename="~"On~"	~"On~"" )
+column(name=case_business visible="1" band=detail id=16 x="406" y="109" height="16" width="195" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" dddw.allowedit=no dddw.autohscroll=no dddw.autoretrieve=yes dddw.useasborder=yes dddw.datacolumn=code_code dddw.displaycolumn=code_description dddw.hscrollbar=no dddw.hsplitscroll=no dddw.imemode=0 dddw.limit=0 dddw.name=d_dddw_case_business dddw.nilisnull=no dddw.percentwidth=150 dddw.required=no dddw.showlist=no dddw.vscrollbar=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=90 accessibledescription="~"Business~"	~"Business~"" accessiblename="~"Business~"	~"Business~"" )
+column(name=case_cat visible="1" band=detail id=15 x="406" y="82" height="16" width="195" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" dddw.allowedit=no dddw.autohscroll=no dddw.autoretrieve=yes dddw.useasborder=yes dddw.datacolumn=code_code dddw.displaycolumn=code_description dddw.hscrollbar=no dddw.hsplitscroll=no dddw.imemode=0 dddw.limit=0 dddw.name=d_dddw_case_cat dddw.nilisnull=no dddw.percentwidth=150 dddw.required=no dddw.showlist=no dddw.vscrollbar=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=70 accessibledescription="~"Category~"	~"Category~"" accessiblename="~"Category~"	~"Category~"" )
+column(name=pmr_contractor_id visible="1" band=detail id=48 x="406" y="55" height="16" width="195" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" dddw.allowedit=no dddw.autohscroll=no dddw.autoretrieve=yes dddw.useasborder=yes dddw.datacolumn=code_code dddw.displaycolumn=code_description dddw.hscrollbar=no dddw.hsplitscroll=no dddw.imemode=0 dddw.limit=0 dddw.name=d_dddw_pimr_contractor dddw.nilisnull=no dddw.percentwidth=200 dddw.required=no dddw.showlist=no dddw.vscrollbar=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=50 accessibledescription="~"Contract ID~"	~"Contract ID~"" accessiblename="~"Contract ID~"	~"Contract ID~"" )
+column(name=pmr_custom1_char visible="1" band=detail id=55 x="497" y="2" height="16" width="102" color="33554432" border="5" alignment="0" format="[general]" html.valueishtml="0" edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=32 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="1073741824" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=20 accessibledescription="~"Review ID~"	~"Review ID~"" accessiblename="~"Review ID~"	~"Review ID~"" )
+column(name=case_spl visible="1" band=detail id=4 x="272" y="2" height="16" width="27" color="33554432" border="6" alignment="0" format="[general]" protect="0	1" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"Case Split Number~"	~"Case Split Number~"" accessiblename="~"Case Split Number~"	~"Case Split Number~"" )
+column(name=case_ver visible="1" band=detail id=5 x="332" y="2" height="16" width="29" color="33554432" border="6" alignment="0" format="[general]" protect="0	1" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"Case Version Number~"	~"Case Version Number~"" accessiblename="~"Case Version Number~"	~"Case Version Number~"" )
+column(name=user_id visible="1" band=detail id=2 x="505" y="189" height="16" width="95" color="33554432" border="6" alignment="0" format="[general]" protect="0	1" html.valueishtml="0" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=upper edit.codetable=no edit.displayonly=yes edit.hscrollbar=no edit.imemode=0 edit.limit=8 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"By~"	~"By~"" accessiblename="~"By~"	~"By~"" )
+column(name=case_datetime visible="1" band=detail id=13 x="505" y="163" height="16" width="95" color="33554432" border="6" alignment="0" format="[shortdate] [time]" protect="0	1" html.valueishtml="0" editmask.focusrectangle=no editmask.autoskip=no editmask.required=no editmask.readonly=no editmask.codetable=no editmask.ddcalendar=no editmask.spin=no editmask.useformat=no editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="MS Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="400" tabsequence=0 accessibledescription="~"Created~"	~"Created~"" accessiblename="~"Created~"	~"Created~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen(sessionSpecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

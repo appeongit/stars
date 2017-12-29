@@ -1,0 +1,53 @@
+﻿$PBExportHeader$d_case_subset_list.srd
+$PBExportComments$List only subsets for a case <gui>
+release 11;
+datawindow ( units=1 timer_interval=0 color=1073741824 processing=1 print.documentname="Case Subset List"  print.orientation=2 print.margin.left=24 print.margin.right=24 print.margin.top=24 print.margin.bottom=24 print.paper.size=0 print.paper.source=0 grid.lines=2 selected.mouse=yes hidegrayline=no showbackcoloronxp=no)
+header(height=51 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=1 color="536870912" )
+detail(height=23 color="536870912" )
+table(column=(type=char(10) key=yes updatewhereclause=yes name=case_id dbname="CASE_LINK.CASE_ID"  )
+column=(type=char(2) key=yes updatewhereclause=yes name=case_spl dbname="CASE_LINK.CASE_SPL"  )
+column=(type=char(2) key=yes updatewhereclause=yes name=case_ver dbname="CASE_LINK.CASE_VER"  )
+column=(type=char(3) key=yes updatewhereclause=yes name=link_type dbname="CASE_LINK.LINK_TYPE"  )
+column=(type=char(20) key=yes updatewhereclause=yes name=link_name dbname="CASE_LINK.LINK_NAME"  )
+column=(type=char(10) updatewhereclause=yes name=link_key dbname="CASE_LINK.LINK_KEY"  )
+ retrieve="  SELECT CASE_LINK.CASE_ID,   
+         CASE_LINK.CASE_SPL,   
+         CASE_LINK.CASE_VER,   
+         CASE_LINK.LINK_TYPE,   
+         CASE_LINK.LINK_NAME,   
+         CASE_LINK.LINK_KEY  
+    FROM CASE_LINK  
+   WHERE ( CASE_LINK.CASE_ID = Upper(:caseid) ) AND  
+         ( CASE_LINK.CASE_SPL = Upper(:casespl) ) AND  
+         ( CASE_LINK.CASE_VER = Upper(:casever) ) AND  
+         ( CASE_LINK.LINK_TYPE = 'SUB' )    
+"
+  update="CASE_LINK" updatewhere=0 updatekeyinplace=no
+  arguments=(("caseid", string), ("casespl", string), ("casever", string))
+)
+text(name=t_1 band=background font.charset="0" font.face="System" font.family="2" font.height="-12" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="0" x="2" y="2" height="15" width="277" text="CASE SUBSET LIST" accessibledescription="~"CASE SUBSET LIST~"	~"CASE SUBSET LIST~"" accessiblename="~"CASE SUBSET LIST~"	~"CASE SUBSET LIST~"" accessiblerole=42 )
+text(name=st_report_date band=background font.charset="0" font.face="System" font.family="2" font.height="-12" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="1" border="0" x="281" y="2" height="16" width="134" text="" accessibledescription="~"Report Date~"	~"Report Date~"" accessiblename="~"Report Date~"	~"Report Date~"" accessiblerole=42 )
+text(name=case_id_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="4" x="2" y="19" height="30" width="53" text="Case ID" accessibledescription="~"Case ID~"	~"Case ID~"" accessiblename="~"Case ID~"	~"Case ID~"" accessiblerole=42 )
+text(name=case_spl_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="4" x="57" y="19" height="30" width="36" text="Split" accessibledescription="~"Split~"	~"Split~"" accessiblename="~"Split~"	~"Split~"" accessiblerole=42 )
+text(name=case_ver_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="4" x="95" y="19" height="30" width="51" text="Version" accessibledescription="~"Version~"	~"Version~"" accessiblename="~"Version~"	~"Version~"" accessiblerole=42 )
+text(name=link_type_t band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="4" x="148" y="19" height="30" width="63" text="Link Type" accessibledescription="~"Link Type~"	~"Link Type~"" accessiblename="~"Link Type~"	~"Link Type~"" accessiblerole=42 )
+text(name=t_2 band=header font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" alignment="2" border="4" x="213" y="19" height="30" width="200" text="Link Key" accessibledescription="~"Link Key~"	~"Link Key~"" accessiblename="~"Link Key~"	~"Link Key~"" accessiblerole=42 )
+column(name=case_id band=detail id=1 x="2" y="2" height="19" width="53" color="33554432" border="0" alignment="0" format="[general]" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=10 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Case ID~"	~"Case ID~"" accessiblename="~"Case ID~"	~"Case ID~"" )
+column(name=case_spl band=detail id=2 x="57" y="2" height="19" width="36" color="33554432" border="0" alignment="0" format="[general]" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=2 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Case Split Number~"	~"Case Split Number~"" accessiblename="~"Case Split Number~"	~"Case Split Number~"" )
+column(name=case_ver band=detail id=3 x="95" y="2" height="19" width="51" color="33554432" border="0" alignment="0" format="[general]" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=2 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Case Version Number~"	~"Case Version Number~"" accessiblename="~"Case Version Number~"	~"Case Version Number~"" )
+column(name=link_type band=detail id=4 x="148" y="2" height="19" width="63" color="33554432" border="0" alignment="0" format="[general]" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=3 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Link Type~"	~"Link Type~"" accessiblename="~"Link Type~"	~"Link Type~"" )
+column(name=link_name band=detail id=5 x="213" y="2" height="19" width="200" color="33554432" border="0" alignment="0" format="[general]" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Link Name~"	~"Link Name~"" accessiblename="~"Link Name~"	~"Link Name~"" )
+column(name=link_key band=foreground id=6 x="418" y="86" height="19" width="3" color="33554432" border="0" alignment="0" format="[general]" edit.focusrectangle=no edit.autohscroll=yes edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=14 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=0 accessibledescription="~"Link Key~"	~"Link Key~"" accessiblename="~"Link Key~"	~"Link Key~"" )
+compute(name=compute_2 band=foreground font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" background.mode="1" background.color="536870912" color="33554432" x="417" y="1" height="16" width="110" format="[GENERAL]" expression="'  Page ' + Page()" alignment="1" border="0" crosstab.repeat=no accessibledescription="~"Page~"	~"Page~"" accessiblename="~"Page~"	~"Page~"" )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" generateJavaScript="1" pagingMethod=0 )
+xhtmlgen() cssgen()
+xmlgen()
+xsltgen()
+jsgen()
+export.xml(metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 )
+export.xhtml()

@@ -1,0 +1,31 @@
+HA$PBExportHeader$d_unique_count.srd
+$PBExportComments$<gui>
+release 11;
+datawindow ( units=0 timer_interval=0 color=1073741824 processing=1 print.printername=""  print.documentname=""  print.orientation=0 print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 print.paper.size=0 print.paper.source=0 print.canusedefaultprinter=yes grid.lines=0 selected.mouse=yes hidegrayline=no showbackcoloronxp=no)
+header(height=64 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(50) updatewhereclause=no name=col_nam dbname="col_nam" 
+ values=""  )
+column=(type=long updatewhereclause=no name=unique_count dbname="unique_count" 
+ values="Left	0/Right	1/Center	2/Justify	3/"  )
+column=(type=char(1) updatewhereclause=yes initial="N" name=delete dbname="delete" 
+ values="	Y/	N"  )
+)
+text(name=unique_count_t visible="1" band=header font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="2" background.color="67108864" color="33554432" alignment="2" border="6" x="791" y="4" height="52" width="288" text="Uniq Cnt" html.valueishtml="0" accessibledescription="~"Unique Count~"	~"Unique Count~"" accessiblename="~"Unique Count~"	~"Unique Count~"" accessiblerole=42 )
+text(name=col_nam_t visible="1" band=header font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="2" background.color="67108864" color="33554432" alignment="2" border="6" x="9" y="4" height="52" width="773" text="Column Name" html.valueishtml="0" accessibledescription="~"Column Name~"	~"Column Name~"" accessiblename="~"Column Name~"	~"Column Name~"" accessiblerole=42 )
+text(name=delete_t visible="1" band=header font.charset="0" font.face="Microsoft Sans Serif" font.family="2" font.height="-8" font.pitch="2" font.weight="700" background.mode="2" background.color="67108864" color="33554432" alignment="2" border="6" x="1088" y="4" height="52" width="224" text="Del Ind" html.valueishtml="0" accessibledescription="~"Delete Indicator~"	~"Delete Indicator~"" accessiblename="~"Delete Indicator~"	~"Delete Indicator~"" accessiblerole=42 )
+column(name=col_nam visible="1" band=detail id=1 x="9" y="0" height="68" width="773" color="33554432" border="0" alignment="0" format="[general]" html.valueishtml="0" dddw.allowedit=no dddw.autohscroll=no dddw.autoretrieve=yes dddw.useasborder=yes dddw.datacolumn=col_name dddw.displaycolumn=col_name dddw.hscrollbar=no dddw.hsplitscroll=no dddw.imemode=0 dddw.limit=0 dddw.name=d_dddw_uo_columns dddw.nilisnull=no dddw.percentwidth=0 dddw.required=no dddw.showlist=no dddw.vscrollbar=yes criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=10 accessibledescription="~"Col Nam~"	~"Col Nam~"" accessiblename="~"Column Name~"	~"Column Name~"" )
+column(name=unique_count visible="1" band=detail id=2 x="791" y="0" height="68" width="288" color="33554432" border="0" alignment="1" format="###,###,##0" html.valueishtml="0" edit.autohscroll=no edit.autoselect=yes edit.autovscroll=no edit.case=any edit.codetable=no edit.displayonly=no edit.hscrollbar=no edit.imemode=0 edit.limit=0 edit.password=no edit.vscrollbar=no edit.validatecode=no edit.nilisnull=no edit.required=no edit.useellipsis=no criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="1" background.color="536870912" font.charset="0" font.face="System" font.family="2" font.height="-10" font.pitch="2" font.weight="700" tabsequence=20 accessibledescription="~"Unique Count~"	~"Unique Count~"" accessiblename="~"Unique Count~"	~"Unique Count~"" )
+column(name=delete visible="1" band=detail id=3 x="1088" y="0" height="76" width="224" color="0" border="0" alignment="2" format="[general]" html.valueishtml="0" checkbox.lefttext=no checkbox.scale=no checkbox.threed=yes checkbox.text="" checkbox.on="Y" checkbox.off="N" criteria.required=no criteria.override_edit=no crosstab.repeat=no background.mode="2" background.color="16777215" font.charset="0" font.face="Tahoma" font.family="2" font.height="-12" font.pitch="2" font.weight="400" tabsequence=30 )
+htmltable(border="1" )
+htmlgen(clientComputedFields="1" clientEvents="1" clientFormatting="0" clientScriptable="0" clientValidation="1" encodeSelfLinkArgs="1" generateDDDWFrames="1" generateJavaScript="1" netscapeLayers="0" pagingMethod=0 )
+xhtmlgen() cssgen(sessionSpecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headGroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.customPostScript="0" xslfop.print="0" )
+export.xhtml()

@@ -1,0 +1,6 @@
+HA$PBExportHeader$sx_tables.srs
+global type sx_tables from structure
+    string tbl_type
+    string tbl_name
+end type
+

@@ -1,0 +1,76 @@
+﻿$PBExportHeader$fx_get_next_stars_rel.srf
+$PBExportComments$Find next stars_rel that matches rel_type, rel_id, & elem_type
+global type fx_get_next_stars_rel from function_object
+end type
+
+forward prototypes
+global function long fx_get_next_stars_rel (long al_row, string as_rel_type, string as_rel_id, string as_elem_type)
+end prototypes
+
+global function long fx_get_next_stars_rel (long al_row, string as_rel_type, string as_rel_id, string as_elem_type);//*************************************************************************
+//		Object Type:	Global function
+//		Object Name:	fx_get_next_stars_rel
+//		Event Name:		N/A
+//
+//		This function gets the next row from w_main.dw_stars_rel_dict
+//		that matches the criteria passed to this function.  The last row
+//		retrieved is used as the starting row to begin the search 
+//		(0 is passed when invoked for the first time).
+//
+//		Arguments passed to this function:
+//
+//		1.	al_row		-	The first row to begin the search.  1 is added
+//								to al_row before the search begins.
+//		2.	as_rel_type	-	The type of relationship (i.e. 'JN', 'QT', 'GP')
+//		3.	as_rel_id	-	stars_rel.rel_id
+//		4.	as_elem_type-	This value is always blank
+//
+//		Returns: long - The next row found.
+//					 -1  - No more rows found.
+//
+//*************************************************************************
+//	
+
+string	ls_rel_type
+string	ls_rel_id
+int		li_rc
+long		ll_max_rows
+long		ll_row
+
+
+	//	Make sure that nothing has been previously filtered
+
+li_rc				=	w_main.dw_stars_rel_dict.SetFilter("")
+li_rc				=	w_main.dw_stars_rel_dict.Filter()
+
+If	li_rc		<>	1	Then
+	MessageBox ("ERROR","Unable to set the filter on stars_rel in "	+	&
+					"fx_get_next_stars_rel().")
+	Return -1
+End If
+
+	//	Determine the maximum row count 
+
+ll_max_rows			=	w_main.dw_stars_rel_dict.RowCount()
+
+	// Start with the next row passed to this function
+
+ll_row				=	al_row	+	1
+
+	// Find the next row in the datawindow that matches rel_type, rel_id 
+
+FOR ll_row			=	ll_row	TO	ll_max_rows
+	ls_rel_type		=	Trim(w_main.dw_stars_rel_dict.GetItemString (ll_row, "rel_type"))
+	ls_rel_id		=	Trim(w_main.dw_stars_rel_dict.GetItemString (ll_row, "rel_id"))
+	IF	 ls_rel_type	=	Trim(as_rel_type)		&
+	AND ls_rel_id		=	Trim(as_rel_id)		THEN
+		Return ll_row
+	END IF
+NEXT
+
+	// Data not found. Return -1.
+
+Return -1
+
+end function
+

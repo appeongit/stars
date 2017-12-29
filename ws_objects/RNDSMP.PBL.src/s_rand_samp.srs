@@ -1,0 +1,45 @@
+﻿$PBExportHeader$s_rand_samp.srs
+$PBExportComments$Random sampling window passing structure
+global type s_rand_samp from structure
+	string		mode
+	string		prov
+	string		pin_ind
+	datetime		temp_datetime
+	string		file_list
+	string		table_id
+	string		link_id
+	string		case_id
+	string		case_spl
+	string		case_ver
+	long		subsets_selected
+	string		stablename
+	string		sjointablename
+	string		temp_subc_id
+	string		case_subset_id[]
+	string		subset_crit
+	string		sfilter_tables
+	integer		universesize
+	string		selected_provs[]
+	boolean		across_provs
+	string		sample_type
+	string		sample_by
+	string		prov_col_name
+	string		prov_name_tbl
+	string		prov_name_col_name
+	string		prov_orig_name
+	string		unique_cnt_temp_table_name
+	string		subset_table_name[]
+	string		selected_prov_list
+	string		selected_subset_list
+	string		base_type
+	string		sjointabletype
+	string		sjoinmainkey
+	string		sjoindepnkey
+	string		sjoinsubsetname[]
+	boolean		bjoinactive
+	string		case_subset_name[]
+	string		icn_table_name[]
+	long		sample_seed
+	string		pit_label
+end type
+
